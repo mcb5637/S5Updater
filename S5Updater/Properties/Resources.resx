@@ -162,6 +162,9 @@
   <data name="TaskMPMap_Repo" xml:space="preserve">
     <value>Handling repo: </value>
   </data>
+  <data name="TaskMPMap_Start" xml:space="preserve">
+    <value>updating MP maps and scripts</value>
+  </data>
   <data name="TitleInstallation" xml:space="preserve">
     <value>Install Location</value>
   </data>

@@ -162,6 +162,9 @@
   <data name="TaskMPMap_Repo" xml:space="preserve">
     <value>Prüfe Repo </value>
   </data>
+  <data name="TaskMPMap_Start" xml:space="preserve">
+    <value>aktualisiere Mp Karten und Scripte</value>
+  </data>
   <data name="TitleInstallation" xml:space="preserve">
     <value>Installationsort</value>
   </data>

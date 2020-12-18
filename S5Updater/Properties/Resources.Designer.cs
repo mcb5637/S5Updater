@@ -196,6 +196,15 @@ namespace S5Updater.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to updating MP maps and scripts.
+        /// </summary>
+        internal static string TaskMPMap_Start {
+            get {
+                return ResourceManager.GetString("TaskMPMap_Start", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Install Location.
         /// </summary>
         internal static string TitleInstallation {
