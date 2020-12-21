@@ -15,18 +15,20 @@ namespace S5Updater
         internal MainMenu MM;
         internal int Status;
 
+        internal readonly string[] Exclude = new string[] { ".git", ".gitignore", ".gitmodules" };
+
         public void Work(ProgressDialog.ReportProgressDel r)
         {
             Status = MainMenu.Status_OK;
             r(0, Resources.TaskMPMap_Start);
             HandleRepo(Path.Combine(MM.Reg.GoldPath, "extra2\\shr\\maps\\user\\EMSGit"), "master", "https://github.com/MadShadow-/EMS.git", r);
-            HandleRepo(Path.Combine(MM.Reg.GoldPath, "extra2\\shr\\maps\\user\\EMS\\tools\\s5CommunityLib"), "master", "https://github.com/mcb5637/s5CommunityLib.git", r);
+            //HandleRepo(Path.Combine(MM.Reg.GoldPath, "extra2\\shr\\maps\\user\\EMS\\tools\\s5CommunityLib"), "master", "https://github.com/mcb5637/s5CommunityLib.git", r);
             HandleRepo(Path.Combine(MM.Reg.GoldPath, "extra2\\shr\\maps\\user\\speedwar"), "master", "https://github.com/MadShadow-/speedwar.git", r);
             HandleRepo(Path.Combine(MM.Reg.GoldPath, "extra2\\shr\\maps\\user\\Balancing_Stuff_in_Dev"), "master", "https://github.com/GhoulMadness/Balancing-Stuff.git", r);
             try
             {
                 r(0, Resources.TaskMPMap_CopyFiles);
-                MainUpdater.Copy(Path.Combine(MM.Reg.GoldPath, "extra2\\shr\\maps\\user\\EMSGit"), Path.Combine(MM.Reg.GoldPath, "extra2\\shr\\maps\\user"));
+                MainUpdater.Copy(Path.Combine(MM.Reg.GoldPath, "extra2\\shr\\maps\\user\\EMSGit"), Path.Combine(MM.Reg.GoldPath, "extra2\\shr\\maps\\user"), Exclude);
                 r(100, Resources.Done);
             }
             catch (Exception e)
