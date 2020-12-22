@@ -64,7 +64,7 @@ namespace S5Updater
                         RepositoryStatus stat = rep.RetrieveStatus(statusopt);
                         if (stat.IsDirty)
                         {
-                            if (MessageBox.Show(string.Format(Resources.TaskMPMap_ErrDirty, reponame), reponame, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                            if (MM.EasyMode || MessageBox.Show(string.Format(Resources.TaskMPMap_ErrDirty, reponame), reponame, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                             {
                                 r(0, Resources.TaskMPMap_DirtyDeleting);
                                 rep.Reset(ResetMode.Hard, rep.Head.Tip);

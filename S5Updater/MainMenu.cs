@@ -34,6 +34,13 @@ namespace S5Updater
             BTN_SetGold.Text = Resources.Txt_SetGold;
             GroupBox_Updates.Text = Resources.TitleUpdate;
             Btn_UpdateMPMaps.Text = Resources.Txt_UpdateMP;
+            CB_EasyMode.Text = Resources.Txt_EasyMode;
+            CB_ShowLog.Text = Resources.Txt_ShowLog;
+            Btn_GoldSave.Text = Resources.Txt_GoldSetReg;
+            GroupBox_Settings.Text = Resources.TitleSettings;
+
+            CB_ShowLog_CheckedChanged(null, null);
+            CB_EasyMode_CheckedChanged(null, null);
 
             Reg.LoadGoldPathFromRegistry();
             Log(Resources.Log_SetGold + Reg.GoldPath);
@@ -48,12 +55,14 @@ namespace S5Updater
                 CB_GoldOK.Text = Resources.Status_Ok;
                 CB_GoldOK.Checked = true;
                 Btn_UpdateMPMaps.Enabled = true;
+                Btn_GoldSave.Enabled = !Reg.GoldHasReg;
             }
             else
             {
                 CB_GoldOK.Text = Resources.Status_Invalid;
                 CB_GoldOK.Checked = false;
                 Btn_UpdateMPMaps.Enabled = false;
+                Btn_GoldSave.Enabled = false;
             }
         }
 
@@ -81,6 +90,29 @@ namespace S5Updater
                 MM = this
             };
             Prog.ShowWorkDialog(t, this);
+        }
+
+        internal bool EasyMode
+        {
+            get => CB_EasyMode.Checked;
+            set => CB_EasyMode.Checked = value;
+        }
+
+        private void CB_ShowLog_CheckedChanged(object sender, EventArgs e)
+        {
+            TextBox_Output.Visible = CB_ShowLog.Checked;
+            Size = new Size(CB_ShowLog.Checked ? 1127 : 560, 594);
+        }
+
+        private void Btn_GoldSave_Click(object sender, EventArgs e)
+        {
+            Reg.SetGoldReg();
+            Log(Resources.Log_RegGold + Reg.GoldPath);
+        }
+
+        private void CB_EasyMode_CheckedChanged(object sender, EventArgs e)
+        {
+            Btn_GoldSave.Visible = !EasyMode;
         }
     }
 }

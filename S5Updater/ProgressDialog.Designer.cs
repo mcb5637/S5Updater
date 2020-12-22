@@ -63,6 +63,7 @@ namespace S5Updater
             this.ClientSize = new System.Drawing.Size(384, 76);
             this.Controls.Add(this.Txt_Log);
             this.Controls.Add(this.Bar);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "ProgressDialog";

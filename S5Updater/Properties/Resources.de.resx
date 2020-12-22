@@ -123,6 +123,9 @@
   <data name="Lbl_Gold" xml:space="preserve">
     <value>Gold: </value>
   </data>
+  <data name="Log_RegGold" xml:space="preserve">
+    <value>Gold Registry Pfad gesetzt auf: </value>
+  </data>
   <data name="Log_SetGold" xml:space="preserve">
     <value>Gold Installationspfad gesetzt auf: </value>
   </data>
@@ -171,11 +174,23 @@
   <data name="TitleMainMenu" xml:space="preserve">
     <value>S5 Updater</value>
   </data>
+  <data name="TitleSettings" xml:space="preserve">
+    <value>Einstellungen</value>
+  </data>
   <data name="TitleUpdate" xml:space="preserve">
     <value>Aktualisierungen</value>
   </data>
+  <data name="Txt_EasyMode" xml:space="preserve">
+    <value>einfacher Modus</value>
+  </data>
+  <data name="Txt_GoldSetReg" xml:space="preserve">
+    <value>setze Registry</value>
+  </data>
   <data name="Txt_SetGold" xml:space="preserve">
     <value>Ändern</value>
+  </data>
+  <data name="Txt_ShowLog" xml:space="preserve">
+    <value>zeige Log</value>
   </data>
   <data name="Txt_UpdateMP" xml:space="preserve">
     <value>aktualisiere MP Karten</value>

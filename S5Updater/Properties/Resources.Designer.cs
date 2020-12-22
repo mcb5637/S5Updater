@@ -88,6 +88,15 @@ namespace S5Updater.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Changed Gold registry to: .
+        /// </summary>
+        internal static string Log_RegGold {
+            get {
+                return ResourceManager.GetString("Log_RegGold", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Gold install location set to: .
         /// </summary>
         internal static string Log_SetGold {
@@ -223,6 +232,15 @@ namespace S5Updater.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Settings.
+        /// </summary>
+        internal static string TitleSettings {
+            get {
+                return ResourceManager.GetString("TitleSettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Updates.
         /// </summary>
         internal static string TitleUpdate {
@@ -232,11 +250,38 @@ namespace S5Updater.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to easy mode.
+        /// </summary>
+        internal static string Txt_EasyMode {
+            get {
+                return ResourceManager.GetString("Txt_EasyMode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to set registry.
+        /// </summary>
+        internal static string Txt_GoldSetReg {
+            get {
+                return ResourceManager.GetString("Txt_GoldSetReg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Change.
         /// </summary>
         internal static string Txt_SetGold {
             get {
                 return ResourceManager.GetString("Txt_SetGold", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to show log.
+        /// </summary>
+        internal static string Txt_ShowLog {
+            get {
+                return ResourceManager.GetString("Txt_ShowLog", resourceCulture);
             }
         }
         
