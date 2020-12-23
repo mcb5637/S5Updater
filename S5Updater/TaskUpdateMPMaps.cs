@@ -15,7 +15,7 @@ namespace S5Updater
         internal MainMenu MM;
         internal int Status;
 
-        internal readonly string[] Exclude = new string[] { ".git", ".gitignore", ".gitmodules" };
+        internal readonly string[] Exclude = new string[] { ".git", ".gitignore", ".gitmodules", ".gitattributes" };
 
         public void Work(ProgressDialog.ReportProgressDel r)
         {
