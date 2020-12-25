@@ -69,6 +69,10 @@ namespace S5Updater
                             if (MM.EasyMode || MessageBox.Show(string.Format(Resources.TaskMPMap_ErrDirty, reponame), reponame, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                             {
                                 r(0, Resources.TaskMPMap_DirtyDeleting);
+                                foreach (StatusEntry f in stat.Untracked)
+                                {
+                                    File.Delete(Path.Combine(repo, f.FilePath));
+                                }
                                 rep.Reset(ResetMode.Hard, rep.Head.Tip);
                             }
                             else
