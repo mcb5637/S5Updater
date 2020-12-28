@@ -88,6 +88,15 @@ namespace S5Updater.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Resolution.
+        /// </summary>
+        internal static string Lbl_Reso {
+            get {
+                return ResourceManager.GetString("Lbl_Reso", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Changed Gold registry to: .
         /// </summary>
         internal static string Log_RegGold {
@@ -97,11 +106,29 @@ namespace S5Updater.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Set Dev Mode to: .
+        /// </summary>
+        internal static string Log_SetDev {
+            get {
+                return ResourceManager.GetString("Log_SetDev", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Gold install location set to: .
         /// </summary>
         internal static string Log_SetGold {
             get {
                 return ResourceManager.GetString("Log_SetGold", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Set Resolution to: .
+        /// </summary>
+        internal static string Log_SetReso {
+            get {
+                return ResourceManager.GetString("Log_SetReso", resourceCulture);
             }
         }
         
@@ -232,6 +259,15 @@ namespace S5Updater.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Registry.
+        /// </summary>
+        internal static string TitleReg {
+            get {
+                return ResourceManager.GetString("TitleReg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Settings.
         /// </summary>
         internal static string TitleSettings {
@@ -250,6 +286,15 @@ namespace S5Updater.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Development Mode.
+        /// </summary>
+        internal static string Txt_DevMode {
+            get {
+                return ResourceManager.GetString("Txt_DevMode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to easy mode.
         /// </summary>
         internal static string Txt_EasyMode {
@@ -264,6 +309,15 @@ namespace S5Updater.Properties {
         internal static string Txt_GoldSetReg {
             get {
                 return ResourceManager.GetString("Txt_GoldSetReg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Chosen resolution requires Developent mode, enable?.
+        /// </summary>
+        internal static string Txt_QuestEnableDevModeRes {
+            get {
+                return ResourceManager.GetString("Txt_QuestEnableDevModeRes", resourceCulture);
             }
         }
         

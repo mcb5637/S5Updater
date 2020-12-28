@@ -18,6 +18,11 @@ namespace S5Updater
 
         internal RegistryHandler Reg;
         internal ProgressDialog Prog;
+        internal DevHashCalc HashCalc;
+
+        private readonly string[] Resolutions = new string[] {"default", "select", "1920 x 1080 x 32"};
+        private readonly bool[] ResolutionNeedsDev = new bool[] { false, false, true };
+        private bool Updating = false;
 
         public MainMenu()
         {
@@ -28,6 +33,7 @@ namespace S5Updater
         {
             Reg = new RegistryHandler();
             Prog = new ProgressDialog();
+            HashCalc = new DevHashCalc();
 
             Text = Resources.TitleMainMenu;
             GroupBox_Installation.Text = Resources.TitleInstallation;
@@ -38,6 +44,18 @@ namespace S5Updater
             CB_ShowLog.Text = Resources.Txt_ShowLog;
             Btn_GoldSave.Text = Resources.Txt_GoldSetReg;
             GroupBox_Settings.Text = Resources.TitleSettings;
+            GroupBox_Registry.Text = Resources.TitleReg;
+            LBL_Reso.Text = Resources.Lbl_Reso;
+            Updating = true;
+            ComboBox_Reso.Items.AddRange(Resolutions);
+            string r = Reg.Resolution;
+            int i = Array.IndexOf(Resolutions, r);
+            if (i == -1)
+                i = 0;
+            ComboBox_Reso.SelectedIndex = i;
+            CB_DevMode.Text = Resources.Txt_DevMode;
+            CB_DevMode.Checked = HashCalc.CalcHash(Reg.GetPCName()) == Reg.DevMode;
+            Updating = false;
 
             CB_ShowLog_CheckedChanged(null, null);
             CB_EasyMode_CheckedChanged(null, null);
@@ -100,6 +118,8 @@ namespace S5Updater
 
         private void CB_ShowLog_CheckedChanged(object sender, EventArgs e)
         {
+            if (Updating)
+                return;
             TextBox_Output.Visible = CB_ShowLog.Checked;
             Size = new Size(CB_ShowLog.Checked ? 1127 : 560, 594);
         }
@@ -112,7 +132,36 @@ namespace S5Updater
 
         private void CB_EasyMode_CheckedChanged(object sender, EventArgs e)
         {
-            Btn_GoldSave.Visible = !EasyMode;
+            if (Updating)
+                return;
+            bool hideInEasy = !EasyMode;
+            Btn_GoldSave.Visible = hideInEasy;
+            CB_DevMode.Visible = hideInEasy;
+        }
+
+        private void ComboBox_Reso_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (Updating)
+                return;
+            string sel = ComboBox_Reso.SelectedItem as string;
+            if (sel.Equals("default"))
+                sel = "0";
+            Reg.Resolution = sel;
+            Log(Resources.Log_SetReso + sel);
+            if (ResolutionNeedsDev[ComboBox_Reso.SelectedIndex] && !CB_DevMode.Checked)
+            {
+                if (EasyMode || MessageBox.Show(Resources.Txt_QuestEnableDevModeRes, sel, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    CB_DevMode.Checked = true;
+            }
+        }
+
+        private void CB_DevMode_CheckedChanged(object sender, EventArgs e)
+        {
+            if (Updating)
+                return;
+            uint x = CB_DevMode.Checked ? HashCalc.CalcHash(Reg.GetPCName()) : 0;
+            Log(Resources.Log_SetDev + x);
+            Reg.DevMode = x;
         }
     }
 }

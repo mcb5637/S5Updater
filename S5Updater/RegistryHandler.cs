@@ -14,6 +14,9 @@ namespace S5Updater
         internal bool GoldHasReg;
         internal static readonly string GoldKey = "HKEY_LOCAL_MACHINE\\SOFTWARE\\Blue Byte\\The Settlers - Heritage of Kings";
         internal static readonly string GoldValue = "InstallPath";
+        internal static readonly string GoldReso = "DefaultResolution";
+        internal static readonly string GoldDevMode = "DevelopmentMachine";
+        internal static readonly string GoldDevKey = GoldKey + "\\Development";
 
         internal string LoadGoldPathFromRegistry()
         {
@@ -40,6 +43,29 @@ namespace S5Updater
             if (GoldHasReg)
                 throw new ArgumentException();
             Registry.SetValue(GoldKey, GoldValue, GoldPath, RegistryValueKind.String);
+        }
+
+        internal string GetPCName()
+        {
+            return Environment.MachineName;
+        }
+
+        internal string Resolution
+        {
+            get => Registry.GetValue(GoldDevKey, GoldReso, null) as string;
+            set => Registry.SetValue(GoldDevKey, GoldReso, value, RegistryValueKind.String);
+        }
+
+        internal uint? DevMode
+        {
+            get {
+                object r = Registry.GetValue(GoldDevKey, GoldDevMode, null);
+                if (r == null)
+                    return null;
+                int i = (int)r;
+                return unchecked((uint)i);
+            }
+            set => Registry.SetValue(GoldDevKey, GoldDevMode, unchecked((int)(uint)value), RegistryValueKind.DWord);
         }
     }
 }

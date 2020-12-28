@@ -30,6 +30,7 @@ namespace S5Updater
         private void InitializeComponent()
         {
             this.GroupBox_Installation = new System.Windows.Forms.GroupBox();
+            this.Btn_GoldSave = new System.Windows.Forms.Button();
             this.CB_GoldOK = new System.Windows.Forms.CheckBox();
             this.BTN_SetGold = new System.Windows.Forms.Button();
             this.LBL_Gold = new System.Windows.Forms.Label();
@@ -38,12 +39,16 @@ namespace S5Updater
             this.GroupBox_Updates = new System.Windows.Forms.GroupBox();
             this.Btn_UpdateMPMaps = new System.Windows.Forms.Button();
             this.GroupBox_Settings = new System.Windows.Forms.GroupBox();
-            this.CB_ShowLog = new System.Windows.Forms.CheckBox();
             this.CB_EasyMode = new System.Windows.Forms.CheckBox();
-            this.Btn_GoldSave = new System.Windows.Forms.Button();
+            this.CB_ShowLog = new System.Windows.Forms.CheckBox();
+            this.GroupBox_Registry = new System.Windows.Forms.GroupBox();
+            this.LBL_Reso = new System.Windows.Forms.Label();
+            this.ComboBox_Reso = new System.Windows.Forms.ComboBox();
+            this.CB_DevMode = new System.Windows.Forms.CheckBox();
             this.GroupBox_Installation.SuspendLayout();
             this.GroupBox_Updates.SuspendLayout();
             this.GroupBox_Settings.SuspendLayout();
+            this.GroupBox_Registry.SuspendLayout();
             this.SuspendLayout();
             // 
             // GroupBox_Installation
@@ -58,6 +63,16 @@ namespace S5Updater
             this.GroupBox_Installation.TabIndex = 0;
             this.GroupBox_Installation.TabStop = false;
             this.GroupBox_Installation.Text = "GroupBox_Installation";
+            // 
+            // Btn_GoldSave
+            // 
+            this.Btn_GoldSave.Location = new System.Drawing.Point(412, 19);
+            this.Btn_GoldSave.Name = "Btn_GoldSave";
+            this.Btn_GoldSave.Size = new System.Drawing.Size(96, 23);
+            this.Btn_GoldSave.TabIndex = 3;
+            this.Btn_GoldSave.Text = "button1";
+            this.Btn_GoldSave.UseVisualStyleBackColor = true;
+            this.Btn_GoldSave.Click += new System.EventHandler(this.Btn_GoldSave_Click);
             // 
             // CB_GoldOK
             // 
@@ -109,7 +124,7 @@ namespace S5Updater
             this.GroupBox_Updates.Controls.Add(this.Btn_UpdateMPMaps);
             this.GroupBox_Updates.Location = new System.Drawing.Point(12, 118);
             this.GroupBox_Updates.Name = "GroupBox_Updates";
-            this.GroupBox_Updates.Size = new System.Drawing.Size(514, 233);
+            this.GroupBox_Updates.Size = new System.Drawing.Size(514, 126);
             this.GroupBox_Updates.TabIndex = 2;
             this.GroupBox_Updates.TabStop = false;
             this.GroupBox_Updates.Text = "groupBox1";
@@ -135,17 +150,6 @@ namespace S5Updater
             this.GroupBox_Settings.TabStop = false;
             this.GroupBox_Settings.Text = "groupBox1";
             // 
-            // CB_ShowLog
-            // 
-            this.CB_ShowLog.AutoSize = true;
-            this.CB_ShowLog.Location = new System.Drawing.Point(9, 19);
-            this.CB_ShowLog.Name = "CB_ShowLog";
-            this.CB_ShowLog.Size = new System.Drawing.Size(80, 17);
-            this.CB_ShowLog.TabIndex = 0;
-            this.CB_ShowLog.Text = "checkBox1";
-            this.CB_ShowLog.UseVisualStyleBackColor = true;
-            this.CB_ShowLog.CheckedChanged += new System.EventHandler(this.CB_ShowLog_CheckedChanged);
-            // 
             // CB_EasyMode
             // 
             this.CB_EasyMode.AutoSize = true;
@@ -159,21 +163,65 @@ namespace S5Updater
             this.CB_EasyMode.UseVisualStyleBackColor = true;
             this.CB_EasyMode.CheckedChanged += new System.EventHandler(this.CB_EasyMode_CheckedChanged);
             // 
-            // Btn_GoldSave
+            // CB_ShowLog
             // 
-            this.Btn_GoldSave.Location = new System.Drawing.Point(412, 19);
-            this.Btn_GoldSave.Name = "Btn_GoldSave";
-            this.Btn_GoldSave.Size = new System.Drawing.Size(96, 23);
-            this.Btn_GoldSave.TabIndex = 3;
-            this.Btn_GoldSave.Text = "button1";
-            this.Btn_GoldSave.UseVisualStyleBackColor = true;
-            this.Btn_GoldSave.Click += new System.EventHandler(this.Btn_GoldSave_Click);
+            this.CB_ShowLog.AutoSize = true;
+            this.CB_ShowLog.Location = new System.Drawing.Point(9, 19);
+            this.CB_ShowLog.Name = "CB_ShowLog";
+            this.CB_ShowLog.Size = new System.Drawing.Size(80, 17);
+            this.CB_ShowLog.TabIndex = 0;
+            this.CB_ShowLog.Text = "checkBox1";
+            this.CB_ShowLog.UseVisualStyleBackColor = true;
+            this.CB_ShowLog.CheckedChanged += new System.EventHandler(this.CB_ShowLog_CheckedChanged);
+            // 
+            // GroupBox_Registry
+            // 
+            this.GroupBox_Registry.Controls.Add(this.CB_DevMode);
+            this.GroupBox_Registry.Controls.Add(this.LBL_Reso);
+            this.GroupBox_Registry.Controls.Add(this.ComboBox_Reso);
+            this.GroupBox_Registry.Location = new System.Drawing.Point(12, 250);
+            this.GroupBox_Registry.Name = "GroupBox_Registry";
+            this.GroupBox_Registry.Size = new System.Drawing.Size(514, 124);
+            this.GroupBox_Registry.TabIndex = 4;
+            this.GroupBox_Registry.TabStop = false;
+            this.GroupBox_Registry.Text = "groupBox1";
+            // 
+            // LBL_Reso
+            // 
+            this.LBL_Reso.AutoSize = true;
+            this.LBL_Reso.Location = new System.Drawing.Point(6, 22);
+            this.LBL_Reso.Name = "LBL_Reso";
+            this.LBL_Reso.Size = new System.Drawing.Size(35, 13);
+            this.LBL_Reso.TabIndex = 1;
+            this.LBL_Reso.Text = "label1";
+            // 
+            // ComboBox_Reso
+            // 
+            this.ComboBox_Reso.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ComboBox_Reso.FormattingEnabled = true;
+            this.ComboBox_Reso.Location = new System.Drawing.Point(67, 19);
+            this.ComboBox_Reso.Name = "ComboBox_Reso";
+            this.ComboBox_Reso.Size = new System.Drawing.Size(121, 21);
+            this.ComboBox_Reso.TabIndex = 0;
+            this.ComboBox_Reso.SelectedIndexChanged += new System.EventHandler(this.ComboBox_Reso_SelectedIndexChanged);
+            // 
+            // CB_DevMode
+            // 
+            this.CB_DevMode.AutoSize = true;
+            this.CB_DevMode.Location = new System.Drawing.Point(326, 21);
+            this.CB_DevMode.Name = "CB_DevMode";
+            this.CB_DevMode.Size = new System.Drawing.Size(80, 17);
+            this.CB_DevMode.TabIndex = 2;
+            this.CB_DevMode.Text = "checkBox1";
+            this.CB_DevMode.UseVisualStyleBackColor = true;
+            this.CB_DevMode.CheckedChanged += new System.EventHandler(this.CB_DevMode_CheckedChanged);
             // 
             // MainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1111, 555);
+            this.Controls.Add(this.GroupBox_Registry);
             this.Controls.Add(this.GroupBox_Settings);
             this.Controls.Add(this.GroupBox_Updates);
             this.Controls.Add(this.TextBox_Output);
@@ -189,6 +237,8 @@ namespace S5Updater
             this.GroupBox_Updates.ResumeLayout(false);
             this.GroupBox_Settings.ResumeLayout(false);
             this.GroupBox_Settings.PerformLayout();
+            this.GroupBox_Registry.ResumeLayout(false);
+            this.GroupBox_Registry.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -208,5 +258,9 @@ namespace S5Updater
         private System.Windows.Forms.CheckBox CB_EasyMode;
         private System.Windows.Forms.CheckBox CB_ShowLog;
         private System.Windows.Forms.Button Btn_GoldSave;
+        private System.Windows.Forms.GroupBox GroupBox_Registry;
+        private System.Windows.Forms.Label LBL_Reso;
+        private System.Windows.Forms.ComboBox ComboBox_Reso;
+        private System.Windows.Forms.CheckBox CB_DevMode;
     }
 }

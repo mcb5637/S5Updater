@@ -123,11 +123,20 @@
   <data name="Lbl_Gold" xml:space="preserve">
     <value>Gold: </value>
   </data>
+  <data name="Lbl_Reso" xml:space="preserve">
+    <value>Resolution</value>
+  </data>
   <data name="Log_RegGold" xml:space="preserve">
     <value>Changed Gold registry to: </value>
   </data>
+  <data name="Log_SetDev" xml:space="preserve">
+    <value>Set Dev Mode to: </value>
+  </data>
   <data name="Log_SetGold" xml:space="preserve">
     <value>Gold install location set to: </value>
+  </data>
+  <data name="Log_SetReso" xml:space="preserve">
+    <value>Set Resolution to: </value>
   </data>
   <data name="null" xml:space="preserve">
     <value>Unknown</value>
@@ -174,17 +183,26 @@
   <data name="TitleMainMenu" xml:space="preserve">
     <value>S5 Updater</value>
   </data>
+  <data name="TitleReg" xml:space="preserve">
+    <value>Registry</value>
+  </data>
   <data name="TitleSettings" xml:space="preserve">
     <value>Settings</value>
   </data>
   <data name="TitleUpdate" xml:space="preserve">
     <value>Updates</value>
   </data>
+  <data name="Txt_DevMode" xml:space="preserve">
+    <value>Development Mode</value>
+  </data>
   <data name="Txt_EasyMode" xml:space="preserve">
     <value>easy mode</value>
   </data>
   <data name="Txt_GoldSetReg" xml:space="preserve">
     <value>set registry</value>
+  </data>
+  <data name="Txt_QuestEnableDevModeRes" xml:space="preserve">
+    <value>Chosen resolution requires Developent mode, enable?</value>
   </data>
   <data name="Txt_SetGold" xml:space="preserve">
     <value>Change</value>
