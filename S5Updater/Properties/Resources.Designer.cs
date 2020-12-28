@@ -124,6 +124,15 @@ namespace S5Updater.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Set Language to: .
+        /// </summary>
+        internal static string Log_SetLang {
+            get {
+                return ResourceManager.GetString("Log_SetLang", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Set Resolution to: .
         /// </summary>
         internal static string Log_SetReso {
@@ -309,6 +318,15 @@ namespace S5Updater.Properties {
         internal static string Txt_GoldSetReg {
             get {
                 return ResourceManager.GetString("Txt_GoldSetReg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Language.
+        /// </summary>
+        internal static string Txt_Langua {
+            get {
+                return ResourceManager.GetString("Txt_Langua", resourceCulture);
             }
         }
         

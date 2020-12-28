@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace S5Updater
 {
-    class MainUpdater
+    static class MainUpdater
     {
         [STAThread]
         public static void Main()
@@ -55,6 +55,14 @@ namespace S5Updater
                     target.CreateSubdirectory(diSourceSubDir.Name);
                 CopyAll(diSourceSubDir, nextTargetSubDir, exclude);
             }
+        }
+
+        internal static int IndexOfArrayElement<T, E>(this T[] array, E o, Func<T, E> f) where E: class
+        {
+            for (int i = 0; i < array.Length; i++)
+                if (f(array[i]).Equals(o))
+                    return i;
+            return -1;
         }
     }
 }

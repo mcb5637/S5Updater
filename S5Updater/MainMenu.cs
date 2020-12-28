@@ -20,8 +20,13 @@ namespace S5Updater
         internal ProgressDialog Prog;
         internal DevHashCalc HashCalc;
 
-        private readonly string[] Resolutions = new string[] {"default", "select", "1920 x 1080 x 32"};
-        private readonly bool[] ResolutionNeedsDev = new bool[] { false, false, true };
+        private static readonly Resolution[] Resolutions = new Resolution[] { new Resolution("default", "0", false),
+            new Resolution("select", "select", false), new Resolution("1920x1080", "1920 x 1080 x 32", true) };
+        private static readonly Language[] Languages = new Language[] {new Language("Deutsch", "de"), new Language("English", "en"), new Language("US-English", "us"),
+            new Language("French", "fr"), new Language("Polish", "pl"), new Language("Chinese", "zh"), new Language("Czech", "cs"), new Language("Dutch", "nl"),
+            new Language("Hungarian", "hu"), new Language("Italian", "it"), new Language("Russian", "ru"), new Language("Slovakian", "sk"),
+            new Language("Spanish", "sp")};
+
         private bool Updating = false;
 
         public MainMenu()
@@ -46,15 +51,22 @@ namespace S5Updater
             GroupBox_Settings.Text = Resources.TitleSettings;
             GroupBox_Registry.Text = Resources.TitleReg;
             LBL_Reso.Text = Resources.Lbl_Reso;
+            LBL_Langua.Text = Resources.Txt_Langua;
+
             Updating = true;
             ComboBox_Reso.Items.AddRange(Resolutions);
-            string r = Reg.Resolution;
-            int i = Array.IndexOf(Resolutions, r);
+            int i = Resolutions.IndexOfArrayElement(Reg.Resolution, (x)=>x.RegValue);
             if (i == -1)
                 i = 0;
             ComboBox_Reso.SelectedIndex = i;
             CB_DevMode.Text = Resources.Txt_DevMode;
             CB_DevMode.Checked = HashCalc.CalcHash(Reg.GetPCName()) == Reg.DevMode;
+            ComboBox_Langua.Items.AddRange(Languages);
+            i = Languages.IndexOfArrayElement(Reg.Language, (X)=>X.RegValue);
+            if (i == -1)
+                i = 0;
+            ComboBox_Langua.SelectedIndex = i;
+
             Updating = false;
 
             CB_ShowLog_CheckedChanged(null, null);
@@ -143,14 +155,12 @@ namespace S5Updater
         {
             if (Updating)
                 return;
-            string sel = ComboBox_Reso.SelectedItem as string;
-            if (sel.Equals("default"))
-                sel = "0";
-            Reg.Resolution = sel;
-            Log(Resources.Log_SetReso + sel);
-            if (ResolutionNeedsDev[ComboBox_Reso.SelectedIndex] && !CB_DevMode.Checked)
+            Resolution sel = ComboBox_Reso.SelectedItem as Resolution;
+            Reg.Resolution = sel.RegValue;
+            Log(Resources.Log_SetReso + sel.Show);
+            if (sel.NeedsDev && !CB_DevMode.Checked)
             {
-                if (EasyMode || MessageBox.Show(Resources.Txt_QuestEnableDevModeRes, sel, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (EasyMode || MessageBox.Show(Resources.Txt_QuestEnableDevModeRes, sel.Show, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     CB_DevMode.Checked = true;
             }
         }
@@ -162,6 +172,15 @@ namespace S5Updater
             uint x = CB_DevMode.Checked ? HashCalc.CalcHash(Reg.GetPCName()) : 0;
             Log(Resources.Log_SetDev + x);
             Reg.DevMode = x;
+        }
+
+        private void ComboBox_Langua_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (Updating)
+                return;
+            Language sel = ComboBox_Langua.SelectedItem as Language;
+            Reg.Language = sel.RegValue;
+            Log(Resources.Log_SetLang + sel.Show);
         }
     }
 }

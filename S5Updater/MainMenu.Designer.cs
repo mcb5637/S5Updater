@@ -42,9 +42,11 @@ namespace S5Updater
             this.CB_EasyMode = new System.Windows.Forms.CheckBox();
             this.CB_ShowLog = new System.Windows.Forms.CheckBox();
             this.GroupBox_Registry = new System.Windows.Forms.GroupBox();
+            this.CB_DevMode = new System.Windows.Forms.CheckBox();
             this.LBL_Reso = new System.Windows.Forms.Label();
             this.ComboBox_Reso = new System.Windows.Forms.ComboBox();
-            this.CB_DevMode = new System.Windows.Forms.CheckBox();
+            this.LBL_Langua = new System.Windows.Forms.Label();
+            this.ComboBox_Langua = new System.Windows.Forms.ComboBox();
             this.GroupBox_Installation.SuspendLayout();
             this.GroupBox_Updates.SuspendLayout();
             this.GroupBox_Settings.SuspendLayout();
@@ -176,6 +178,8 @@ namespace S5Updater
             // 
             // GroupBox_Registry
             // 
+            this.GroupBox_Registry.Controls.Add(this.ComboBox_Langua);
+            this.GroupBox_Registry.Controls.Add(this.LBL_Langua);
             this.GroupBox_Registry.Controls.Add(this.CB_DevMode);
             this.GroupBox_Registry.Controls.Add(this.LBL_Reso);
             this.GroupBox_Registry.Controls.Add(this.ComboBox_Reso);
@@ -185,6 +189,17 @@ namespace S5Updater
             this.GroupBox_Registry.TabIndex = 4;
             this.GroupBox_Registry.TabStop = false;
             this.GroupBox_Registry.Text = "groupBox1";
+            // 
+            // CB_DevMode
+            // 
+            this.CB_DevMode.AutoSize = true;
+            this.CB_DevMode.Location = new System.Drawing.Point(326, 21);
+            this.CB_DevMode.Name = "CB_DevMode";
+            this.CB_DevMode.Size = new System.Drawing.Size(80, 17);
+            this.CB_DevMode.TabIndex = 2;
+            this.CB_DevMode.Text = "checkBox1";
+            this.CB_DevMode.UseVisualStyleBackColor = true;
+            this.CB_DevMode.CheckedChanged += new System.EventHandler(this.CB_DevMode_CheckedChanged);
             // 
             // LBL_Reso
             // 
@@ -205,16 +220,24 @@ namespace S5Updater
             this.ComboBox_Reso.TabIndex = 0;
             this.ComboBox_Reso.SelectedIndexChanged += new System.EventHandler(this.ComboBox_Reso_SelectedIndexChanged);
             // 
-            // CB_DevMode
+            // LBL_Langua
             // 
-            this.CB_DevMode.AutoSize = true;
-            this.CB_DevMode.Location = new System.Drawing.Point(326, 21);
-            this.CB_DevMode.Name = "CB_DevMode";
-            this.CB_DevMode.Size = new System.Drawing.Size(80, 17);
-            this.CB_DevMode.TabIndex = 2;
-            this.CB_DevMode.Text = "checkBox1";
-            this.CB_DevMode.UseVisualStyleBackColor = true;
-            this.CB_DevMode.CheckedChanged += new System.EventHandler(this.CB_DevMode_CheckedChanged);
+            this.LBL_Langua.AutoSize = true;
+            this.LBL_Langua.Location = new System.Drawing.Point(6, 49);
+            this.LBL_Langua.Name = "LBL_Langua";
+            this.LBL_Langua.Size = new System.Drawing.Size(35, 13);
+            this.LBL_Langua.TabIndex = 3;
+            this.LBL_Langua.Text = "label1";
+            // 
+            // ComboBox_Langua
+            // 
+            this.ComboBox_Langua.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ComboBox_Langua.FormattingEnabled = true;
+            this.ComboBox_Langua.Location = new System.Drawing.Point(67, 46);
+            this.ComboBox_Langua.Name = "ComboBox_Langua";
+            this.ComboBox_Langua.Size = new System.Drawing.Size(121, 21);
+            this.ComboBox_Langua.TabIndex = 4;
+            this.ComboBox_Langua.SelectedIndexChanged += new System.EventHandler(this.ComboBox_Langua_SelectedIndexChanged);
             // 
             // MainMenu
             // 
@@ -262,5 +285,7 @@ namespace S5Updater
         private System.Windows.Forms.Label LBL_Reso;
         private System.Windows.Forms.ComboBox ComboBox_Reso;
         private System.Windows.Forms.CheckBox CB_DevMode;
+        private System.Windows.Forms.ComboBox ComboBox_Langua;
+        private System.Windows.Forms.Label LBL_Langua;
     }
 }
