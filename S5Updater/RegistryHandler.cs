@@ -12,20 +12,23 @@ namespace S5Updater
     {
         internal string GoldPath;
         internal bool GoldHasReg;
+        internal string HEPath;
         internal static readonly string GoldKey = "HKEY_LOCAL_MACHINE\\SOFTWARE\\Blue Byte\\The Settlers - Heritage of Kings";
         internal static readonly string GoldDevKey = GoldKey + "\\Development";
-        internal static readonly string GoldValue = "InstallPath";
+        internal static readonly string GoldInstallLoc = "InstallPath";
         internal static readonly string GoldReso = "DefaultResolution";
         internal static readonly string GoldDevMode = "DevelopmentMachine";
         internal static readonly string GoldLanguage = "Language";
+        internal static readonly string HEKey = "HKEY_LOCAL_MACHINE\\SOFTWARE\\Ubisoft\\Launcher\\Installs\\11786";
+        internal static readonly string HEInstallLoc = "InstallDir";
 
-        internal string LoadGoldPathFromRegistry()
+        internal string LoadGoldPathFromRegistry(InstallValidator vali)
         {
-            string r = Registry.GetValue(GoldKey, GoldValue, null) as string;
+            string r = Registry.GetValue(GoldKey, GoldInstallLoc, null) as string;
             if (r != null)
             {
                 GoldPath = r;
-                if (IsGoldValid())
+                if (vali.IsValidGold(r))
                 {
                     GoldHasReg = true;
                 }
@@ -34,16 +37,21 @@ namespace S5Updater
             return r;
         }
 
-        internal bool IsGoldValid()
-        {
-            return GoldPath != null && File.Exists(Path.Combine(GoldPath, "bin\\settlershok.exe"));
-        }
-
         internal void SetGoldReg()
         {
             if (GoldHasReg)
                 throw new ArgumentException();
-            Registry.SetValue(GoldKey, GoldValue, GoldPath, RegistryValueKind.String);
+            Registry.SetValue(GoldKey, GoldInstallLoc, GoldPath, RegistryValueKind.String);
+        }
+
+        internal string LoadHEPathFromRegistry()
+        {
+            string r = Registry.GetValue(HEKey, HEInstallLoc, null) as string;
+            if (r != null)
+            {
+                HEPath = r;
+            }
+            return r;
         }
 
         internal string GetPCName()

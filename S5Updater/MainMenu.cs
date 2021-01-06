@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,9 +20,10 @@ namespace S5Updater
         internal RegistryHandler Reg;
         internal ProgressDialog Prog;
         internal DevHashCalc HashCalc;
+        internal InstallValidator Valid;
 
         private static readonly Resolution[] Resolutions = new Resolution[] { new Resolution("default", "0", false),
-            new Resolution("select", "select", false), new Resolution("1920x1080", "1920 x 1080 x 32", true) };
+            new Resolution("select", "select", false), new Resolution("1920x1080", "1920 x 1080 x 32", true), new Resolution("2560x1440", "2560 x 1440 x 32", true) };
         private static readonly Language[] Languages = new Language[] {new Language("Deutsch", "de"), new Language("English", "en"), new Language("US-English", "us"),
             new Language("French", "fr"), new Language("Polish", "pl"), new Language("Chinese", "zh"), new Language("Czech", "cs"), new Language("Dutch", "nl"),
             new Language("Hungarian", "hu"), new Language("Italian", "it"), new Language("Russian", "ru"), new Language("Slovakian", "sk"),
@@ -39,10 +41,12 @@ namespace S5Updater
             Reg = new RegistryHandler();
             Prog = new ProgressDialog();
             HashCalc = new DevHashCalc();
+            Valid = new InstallValidator();
 
             Text = Resources.TitleMainMenu;
             GroupBox_Installation.Text = Resources.TitleInstallation;
             BTN_SetGold.Text = Resources.Txt_SetGold;
+            BTN_SetHE.Text = Resources.Txt_SetGold;
             GroupBox_Updates.Text = Resources.TitleUpdate;
             Btn_UpdateMPMaps.Text = Resources.Txt_UpdateMP;
             CB_EasyMode.Text = Resources.Txt_EasyMode;
@@ -52,17 +56,19 @@ namespace S5Updater
             GroupBox_Registry.Text = Resources.TitleReg;
             LBL_Reso.Text = Resources.Lbl_Reso;
             LBL_Langua.Text = Resources.Txt_Langua;
+            GroupBox_Convert.Text = Resources.TitleConvert;
+            Btn_ConvertHE.Text = Resources.Txt_Convert;
 
             Updating = true;
             ComboBox_Reso.Items.AddRange(Resolutions);
-            int i = Resolutions.IndexOfArrayElement(Reg.Resolution, (x)=>x.RegValue);
+            int i = Resolutions.IndexOfArrayElement(Reg.Resolution, (x) => x.RegValue);
             if (i == -1)
                 i = 0;
             ComboBox_Reso.SelectedIndex = i;
             CB_DevMode.Text = Resources.Txt_DevMode;
             CB_DevMode.Checked = HashCalc.CalcHash(Reg.GetPCName()) == Reg.DevMode;
             ComboBox_Langua.Items.AddRange(Languages);
-            i = Languages.IndexOfArrayElement(Reg.Language, (X)=>X.RegValue);
+            i = Languages.IndexOfArrayElement(Reg.Language, (X) => X.RegValue);
             if (i == -1)
                 i = 0;
             ComboBox_Langua.SelectedIndex = i;
@@ -72,15 +78,18 @@ namespace S5Updater
             CB_ShowLog_CheckedChanged(null, null);
             CB_EasyMode_CheckedChanged(null, null);
 
-            Reg.LoadGoldPathFromRegistry();
-            Log(Resources.Log_SetGold + Reg.GoldPath);
+            Reg.LoadGoldPathFromRegistry(Valid);
+            Reg.LoadHEPathFromRegistry();
+            Log(Resources.Log_SetGold + (Reg.GoldPath ?? Resources._null));
+            Log(Resources.Log_SetHE + (Reg.HEPath ?? Resources._null));
             UpdateInstallation();
         }
 
         private void UpdateInstallation()
         {
             LBL_Gold.Text = Resources.Lbl_Gold + (Reg.GoldPath ?? Resources._null);
-            if (Reg.IsGoldValid())
+            bool goldValid = Valid.IsValidGold(Reg.GoldPath);
+            if (goldValid)
             {
                 CB_GoldOK.Text = Resources.Status_Ok;
                 CB_GoldOK.Checked = true;
@@ -93,6 +102,19 @@ namespace S5Updater
                 CB_GoldOK.Checked = false;
                 Btn_UpdateMPMaps.Enabled = false;
                 Btn_GoldSave.Enabled = false;
+            }
+            LBL_HE.Text = Resources.Lbl_HE + (Reg.HEPath ?? Resources._null);
+            if (Valid.IsValidHENotConverted(Reg.HEPath))
+            {
+                CB_HEOk.Text = Resources.Status_Ok;
+                CB_HEOk.Checked = true;
+                Btn_ConvertHE.Enabled = !goldValid && (string.IsNullOrEmpty(Reg.GoldPath) || MainUpdater.IsDirNotExistingOrEmpty(Reg.GoldPath));
+            }
+            else
+            {
+                CB_HEOk.Text = Resources.Status_Invalid;
+                CB_HEOk.Checked = false;
+                Btn_ConvertHE.Enabled = false;
             }
         }
 
@@ -181,6 +203,27 @@ namespace S5Updater
             Language sel = ComboBox_Langua.SelectedItem as Language;
             Reg.Language = sel.RegValue;
             Log(Resources.Log_SetLang + sel.Show);
+        }
+
+        private void BTN_SetHE_Click(object sender, EventArgs e)
+        {
+            if (Reg.HEPath != null)
+                Dlg_FolderBrowser.SelectedPath = Reg.HEPath;
+            if (Dlg_FolderBrowser.ShowDialog() == DialogResult.OK)
+            {
+                Reg.HEPath = Dlg_FolderBrowser.SelectedPath;
+                Log(Resources.Log_SetHE + Reg.HEPath);
+                UpdateInstallation();
+            }
+        }
+
+        private void Btn_ConvertHE_Click(object sender, EventArgs e)
+        {
+            TaskConvertHE t = new TaskConvertHE()
+            {
+                MM = this
+            };
+            Prog.ShowWorkDialog(t, this);
         }
     }
 }

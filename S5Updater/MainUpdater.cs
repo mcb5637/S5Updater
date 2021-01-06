@@ -2,9 +2,12 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
+using System.IO.Compression;
 using System.Linq;
+using System.Net;
 using System.Reflection;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -51,8 +54,7 @@ namespace S5Updater
             {
                 if (exclude.Contains(diSourceSubDir.Name))
                     continue;
-                DirectoryInfo nextTargetSubDir =
-                    target.CreateSubdirectory(diSourceSubDir.Name);
+                DirectoryInfo nextTargetSubDir = target.CreateSubdirectory(diSourceSubDir.Name);
                 CopyAll(diSourceSubDir, nextTargetSubDir, exclude);
             }
         }
@@ -63,6 +65,46 @@ namespace S5Updater
                 if (f(array[i]).Equals(o))
                     return i;
             return -1;
+        }
+
+        internal static bool IsDirNotExistingOrEmpty(string dir)
+        {
+            return !Directory.Exists(dir) || !Directory.EnumerateFileSystemEntries(dir).Any();
+        }
+
+        internal static void DownlaodFile(string uri, string file, ProgressDialog.ReportProgressDel r)
+        {
+            if (File.Exists(file))
+                File.Delete(file);
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
+            using (WebClient cl = new WebClient())
+            {
+                cl.DownloadProgressChanged += (_, e) =>
+                {
+                    r(e.ProgressPercentage, null);
+                };
+                Exception err = null;
+                cl.DownloadFileCompleted += (_, e) =>
+                {
+                    err = e.Error;
+                    lock (cl)
+                    {
+                        Monitor.Pulse(cl);
+                    }
+                };
+                lock (cl)
+                {
+                    cl.DownloadFileAsync(new Uri(uri), file);
+                    Monitor.Wait(cl);
+                }
+                if (err != null)
+                    throw new IOException("failed to download file", err);
+            }
+        }
+
+        internal static bool IsFolder(this ZipArchiveEntry entry)
+        {
+            return entry.FullName.EndsWith("/");
         }
     }
 }

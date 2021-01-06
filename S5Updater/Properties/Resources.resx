@@ -123,6 +123,9 @@
   <data name="Lbl_Gold" xml:space="preserve">
     <value>Gold: </value>
   </data>
+  <data name="Lbl_HE" xml:space="preserve">
+    <value>History Edition: </value>
+  </data>
   <data name="Lbl_Reso" xml:space="preserve">
     <value>Resolution</value>
   </data>
@@ -134,6 +137,9 @@
   </data>
   <data name="Log_SetGold" xml:space="preserve">
     <value>Gold install location set to: </value>
+  </data>
+  <data name="Log_SetHE" xml:space="preserve">
+    <value>HE install location set to: </value>
   </data>
   <data name="Log_SetLang" xml:space="preserve">
     <value>Set Language to: </value>
@@ -149,6 +155,30 @@
   </data>
   <data name="Status_Ok" xml:space="preserve">
     <value>Ok</value>
+  </data>
+  <data name="TaskConvert_CopyingInstall" xml:space="preserve">
+    <value>Copying he installation</value>
+  </data>
+  <data name="TaskConvert_DownloadFileData" xml:space="preserve">
+    <value>Downloading data patch</value>
+  </data>
+  <data name="TaskConvert_DownloadFileExe" xml:space="preserve">
+    <value>Downloading exe patch</value>
+  </data>
+  <data name="TaskConvert_DownloadFont" xml:space="preserve">
+    <value>Downloading fonts</value>
+  </data>
+  <data name="TaskConvert_PatchData" xml:space="preserve">
+    <value>Patching data</value>
+  </data>
+  <data name="TaskConvert_PatchExe" xml:space="preserve">
+    <value>Patching exe</value>
+  </data>
+  <data name="TaskConvert_PatchFont" xml:space="preserve">
+    <value>Patching fonts</value>
+  </data>
+  <data name="TaskConvert_QstSetReg" xml:space="preserve">
+    <value>Set Gold Registry path to: </value>
   </data>
   <data name="TaskMPMap_Checkout" xml:space="preserve">
     <value>checking out</value>
@@ -180,6 +210,9 @@
   <data name="TaskMPMap_Start" xml:space="preserve">
     <value>updating MP maps and scripts</value>
   </data>
+  <data name="TitleConvert" xml:space="preserve">
+    <value>Converter</value>
+  </data>
   <data name="TitleInstallation" xml:space="preserve">
     <value>Install Location</value>
   </data>
@@ -194,6 +227,9 @@
   </data>
   <data name="TitleUpdate" xml:space="preserve">
     <value>Updates</value>
+  </data>
+  <data name="Txt_Convert" xml:space="preserve">
+    <value>Convert HE to Gold</value>
   </data>
   <data name="Txt_DevMode" xml:space="preserve">
     <value>Development Mode</value>

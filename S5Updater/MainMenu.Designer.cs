@@ -30,6 +30,9 @@ namespace S5Updater
         private void InitializeComponent()
         {
             this.GroupBox_Installation = new System.Windows.Forms.GroupBox();
+            this.BTN_SetHE = new System.Windows.Forms.Button();
+            this.LBL_HE = new System.Windows.Forms.Label();
+            this.CB_HEOk = new System.Windows.Forms.CheckBox();
             this.Btn_GoldSave = new System.Windows.Forms.Button();
             this.CB_GoldOK = new System.Windows.Forms.CheckBox();
             this.BTN_SetGold = new System.Windows.Forms.Button();
@@ -42,19 +45,25 @@ namespace S5Updater
             this.CB_EasyMode = new System.Windows.Forms.CheckBox();
             this.CB_ShowLog = new System.Windows.Forms.CheckBox();
             this.GroupBox_Registry = new System.Windows.Forms.GroupBox();
+            this.ComboBox_Langua = new System.Windows.Forms.ComboBox();
+            this.LBL_Langua = new System.Windows.Forms.Label();
             this.CB_DevMode = new System.Windows.Forms.CheckBox();
             this.LBL_Reso = new System.Windows.Forms.Label();
             this.ComboBox_Reso = new System.Windows.Forms.ComboBox();
-            this.LBL_Langua = new System.Windows.Forms.Label();
-            this.ComboBox_Langua = new System.Windows.Forms.ComboBox();
+            this.GroupBox_Convert = new System.Windows.Forms.GroupBox();
+            this.Btn_ConvertHE = new System.Windows.Forms.Button();
             this.GroupBox_Installation.SuspendLayout();
             this.GroupBox_Updates.SuspendLayout();
             this.GroupBox_Settings.SuspendLayout();
             this.GroupBox_Registry.SuspendLayout();
+            this.GroupBox_Convert.SuspendLayout();
             this.SuspendLayout();
             // 
             // GroupBox_Installation
             // 
+            this.GroupBox_Installation.Controls.Add(this.BTN_SetHE);
+            this.GroupBox_Installation.Controls.Add(this.LBL_HE);
+            this.GroupBox_Installation.Controls.Add(this.CB_HEOk);
             this.GroupBox_Installation.Controls.Add(this.Btn_GoldSave);
             this.GroupBox_Installation.Controls.Add(this.CB_GoldOK);
             this.GroupBox_Installation.Controls.Add(this.BTN_SetGold);
@@ -65,6 +74,38 @@ namespace S5Updater
             this.GroupBox_Installation.TabIndex = 0;
             this.GroupBox_Installation.TabStop = false;
             this.GroupBox_Installation.Text = "GroupBox_Installation";
+            // 
+            // BTN_SetHE
+            // 
+            this.BTN_SetHE.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.BTN_SetHE.Location = new System.Drawing.Point(331, 48);
+            this.BTN_SetHE.Name = "BTN_SetHE";
+            this.BTN_SetHE.Size = new System.Drawing.Size(75, 23);
+            this.BTN_SetHE.TabIndex = 6;
+            this.BTN_SetHE.Text = "button1";
+            this.BTN_SetHE.UseVisualStyleBackColor = true;
+            this.BTN_SetHE.Click += new System.EventHandler(this.BTN_SetHE_Click);
+            // 
+            // LBL_HE
+            // 
+            this.LBL_HE.AutoSize = true;
+            this.LBL_HE.Location = new System.Drawing.Point(6, 53);
+            this.LBL_HE.Name = "LBL_HE";
+            this.LBL_HE.Size = new System.Drawing.Size(35, 13);
+            this.LBL_HE.TabIndex = 5;
+            this.LBL_HE.Text = "label1";
+            // 
+            // CB_HEOk
+            // 
+            this.CB_HEOk.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.CB_HEOk.AutoSize = true;
+            this.CB_HEOk.Enabled = false;
+            this.CB_HEOk.Location = new System.Drawing.Point(245, 52);
+            this.CB_HEOk.Name = "CB_HEOk";
+            this.CB_HEOk.Size = new System.Drawing.Size(80, 17);
+            this.CB_HEOk.TabIndex = 4;
+            this.CB_HEOk.Text = "checkBox1";
+            this.CB_HEOk.UseVisualStyleBackColor = true;
             // 
             // Btn_GoldSave
             // 
@@ -185,10 +226,29 @@ namespace S5Updater
             this.GroupBox_Registry.Controls.Add(this.ComboBox_Reso);
             this.GroupBox_Registry.Location = new System.Drawing.Point(12, 250);
             this.GroupBox_Registry.Name = "GroupBox_Registry";
-            this.GroupBox_Registry.Size = new System.Drawing.Size(514, 124);
+            this.GroupBox_Registry.Size = new System.Drawing.Size(514, 77);
             this.GroupBox_Registry.TabIndex = 4;
             this.GroupBox_Registry.TabStop = false;
             this.GroupBox_Registry.Text = "groupBox1";
+            // 
+            // ComboBox_Langua
+            // 
+            this.ComboBox_Langua.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ComboBox_Langua.FormattingEnabled = true;
+            this.ComboBox_Langua.Location = new System.Drawing.Point(67, 46);
+            this.ComboBox_Langua.Name = "ComboBox_Langua";
+            this.ComboBox_Langua.Size = new System.Drawing.Size(121, 21);
+            this.ComboBox_Langua.TabIndex = 4;
+            this.ComboBox_Langua.SelectedIndexChanged += new System.EventHandler(this.ComboBox_Langua_SelectedIndexChanged);
+            // 
+            // LBL_Langua
+            // 
+            this.LBL_Langua.AutoSize = true;
+            this.LBL_Langua.Location = new System.Drawing.Point(6, 49);
+            this.LBL_Langua.Name = "LBL_Langua";
+            this.LBL_Langua.Size = new System.Drawing.Size(35, 13);
+            this.LBL_Langua.TabIndex = 3;
+            this.LBL_Langua.Text = "label1";
             // 
             // CB_DevMode
             // 
@@ -220,30 +280,32 @@ namespace S5Updater
             this.ComboBox_Reso.TabIndex = 0;
             this.ComboBox_Reso.SelectedIndexChanged += new System.EventHandler(this.ComboBox_Reso_SelectedIndexChanged);
             // 
-            // LBL_Langua
+            // GroupBox_Convert
             // 
-            this.LBL_Langua.AutoSize = true;
-            this.LBL_Langua.Location = new System.Drawing.Point(6, 49);
-            this.LBL_Langua.Name = "LBL_Langua";
-            this.LBL_Langua.Size = new System.Drawing.Size(35, 13);
-            this.LBL_Langua.TabIndex = 3;
-            this.LBL_Langua.Text = "label1";
+            this.GroupBox_Convert.Controls.Add(this.Btn_ConvertHE);
+            this.GroupBox_Convert.Location = new System.Drawing.Point(12, 333);
+            this.GroupBox_Convert.Name = "GroupBox_Convert";
+            this.GroupBox_Convert.Size = new System.Drawing.Size(514, 50);
+            this.GroupBox_Convert.TabIndex = 5;
+            this.GroupBox_Convert.TabStop = false;
+            this.GroupBox_Convert.Text = "groupBox1";
             // 
-            // ComboBox_Langua
+            // Btn_ConvertHE
             // 
-            this.ComboBox_Langua.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.ComboBox_Langua.FormattingEnabled = true;
-            this.ComboBox_Langua.Location = new System.Drawing.Point(67, 46);
-            this.ComboBox_Langua.Name = "ComboBox_Langua";
-            this.ComboBox_Langua.Size = new System.Drawing.Size(121, 21);
-            this.ComboBox_Langua.TabIndex = 4;
-            this.ComboBox_Langua.SelectedIndexChanged += new System.EventHandler(this.ComboBox_Langua_SelectedIndexChanged);
+            this.Btn_ConvertHE.Location = new System.Drawing.Point(6, 19);
+            this.Btn_ConvertHE.Name = "Btn_ConvertHE";
+            this.Btn_ConvertHE.Size = new System.Drawing.Size(182, 23);
+            this.Btn_ConvertHE.TabIndex = 0;
+            this.Btn_ConvertHE.Text = "button1";
+            this.Btn_ConvertHE.UseVisualStyleBackColor = true;
+            this.Btn_ConvertHE.Click += new System.EventHandler(this.Btn_ConvertHE_Click);
             // 
             // MainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1111, 555);
+            this.Controls.Add(this.GroupBox_Convert);
             this.Controls.Add(this.GroupBox_Registry);
             this.Controls.Add(this.GroupBox_Settings);
             this.Controls.Add(this.GroupBox_Updates);
@@ -262,6 +324,7 @@ namespace S5Updater
             this.GroupBox_Settings.PerformLayout();
             this.GroupBox_Registry.ResumeLayout(false);
             this.GroupBox_Registry.PerformLayout();
+            this.GroupBox_Convert.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -287,5 +350,10 @@ namespace S5Updater
         private System.Windows.Forms.CheckBox CB_DevMode;
         private System.Windows.Forms.ComboBox ComboBox_Langua;
         private System.Windows.Forms.Label LBL_Langua;
+        private System.Windows.Forms.Button BTN_SetHE;
+        private System.Windows.Forms.Label LBL_HE;
+        private System.Windows.Forms.CheckBox CB_HEOk;
+        private System.Windows.Forms.GroupBox GroupBox_Convert;
+        private System.Windows.Forms.Button Btn_ConvertHE;
     }
 }

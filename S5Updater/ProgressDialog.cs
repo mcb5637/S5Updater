@@ -52,7 +52,10 @@ namespace S5Updater
             {
                 Bar.Value = e.ProgressPercentage;
                 if (e.UserState != null)
+                {
                     MM.Log((string)e.UserState);
+                    Txt_Log.Text = (string)e.UserState;
+                }
             }
             else
             {

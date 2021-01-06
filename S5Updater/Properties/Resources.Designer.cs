@@ -88,6 +88,15 @@ namespace S5Updater.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to History Edition: .
+        /// </summary>
+        internal static string Lbl_HE {
+            get {
+                return ResourceManager.GetString("Lbl_HE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Resolution.
         /// </summary>
         internal static string Lbl_Reso {
@@ -124,6 +133,15 @@ namespace S5Updater.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to HE install location set to: .
+        /// </summary>
+        internal static string Log_SetHE {
+            get {
+                return ResourceManager.GetString("Log_SetHE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Set Language to: .
         /// </summary>
         internal static string Log_SetLang {
@@ -156,6 +174,78 @@ namespace S5Updater.Properties {
         internal static string Status_Ok {
             get {
                 return ResourceManager.GetString("Status_Ok", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Copying he installation.
+        /// </summary>
+        internal static string TaskConvert_CopyingInstall {
+            get {
+                return ResourceManager.GetString("TaskConvert_CopyingInstall", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Downloading data patch.
+        /// </summary>
+        internal static string TaskConvert_DownloadFileData {
+            get {
+                return ResourceManager.GetString("TaskConvert_DownloadFileData", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Downloading exe patch.
+        /// </summary>
+        internal static string TaskConvert_DownloadFileExe {
+            get {
+                return ResourceManager.GetString("TaskConvert_DownloadFileExe", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Downloading fonts.
+        /// </summary>
+        internal static string TaskConvert_DownloadFont {
+            get {
+                return ResourceManager.GetString("TaskConvert_DownloadFont", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Patching data.
+        /// </summary>
+        internal static string TaskConvert_PatchData {
+            get {
+                return ResourceManager.GetString("TaskConvert_PatchData", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Patching exe.
+        /// </summary>
+        internal static string TaskConvert_PatchExe {
+            get {
+                return ResourceManager.GetString("TaskConvert_PatchExe", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Patching fonts.
+        /// </summary>
+        internal static string TaskConvert_PatchFont {
+            get {
+                return ResourceManager.GetString("TaskConvert_PatchFont", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Set Gold Registry path to: .
+        /// </summary>
+        internal static string TaskConvert_QstSetReg {
+            get {
+                return ResourceManager.GetString("TaskConvert_QstSetReg", resourceCulture);
             }
         }
         
@@ -250,6 +340,15 @@ namespace S5Updater.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Converter.
+        /// </summary>
+        internal static string TitleConvert {
+            get {
+                return ResourceManager.GetString("TitleConvert", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Install Location.
         /// </summary>
         internal static string TitleInstallation {
@@ -291,6 +390,15 @@ namespace S5Updater.Properties {
         internal static string TitleUpdate {
             get {
                 return ResourceManager.GetString("TitleUpdate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Convert HE to Gold.
+        /// </summary>
+        internal static string Txt_Convert {
+            get {
+                return ResourceManager.GetString("Txt_Convert", resourceCulture);
             }
         }
         
