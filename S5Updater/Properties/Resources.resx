@@ -147,6 +147,9 @@
   <data name="Log_SetReso" xml:space="preserve">
     <value>Set Resolution to: </value>
   </data>
+  <data name="Log_SetVideo" xml:space="preserve">
+    <value>set show intro video to: </value>
+  </data>
   <data name="null" xml:space="preserve">
     <value>Unknown</value>
   </data>
@@ -211,7 +214,7 @@
     <value>updating MP maps and scripts</value>
   </data>
   <data name="TitleConvert" xml:space="preserve">
-    <value>Converter</value>
+    <value>History Edition</value>
   </data>
   <data name="TitleInstallation" xml:space="preserve">
     <value>Install Location</value>
@@ -226,7 +229,7 @@
     <value>Settings</value>
   </data>
   <data name="TitleUpdate" xml:space="preserve">
-    <value>Updates</value>
+    <value>Gold</value>
   </data>
   <data name="Txt_Convert" xml:space="preserve">
     <value>Convert HE to Gold</value>
@@ -246,8 +249,14 @@
   <data name="Txt_QuestEnableDevModeRes" xml:space="preserve">
     <value>Chosen resolution requires Developent mode, enable?</value>
   </data>
+  <data name="Txt_QuestOverrideReg" xml:space="preserve">
+    <value>Registry already set, override?</value>
+  </data>
   <data name="Txt_SetGold" xml:space="preserve">
     <value>Change</value>
+  </data>
+  <data name="Txt_ShowIntro" xml:space="preserve">
+    <value>show intro video</value>
   </data>
   <data name="Txt_ShowLog" xml:space="preserve">
     <value>show log</value>

@@ -58,6 +58,8 @@ namespace S5Updater
             LBL_Langua.Text = Resources.Txt_Langua;
             GroupBox_Convert.Text = Resources.TitleConvert;
             Btn_ConvertHE.Text = Resources.Txt_Convert;
+            CB_DevMode.Text = Resources.Txt_DevMode;
+            CB_ShowIntro.Text = Resources.Txt_ShowIntro;
 
             Updating = true;
             ComboBox_Reso.Items.AddRange(Resolutions);
@@ -65,7 +67,6 @@ namespace S5Updater
             if (i == -1)
                 i = 0;
             ComboBox_Reso.SelectedIndex = i;
-            CB_DevMode.Text = Resources.Txt_DevMode;
             CB_DevMode.Checked = HashCalc.CalcHash(Reg.GetPCName()) == Reg.DevMode;
             ComboBox_Langua.Items.AddRange(Languages);
             i = Languages.IndexOfArrayElement(Reg.Language, (X) => X.RegValue);
@@ -73,6 +74,7 @@ namespace S5Updater
                 i = 0;
             ComboBox_Langua.SelectedIndex = i;
 
+            CB_ShowIntro.Checked = Reg.ShowIntroVideo;
             Updating = false;
 
             CB_ShowLog_CheckedChanged(null, null);
@@ -94,7 +96,7 @@ namespace S5Updater
                 CB_GoldOK.Text = Resources.Status_Ok;
                 CB_GoldOK.Checked = true;
                 Btn_UpdateMPMaps.Enabled = true;
-                Btn_GoldSave.Enabled = !Reg.GoldHasReg;
+                Btn_GoldSave.Enabled = true;
             }
             else
             {
@@ -160,8 +162,11 @@ namespace S5Updater
 
         private void Btn_GoldSave_Click(object sender, EventArgs e)
         {
-            Reg.SetGoldReg();
-            Log(Resources.Log_RegGold + Reg.GoldPath);
+            if (EasyMode || MessageBox.Show(Resources.Txt_QuestOverrideReg, "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                Reg.SetGoldReg();
+                Log(Resources.Log_RegGold + Reg.GoldPath);
+            }
         }
 
         private void CB_EasyMode_CheckedChanged(object sender, EventArgs e)
@@ -224,6 +229,14 @@ namespace S5Updater
                 MM = this
             };
             Prog.ShowWorkDialog(t, this);
+        }
+
+        private void CB_ShowIntro_CheckedChanged(object sender, EventArgs e)
+        {
+            if (Updating)
+                return;
+            Reg.ShowIntroVideo = CB_ShowIntro.Checked;
+            Log(Resources.Log_SetVideo + CB_ShowIntro.Checked.ToString());
         }
     }
 }

@@ -19,6 +19,7 @@ namespace S5Updater
         internal static readonly string GoldReso = "DefaultResolution";
         internal static readonly string GoldDevMode = "DevelopmentMachine";
         internal static readonly string GoldLanguage = "Language";
+        internal static readonly string GoldVideo = "PlayIntroVideos";
         internal static readonly string HEKey = "HKEY_LOCAL_MACHINE\\SOFTWARE\\Ubisoft\\Launcher\\Installs\\11786";
         internal static readonly string HEInstallLoc = "InstallDir";
 
@@ -39,8 +40,7 @@ namespace S5Updater
 
         internal void SetGoldReg()
         {
-            if (GoldHasReg)
-                throw new ArgumentException();
+            GoldHasReg = true;
             Registry.SetValue(GoldKey, GoldInstallLoc, GoldPath, RegistryValueKind.String);
         }
 
@@ -81,6 +81,12 @@ namespace S5Updater
         {
             get => Registry.GetValue(GoldDevKey, GoldLanguage, null) as string;
             set => Registry.SetValue(GoldDevKey, GoldLanguage, value, RegistryValueKind.String);
+        }
+
+        internal bool ShowIntroVideo
+        {
+            get => (int)Registry.GetValue(GoldDevKey, GoldVideo, 1) > 0;
+            set => Registry.SetValue(GoldDevKey, GoldVideo, value ? 1 : 0, RegistryValueKind.DWord);
         }
     }
 }

@@ -52,6 +52,7 @@ namespace S5Updater
             this.ComboBox_Reso = new System.Windows.Forms.ComboBox();
             this.GroupBox_Convert = new System.Windows.Forms.GroupBox();
             this.Btn_ConvertHE = new System.Windows.Forms.Button();
+            this.CB_ShowIntro = new System.Windows.Forms.CheckBox();
             this.GroupBox_Installation.SuspendLayout();
             this.GroupBox_Updates.SuspendLayout();
             this.GroupBox_Settings.SuspendLayout();
@@ -70,7 +71,7 @@ namespace S5Updater
             this.GroupBox_Installation.Controls.Add(this.LBL_Gold);
             this.GroupBox_Installation.Location = new System.Drawing.Point(12, 12);
             this.GroupBox_Installation.Name = "GroupBox_Installation";
-            this.GroupBox_Installation.Size = new System.Drawing.Size(514, 100);
+            this.GroupBox_Installation.Size = new System.Drawing.Size(514, 127);
             this.GroupBox_Installation.TabIndex = 0;
             this.GroupBox_Installation.TabStop = false;
             this.GroupBox_Installation.Text = "GroupBox_Installation";
@@ -78,7 +79,7 @@ namespace S5Updater
             // BTN_SetHE
             // 
             this.BTN_SetHE.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BTN_SetHE.Location = new System.Drawing.Point(331, 48);
+            this.BTN_SetHE.Location = new System.Drawing.Point(331, 90);
             this.BTN_SetHE.Name = "BTN_SetHE";
             this.BTN_SetHE.Size = new System.Drawing.Size(75, 23);
             this.BTN_SetHE.TabIndex = 6;
@@ -89,7 +90,7 @@ namespace S5Updater
             // LBL_HE
             // 
             this.LBL_HE.AutoSize = true;
-            this.LBL_HE.Location = new System.Drawing.Point(6, 53);
+            this.LBL_HE.Location = new System.Drawing.Point(6, 74);
             this.LBL_HE.Name = "LBL_HE";
             this.LBL_HE.Size = new System.Drawing.Size(35, 13);
             this.LBL_HE.TabIndex = 5;
@@ -100,7 +101,7 @@ namespace S5Updater
             this.CB_HEOk.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.CB_HEOk.AutoSize = true;
             this.CB_HEOk.Enabled = false;
-            this.CB_HEOk.Location = new System.Drawing.Point(245, 52);
+            this.CB_HEOk.Location = new System.Drawing.Point(242, 94);
             this.CB_HEOk.Name = "CB_HEOk";
             this.CB_HEOk.Size = new System.Drawing.Size(80, 17);
             this.CB_HEOk.TabIndex = 4;
@@ -109,7 +110,7 @@ namespace S5Updater
             // 
             // Btn_GoldSave
             // 
-            this.Btn_GoldSave.Location = new System.Drawing.Point(412, 19);
+            this.Btn_GoldSave.Location = new System.Drawing.Point(412, 40);
             this.Btn_GoldSave.Name = "Btn_GoldSave";
             this.Btn_GoldSave.Size = new System.Drawing.Size(96, 23);
             this.Btn_GoldSave.TabIndex = 3;
@@ -122,7 +123,7 @@ namespace S5Updater
             this.CB_GoldOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.CB_GoldOK.AutoSize = true;
             this.CB_GoldOK.Enabled = false;
-            this.CB_GoldOK.Location = new System.Drawing.Point(242, 23);
+            this.CB_GoldOK.Location = new System.Drawing.Point(242, 44);
             this.CB_GoldOK.Name = "CB_GoldOK";
             this.CB_GoldOK.Size = new System.Drawing.Size(83, 17);
             this.CB_GoldOK.TabIndex = 2;
@@ -132,7 +133,7 @@ namespace S5Updater
             // BTN_SetGold
             // 
             this.BTN_SetGold.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BTN_SetGold.Location = new System.Drawing.Point(331, 19);
+            this.BTN_SetGold.Location = new System.Drawing.Point(331, 40);
             this.BTN_SetGold.Name = "BTN_SetGold";
             this.BTN_SetGold.Size = new System.Drawing.Size(75, 23);
             this.BTN_SetGold.TabIndex = 1;
@@ -165,7 +166,7 @@ namespace S5Updater
             // GroupBox_Updates
             // 
             this.GroupBox_Updates.Controls.Add(this.Btn_UpdateMPMaps);
-            this.GroupBox_Updates.Location = new System.Drawing.Point(12, 118);
+            this.GroupBox_Updates.Location = new System.Drawing.Point(12, 224);
             this.GroupBox_Updates.Name = "GroupBox_Updates";
             this.GroupBox_Updates.Size = new System.Drawing.Size(514, 126);
             this.GroupBox_Updates.TabIndex = 2;
@@ -176,7 +177,7 @@ namespace S5Updater
             // 
             this.Btn_UpdateMPMaps.Location = new System.Drawing.Point(6, 19);
             this.Btn_UpdateMPMaps.Name = "Btn_UpdateMPMaps";
-            this.Btn_UpdateMPMaps.Size = new System.Drawing.Size(75, 23);
+            this.Btn_UpdateMPMaps.Size = new System.Drawing.Size(182, 23);
             this.Btn_UpdateMPMaps.TabIndex = 0;
             this.Btn_UpdateMPMaps.Text = "button1";
             this.Btn_UpdateMPMaps.UseVisualStyleBackColor = true;
@@ -219,12 +220,13 @@ namespace S5Updater
             // 
             // GroupBox_Registry
             // 
+            this.GroupBox_Registry.Controls.Add(this.CB_ShowIntro);
             this.GroupBox_Registry.Controls.Add(this.ComboBox_Langua);
             this.GroupBox_Registry.Controls.Add(this.LBL_Langua);
             this.GroupBox_Registry.Controls.Add(this.CB_DevMode);
             this.GroupBox_Registry.Controls.Add(this.LBL_Reso);
             this.GroupBox_Registry.Controls.Add(this.ComboBox_Reso);
-            this.GroupBox_Registry.Location = new System.Drawing.Point(12, 250);
+            this.GroupBox_Registry.Location = new System.Drawing.Point(12, 356);
             this.GroupBox_Registry.Name = "GroupBox_Registry";
             this.GroupBox_Registry.Size = new System.Drawing.Size(514, 77);
             this.GroupBox_Registry.TabIndex = 4;
@@ -283,7 +285,7 @@ namespace S5Updater
             // GroupBox_Convert
             // 
             this.GroupBox_Convert.Controls.Add(this.Btn_ConvertHE);
-            this.GroupBox_Convert.Location = new System.Drawing.Point(12, 333);
+            this.GroupBox_Convert.Location = new System.Drawing.Point(12, 439);
             this.GroupBox_Convert.Name = "GroupBox_Convert";
             this.GroupBox_Convert.Size = new System.Drawing.Size(514, 50);
             this.GroupBox_Convert.TabIndex = 5;
@@ -299,6 +301,17 @@ namespace S5Updater
             this.Btn_ConvertHE.Text = "button1";
             this.Btn_ConvertHE.UseVisualStyleBackColor = true;
             this.Btn_ConvertHE.Click += new System.EventHandler(this.Btn_ConvertHE_Click);
+            // 
+            // CB_ShowIntro
+            // 
+            this.CB_ShowIntro.AutoSize = true;
+            this.CB_ShowIntro.Location = new System.Drawing.Point(326, 48);
+            this.CB_ShowIntro.Name = "CB_ShowIntro";
+            this.CB_ShowIntro.Size = new System.Drawing.Size(80, 17);
+            this.CB_ShowIntro.TabIndex = 5;
+            this.CB_ShowIntro.Text = "checkBox1";
+            this.CB_ShowIntro.UseVisualStyleBackColor = true;
+            this.CB_ShowIntro.CheckedChanged += new System.EventHandler(this.CB_ShowIntro_CheckedChanged);
             // 
             // MainMenu
             // 
@@ -355,5 +368,6 @@ namespace S5Updater
         private System.Windows.Forms.CheckBox CB_HEOk;
         private System.Windows.Forms.GroupBox GroupBox_Convert;
         private System.Windows.Forms.Button Btn_ConvertHE;
+        private System.Windows.Forms.CheckBox CB_ShowIntro;
     }
 }

@@ -160,6 +160,15 @@ namespace S5Updater.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to set show intro video to: .
+        /// </summary>
+        internal static string Log_SetVideo {
+            get {
+                return ResourceManager.GetString("Log_SetVideo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invalid.
         /// </summary>
         internal static string Status_Invalid {
@@ -340,7 +349,7 @@ namespace S5Updater.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Converter.
+        ///   Looks up a localized string similar to History Edition.
         /// </summary>
         internal static string TitleConvert {
             get {
@@ -385,7 +394,7 @@ namespace S5Updater.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Updates.
+        ///   Looks up a localized string similar to Gold.
         /// </summary>
         internal static string TitleUpdate {
             get {
@@ -448,11 +457,29 @@ namespace S5Updater.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Registry already set, override?.
+        /// </summary>
+        internal static string Txt_QuestOverrideReg {
+            get {
+                return ResourceManager.GetString("Txt_QuestOverrideReg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Change.
         /// </summary>
         internal static string Txt_SetGold {
             get {
                 return ResourceManager.GetString("Txt_SetGold", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to show intro video.
+        /// </summary>
+        internal static string Txt_ShowIntro {
+            get {
+                return ResourceManager.GetString("Txt_ShowIntro", resourceCulture);
             }
         }
         
