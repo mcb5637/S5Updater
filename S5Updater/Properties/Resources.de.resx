@@ -268,7 +268,7 @@
     <value>Registry bereits gesetzt, überschreiben?</value>
   </data>
   <data name="Txt_SetGold" xml:space="preserve">
-    <value>Speichern</value>
+    <value>Öffnen</value>
   </data>
   <data name="Txt_ShowIntro" xml:space="preserve">
     <value>zeige Start Video</value>

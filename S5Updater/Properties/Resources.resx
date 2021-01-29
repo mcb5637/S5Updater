@@ -268,7 +268,7 @@
     <value>Registry already set, override?</value>
   </data>
   <data name="Txt_SetGold" xml:space="preserve">
-    <value>Save</value>
+    <value>Open</value>
   </data>
   <data name="Txt_ShowIntro" xml:space="preserve">
     <value>show intro video</value>

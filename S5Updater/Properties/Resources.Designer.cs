@@ -511,7 +511,7 @@ namespace S5Updater.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Save.
+        ///   Looks up a localized string similar to Open.
         /// </summary>
         internal static string Txt_SetGold {
             get {

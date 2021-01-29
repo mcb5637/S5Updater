@@ -119,7 +119,7 @@ namespace S5Updater
             {
                 CB_HEOk.Text = Resources.Status_Ok;
                 CB_HEOk.Checked = true;
-                Btn_ConvertHE.Enabled = !goldValid && (string.IsNullOrEmpty(Reg.GoldPath) || MainUpdater.IsDirNotExistingOrEmpty(Reg.GoldPath));
+                Btn_ConvertHE.Enabled = !goldValid && (string.IsNullOrEmpty(Reg.GoldPath) || (MainUpdater.IsDirNotExistingOrEmpty(Reg.GoldPath) && MainUpdater.IsSubDirectoryOf(Reg.GoldPath, Reg.HEPath)));
             }
             else
             {

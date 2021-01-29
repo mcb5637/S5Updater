@@ -22,9 +22,17 @@ namespace S5Updater
         {
             Status = MainMenu.Status_OK;
             SetupPath();
+            if (Status != MainMenu.Status_OK)
+                return;
             CopyInstall(r);
+            if (Status != MainMenu.Status_OK)
+                return;
             PatchExe(r);
+            if (Status != MainMenu.Status_OK)
+                return;
             PatchData(r);
+            if (Status != MainMenu.Status_OK)
+                return;
             PatchFonts(r);
         }
 
@@ -37,7 +45,24 @@ namespace S5Updater
                 MainUpdater.DownlaodFile("https://cdn.discordapp.com/attachments/276409631746686976/788789883300741140/Schriftarten.zip", patchfile, r);
                 r(100, Resources.Done);
                 r(0, Resources.TaskConvert_PatchFont);
-                ZipFile.ExtractToDirectory(patchfile, Path.Combine(MM.Reg.GoldPath, "base\\shr\\menu\\Projects\\Fonts"));
+                using (ZipArchive a = ZipFile.OpenRead(patchfile))
+                {
+                    foreach (ZipArchiveEntry e in a.Entries)
+                    {
+                        int filenium = a.Entries.Count;
+                        int count = 0;
+                        if (e.IsFolder())
+                        {
+                            count++;
+                            continue;
+                        }
+                        r(count * 100 / filenium, null);
+                        string destinationFileName = Path.Combine(MM.Reg.GoldPath, "base\\shr\\menu\\Projects\\Fonts", e.FullName);
+                        Directory.CreateDirectory(Path.GetDirectoryName(destinationFileName));
+                        e.ExtractToFile(destinationFileName, true);
+                        count++;
+                    }
+                }
                 File.Delete(patchfile);
                 r(100, Resources.Done);
             }
@@ -158,7 +183,7 @@ namespace S5Updater
         {
             if (string.IsNullOrEmpty(MM.Reg.GoldPath))
             {
-                MM.Reg.GoldPath = Path.Combine(Path.GetDirectoryName(MM.Reg.HEPath), "SetthersHoK_ConvertedGold");
+                MM.Reg.GoldPath = Path.Combine(MainUpdater.GetParentDir(MM.Reg.HEPath), "SetthersHoK_ConvertedGold");
             }
             if (!MM.Reg.GoldHasReg && (MM.EasyMode || MessageBox.Show(Resources.TaskConvert_QstSetReg + MM.Reg.GoldPath, "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes))
             {

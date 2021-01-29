@@ -106,5 +106,36 @@ namespace S5Updater
         {
             return entry.FullName.EndsWith("/");
         }
+
+        internal static string GetParentDir(string path)
+        {
+            return Path.GetFullPath(Path.Combine(path, ".."));
+        }
+
+        public static bool IsSubDirectoryOf(string candidate, string other)
+        {
+            var isChild = false;
+            try
+            {
+                var candidateInfo = new DirectoryInfo(candidate);
+                var otherInfo = new DirectoryInfo(other);
+
+                while (candidateInfo.Parent != null)
+                {
+                    if (candidateInfo.Parent.FullName == otherInfo.FullName)
+                    {
+                        isChild = true;
+                        break;
+                    }
+                    else candidateInfo = candidateInfo.Parent;
+                }
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+
+            return isChild;
+        }
     }
 }
