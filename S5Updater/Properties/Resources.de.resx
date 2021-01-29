@@ -213,6 +213,18 @@
   <data name="TaskMPMap_Start" xml:space="preserve">
     <value>aktualisiere Mp Karten und Scripte</value>
   </data>
+  <data name="TaskUpdate105_DownloadPatch" xml:space="preserve">
+    <value>Lade Patch herunter</value>
+  </data>
+  <data name="TaskUpdate105_MsgPatch" xml:space="preserve">
+    <value>Führe externen Patch aus, installiere in eigenem Fenster.</value>
+  </data>
+  <data name="TaskUpdate105_Successful" xml:space="preserve">
+    <value>Erfolgreich: </value>
+  </data>
+  <data name="TaskUpdate105_WaitForExec" xml:space="preserve">
+    <value>Führe Patch aus, warte auf beenden...</value>
+  </data>
   <data name="TitleConvert" xml:space="preserve">
     <value>History Edition</value>
   </data>
@@ -240,6 +252,9 @@
   <data name="Txt_EasyMode" xml:space="preserve">
     <value>einfacher Modus</value>
   </data>
+  <data name="Txt_ErrMsg" xml:space="preserve">
+    <value>Ein Fehler ist aufgetreten. Bitte in den Log sehen und diesen Kopieren&amp;Einfügen, wenn nach Hilfe gefragt wird.</value>
+  </data>
   <data name="Txt_GoldSetReg" xml:space="preserve">
     <value>setze Registry</value>
   </data>
@@ -253,13 +268,16 @@
     <value>Registry bereits gesetzt, überschreiben?</value>
   </data>
   <data name="Txt_SetGold" xml:space="preserve">
-    <value>Ändern</value>
+    <value>Speichern</value>
   </data>
   <data name="Txt_ShowIntro" xml:space="preserve">
     <value>zeige Start Video</value>
   </data>
   <data name="Txt_ShowLog" xml:space="preserve">
     <value>zeige Log</value>
+  </data>
+  <data name="Txt_UpdateFrom105" xml:space="preserve">
+    <value>Update von 1.05</value>
   </data>
   <data name="Txt_UpdateMP" xml:space="preserve">
     <value>aktualisiere MP Karten</value>

@@ -213,6 +213,18 @@
   <data name="TaskMPMap_Start" xml:space="preserve">
     <value>updating MP maps and scripts</value>
   </data>
+  <data name="TaskUpdate105_DownloadPatch" xml:space="preserve">
+    <value>Downloading patch</value>
+  </data>
+  <data name="TaskUpdate105_MsgPatch" xml:space="preserve">
+    <value>Executing external patcher, please follow its UI.</value>
+  </data>
+  <data name="TaskUpdate105_Successful" xml:space="preserve">
+    <value>Successful: </value>
+  </data>
+  <data name="TaskUpdate105_WaitForExec" xml:space="preserve">
+    <value>Executing patch, waiting for it to finish...</value>
+  </data>
   <data name="TitleConvert" xml:space="preserve">
     <value>History Edition</value>
   </data>
@@ -240,6 +252,9 @@
   <data name="Txt_EasyMode" xml:space="preserve">
     <value>easy mode</value>
   </data>
+  <data name="Txt_ErrMsg" xml:space="preserve">
+    <value>An error occured, please show at the log. If you don't know what to do, copy&amp;paste it when asking for help.</value>
+  </data>
   <data name="Txt_GoldSetReg" xml:space="preserve">
     <value>set registry</value>
   </data>
@@ -253,13 +268,16 @@
     <value>Registry already set, override?</value>
   </data>
   <data name="Txt_SetGold" xml:space="preserve">
-    <value>Change</value>
+    <value>Save</value>
   </data>
   <data name="Txt_ShowIntro" xml:space="preserve">
     <value>show intro video</value>
   </data>
   <data name="Txt_ShowLog" xml:space="preserve">
     <value>show log</value>
+  </data>
+  <data name="Txt_UpdateFrom105" xml:space="preserve">
+    <value>Update from 1.05</value>
   </data>
   <data name="Txt_UpdateMP" xml:space="preserve">
     <value>update MP maps</value>

@@ -349,6 +349,42 @@ namespace S5Updater.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Downloading patch.
+        /// </summary>
+        internal static string TaskUpdate105_DownloadPatch {
+            get {
+                return ResourceManager.GetString("TaskUpdate105_DownloadPatch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Executing external patcher, please follow its UI..
+        /// </summary>
+        internal static string TaskUpdate105_MsgPatch {
+            get {
+                return ResourceManager.GetString("TaskUpdate105_MsgPatch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Successful: .
+        /// </summary>
+        internal static string TaskUpdate105_Successful {
+            get {
+                return ResourceManager.GetString("TaskUpdate105_Successful", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Executing patch, waiting for it to finish....
+        /// </summary>
+        internal static string TaskUpdate105_WaitForExec {
+            get {
+                return ResourceManager.GetString("TaskUpdate105_WaitForExec", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to History Edition.
         /// </summary>
         internal static string TitleConvert {
@@ -430,6 +466,15 @@ namespace S5Updater.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to An error occured, please show at the log. If you don&apos;t know what to do, copy&amp;paste it when asking for help..
+        /// </summary>
+        internal static string Txt_ErrMsg {
+            get {
+                return ResourceManager.GetString("Txt_ErrMsg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to set registry.
         /// </summary>
         internal static string Txt_GoldSetReg {
@@ -466,7 +511,7 @@ namespace S5Updater.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Change.
+        ///   Looks up a localized string similar to Save.
         /// </summary>
         internal static string Txt_SetGold {
             get {
@@ -489,6 +534,15 @@ namespace S5Updater.Properties {
         internal static string Txt_ShowLog {
             get {
                 return ResourceManager.GetString("Txt_ShowLog", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Update from 1.05.
+        /// </summary>
+        internal static string Txt_UpdateFrom105 {
+            get {
+                return ResourceManager.GetString("Txt_UpdateFrom105", resourceCulture);
             }
         }
         

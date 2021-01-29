@@ -60,6 +60,13 @@ namespace S5Updater
             Btn_ConvertHE.Text = Resources.Txt_Convert;
             CB_DevMode.Text = Resources.Txt_DevMode;
             CB_ShowIntro.Text = Resources.Txt_ShowIntro;
+            BTN_UpdateFrom105.Text = Resources.Txt_UpdateFrom105;
+
+#if DEBUG
+            BTN_DBG_HashFile.Visible = true;
+#else
+            BTN_DBG_HashFile.Visible = false;
+#endif
 
             Updating = true;
             ComboBox_Reso.Items.AddRange(Resolutions);
@@ -97,6 +104,7 @@ namespace S5Updater
                 CB_GoldOK.Checked = true;
                 Btn_UpdateMPMaps.Enabled = true;
                 Btn_GoldSave.Enabled = true;
+                BTN_UpdateFrom105.Enabled = Valid.IsGold105(Reg.GoldPath) && Reg.GoldHasReg;
             }
             else
             {
@@ -104,6 +112,7 @@ namespace S5Updater
                 CB_GoldOK.Checked = false;
                 Btn_UpdateMPMaps.Enabled = false;
                 Btn_GoldSave.Enabled = false;
+                BTN_UpdateFrom105.Enabled = false;
             }
             LBL_HE.Text = Resources.Lbl_HE + (Reg.HEPath ?? Resources._null);
             if (Valid.IsValidHENotConverted(Reg.HEPath))
@@ -144,6 +153,7 @@ namespace S5Updater
                 MM = this
             };
             Prog.ShowWorkDialog(t, this);
+            CheckStatus(t.Status);
         }
 
         internal bool EasyMode
@@ -229,6 +239,7 @@ namespace S5Updater
                 MM = this
             };
             Prog.ShowWorkDialog(t, this);
+            CheckStatus(t.Status);
         }
 
         private void CB_ShowIntro_CheckedChanged(object sender, EventArgs e)
@@ -237,6 +248,35 @@ namespace S5Updater
                 return;
             Reg.ShowIntroVideo = CB_ShowIntro.Checked;
             Log(Resources.Log_SetVideo + CB_ShowIntro.Checked.ToString());
+        }
+
+        private void BTN_DBG_HashFile_Click(object sender, EventArgs e)
+        {
+            if (Dlg_OpenFile.ShowDialog() == DialogResult.OK)
+            {
+                Log(Valid.GetFileHash(Dlg_OpenFile.FileName));
+            }
+        }
+
+        private void BTN_UpdateFrom105_Click(object sender, EventArgs e)
+        {
+            TaskUpdateGoldFrom105 t = new TaskUpdateGoldFrom105()
+            {
+                MM = this
+            };
+            Prog.ShowWorkDialog(t, this);
+            UpdateInstallation();
+            CheckStatus(t.Status);
+        }
+
+        private void CheckStatus(int status)
+        {
+            if (status != Status_OK)
+            {
+                MessageBox.Show(Resources.Txt_ErrMsg, "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (!CB_ShowLog.Checked)
+                    CB_ShowLog.Checked = true;
+            }
         }
     }
 }
