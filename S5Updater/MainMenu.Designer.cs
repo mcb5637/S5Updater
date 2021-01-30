@@ -40,11 +40,14 @@ namespace S5Updater
             this.Dlg_FolderBrowser = new System.Windows.Forms.FolderBrowserDialog();
             this.TextBox_Output = new System.Windows.Forms.TextBox();
             this.GroupBox_Updates = new System.Windows.Forms.GroupBox();
+            this.BTN_UpdateFrom105 = new System.Windows.Forms.Button();
             this.Btn_UpdateMPMaps = new System.Windows.Forms.Button();
             this.GroupBox_Settings = new System.Windows.Forms.GroupBox();
+            this.BTN_DBG_HashFile = new System.Windows.Forms.Button();
             this.CB_EasyMode = new System.Windows.Forms.CheckBox();
             this.CB_ShowLog = new System.Windows.Forms.CheckBox();
             this.GroupBox_Registry = new System.Windows.Forms.GroupBox();
+            this.CB_ShowIntro = new System.Windows.Forms.CheckBox();
             this.ComboBox_Langua = new System.Windows.Forms.ComboBox();
             this.LBL_Langua = new System.Windows.Forms.Label();
             this.CB_DevMode = new System.Windows.Forms.CheckBox();
@@ -52,10 +55,9 @@ namespace S5Updater
             this.ComboBox_Reso = new System.Windows.Forms.ComboBox();
             this.GroupBox_Convert = new System.Windows.Forms.GroupBox();
             this.Btn_ConvertHE = new System.Windows.Forms.Button();
-            this.CB_ShowIntro = new System.Windows.Forms.CheckBox();
-            this.BTN_DBG_HashFile = new System.Windows.Forms.Button();
             this.Dlg_OpenFile = new System.Windows.Forms.OpenFileDialog();
-            this.BTN_UpdateFrom105 = new System.Windows.Forms.Button();
+            this.BTN_Patch106 = new System.Windows.Forms.Button();
+            this.CB_AllPatched = new System.Windows.Forms.CheckBox();
             this.GroupBox_Installation.SuspendLayout();
             this.GroupBox_Updates.SuspendLayout();
             this.GroupBox_Settings.SuspendLayout();
@@ -74,7 +76,7 @@ namespace S5Updater
             this.GroupBox_Installation.Controls.Add(this.LBL_Gold);
             this.GroupBox_Installation.Location = new System.Drawing.Point(12, 12);
             this.GroupBox_Installation.Name = "GroupBox_Installation";
-            this.GroupBox_Installation.Size = new System.Drawing.Size(514, 127);
+            this.GroupBox_Installation.Size = new System.Drawing.Size(514, 120);
             this.GroupBox_Installation.TabIndex = 0;
             this.GroupBox_Installation.TabStop = false;
             this.GroupBox_Installation.Text = "GroupBox_Installation";
@@ -168,20 +170,32 @@ namespace S5Updater
             // 
             // GroupBox_Updates
             // 
+            this.GroupBox_Updates.Controls.Add(this.CB_AllPatched);
+            this.GroupBox_Updates.Controls.Add(this.BTN_Patch106);
             this.GroupBox_Updates.Controls.Add(this.BTN_UpdateFrom105);
             this.GroupBox_Updates.Controls.Add(this.Btn_UpdateMPMaps);
-            this.GroupBox_Updates.Location = new System.Drawing.Point(12, 224);
+            this.GroupBox_Updates.Location = new System.Drawing.Point(12, 242);
             this.GroupBox_Updates.Name = "GroupBox_Updates";
-            this.GroupBox_Updates.Size = new System.Drawing.Size(514, 126);
+            this.GroupBox_Updates.Size = new System.Drawing.Size(514, 108);
             this.GroupBox_Updates.TabIndex = 2;
             this.GroupBox_Updates.TabStop = false;
             this.GroupBox_Updates.Text = "groupBox1";
             // 
+            // BTN_UpdateFrom105
+            // 
+            this.BTN_UpdateFrom105.Location = new System.Drawing.Point(6, 19);
+            this.BTN_UpdateFrom105.Name = "BTN_UpdateFrom105";
+            this.BTN_UpdateFrom105.Size = new System.Drawing.Size(179, 23);
+            this.BTN_UpdateFrom105.TabIndex = 1;
+            this.BTN_UpdateFrom105.Text = "button1";
+            this.BTN_UpdateFrom105.UseVisualStyleBackColor = true;
+            this.BTN_UpdateFrom105.Click += new System.EventHandler(this.BTN_UpdateFrom105_Click);
+            // 
             // Btn_UpdateMPMaps
             // 
-            this.Btn_UpdateMPMaps.Location = new System.Drawing.Point(6, 97);
+            this.Btn_UpdateMPMaps.Location = new System.Drawing.Point(6, 77);
             this.Btn_UpdateMPMaps.Name = "Btn_UpdateMPMaps";
-            this.Btn_UpdateMPMaps.Size = new System.Drawing.Size(182, 23);
+            this.Btn_UpdateMPMaps.Size = new System.Drawing.Size(179, 23);
             this.Btn_UpdateMPMaps.TabIndex = 0;
             this.Btn_UpdateMPMaps.Text = "button1";
             this.Btn_UpdateMPMaps.UseVisualStyleBackColor = true;
@@ -199,6 +213,16 @@ namespace S5Updater
             this.GroupBox_Settings.TabStop = false;
             this.GroupBox_Settings.Text = "groupBox1";
             // 
+            // BTN_DBG_HashFile
+            // 
+            this.BTN_DBG_HashFile.Location = new System.Drawing.Point(326, 15);
+            this.BTN_DBG_HashFile.Name = "BTN_DBG_HashFile";
+            this.BTN_DBG_HashFile.Size = new System.Drawing.Size(75, 23);
+            this.BTN_DBG_HashFile.TabIndex = 2;
+            this.BTN_DBG_HashFile.Text = "hash file";
+            this.BTN_DBG_HashFile.UseVisualStyleBackColor = true;
+            this.BTN_DBG_HashFile.Click += new System.EventHandler(this.BTN_DBG_HashFile_Click);
+            // 
             // CB_EasyMode
             // 
             this.CB_EasyMode.AutoSize = true;
@@ -215,7 +239,7 @@ namespace S5Updater
             // CB_ShowLog
             // 
             this.CB_ShowLog.AutoSize = true;
-            this.CB_ShowLog.Location = new System.Drawing.Point(9, 19);
+            this.CB_ShowLog.Location = new System.Drawing.Point(6, 19);
             this.CB_ShowLog.Name = "CB_ShowLog";
             this.CB_ShowLog.Size = new System.Drawing.Size(80, 17);
             this.CB_ShowLog.TabIndex = 0;
@@ -237,6 +261,17 @@ namespace S5Updater
             this.GroupBox_Registry.TabIndex = 4;
             this.GroupBox_Registry.TabStop = false;
             this.GroupBox_Registry.Text = "groupBox1";
+            // 
+            // CB_ShowIntro
+            // 
+            this.CB_ShowIntro.AutoSize = true;
+            this.CB_ShowIntro.Location = new System.Drawing.Point(326, 48);
+            this.CB_ShowIntro.Name = "CB_ShowIntro";
+            this.CB_ShowIntro.Size = new System.Drawing.Size(80, 17);
+            this.CB_ShowIntro.TabIndex = 5;
+            this.CB_ShowIntro.Text = "checkBox1";
+            this.CB_ShowIntro.UseVisualStyleBackColor = true;
+            this.CB_ShowIntro.CheckedChanged += new System.EventHandler(this.CB_ShowIntro_CheckedChanged);
             // 
             // ComboBox_Langua
             // 
@@ -299,48 +334,38 @@ namespace S5Updater
             // 
             // Btn_ConvertHE
             // 
-            this.Btn_ConvertHE.Location = new System.Drawing.Point(6, 19);
+            this.Btn_ConvertHE.Location = new System.Drawing.Point(6, 21);
             this.Btn_ConvertHE.Name = "Btn_ConvertHE";
-            this.Btn_ConvertHE.Size = new System.Drawing.Size(182, 23);
+            this.Btn_ConvertHE.Size = new System.Drawing.Size(169, 23);
             this.Btn_ConvertHE.TabIndex = 0;
             this.Btn_ConvertHE.Text = "button1";
             this.Btn_ConvertHE.UseVisualStyleBackColor = true;
             this.Btn_ConvertHE.Click += new System.EventHandler(this.Btn_ConvertHE_Click);
             // 
-            // CB_ShowIntro
-            // 
-            this.CB_ShowIntro.AutoSize = true;
-            this.CB_ShowIntro.Location = new System.Drawing.Point(326, 48);
-            this.CB_ShowIntro.Name = "CB_ShowIntro";
-            this.CB_ShowIntro.Size = new System.Drawing.Size(80, 17);
-            this.CB_ShowIntro.TabIndex = 5;
-            this.CB_ShowIntro.Text = "checkBox1";
-            this.CB_ShowIntro.UseVisualStyleBackColor = true;
-            this.CB_ShowIntro.CheckedChanged += new System.EventHandler(this.CB_ShowIntro_CheckedChanged);
-            // 
-            // BTN_DBG_HashFile
-            // 
-            this.BTN_DBG_HashFile.Location = new System.Drawing.Point(326, 15);
-            this.BTN_DBG_HashFile.Name = "BTN_DBG_HashFile";
-            this.BTN_DBG_HashFile.Size = new System.Drawing.Size(75, 23);
-            this.BTN_DBG_HashFile.TabIndex = 2;
-            this.BTN_DBG_HashFile.Text = "hash file";
-            this.BTN_DBG_HashFile.UseVisualStyleBackColor = true;
-            this.BTN_DBG_HashFile.Click += new System.EventHandler(this.BTN_DBG_HashFile_Click);
-            // 
             // Dlg_OpenFile
             // 
             this.Dlg_OpenFile.FileName = "openFileDialog1";
             // 
-            // BTN_UpdateFrom105
+            // BTN_Patch106
             // 
-            this.BTN_UpdateFrom105.Location = new System.Drawing.Point(9, 19);
-            this.BTN_UpdateFrom105.Name = "BTN_UpdateFrom105";
-            this.BTN_UpdateFrom105.Size = new System.Drawing.Size(179, 23);
-            this.BTN_UpdateFrom105.TabIndex = 1;
-            this.BTN_UpdateFrom105.Text = "button1";
-            this.BTN_UpdateFrom105.UseVisualStyleBackColor = true;
-            this.BTN_UpdateFrom105.Click += new System.EventHandler(this.BTN_UpdateFrom105_Click);
+            this.BTN_Patch106.Location = new System.Drawing.Point(6, 48);
+            this.BTN_Patch106.Name = "BTN_Patch106";
+            this.BTN_Patch106.Size = new System.Drawing.Size(179, 23);
+            this.BTN_Patch106.TabIndex = 2;
+            this.BTN_Patch106.Text = "button1";
+            this.BTN_Patch106.UseVisualStyleBackColor = true;
+            this.BTN_Patch106.Click += new System.EventHandler(this.BTN_Patch106_Click);
+            // 
+            // CB_AllPatched
+            // 
+            this.CB_AllPatched.AutoSize = true;
+            this.CB_AllPatched.Enabled = false;
+            this.CB_AllPatched.Location = new System.Drawing.Point(326, 23);
+            this.CB_AllPatched.Name = "CB_AllPatched";
+            this.CB_AllPatched.Size = new System.Drawing.Size(80, 17);
+            this.CB_AllPatched.TabIndex = 3;
+            this.CB_AllPatched.Text = "checkBox1";
+            this.CB_AllPatched.UseVisualStyleBackColor = true;
             // 
             // MainMenu
             // 
@@ -362,6 +387,7 @@ namespace S5Updater
             this.GroupBox_Installation.ResumeLayout(false);
             this.GroupBox_Installation.PerformLayout();
             this.GroupBox_Updates.ResumeLayout(false);
+            this.GroupBox_Updates.PerformLayout();
             this.GroupBox_Settings.ResumeLayout(false);
             this.GroupBox_Settings.PerformLayout();
             this.GroupBox_Registry.ResumeLayout(false);
@@ -401,5 +427,7 @@ namespace S5Updater
         private System.Windows.Forms.Button BTN_DBG_HashFile;
         private System.Windows.Forms.OpenFileDialog Dlg_OpenFile;
         private System.Windows.Forms.Button BTN_UpdateFrom105;
+        private System.Windows.Forms.Button BTN_Patch106;
+        private System.Windows.Forms.CheckBox CB_AllPatched;
     }
 }

@@ -61,6 +61,7 @@ namespace S5Updater
             CB_DevMode.Text = Resources.Txt_DevMode;
             CB_ShowIntro.Text = Resources.Txt_ShowIntro;
             BTN_UpdateFrom105.Text = Resources.Txt_UpdateFrom105;
+            BTN_Patch106.Text = Resources.Txt_Update106;
 
 #if DEBUG
             BTN_DBG_HashFile.Visible = true;
@@ -104,7 +105,11 @@ namespace S5Updater
                 CB_GoldOK.Checked = true;
                 Btn_UpdateMPMaps.Enabled = true;
                 Btn_GoldSave.Enabled = true;
-                BTN_UpdateFrom105.Enabled = Valid.IsGold105(Reg.GoldPath) && Reg.GoldHasReg;
+                BTN_UpdateFrom105.Enabled = (Valid.IsGold105(Reg.GoldPath)) && Reg.GoldHasReg;
+                bool patched = Valid.IsExeGold(Reg.GoldPath);
+                BTN_Patch106.Enabled = !BTN_UpdateFrom105.Enabled && !patched;
+                CB_AllPatched.Text = patched ? Resources.Txt_AllPatchedOK : Resources.Txt_AllPatchedNO;
+                CB_AllPatched.Checked = patched;
             }
             else
             {
@@ -277,6 +282,17 @@ namespace S5Updater
                 if (!CB_ShowLog.Checked)
                     CB_ShowLog.Checked = true;
             }
+        }
+
+        private void BTN_Patch106_Click(object sender, EventArgs e)
+        {
+            TaskUpdate106 t = new TaskUpdate106()
+            {
+                MM = this
+            };
+            Prog.ShowWorkDialog(t, this);
+            UpdateInstallation();
+            CheckStatus(t.Status);
         }
     }
 }

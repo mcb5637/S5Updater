@@ -205,15 +205,6 @@ namespace S5Updater.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Downloading exe patch.
-        /// </summary>
-        internal static string TaskConvert_DownloadFileExe {
-            get {
-                return ResourceManager.GetString("TaskConvert_DownloadFileExe", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Downloading fonts.
         /// </summary>
         internal static string TaskConvert_DownloadFont {
@@ -228,15 +219,6 @@ namespace S5Updater.Properties {
         internal static string TaskConvert_PatchData {
             get {
                 return ResourceManager.GetString("TaskConvert_PatchData", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Patching exe.
-        /// </summary>
-        internal static string TaskConvert_PatchExe {
-            get {
-                return ResourceManager.GetString("TaskConvert_PatchExe", resourceCulture);
             }
         }
         
@@ -385,6 +367,24 @@ namespace S5Updater.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Downloading exe patch.
+        /// </summary>
+        internal static string TaskUpdate106_DownloadFileExe {
+            get {
+                return ResourceManager.GetString("TaskUpdate106_DownloadFileExe", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Patching exe.
+        /// </summary>
+        internal static string TaskUpdate106_PatchExe {
+            get {
+                return ResourceManager.GetString("TaskUpdate106_PatchExe", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to History Edition.
         /// </summary>
         internal static string TitleConvert {
@@ -435,6 +435,24 @@ namespace S5Updater.Properties {
         internal static string TitleUpdate {
             get {
                 return ResourceManager.GetString("TitleUpdate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Patch required.
+        /// </summary>
+        internal static string Txt_AllPatchedNO {
+            get {
+                return ResourceManager.GetString("Txt_AllPatchedNO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Patch OK.
+        /// </summary>
+        internal static string Txt_AllPatchedOK {
+            get {
+                return ResourceManager.GetString("Txt_AllPatchedOK", resourceCulture);
             }
         }
         
@@ -534,6 +552,15 @@ namespace S5Updater.Properties {
         internal static string Txt_ShowLog {
             get {
                 return ResourceManager.GetString("Txt_ShowLog", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Win 10 Fix.
+        /// </summary>
+        internal static string Txt_Update106 {
+            get {
+                return ResourceManager.GetString("Txt_Update106", resourceCulture);
             }
         }
         

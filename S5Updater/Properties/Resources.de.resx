@@ -165,17 +165,11 @@
   <data name="TaskConvert_DownloadFileData" xml:space="preserve">
     <value>Lade Daten Patch herunter</value>
   </data>
-  <data name="TaskConvert_DownloadFileExe" xml:space="preserve">
-    <value>Lade exe Patch herunter</value>
-  </data>
   <data name="TaskConvert_DownloadFont" xml:space="preserve">
     <value>Lade Schriftarten herunter</value>
   </data>
   <data name="TaskConvert_PatchData" xml:space="preserve">
     <value>Ersetze Daten</value>
-  </data>
-  <data name="TaskConvert_PatchExe" xml:space="preserve">
-    <value>Ersetze exe</value>
   </data>
   <data name="TaskConvert_PatchFont" xml:space="preserve">
     <value>aktualisiere Schriftarten</value>
@@ -225,6 +219,12 @@
   <data name="TaskUpdate105_WaitForExec" xml:space="preserve">
     <value>Führe Patch aus, warte auf beenden...</value>
   </data>
+  <data name="TaskUpdate106_DownloadFileExe" xml:space="preserve">
+    <value>Lade exe Patch herunter</value>
+  </data>
+  <data name="TaskUpdate106_PatchExe" xml:space="preserve">
+    <value>Ersetze exe</value>
+  </data>
   <data name="TitleConvert" xml:space="preserve">
     <value>History Edition</value>
   </data>
@@ -242,6 +242,12 @@
   </data>
   <data name="TitleUpdate" xml:space="preserve">
     <value>Gold</value>
+  </data>
+  <data name="Txt_AllPatchedNO" xml:space="preserve">
+    <value>Patch benötigt</value>
+  </data>
+  <data name="Txt_AllPatchedOK" xml:space="preserve">
+    <value>Patch OK</value>
   </data>
   <data name="Txt_Convert" xml:space="preserve">
     <value>Konvertiere HE zu Gold</value>
@@ -275,6 +281,9 @@
   </data>
   <data name="Txt_ShowLog" xml:space="preserve">
     <value>zeige Log</value>
+  </data>
+  <data name="Txt_Update106" xml:space="preserve">
+    <value>Win 10 fix</value>
   </data>
   <data name="Txt_UpdateFrom105" xml:space="preserve">
     <value>Update von 1.05</value>

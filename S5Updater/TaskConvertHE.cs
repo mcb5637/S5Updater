@@ -150,26 +150,12 @@ namespace S5Updater
 
         private void PatchExe(ProgressDialog.ReportProgressDel r)
         {
-            try
+            TaskUpdate106 t = new TaskUpdate106()
             {
-                string patchfile = Path.Combine(MM.Reg.GoldPath, "Tmp_w10cu.zip");
-                r(0, Resources.TaskConvert_DownloadFileExe);
-                MainUpdater.DownlaodFile("http://www.dedk.de/patch/w10cu.zip", patchfile, r);
-                r(100, Resources.Done);
-                r(0, Resources.TaskConvert_PatchExe);
-                using (ZipArchive a = ZipFile.OpenRead(patchfile))
-                {
-                    a.GetEntry("settlershok_w10cu.exe").ExtractToFile(Path.Combine(MM.Reg.GoldPath, "bin\\settlershok.exe"), true);
-                    a.GetEntry("shokmapeditor_w10cu.exe").ExtractToFile(Path.Combine(MM.Reg.GoldPath, "bin\\shokmapeditor.exe"), true);
-                }
-                File.Delete(patchfile);
-                r(100, Resources.Done);
-            }
-            catch (Exception e)
-            {
-                r(0, e.ToString());
-                Status = MainMenu.Status_Error;
-            }
+                MM = MM
+            };
+            t.Work(r);
+            Status = t.Status;
         }
 
         private void CopyInstall(ProgressDialog.ReportProgressDel r)
