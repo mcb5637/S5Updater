@@ -129,6 +129,9 @@
   <data name="Lbl_Reso" xml:space="preserve">
     <value>Resolution</value>
   </data>
+  <data name="Log_InstallMap" xml:space="preserve">
+    <value>Installed map </value>
+  </data>
   <data name="Log_RegGold" xml:space="preserve">
     <value>Changed Gold registry to: </value>
   </data>
@@ -261,11 +264,26 @@
   <data name="Txt_ErrMsg" xml:space="preserve">
     <value>An error occured, please show at the log. If you don't know what to do, copy&amp;paste it when asking for help.</value>
   </data>
+  <data name="Txt_Extra0" xml:space="preserve">
+    <value>base</value>
+  </data>
+  <data name="Txt_Extra1" xml:space="preserve">
+    <value>fogland</value>
+  </data>
+  <data name="Txt_Extra2" xml:space="preserve">
+    <value>legends</value>
+  </data>
   <data name="Txt_GoldSetReg" xml:space="preserve">
     <value>set registry</value>
   </data>
+  <data name="Txt_InstallMap" xml:space="preserve">
+    <value>install map</value>
+  </data>
   <data name="Txt_Langua" xml:space="preserve">
     <value>Language</value>
+  </data>
+  <data name="Txt_MapInto" xml:space="preserve">
+    <value> into </value>
   </data>
   <data name="Txt_QuestEnableDevModeRes" xml:space="preserve">
     <value>Chosen resolution requires Developent mode, enable?</value>

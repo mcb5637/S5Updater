@@ -40,6 +40,8 @@ namespace S5Updater
             this.Dlg_FolderBrowser = new System.Windows.Forms.FolderBrowserDialog();
             this.TextBox_Output = new System.Windows.Forms.TextBox();
             this.GroupBox_Updates = new System.Windows.Forms.GroupBox();
+            this.CB_AllPatched = new System.Windows.Forms.CheckBox();
+            this.BTN_Patch106 = new System.Windows.Forms.Button();
             this.BTN_UpdateFrom105 = new System.Windows.Forms.Button();
             this.Btn_UpdateMPMaps = new System.Windows.Forms.Button();
             this.GroupBox_Settings = new System.Windows.Forms.GroupBox();
@@ -56,8 +58,8 @@ namespace S5Updater
             this.GroupBox_Convert = new System.Windows.Forms.GroupBox();
             this.Btn_ConvertHE = new System.Windows.Forms.Button();
             this.Dlg_OpenFile = new System.Windows.Forms.OpenFileDialog();
-            this.BTN_Patch106 = new System.Windows.Forms.Button();
-            this.CB_AllPatched = new System.Windows.Forms.CheckBox();
+            this.Btn_MapInstallerGold = new System.Windows.Forms.Button();
+            this.Btn_MapInstallerHE = new System.Windows.Forms.Button();
             this.GroupBox_Installation.SuspendLayout();
             this.GroupBox_Updates.SuspendLayout();
             this.GroupBox_Settings.SuspendLayout();
@@ -170,6 +172,7 @@ namespace S5Updater
             // 
             // GroupBox_Updates
             // 
+            this.GroupBox_Updates.Controls.Add(this.Btn_MapInstallerGold);
             this.GroupBox_Updates.Controls.Add(this.CB_AllPatched);
             this.GroupBox_Updates.Controls.Add(this.BTN_Patch106);
             this.GroupBox_Updates.Controls.Add(this.BTN_UpdateFrom105);
@@ -180,6 +183,27 @@ namespace S5Updater
             this.GroupBox_Updates.TabIndex = 2;
             this.GroupBox_Updates.TabStop = false;
             this.GroupBox_Updates.Text = "groupBox1";
+            // 
+            // CB_AllPatched
+            // 
+            this.CB_AllPatched.AutoSize = true;
+            this.CB_AllPatched.Enabled = false;
+            this.CB_AllPatched.Location = new System.Drawing.Point(326, 23);
+            this.CB_AllPatched.Name = "CB_AllPatched";
+            this.CB_AllPatched.Size = new System.Drawing.Size(80, 17);
+            this.CB_AllPatched.TabIndex = 3;
+            this.CB_AllPatched.Text = "checkBox1";
+            this.CB_AllPatched.UseVisualStyleBackColor = true;
+            // 
+            // BTN_Patch106
+            // 
+            this.BTN_Patch106.Location = new System.Drawing.Point(6, 48);
+            this.BTN_Patch106.Name = "BTN_Patch106";
+            this.BTN_Patch106.Size = new System.Drawing.Size(179, 23);
+            this.BTN_Patch106.TabIndex = 2;
+            this.BTN_Patch106.Text = "button1";
+            this.BTN_Patch106.UseVisualStyleBackColor = true;
+            this.BTN_Patch106.Click += new System.EventHandler(this.BTN_Patch106_Click);
             // 
             // BTN_UpdateFrom105
             // 
@@ -324,6 +348,7 @@ namespace S5Updater
             // 
             // GroupBox_Convert
             // 
+            this.GroupBox_Convert.Controls.Add(this.Btn_MapInstallerHE);
             this.GroupBox_Convert.Controls.Add(this.Btn_ConvertHE);
             this.GroupBox_Convert.Location = new System.Drawing.Point(12, 439);
             this.GroupBox_Convert.Name = "GroupBox_Convert";
@@ -346,26 +371,25 @@ namespace S5Updater
             // 
             this.Dlg_OpenFile.FileName = "openFileDialog1";
             // 
-            // BTN_Patch106
+            // Btn_MapInstallerGold
             // 
-            this.BTN_Patch106.Location = new System.Drawing.Point(6, 48);
-            this.BTN_Patch106.Name = "BTN_Patch106";
-            this.BTN_Patch106.Size = new System.Drawing.Size(179, 23);
-            this.BTN_Patch106.TabIndex = 2;
-            this.BTN_Patch106.Text = "button1";
-            this.BTN_Patch106.UseVisualStyleBackColor = true;
-            this.BTN_Patch106.Click += new System.EventHandler(this.BTN_Patch106_Click);
+            this.Btn_MapInstallerGold.Location = new System.Drawing.Point(331, 77);
+            this.Btn_MapInstallerGold.Name = "Btn_MapInstallerGold";
+            this.Btn_MapInstallerGold.Size = new System.Drawing.Size(177, 23);
+            this.Btn_MapInstallerGold.TabIndex = 0;
+            this.Btn_MapInstallerGold.Text = "button1";
+            this.Btn_MapInstallerGold.UseVisualStyleBackColor = true;
+            this.Btn_MapInstallerGold.Click += new System.EventHandler(this.Btn_MapInstallerGold_Click);
             // 
-            // CB_AllPatched
+            // Btn_MapInstallerHE
             // 
-            this.CB_AllPatched.AutoSize = true;
-            this.CB_AllPatched.Enabled = false;
-            this.CB_AllPatched.Location = new System.Drawing.Point(326, 23);
-            this.CB_AllPatched.Name = "CB_AllPatched";
-            this.CB_AllPatched.Size = new System.Drawing.Size(80, 17);
-            this.CB_AllPatched.TabIndex = 3;
-            this.CB_AllPatched.Text = "checkBox1";
-            this.CB_AllPatched.UseVisualStyleBackColor = true;
+            this.Btn_MapInstallerHE.Location = new System.Drawing.Point(331, 21);
+            this.Btn_MapInstallerHE.Name = "Btn_MapInstallerHE";
+            this.Btn_MapInstallerHE.Size = new System.Drawing.Size(177, 23);
+            this.Btn_MapInstallerHE.TabIndex = 1;
+            this.Btn_MapInstallerHE.Text = "button1";
+            this.Btn_MapInstallerHE.UseVisualStyleBackColor = true;
+            this.Btn_MapInstallerHE.Click += new System.EventHandler(this.Btn_MapInstallerHE_Click);
             // 
             // MainMenu
             // 
@@ -429,5 +453,7 @@ namespace S5Updater
         private System.Windows.Forms.Button BTN_UpdateFrom105;
         private System.Windows.Forms.Button BTN_Patch106;
         private System.Windows.Forms.CheckBox CB_AllPatched;
+        private System.Windows.Forms.Button Btn_MapInstallerGold;
+        private System.Windows.Forms.Button Btn_MapInstallerHE;
     }
 }

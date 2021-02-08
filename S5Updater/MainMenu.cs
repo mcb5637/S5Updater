@@ -1,4 +1,5 @@
-﻿using S5Updater.Properties;
+﻿using bbaToolS5;
+using S5Updater.Properties;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,11 +10,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml;
+using System.Xml.Linq;
 
 namespace S5Updater
 {
     public partial class MainMenu : Form
     {
+        private const string InfoInternalPath = "maps\\externalmap\\info.xml";
         internal static readonly int Status_OK = 0;
         internal static readonly int Status_Error = 1;
 
@@ -62,6 +66,8 @@ namespace S5Updater
             CB_ShowIntro.Text = Resources.Txt_ShowIntro;
             BTN_UpdateFrom105.Text = Resources.Txt_UpdateFrom105;
             BTN_Patch106.Text = Resources.Txt_Update106;
+            Btn_MapInstallerGold.Text = Resources.Txt_InstallMap;
+            Btn_MapInstallerHE.Text = Resources.Txt_InstallMap;
 
 #if DEBUG
             BTN_DBG_HashFile.Visible = true;
@@ -110,6 +116,7 @@ namespace S5Updater
                 BTN_Patch106.Enabled = !BTN_UpdateFrom105.Enabled && !patched;
                 CB_AllPatched.Text = patched ? Resources.Txt_AllPatchedOK : Resources.Txt_AllPatchedNO;
                 CB_AllPatched.Checked = patched;
+                Btn_MapInstallerGold.Enabled = true;
             }
             else
             {
@@ -118,6 +125,7 @@ namespace S5Updater
                 Btn_UpdateMPMaps.Enabled = false;
                 Btn_GoldSave.Enabled = false;
                 BTN_UpdateFrom105.Enabled = false;
+                Btn_MapInstallerGold.Enabled = false;
             }
             LBL_HE.Text = Resources.Lbl_HE + (Reg.HEPath ?? Resources._null);
             if (Valid.IsValidHENotConverted(Reg.HEPath))
@@ -125,12 +133,14 @@ namespace S5Updater
                 CB_HEOk.Text = Resources.Status_Ok;
                 CB_HEOk.Checked = true;
                 Btn_ConvertHE.Enabled = !goldValid && (string.IsNullOrEmpty(Reg.GoldPath) || (MainUpdater.IsDirNotExistingOrEmpty(Reg.GoldPath) && MainUpdater.IsSubDirectoryOf(Reg.GoldPath, Reg.HEPath)));
+                Btn_MapInstallerHE.Enabled = true;
             }
             else
             {
                 CB_HEOk.Text = Resources.Status_Invalid;
                 CB_HEOk.Checked = false;
                 Btn_ConvertHE.Enabled = false;
+                Btn_MapInstallerHE.Enabled = false;
             }
         }
 
@@ -293,6 +303,86 @@ namespace S5Updater
             Prog.ShowWorkDialog(t, this);
             UpdateInstallation();
             CheckStatus(t.Status);
+        }
+
+        private void HandleMap(string file, string path, out string name)
+        {
+            name = "";
+            try
+            {
+                if (Path.GetExtension(file) == ".s5x")
+                {
+                    string outPath = GetMapFileExtraPath(file, out name);
+                    if (outPath == null)
+                        return;
+                    outPath = Path.Combine(path, outPath, Path.GetFileName(file));
+                    File.Copy(file, outPath, true);
+                    Log(Resources.Log_InstallMap + outPath);
+                }
+            }
+            catch (Exception e)
+            {
+                Log(e.ToString());
+            }
+        }
+
+        private string GetMapFileExtraPath(string file, out string name)
+        {
+            try
+            {
+                BbaArchive a = new BbaArchive();
+                a.ReadBba(file, InfoInternalPath);
+                XDocument doc = XDocument.Load(a.GetFileByName(InfoInternalPath).GetStream());
+                a.Clear();
+                int key = int.Parse(doc.Element("root").Element("Key").Value);
+                string outPath = "base\\shr\\maps\\user";
+                string into = Resources.Txt_Extra0;
+                if (key == 2)
+                {
+                    outPath = "extra2\\shr\\maps\\user";
+                    into = Resources.Txt_Extra2;
+                }
+                else if (key == 1)
+                {
+                    outPath = "extra1\\shr\\maps\\user";
+                    into = Resources.Txt_Extra1;
+                }
+                name = doc.Element("root").Element("Name").Value + Resources.Txt_MapInto + into;
+                return outPath;
+            }
+            catch (Exception e)
+            {
+                Log(e.ToString());
+                name = "";
+                return null;
+            }
+        }
+
+        private void Btn_MapInstallerGold_Click(object sender, EventArgs e)
+        {
+            QueryMapInstall(Reg.GoldPath);
+        }
+
+        private void QueryMapInstall(string path)
+        {
+            Dlg_OpenFile.Filter = "Maps|*.s5x;*.zip|Anything|*.*";
+            Dlg_OpenFile.CheckFileExists = true;
+            Dlg_OpenFile.Multiselect = true;
+            if (Dlg_OpenFile.ShowDialog() == DialogResult.OK)
+            {
+                string txt = Resources.Log_InstallMap;
+                foreach (string f in Dlg_OpenFile.FileNames)
+                {
+                    HandleMap(f, path, out string name);
+                    txt = txt + "\n" + name;
+                }
+                MessageBox.Show(txt);
+            }
+        }
+
+        private void Btn_MapInstallerHE_Click(object sender, EventArgs e)
+        {
+            QueryMapInstall(Reg.HEPath);
         }
     }
 }

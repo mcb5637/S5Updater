@@ -106,6 +106,15 @@ namespace S5Updater.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Installed map .
+        /// </summary>
+        internal static string Log_InstallMap {
+            get {
+                return ResourceManager.GetString("Log_InstallMap", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Changed Gold registry to: .
         /// </summary>
         internal static string Log_RegGold {
@@ -493,6 +502,33 @@ namespace S5Updater.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to base.
+        /// </summary>
+        internal static string Txt_Extra0 {
+            get {
+                return ResourceManager.GetString("Txt_Extra0", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to fogland.
+        /// </summary>
+        internal static string Txt_Extra1 {
+            get {
+                return ResourceManager.GetString("Txt_Extra1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to legends.
+        /// </summary>
+        internal static string Txt_Extra2 {
+            get {
+                return ResourceManager.GetString("Txt_Extra2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to set registry.
         /// </summary>
         internal static string Txt_GoldSetReg {
@@ -502,11 +538,29 @@ namespace S5Updater.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to install map.
+        /// </summary>
+        internal static string Txt_InstallMap {
+            get {
+                return ResourceManager.GetString("Txt_InstallMap", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Language.
         /// </summary>
         internal static string Txt_Langua {
             get {
                 return ResourceManager.GetString("Txt_Langua", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to  into .
+        /// </summary>
+        internal static string Txt_MapInto {
+            get {
+                return ResourceManager.GetString("Txt_MapInto", resourceCulture);
             }
         }
         
