@@ -6,8 +6,10 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.IO;
+using System.IO.Compression;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
@@ -310,7 +312,26 @@ namespace S5Updater
             name = "";
             try
             {
-                if (Path.GetExtension(file) == ".s5x")
+                if (Path.GetExtension(file) == ".zip")
+                {
+                    using (ZipArchive a = ZipFile.OpenRead(file))
+                    {
+                        foreach (ZipArchiveEntry e in a.Entries)
+                        {
+                            if (e.IsFolder())
+                                continue;
+                            if (Path.GetExtension(e.Name) == ".s5x")
+                            {
+                                string extractfile = Path.Combine(path, e.Name);
+                                e.ExtractToFile(extractfile, true);
+                                HandleMap(extractfile, path, out string n);
+                                name += "\n" + n;
+                                File.Delete(extractfile);
+                            }
+                        }
+                    }
+                }
+                else if (Path.GetExtension(file) == ".s5x")
                 {
                     string outPath = GetMapFileExtraPath(file, out name);
                     if (outPath == null)
@@ -347,7 +368,7 @@ namespace S5Updater
                     outPath = "extra1\\shr\\maps\\user";
                     into = Resources.Txt_Extra1;
                 }
-                name = doc.Element("root").Element("Name").Value + Resources.Txt_MapInto + into;
+                name = Regex.Replace(doc.Element("root").Element("Name").Value, "@color:[0-9]{1,3}(,[0-9]{1,3})*", "").Trim() + Resources.Txt_MapInto + into;
                 return outPath;
             }
             catch (Exception e)

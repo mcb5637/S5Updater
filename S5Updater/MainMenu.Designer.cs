@@ -40,6 +40,7 @@ namespace S5Updater
             this.Dlg_FolderBrowser = new System.Windows.Forms.FolderBrowserDialog();
             this.TextBox_Output = new System.Windows.Forms.TextBox();
             this.GroupBox_Updates = new System.Windows.Forms.GroupBox();
+            this.Btn_MapInstallerGold = new System.Windows.Forms.Button();
             this.CB_AllPatched = new System.Windows.Forms.CheckBox();
             this.BTN_Patch106 = new System.Windows.Forms.Button();
             this.BTN_UpdateFrom105 = new System.Windows.Forms.Button();
@@ -56,10 +57,9 @@ namespace S5Updater
             this.LBL_Reso = new System.Windows.Forms.Label();
             this.ComboBox_Reso = new System.Windows.Forms.ComboBox();
             this.GroupBox_Convert = new System.Windows.Forms.GroupBox();
+            this.Btn_MapInstallerHE = new System.Windows.Forms.Button();
             this.Btn_ConvertHE = new System.Windows.Forms.Button();
             this.Dlg_OpenFile = new System.Windows.Forms.OpenFileDialog();
-            this.Btn_MapInstallerGold = new System.Windows.Forms.Button();
-            this.Btn_MapInstallerHE = new System.Windows.Forms.Button();
             this.GroupBox_Installation.SuspendLayout();
             this.GroupBox_Updates.SuspendLayout();
             this.GroupBox_Settings.SuspendLayout();
@@ -183,6 +183,16 @@ namespace S5Updater
             this.GroupBox_Updates.TabIndex = 2;
             this.GroupBox_Updates.TabStop = false;
             this.GroupBox_Updates.Text = "groupBox1";
+            // 
+            // Btn_MapInstallerGold
+            // 
+            this.Btn_MapInstallerGold.Location = new System.Drawing.Point(331, 77);
+            this.Btn_MapInstallerGold.Name = "Btn_MapInstallerGold";
+            this.Btn_MapInstallerGold.Size = new System.Drawing.Size(177, 23);
+            this.Btn_MapInstallerGold.TabIndex = 0;
+            this.Btn_MapInstallerGold.Text = "button1";
+            this.Btn_MapInstallerGold.UseVisualStyleBackColor = true;
+            this.Btn_MapInstallerGold.Click += new System.EventHandler(this.Btn_MapInstallerGold_Click);
             // 
             // CB_AllPatched
             // 
@@ -357,30 +367,6 @@ namespace S5Updater
             this.GroupBox_Convert.TabStop = false;
             this.GroupBox_Convert.Text = "groupBox1";
             // 
-            // Btn_ConvertHE
-            // 
-            this.Btn_ConvertHE.Location = new System.Drawing.Point(6, 21);
-            this.Btn_ConvertHE.Name = "Btn_ConvertHE";
-            this.Btn_ConvertHE.Size = new System.Drawing.Size(169, 23);
-            this.Btn_ConvertHE.TabIndex = 0;
-            this.Btn_ConvertHE.Text = "button1";
-            this.Btn_ConvertHE.UseVisualStyleBackColor = true;
-            this.Btn_ConvertHE.Click += new System.EventHandler(this.Btn_ConvertHE_Click);
-            // 
-            // Dlg_OpenFile
-            // 
-            this.Dlg_OpenFile.FileName = "openFileDialog1";
-            // 
-            // Btn_MapInstallerGold
-            // 
-            this.Btn_MapInstallerGold.Location = new System.Drawing.Point(331, 77);
-            this.Btn_MapInstallerGold.Name = "Btn_MapInstallerGold";
-            this.Btn_MapInstallerGold.Size = new System.Drawing.Size(177, 23);
-            this.Btn_MapInstallerGold.TabIndex = 0;
-            this.Btn_MapInstallerGold.Text = "button1";
-            this.Btn_MapInstallerGold.UseVisualStyleBackColor = true;
-            this.Btn_MapInstallerGold.Click += new System.EventHandler(this.Btn_MapInstallerGold_Click);
-            // 
             // Btn_MapInstallerHE
             // 
             this.Btn_MapInstallerHE.Location = new System.Drawing.Point(331, 21);
@@ -390,6 +376,16 @@ namespace S5Updater
             this.Btn_MapInstallerHE.Text = "button1";
             this.Btn_MapInstallerHE.UseVisualStyleBackColor = true;
             this.Btn_MapInstallerHE.Click += new System.EventHandler(this.Btn_MapInstallerHE_Click);
+            // 
+            // Btn_ConvertHE
+            // 
+            this.Btn_ConvertHE.Location = new System.Drawing.Point(6, 21);
+            this.Btn_ConvertHE.Name = "Btn_ConvertHE";
+            this.Btn_ConvertHE.Size = new System.Drawing.Size(169, 23);
+            this.Btn_ConvertHE.TabIndex = 0;
+            this.Btn_ConvertHE.Text = "button1";
+            this.Btn_ConvertHE.UseVisualStyleBackColor = true;
+            this.Btn_ConvertHE.Click += new System.EventHandler(this.Btn_ConvertHE_Click);
             // 
             // MainMenu
             // 
