@@ -85,7 +85,14 @@ namespace S5Updater
 
         internal bool ShowIntroVideo
         {
-            get => (int)Registry.GetValue(GoldDevKey, GoldVideo, 1) > 0;
+            get
+            {
+                object o = Registry.GetValue(GoldDevKey, GoldVideo, 1);
+                if (o == null)
+                    return true;
+                return (int)o > 0;
+            }
+
             set => Registry.SetValue(GoldDevKey, GoldVideo, value ? 1 : 0, RegistryValueKind.DWord);
         }
     }
