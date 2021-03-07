@@ -250,6 +250,33 @@ namespace S5Updater.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to no change needed.
+        /// </summary>
+        internal static string TaskHook_Ok {
+            get {
+                return ResourceManager.GetString("TaskHook_Ok", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to patching.
+        /// </summary>
+        internal static string TaskHook_Patching {
+            get {
+                return ResourceManager.GetString("TaskHook_Patching", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to validating hook.
+        /// </summary>
+        internal static string TaskHook_Validating {
+            get {
+                return ResourceManager.GetString("TaskHook_Validating", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to checking out.
         /// </summary>
         internal static string TaskMPMap_Checkout {
@@ -624,6 +651,15 @@ namespace S5Updater.Properties {
         internal static string Txt_UpdateFrom105 {
             get {
                 return ResourceManager.GetString("Txt_UpdateFrom105", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to update hook.
+        /// </summary>
+        internal static string Txt_UpdateHook {
+            get {
+                return ResourceManager.GetString("Txt_UpdateHook", resourceCulture);
             }
         }
         

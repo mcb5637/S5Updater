@@ -102,6 +102,38 @@ namespace S5Updater
             }
         }
 
+        internal static byte[] DownlaodFileBytes(string uri, ProgressDialog.ReportProgressDel r)
+        {
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
+            using (WebClient cl = new WebClient())
+            {
+                cl.DownloadProgressChanged += (_, e) =>
+                {
+                    r(e.ProgressPercentage, null);
+                };
+                Exception err = null;
+                byte[] ret = null;
+                cl.DownloadDataCompleted += (_, e) =>
+                {
+                    err = e.Error;
+                    if (err == null)
+                        ret = e.Result;
+                    lock (cl)
+                    {
+                        Monitor.Pulse(cl);
+                    }
+                };
+                lock (cl)
+                {
+                    cl.DownloadDataAsync(new Uri(uri));
+                    Monitor.Wait(cl);
+                }
+                if (err != null)
+                    throw new IOException("failed to download file", err);
+                return ret;
+            }
+        }
+
         internal static bool IsFolder(this ZipArchiveEntry entry)
         {
             return entry.FullName.EndsWith("/");

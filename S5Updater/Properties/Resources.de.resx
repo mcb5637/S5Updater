@@ -180,6 +180,15 @@
   <data name="TaskConvert_QstSetReg" xml:space="preserve">
     <value>Setze Gold Registry Pfad zu: </value>
   </data>
+  <data name="TaskHook_Ok" xml:space="preserve">
+    <value>keine änderung benötigt</value>
+  </data>
+  <data name="TaskHook_Patching" xml:space="preserve">
+    <value>patchen</value>
+  </data>
+  <data name="TaskHook_Validating" xml:space="preserve">
+    <value>teste hook</value>
+  </data>
   <data name="TaskMPMap_Checkout" xml:space="preserve">
     <value>aktualisiere Dateien</value>
   </data>
@@ -305,6 +314,9 @@
   </data>
   <data name="Txt_UpdateFrom105" xml:space="preserve">
     <value>Update von 1.05</value>
+  </data>
+  <data name="Txt_UpdateHook" xml:space="preserve">
+    <value>aktualisiere hook</value>
   </data>
   <data name="Txt_UpdateMP" xml:space="preserve">
     <value>aktualisiere MP Karten</value>

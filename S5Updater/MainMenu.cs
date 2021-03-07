@@ -70,6 +70,7 @@ namespace S5Updater
             BTN_Patch106.Text = Resources.Txt_Update106;
             Btn_MapInstallerGold.Text = Resources.Txt_InstallMap;
             Btn_MapInstallerHE.Text = Resources.Txt_InstallMap;
+            Btn_UpdateHook.Text = Resources.Txt_UpdateHook;
 
 #if DEBUG
             BTN_DBG_HashFile.Visible = true;
@@ -119,6 +120,7 @@ namespace S5Updater
                 CB_AllPatched.Text = patched ? Resources.Txt_AllPatchedOK : Resources.Txt_AllPatchedNO;
                 CB_AllPatched.Checked = patched;
                 Btn_MapInstallerGold.Enabled = true;
+                Btn_UpdateHook.Enabled = true;
             }
             else
             {
@@ -128,6 +130,7 @@ namespace S5Updater
                 Btn_GoldSave.Enabled = false;
                 BTN_UpdateFrom105.Enabled = false;
                 Btn_MapInstallerGold.Enabled = false;
+                Btn_UpdateHook.Enabled = false;
             }
             LBL_HE.Text = Resources.Lbl_HE + (Reg.HEPath ?? Resources._null);
             if (Valid.IsValidHENotConverted(Reg.HEPath))
@@ -271,7 +274,7 @@ namespace S5Updater
         {
             if (Dlg_OpenFile.ShowDialog() == DialogResult.OK)
             {
-                Log(Valid.GetFileHash(Dlg_OpenFile.FileName));
+                Log(Path.GetFileName(Dlg_OpenFile.FileName) + " " + Valid.GetFileHash(Dlg_OpenFile.FileName));
             }
         }
 
@@ -404,6 +407,17 @@ namespace S5Updater
         private void Btn_MapInstallerHE_Click(object sender, EventArgs e)
         {
             QueryMapInstall(Reg.HEPath);
+        }
+
+        private void Btn_UpdateHook_Click(object sender, EventArgs e)
+        {
+            TaskUpdateHook t = new TaskUpdateHook()
+            {
+                MM = this
+            };
+            Prog.ShowWorkDialog(t, this);
+            UpdateInstallation();
+            CheckStatus(t.Status);
         }
     }
 }
