@@ -33,6 +33,8 @@ namespace S5Updater
                 string mapeditor = Path.Combine(MM.Reg.GoldPath, "bin\\shokmapeditor.exe");
                 using (ZipArchive a = ZipFile.OpenRead(patchfile))
                 {
+                    CheckReadOnly(settlershok);
+                    CheckReadOnly(mapeditor);
                     a.GetEntry("settlershok_w10cu.exe").ExtractToFile(settlershok, true);
                     a.GetEntry("shokmapeditor_w10cu.exe").ExtractToFile(mapeditor, true);
                 }
@@ -53,9 +55,19 @@ namespace S5Updater
             string extrabin = Path.Combine(MM.Reg.GoldPath, extra);
             if (Directory.Exists(extrabin))
             {
-                File.Copy(settlershok, Path.Combine(extrabin, "settlershok.exe"), true);
-                File.Copy(mapeditor, Path.Combine(extrabin, "shokmapeditor.exe"), true);
+                string settlershokex = Path.Combine(extrabin, "settlershok.exe");
+                string mapeditorex = Path.Combine(extrabin, "shokmapeditor.exe");
+                CheckReadOnly(settlershokex);
+                CheckReadOnly(mapeditorex);
+                File.Copy(settlershok, settlershokex, true);
+                File.Copy(mapeditor, mapeditorex, true);
             }
+        }
+
+        private void CheckReadOnly(string f)
+        {
+            if (File.Exists(f))
+                File.SetAttributes(f, FileAttributes.Normal);
         }
     }
 }
