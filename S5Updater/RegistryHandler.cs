@@ -23,6 +23,8 @@ namespace S5Updater
         internal static readonly string HEKey = "HKEY_LOCAL_MACHINE\\SOFTWARE\\Ubisoft\\Launcher\\Installs\\11786";
         internal static readonly string HEInstallLoc = "InstallDir";
 
+        internal static readonly string HEDefaultSteamInstall = "C:\\Program Files (x86)\\Steam\\steamapps\\common\\The Settlers - Heritage of Kings - History Edition";
+
         internal string LoadGoldPathFromRegistry(InstallValidator vali)
         {
             string r = Registry.GetValue(GoldKey, GoldInstallLoc, null) as string;

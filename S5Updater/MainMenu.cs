@@ -99,6 +99,8 @@ namespace S5Updater
 
             Reg.LoadGoldPathFromRegistry(Valid);
             Reg.LoadHEPathFromRegistry();
+            if (!Valid.IsValidHENotConverted(Reg.HEPath) && Valid.IsValidHENotConverted(RegistryHandler.HEDefaultSteamInstall))
+                Reg.HEPath = RegistryHandler.HEDefaultSteamInstall;
             Log(Resources.Log_SetGold + (Reg.GoldPath ?? Resources._null));
             Log(Resources.Log_SetHE + (Reg.HEPath ?? Resources._null));
             UpdateInstallation();
@@ -137,7 +139,7 @@ namespace S5Updater
             {
                 CB_HEOk.Text = Resources.Status_Ok;
                 CB_HEOk.Checked = true;
-                Btn_ConvertHE.Enabled = !goldValid && (string.IsNullOrEmpty(Reg.GoldPath) || (MainUpdater.IsDirNotExistingOrEmpty(Reg.GoldPath) && MainUpdater.IsSubDirectoryOf(Reg.GoldPath, Reg.HEPath)));
+                Btn_ConvertHE.Enabled = !goldValid && (string.IsNullOrEmpty(Reg.GoldPath) || (MainUpdater.IsDirNotExistingOrEmpty(Reg.GoldPath) && !MainUpdater.IsSubDirectoryOf(Reg.GoldPath, Reg.HEPath)));
                 Btn_MapInstallerHE.Enabled = true;
             }
             else
@@ -260,6 +262,7 @@ namespace S5Updater
             };
             Prog.ShowWorkDialog(t, this);
             CheckStatus(t.Status);
+            UpdateInstallation();
         }
 
         private void CB_ShowIntro_CheckedChanged(object sender, EventArgs e)
