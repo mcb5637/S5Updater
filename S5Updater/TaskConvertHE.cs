@@ -45,6 +45,7 @@ namespace S5Updater
                 MainUpdater.DownlaodFile("https://cdn.discordapp.com/attachments/276409631746686976/788789883300741140/Schriftarten.zip", patchfile, r);
                 r(100, Resources.Done);
                 r(0, Resources.TaskConvert_PatchFont);
+                string[] extras = new string[] { "base", "extra1", "extra2" };
                 using (ZipArchive a = ZipFile.OpenRead(patchfile))
                 {
                     foreach (ZipArchiveEntry e in a.Entries)
@@ -57,9 +58,12 @@ namespace S5Updater
                             continue;
                         }
                         r(count * 100 / filenium, null);
-                        string destinationFileName = Path.Combine(MM.Reg.GoldPath, "base\\shr\\menu\\Projects\\Fonts", e.FullName);
-                        Directory.CreateDirectory(Path.GetDirectoryName(destinationFileName));
-                        e.ExtractToFile(destinationFileName, true);
+                        foreach (string s in extras)
+                        {
+                            string destinationFileName = Path.Combine(MM.Reg.GoldPath, s, "shr\\menu\\Fonts", e.FullName);
+                            Directory.CreateDirectory(Path.GetDirectoryName(destinationFileName));
+                            e.ExtractToFile(destinationFileName, true);
+                        }
                         count++;
                     }
                 }
@@ -162,6 +166,9 @@ namespace S5Updater
         {
             r(0, Resources.TaskConvert_CopyingInstall);
             MainUpdater.Copy(MM.Reg.HEPath, MM.Reg.GoldPath, Array.Empty<string>());
+            string hebin = Path.Combine(MM.Reg.HEPath, "bin");
+            MainUpdater.Copy(hebin, Path.Combine(MM.Reg.HEPath, "extra1\\bin"), Array.Empty<string>());
+            MainUpdater.Copy(hebin, Path.Combine(MM.Reg.HEPath, "extra2\\bin"), Array.Empty<string>());
             r(100, Resources.Done);
         }
 

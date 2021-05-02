@@ -130,6 +130,9 @@ namespace S5Updater
                 CB_GoldOK.Checked = false;
                 Btn_UpdateMPMaps.Enabled = false;
                 Btn_GoldSave.Enabled = false;
+                BTN_Patch106.Enabled = false;
+                CB_AllPatched.Text = Resources.Txt_AllPatchedNO;
+                CB_AllPatched.Checked = false;
                 BTN_UpdateFrom105.Enabled = false;
                 Btn_MapInstallerGold.Enabled = false;
                 Btn_UpdateHook.Enabled = false;
