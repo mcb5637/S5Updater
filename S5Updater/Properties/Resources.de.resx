@@ -217,7 +217,7 @@
     <value>Prüfe Repo </value>
   </data>
   <data name="TaskMPMap_Start" xml:space="preserve">
-    <value>aktualisiere Mp Karten und Scripte</value>
+    <value>aktualisiere MP Karten und Scripte</value>
   </data>
   <data name="TaskUpdate105_DownloadPatch" xml:space="preserve">
     <value>Lade Patch herunter</value>
