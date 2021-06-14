@@ -29,8 +29,8 @@ namespace S5Updater
         internal InstallValidator Valid;
 
         private static readonly Resolution[] Resolutions = new Resolution[] { new Resolution("default", "0", false),
-            new Resolution("select", "select", false), new Resolution("1920x1080", "1920 x 1080 x 32", true), new Resolution("2560x1440", "2560 x 1440 x 32", true),
-            new Resolution("2500x1400", "2500 x 1400 x 32", true)
+            new Resolution("select", "select", false), new Resolution("1920x1080", "1920 x 1080 x 32", true), new Resolution("2500x1400", "2500 x 1400 x 32", true),
+            new Resolution("2560x1440", "2560 x 1440 x 32", true), new Resolution("3440x1440", "3440 x 1440 x 32", true)
         }; // todo maybe add current screnn resolution?
         private static readonly Language[] Languages = new Language[] {new Language("Deutsch", "de"), new Language("English", "en"), new Language("US-English", "us"),
             new Language("French", "fr"), new Language("Polish", "pl"), new Language("Chinese", "zh"), new Language("Czech", "cs"), new Language("Dutch", "nl"),
