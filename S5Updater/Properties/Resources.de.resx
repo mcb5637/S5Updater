@@ -156,6 +156,9 @@
   <data name="null" xml:space="preserve">
     <value>Unbekannt</value>
   </data>
+  <data name="Qst_UpdateUpdater" xml:space="preserve">
+    <value>Neue Updater version verfügbar, herunterladen?</value>
+  </data>
   <data name="Status_Invalid" xml:space="preserve">
     <value>Nicht Ok</value>
   </data>

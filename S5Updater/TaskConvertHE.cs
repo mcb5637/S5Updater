@@ -166,9 +166,9 @@ namespace S5Updater
         {
             r(0, Resources.TaskConvert_CopyingInstall);
             MainUpdater.Copy(MM.Reg.HEPath, MM.Reg.GoldPath, Array.Empty<string>());
-            string hebin = Path.Combine(MM.Reg.HEPath, "bin");
-            MainUpdater.Copy(hebin, Path.Combine(MM.Reg.HEPath, "extra1\\bin"), Array.Empty<string>());
-            MainUpdater.Copy(hebin, Path.Combine(MM.Reg.HEPath, "extra2\\bin"), Array.Empty<string>());
+            string goldbin = Path.Combine(MM.Reg.GoldPath, "bin");
+            MainUpdater.Copy(goldbin, Path.Combine(MM.Reg.GoldPath, "extra1\\bin"), Array.Empty<string>());
+            MainUpdater.Copy(goldbin, Path.Combine(MM.Reg.GoldPath, "extra2\\bin"), Array.Empty<string>());
             r(100, Resources.Done);
         }
 

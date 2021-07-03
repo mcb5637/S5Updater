@@ -1,5 +1,7 @@
-﻿using System;
+﻿using S5Updater.Properties;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.IO.Compression;
@@ -20,11 +22,35 @@ namespace S5Updater
         [STAThread]
         public static void Main()
         {
+            if (File.Exists(".\\AutoDownloader.exe.bak"))
+                File.Delete(".\\AutoDownloader.exe.bak");
+            if (CheckUpdate())
+                return;
+
             //CultureInfo i = new CultureInfo("en-us");
             //CultureInfo.DefaultThreadCurrentCulture = i;
             //CultureInfo.DefaultThreadCurrentUICulture = i;
             Application.EnableVisualStyles();
             Application.Run(new MainMenu());
+        }
+
+        private static bool CheckUpdate()
+        {
+            try
+            {
+                byte[] d = DownlaodFileBytes("https://github.com/mcb5637/S5Updater/releases/latest/download/versionguid.txt", null);
+                if (Encoding.ASCII.GetString(d) != Assembly.GetExecutingAssembly().ManifestModule.ModuleVersionId.ToString())
+                {
+                    if (MessageBox.Show(Resources.Qst_UpdateUpdater, Resources.TitleMainMenu, MessageBoxButtons.YesNo) != DialogResult.Yes)
+                        return false;
+                    Process.Start(".\\AutoDownloader.exe");
+                    return true;
+                }
+            }
+            catch (Exception)
+            {
+            }
+            return false;
         }
 
 
@@ -109,7 +135,7 @@ namespace S5Updater
             {
                 cl.DownloadProgressChanged += (_, e) =>
                 {
-                    r(e.ProgressPercentage, null);
+                    r?.Invoke(e.ProgressPercentage, null);
                 };
                 Exception err = null;
                 byte[] ret = null;

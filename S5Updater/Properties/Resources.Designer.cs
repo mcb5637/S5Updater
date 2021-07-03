@@ -178,6 +178,15 @@ namespace S5Updater.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to new updater version available. update?.
+        /// </summary>
+        internal static string Qst_UpdateUpdater {
+            get {
+                return ResourceManager.GetString("Qst_UpdateUpdater", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invalid.
         /// </summary>
         internal static string Status_Invalid {

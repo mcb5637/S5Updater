@@ -8,6 +8,7 @@ using System.Drawing;
 using System.IO;
 using System.IO.Compression;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -104,6 +105,7 @@ namespace S5Updater
             Reg.LoadHEPathFromRegistry();
             if (!Valid.IsValidHENotConverted(Reg.HEPath) && Valid.IsValidHENotConverted(RegistryHandler.HEDefaultSteamInstall))
                 Reg.HEPath = RegistryHandler.HEDefaultSteamInstall;
+            Log(Assembly.GetExecutingAssembly().ManifestModule.ModuleVersionId.ToString());
             Log(Resources.Log_SetGold + (Reg.GoldPath ?? Resources._null));
             Log(Resources.Log_SetHE + (Reg.HEPath ?? Resources._null));
             UpdateInstallation();
