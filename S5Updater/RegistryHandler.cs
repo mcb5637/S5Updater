@@ -71,7 +71,7 @@ namespace S5Updater
         {
             get {
                 object r = Registry.GetValue(GoldDevKey, GoldDevMode, null);
-                if (r == null)
+                if (r == null || !(r is int))
                     return null;
                 int i = (int)r;
                 return unchecked((uint)i);
