@@ -83,7 +83,7 @@ namespace S5Updater
             {
                 string patchfile = Path.Combine(MM.Reg.GoldPath, "Tmp_data.zip");
                 r(0, Resources.TaskConvert_DownloadFileData);
-                MainUpdater.DownlaodFile("https://dedk.de/wiki/lib/exe/fetch.php?tok=b0c12e&media=https%3A%2F%2Fwww.dedk.de%2Fpatch%2FHEModification.zip", patchfile, r);
+                MainUpdater.DownlaodFile("https://dedk.de/wiki/lib/exe/fetch.php?media=multiplayer:help:hemodification.zip", patchfile, r);
                 r(100, Resources.Done);
                 r(0, Resources.TaskConvert_PatchData);
                 File.Delete(Path.Combine(MM.Reg.GoldPath, "base\\shr\\menu\\Projects\\mainmenu.xml"));
