@@ -151,6 +151,15 @@ namespace S5Updater.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to set hook enabled: .
+        /// </summary>
+        internal static string Log_SetHookEnabled {
+            get {
+                return ResourceManager.GetString("Log_SetHookEnabled", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Set Language to: .
         /// </summary>
         internal static string Log_SetLang {
@@ -525,6 +534,15 @@ namespace S5Updater.Properties {
         internal static string Txt_EasyMode {
             get {
                 return ResourceManager.GetString("Txt_EasyMode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to enabled.
+        /// </summary>
+        internal static string Txt_EnableHook {
+            get {
+                return ResourceManager.GetString("Txt_EnableHook", resourceCulture);
             }
         }
         

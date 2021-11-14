@@ -40,6 +40,7 @@ namespace S5Updater
             this.Dlg_FolderBrowser = new System.Windows.Forms.FolderBrowserDialog();
             this.TextBox_Output = new System.Windows.Forms.TextBox();
             this.GroupBox_Updates = new System.Windows.Forms.GroupBox();
+            this.Btn_UpdateHook = new System.Windows.Forms.Button();
             this.Btn_MapInstallerGold = new System.Windows.Forms.Button();
             this.CB_AllPatched = new System.Windows.Forms.CheckBox();
             this.BTN_Patch106 = new System.Windows.Forms.Button();
@@ -60,7 +61,7 @@ namespace S5Updater
             this.Btn_MapInstallerHE = new System.Windows.Forms.Button();
             this.Btn_ConvertHE = new System.Windows.Forms.Button();
             this.Dlg_OpenFile = new System.Windows.Forms.OpenFileDialog();
-            this.Btn_UpdateHook = new System.Windows.Forms.Button();
+            this.Cb_EnableHook = new System.Windows.Forms.CheckBox();
             this.GroupBox_Installation.SuspendLayout();
             this.GroupBox_Updates.SuspendLayout();
             this.GroupBox_Settings.SuspendLayout();
@@ -173,6 +174,7 @@ namespace S5Updater
             // 
             // GroupBox_Updates
             // 
+            this.GroupBox_Updates.Controls.Add(this.Cb_EnableHook);
             this.GroupBox_Updates.Controls.Add(this.Btn_UpdateHook);
             this.GroupBox_Updates.Controls.Add(this.Btn_MapInstallerGold);
             this.GroupBox_Updates.Controls.Add(this.CB_AllPatched);
@@ -185,6 +187,16 @@ namespace S5Updater
             this.GroupBox_Updates.TabIndex = 2;
             this.GroupBox_Updates.TabStop = false;
             this.GroupBox_Updates.Text = "groupBox1";
+            // 
+            // Btn_UpdateHook
+            // 
+            this.Btn_UpdateHook.Location = new System.Drawing.Point(6, 106);
+            this.Btn_UpdateHook.Name = "Btn_UpdateHook";
+            this.Btn_UpdateHook.Size = new System.Drawing.Size(179, 23);
+            this.Btn_UpdateHook.TabIndex = 4;
+            this.Btn_UpdateHook.Text = "button1";
+            this.Btn_UpdateHook.UseVisualStyleBackColor = true;
+            this.Btn_UpdateHook.Click += new System.EventHandler(this.Btn_UpdateHook_Click);
             // 
             // Btn_MapInstallerGold
             // 
@@ -389,15 +401,16 @@ namespace S5Updater
             this.Btn_ConvertHE.UseVisualStyleBackColor = true;
             this.Btn_ConvertHE.Click += new System.EventHandler(this.Btn_ConvertHE_Click);
             // 
-            // Btn_UpdateHook
+            // Cb_EnableHook
             // 
-            this.Btn_UpdateHook.Location = new System.Drawing.Point(6, 106);
-            this.Btn_UpdateHook.Name = "Btn_UpdateHook";
-            this.Btn_UpdateHook.Size = new System.Drawing.Size(179, 23);
-            this.Btn_UpdateHook.TabIndex = 4;
-            this.Btn_UpdateHook.Text = "button1";
-            this.Btn_UpdateHook.UseVisualStyleBackColor = true;
-            this.Btn_UpdateHook.Click += new System.EventHandler(this.Btn_UpdateHook_Click);
+            this.Cb_EnableHook.AutoSize = true;
+            this.Cb_EnableHook.Location = new System.Drawing.Point(191, 110);
+            this.Cb_EnableHook.Name = "Cb_EnableHook";
+            this.Cb_EnableHook.Size = new System.Drawing.Size(80, 17);
+            this.Cb_EnableHook.TabIndex = 5;
+            this.Cb_EnableHook.Text = "checkBox1";
+            this.Cb_EnableHook.UseVisualStyleBackColor = true;
+            this.Cb_EnableHook.CheckedChanged += new System.EventHandler(this.Cb_EnableHook_CheckedChanged);
             // 
             // MainMenu
             // 
@@ -464,5 +477,6 @@ namespace S5Updater
         private System.Windows.Forms.Button Btn_MapInstallerGold;
         private System.Windows.Forms.Button Btn_MapInstallerHE;
         private System.Windows.Forms.Button Btn_UpdateHook;
+        private System.Windows.Forms.CheckBox Cb_EnableHook;
     }
 }

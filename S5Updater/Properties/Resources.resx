@@ -144,6 +144,9 @@
   <data name="Log_SetHE" xml:space="preserve">
     <value>HE install location set to: </value>
   </data>
+  <data name="Log_SetHookEnabled" xml:space="preserve">
+    <value>set hook enabled: </value>
+  </data>
   <data name="Log_SetLang" xml:space="preserve">
     <value>Set Language to: </value>
   </data>
@@ -272,6 +275,9 @@
   </data>
   <data name="Txt_EasyMode" xml:space="preserve">
     <value>easy mode</value>
+  </data>
+  <data name="Txt_EnableHook" xml:space="preserve">
+    <value>enabled</value>
   </data>
   <data name="Txt_ErrMsg" xml:space="preserve">
     <value>An error occured, please show at the log. If you don't know what to do, copy&amp;paste it when asking for help.</value>

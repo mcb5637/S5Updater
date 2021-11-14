@@ -133,6 +133,41 @@ namespace S5Updater
             }
         }
 
+        static public bool IsInstalled(string path)
+        {
+            return File.Exists(Path.Combine(path, "bin\\S5CppLogic.dll"));
+        }
+        static public bool IsEnabled(string path)
+        {
+            if (!File.Exists(Path.Combine(path, "bin\\S5CppLogic.dll")))
+                return false;
+            string opt = Path.Combine(path, "bin\\CppLogicOptions.txt");
+            if (!File.Exists(opt))
+                return true;
+            using (StreamReader s = new StreamReader(opt))
+            {
+                for (string line = s.ReadLine(); line != null; line = s.ReadLine())
+                {
+                    if (line.StartsWith("DoNotLoad"))
+                    {
+                        return line.EndsWith("0");
+                    }
+                }
+            }
+            return true;
+        }
+        static public void SetEnabled(string path, bool enabled)
+        {
+            foreach (string e in Extras)
+            {
+                using (StreamWriter w = new StreamWriter(Path.Combine(path, e, "CppLogicOptions.txt"), false))
+                {
+                    w.Write("DoNotLoad=");
+                    w.WriteLine(enabled ? "0" : "1");
+                }
+            }
+        }
+
         private class FileWithHash
         {
             internal string Hash, File;

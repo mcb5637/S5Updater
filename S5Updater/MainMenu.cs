@@ -75,6 +75,7 @@ namespace S5Updater
             Btn_MapInstallerGold.Text = Resources.Txt_InstallMap;
             Btn_MapInstallerHE.Text = Resources.Txt_InstallMap;
             Btn_UpdateHook.Text = Resources.Txt_UpdateHook;
+            Cb_EnableHook.Text = Resources.Txt_EnableHook;
 
 #if DEBUG
             BTN_DBG_HashFile.Visible = true;
@@ -128,6 +129,10 @@ namespace S5Updater
                 CB_AllPatched.Checked = patched;
                 Btn_MapInstallerGold.Enabled = true;
                 Btn_UpdateHook.Enabled = true;
+                Updating = true;
+                Cb_EnableHook.Enabled = TaskUpdateHook.IsInstalled(Reg.GoldPath);
+                Cb_EnableHook.Checked = TaskUpdateHook.IsEnabled(Reg.GoldPath);
+                Updating = false;
             }
             else
             {
@@ -141,6 +146,10 @@ namespace S5Updater
                 BTN_UpdateFrom105.Enabled = false;
                 Btn_MapInstallerGold.Enabled = false;
                 Btn_UpdateHook.Enabled = false;
+                Updating = true;
+                Cb_EnableHook.Checked = false;
+                Cb_EnableHook.Enabled = false;
+                Updating = false;
             }
             LBL_HE.Text = Resources.Lbl_HE + (Reg.HEPath ?? Resources._null);
             if (Valid.IsValidHENotConverted(Reg.HEPath))
@@ -429,6 +438,14 @@ namespace S5Updater
             Prog.ShowWorkDialog(t, this);
             UpdateInstallation();
             CheckStatus(t.Status);
+        }
+
+        private void Cb_EnableHook_CheckedChanged(object sender, EventArgs e)
+        {
+            if (Updating)
+                return;
+            TaskUpdateHook.SetEnabled(Reg.GoldPath, Cb_EnableHook.Checked);
+            Log(Resources.Log_SetHookEnabled + Cb_EnableHook.Checked);
         }
     }
 }

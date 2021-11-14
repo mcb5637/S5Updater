@@ -144,6 +144,9 @@
   <data name="Log_SetHE" xml:space="preserve">
     <value>HE Installationspfad gesetzt auf: </value>
   </data>
+  <data name="Log_SetHookEnabled" xml:space="preserve">
+    <value>setze hook aktiv: </value>
+  </data>
   <data name="Log_SetLang" xml:space="preserve">
     <value>Setze Sprache zu: </value>
   </data>
@@ -272,6 +275,9 @@
   </data>
   <data name="Txt_EasyMode" xml:space="preserve">
     <value>einfacher Modus</value>
+  </data>
+  <data name="Txt_EnableHook" xml:space="preserve">
+    <value>Aktiviert</value>
   </data>
   <data name="Txt_ErrMsg" xml:space="preserve">
     <value>Ein Fehler ist aufgetreten. Bitte in den Log sehen und diesen Kopieren&amp;Einfügen, wenn nach Hilfe gefragt wird.</value>
