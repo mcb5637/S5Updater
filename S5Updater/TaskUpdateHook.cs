@@ -160,10 +160,35 @@ namespace S5Updater
         {
             foreach (string e in Extras)
             {
-                using (StreamWriter w = new StreamWriter(Path.Combine(path, e, "CppLogicOptions.txt"), false))
+                string file = Path.Combine(path, e, "CppLogicOptions.txt");
+                string[] data;
+                if (File.Exists(file))
+                    data = File.ReadAllText(file).Split(new[] { "\r\n", "\r", "\n" }, StringSplitOptions.RemoveEmptyEntries);
+                else
+                    data = new string[]{ };
+                using (StreamWriter w = new StreamWriter(file, false))
                 {
-                    w.Write("DoNotLoad=");
-                    w.WriteLine(enabled ? "0" : "1");
+                    bool found = false;
+                    foreach (string l in data)
+                    {
+                        if (l.StartsWith("DoNotLoad"))
+                        {
+                            if (found)
+                                continue;
+                            found = true;
+                            w.Write("DoNotLoad=");
+                            w.WriteLine(enabled ? "0" : "1");
+                        }
+                        else
+                        {
+                            w.WriteLine(l);
+                        }
+                    }
+                    if (!found)
+                    {
+                        w.Write("DoNotLoad=");
+                        w.WriteLine(enabled ? "0" : "1");
+                    }
                 }
             }
         }
