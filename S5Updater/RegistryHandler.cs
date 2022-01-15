@@ -25,6 +25,11 @@ namespace S5Updater
 
         internal static readonly string HEDefaultSteamInstall = "C:\\Program Files (x86)\\Steam\\steamapps\\common\\The Settlers - Heritage of Kings - History Edition";
 
+        internal static readonly string S5UpdaterKey = "HKEY_LOCAL_MACHINE\\SOFTWARE\\S5Updater";
+        internal static readonly string MappackEMSKey = "EMS";
+        internal static readonly string MappackSpeedwarKey = "Speedwar";
+        internal static readonly string MappackBSKey = "BS";
+
         internal string LoadGoldPathFromRegistry(InstallValidator vali)
         {
             string r = Registry.GetValue(GoldKey, GoldInstallLoc, null) as string;
@@ -96,6 +101,42 @@ namespace S5Updater
             }
 
             set => Registry.SetValue(GoldDevKey, GoldVideo, value ? 1 : 0, RegistryValueKind.DWord);
+        }
+
+        internal bool DownloadMappackEMS
+        {
+            get
+            {
+                object o = Registry.GetValue(S5UpdaterKey, MappackEMSKey, 1);
+                if (o == null)
+                    return true;
+                return (int)o > 0;
+            }
+            set => Registry.SetValue(S5UpdaterKey, MappackEMSKey, value ? 1 : 0, RegistryValueKind.DWord);
+        }
+
+        internal bool DownloadMappackSpeedwar
+        {
+            get
+            {
+                object o = Registry.GetValue(S5UpdaterKey, MappackSpeedwarKey, 1);
+                if (o == null)
+                    return true;
+                return (int)o > 0;
+            }
+            set => Registry.SetValue(S5UpdaterKey, MappackSpeedwarKey, value ? 1 : 0, RegistryValueKind.DWord);
+        }
+
+        internal bool DownloadMappackBS
+        {
+            get
+            {
+                object o = Registry.GetValue(S5UpdaterKey, MappackBSKey, 1);
+                if (o == null)
+                    return true;
+                return (int)o > 0;
+            }
+            set => Registry.SetValue(S5UpdaterKey, MappackBSKey, value ? 1 : 0, RegistryValueKind.DWord);
         }
     }
 }

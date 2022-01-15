@@ -267,6 +267,9 @@
   <data name="Txt_AllPatchedOK" xml:space="preserve">
     <value>Patch OK</value>
   </data>
+  <data name="Txt_Btn_UpdateMappacks" xml:space="preserve">
+    <value>Aktualisiere Mappacks</value>
+  </data>
   <data name="Txt_Convert" xml:space="preserve">
     <value>Konvertiere HE zu Gold</value>
   </data>
@@ -317,6 +320,12 @@
   </data>
   <data name="Txt_ShowLog" xml:space="preserve">
     <value>zeige Log</value>
+  </data>
+  <data name="Txt_TabPageGeneral" xml:space="preserve">
+    <value>Allgemein</value>
+  </data>
+  <data name="Txt_TabPageMaps" xml:space="preserve">
+    <value>MP Karten</value>
   </data>
   <data name="Txt_Update106" xml:space="preserve">
     <value>Win 10 fix</value>
