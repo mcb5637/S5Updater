@@ -132,9 +132,9 @@ namespace S5Updater
                 CB_GoldOK.Checked = true;
                 Btn_UpdateMPMaps.Enabled = true;
                 Btn_GoldSave.Enabled = true;
-                BTN_UpdateFrom105.Enabled = (Valid.IsGold105(Reg.GoldPath)) && Reg.GoldHasReg;
+                BTN_UpdateFrom105.Enabled = (Valid.IsGold105(Reg.GoldPath) || !EasyMode) && Reg.GoldHasReg;
                 bool patched = Valid.IsExeGold(Reg.GoldPath);
-                BTN_Patch106.Enabled = !BTN_UpdateFrom105.Enabled && !patched;
+                BTN_Patch106.Enabled = (!BTN_UpdateFrom105.Enabled && !patched) || !EasyMode;
                 CB_AllPatched.Text = patched ? Resources.Txt_AllPatchedOK : Resources.Txt_AllPatchedNO;
                 CB_AllPatched.Checked = patched;
                 Btn_MapInstallerGold.Enabled = true;
@@ -236,6 +236,7 @@ namespace S5Updater
             bool hideInEasy = !EasyMode;
             Btn_GoldSave.Visible = hideInEasy;
             CB_DevMode.Visible = hideInEasy;
+            UpdateInstallation();
         }
 
         private void ComboBox_Reso_SelectedIndexChanged(object sender, EventArgs e)
