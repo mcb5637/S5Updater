@@ -76,6 +76,16 @@ namespace S5Updater
             Btn_MapInstallerHE.Text = Resources.Txt_InstallMap;
             Btn_UpdateHook.Text = Resources.Txt_UpdateHook;
             Cb_EnableHook.Text = Resources.Txt_EnableHook;
+            tabPageGeneral.Text = Resources.Txt_TabPageGeneral;
+            tabPageMaps.Text = Resources.Txt_TabPageMaps;
+            BTN_UpdateMappacks.Text = Resources.Txt_Btn_UpdateMappacks;
+
+            int idx = checkedListBox_Mappacks.FindString("EMS");
+            checkedListBox_Mappacks.SetItemChecked(idx, Reg.DownloadMappackEMS);
+            idx = checkedListBox_Mappacks.FindString("Speedwar");
+            checkedListBox_Mappacks.SetItemChecked(idx, Reg.DownloadMappackSpeedwar);
+            idx = checkedListBox_Mappacks.FindString("BS");
+            checkedListBox_Mappacks.SetItemChecked(idx, Reg.DownloadMappackBS);
 
 #if DEBUG
             BTN_DBG_HashFile.Visible = true;
@@ -187,18 +197,19 @@ namespace S5Updater
 
         private void Btn_UpdateMPMaps_Click(object sender, EventArgs e)
         {
-            TaskUpdateMPMaps t = new TaskUpdateMPMaps
-            {
-                MM = this
-            };
-            Prog.ShowWorkDialog(t, this);
-            CheckStatus(t.Status);
+            tabControl1.SelectedIndex = 1;
         }
 
         internal bool EasyMode
         {
             get => CB_EasyMode.Checked;
             set => CB_EasyMode.Checked = value;
+        }
+
+        public bool ShouldMappackBeDownloaded(string name)
+        {
+            int index = checkedListBox_Mappacks.FindString(name);
+            return checkedListBox_Mappacks.GetItemChecked(index);
         }
 
         private void CB_ShowLog_CheckedChanged(object sender, EventArgs e)
@@ -446,6 +457,32 @@ namespace S5Updater
                 return;
             TaskUpdateHook.SetEnabled(Reg.GoldPath, Cb_EnableHook.Checked);
             Log(Resources.Log_SetHookEnabled + Cb_EnableHook.Checked);
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void checkedListBox_Mappacks_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // update registry
+            int idx = checkedListBox_Mappacks.FindString("EMS");
+            Reg.DownloadMappackEMS = checkedListBox_Mappacks.GetItemChecked(idx);
+            idx = checkedListBox_Mappacks.FindString("Speedwar");
+            Reg.DownloadMappackSpeedwar = checkedListBox_Mappacks.GetItemChecked(idx);
+            idx = checkedListBox_Mappacks.FindString("BS");
+            Reg.DownloadMappackBS = checkedListBox_Mappacks.GetItemChecked(idx);
+        }
+
+        private void BTN_UpdateMappacks_Click(object sender, EventArgs e)
+        {
+            TaskUpdateMPMaps t = new TaskUpdateMPMaps
+            {
+                MM = this
+            };
+            Prog.ShowWorkDialog(t, this);
+            CheckStatus(t.Status);
         }
     }
 }
