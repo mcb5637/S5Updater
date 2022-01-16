@@ -62,10 +62,10 @@ namespace S5Updater
             this.Btn_MapInstallerHE = new System.Windows.Forms.Button();
             this.Btn_ConvertHE = new System.Windows.Forms.Button();
             this.Dlg_OpenFile = new System.Windows.Forms.OpenFileDialog();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.TabControl_Main = new System.Windows.Forms.TabControl();
             this.tabPageGeneral = new System.Windows.Forms.TabPage();
             this.tabPageMaps = new System.Windows.Forms.TabPage();
-            this.checkedListBox_Mappacks = new System.Windows.Forms.CheckedListBox();
+            this.CheckedListBox_Mappacks = new System.Windows.Forms.CheckedListBox();
             this.BTN_UpdateMappacks = new System.Windows.Forms.Button();
             this.label_MapDownload = new System.Windows.Forms.Label();
             this.GroupBox_Installation.SuspendLayout();
@@ -73,7 +73,7 @@ namespace S5Updater
             this.GroupBox_Settings.SuspendLayout();
             this.GroupBox_Registry.SuspendLayout();
             this.GroupBox_Convert.SuspendLayout();
-            this.tabControl1.SuspendLayout();
+            this.TabControl_Main.SuspendLayout();
             this.tabPageGeneral.SuspendLayout();
             this.tabPageMaps.SuspendLayout();
             this.SuspendLayout();
@@ -421,15 +421,15 @@ namespace S5Updater
             this.Btn_ConvertHE.UseVisualStyleBackColor = true;
             this.Btn_ConvertHE.Click += new System.EventHandler(this.Btn_ConvertHE_Click);
             // 
-            // tabControl1
+            // TabControl_Main
             // 
-            this.tabControl1.Controls.Add(this.tabPageGeneral);
-            this.tabControl1.Controls.Add(this.tabPageMaps);
-            this.tabControl1.Location = new System.Drawing.Point(1, 0);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(533, 587);
-            this.tabControl1.TabIndex = 0;
+            this.TabControl_Main.Controls.Add(this.tabPageGeneral);
+            this.TabControl_Main.Controls.Add(this.tabPageMaps);
+            this.TabControl_Main.Location = new System.Drawing.Point(1, 0);
+            this.TabControl_Main.Name = "TabControl_Main";
+            this.TabControl_Main.SelectedIndex = 0;
+            this.TabControl_Main.Size = new System.Drawing.Size(533, 587);
+            this.TabControl_Main.TabIndex = 0;
             // 
             // tabPageGeneral
             // 
@@ -441,14 +441,14 @@ namespace S5Updater
             this.tabPageGeneral.Location = new System.Drawing.Point(4, 22);
             this.tabPageGeneral.Name = "tabPageGeneral";
             this.tabPageGeneral.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageGeneral.Size = new System.Drawing.Size(525, 569);
+            this.tabPageGeneral.Size = new System.Drawing.Size(525, 561);
             this.tabPageGeneral.TabIndex = 0;
             this.tabPageGeneral.Text = "tabPage1";
             this.tabPageGeneral.UseVisualStyleBackColor = true;
             // 
             // tabPageMaps
             // 
-            this.tabPageMaps.Controls.Add(this.checkedListBox_Mappacks);
+            this.tabPageMaps.Controls.Add(this.CheckedListBox_Mappacks);
             this.tabPageMaps.Controls.Add(this.BTN_UpdateMappacks);
             this.tabPageMaps.Controls.Add(this.label_MapDownload);
             this.tabPageMaps.Location = new System.Drawing.Point(4, 22);
@@ -459,19 +459,19 @@ namespace S5Updater
             this.tabPageMaps.Text = "tabPage2";
             this.tabPageMaps.UseVisualStyleBackColor = true;
             // 
-            // checkedListBox_Mappacks
+            // CheckedListBox_Mappacks
             // 
-            this.checkedListBox_Mappacks.CheckOnClick = true;
-            this.checkedListBox_Mappacks.FormattingEnabled = true;
-            this.checkedListBox_Mappacks.Items.AddRange(new object[] {
+            this.CheckedListBox_Mappacks.CheckOnClick = true;
+            this.CheckedListBox_Mappacks.FormattingEnabled = true;
+            this.CheckedListBox_Mappacks.Items.AddRange(new object[] {
             "EMS",
             "BS",
             "Speedwar"});
-            this.checkedListBox_Mappacks.Location = new System.Drawing.Point(10, 36);
-            this.checkedListBox_Mappacks.Name = "checkedListBox_Mappacks";
-            this.checkedListBox_Mappacks.Size = new System.Drawing.Size(509, 49);
-            this.checkedListBox_Mappacks.TabIndex = 3;
-            this.checkedListBox_Mappacks.SelectedIndexChanged += new System.EventHandler(this.checkedListBox_Mappacks_SelectedIndexChanged);
+            this.CheckedListBox_Mappacks.Location = new System.Drawing.Point(10, 36);
+            this.CheckedListBox_Mappacks.Name = "CheckedListBox_Mappacks";
+            this.CheckedListBox_Mappacks.Size = new System.Drawing.Size(509, 49);
+            this.CheckedListBox_Mappacks.TabIndex = 3;
+            this.CheckedListBox_Mappacks.SelectedIndexChanged += new System.EventHandler(this.CheckedListBox_Mappacks_SelectedIndexChanged);
             // 
             // BTN_UpdateMappacks
             // 
@@ -491,7 +491,6 @@ namespace S5Updater
             this.label_MapDownload.Size = new System.Drawing.Size(57, 13);
             this.label_MapDownload.TabIndex = 1;
             this.label_MapDownload.Text = "Mappacks";
-            this.label_MapDownload.Click += new System.EventHandler(this.label1_Click);
             // 
             // MainMenu
             // 
@@ -499,7 +498,7 @@ namespace S5Updater
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1111, 599);
             this.Controls.Add(this.TextBox_Output);
-            this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.TabControl_Main);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -515,7 +514,7 @@ namespace S5Updater
             this.GroupBox_Registry.ResumeLayout(false);
             this.GroupBox_Registry.PerformLayout();
             this.GroupBox_Convert.ResumeLayout(false);
-            this.tabControl1.ResumeLayout(false);
+            this.TabControl_Main.ResumeLayout(false);
             this.tabPageGeneral.ResumeLayout(false);
             this.tabPageMaps.ResumeLayout(false);
             this.tabPageMaps.PerformLayout();
@@ -559,11 +558,11 @@ namespace S5Updater
         private System.Windows.Forms.Button Btn_MapInstallerHE;
         private System.Windows.Forms.Button Btn_UpdateHook;
         private System.Windows.Forms.CheckBox Cb_EnableHook;
-        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabControl TabControl_Main;
         private System.Windows.Forms.TabPage tabPageGeneral;
         private System.Windows.Forms.TabPage tabPageMaps;
         private System.Windows.Forms.Label label_MapDownload;
         private System.Windows.Forms.Button BTN_UpdateMappacks;
-        private System.Windows.Forms.CheckedListBox checkedListBox_Mappacks;
+        private System.Windows.Forms.CheckedListBox CheckedListBox_Mappacks;
     }
 }
