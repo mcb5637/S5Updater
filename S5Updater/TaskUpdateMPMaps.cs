@@ -23,25 +23,25 @@ namespace S5Updater
             r(0, Resources.TaskMPMap_Start);
 
 
-            if (MM.ShouldMappackBeDownloaded("EMS"))
-            {
-                HandleRepo(Path.Combine(MM.Reg.GoldPath, "extra2\\shr\\maps\\user\\EMSGit"), "master", "https://github.com/MadShadow-/EMS.git", r);
-                HandleRepo(Path.Combine(MM.Reg.GoldPath, "extra2\\shr\\maps\\user\\EMS\\tools\\s5CommunityLib"), "master", "https://github.com/mcb5637/s5CommunityLib.git", r);
-            }
-            if (MM.ShouldMappackBeDownloaded("Speedwar"))
-            {
-                HandleRepo(Path.Combine(MM.Reg.GoldPath, "extra2\\shr\\maps\\user\\speedwar"), "master", "https://github.com/MadShadow-/speedwar.git", r);
-            }
-
-            if (MM.ShouldMappackBeDownloaded("BS"))
-            {
-                HandleRepo(Path.Combine(MM.Reg.GoldPath, "extra2\\shr\\maps\\user\\Balancing_Stuff_in_Dev"), "master", "https://github.com/GhoulMadness/Balancing-Stuff.git", r);
-                HandleRepo(Path.Combine(MM.Reg.GoldPath, "extra2\\shr\\maps\\user\\Balancing_Stuff_Maps"), "main", "https://github.com/GhoulMadness/Balancing_Stuff_Maps.git", r);
-            }
-
-
             try
             {
+                if (MM.ShouldMappackBeDownloaded("EMS"))
+                {
+                    HandleRepo(Path.Combine(MM.Reg.GoldPath, "extra2\\shr\\maps\\user\\EMSGit"), "master", "https://github.com/MadShadow-/EMS.git", r);
+                    HandleRepo(Path.Combine(MM.Reg.GoldPath, "extra2\\shr\\maps\\user\\EMS\\tools\\s5CommunityLib"), "master", "https://github.com/mcb5637/s5CommunityLib.git", r);
+                }
+                if (MM.ShouldMappackBeDownloaded("Speedwar"))
+                {
+                    HandleRepo(Path.Combine(MM.Reg.GoldPath, "extra2\\shr\\maps\\user\\speedwar"), "master", "https://github.com/MadShadow-/speedwar.git", r);
+                }
+
+                if (MM.ShouldMappackBeDownloaded("BS"))
+                {
+                    HandleRepo(Path.Combine(MM.Reg.GoldPath, "extra2\\shr\\maps\\user\\Balancing_Stuff_in_Dev"), "master", "https://github.com/GhoulMadness/Balancing-Stuff.git", r);
+                    HandleRepo(Path.Combine(MM.Reg.GoldPath, "extra2\\shr\\maps\\user\\Balancing_Stuff_Maps"), "main", "https://github.com/GhoulMadness/Balancing_Stuff_Maps.git", r);
+                }
+
+
                 r(0, Resources.TaskMPMap_CopyFiles);
 
                 if (MM.ShouldMappackBeDownloaded("EMS"))

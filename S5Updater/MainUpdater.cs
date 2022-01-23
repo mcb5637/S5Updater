@@ -24,8 +24,10 @@ namespace S5Updater
         {
             if (File.Exists(".\\AutoDownloader.exe.bak"))
                 File.Delete(".\\AutoDownloader.exe.bak");
+#if !DEBUG
             if (CheckUpdate())
                 return;
+#endif
 
             //CultureInfo i = new CultureInfo("en-us");
             //CultureInfo.DefaultThreadCurrentCulture = i;
