@@ -53,7 +53,7 @@ namespace S5Updater
             HashCalc = new DevHashCalc();
             Valid = new InstallValidator();
 
-            Text = Resources.TitleMainMenu;
+            Text = Resources.TitleMainMenu + typeof(MainMenu).GetTypeInfo().Assembly.GetName().Version;
             GroupBox_Installation.Text = Resources.TitleInstallation;
             BTN_SetGold.Text = Resources.Txt_SetGold;
             BTN_SetHE.Text = Resources.Txt_SetGold;
@@ -79,6 +79,10 @@ namespace S5Updater
             tabPageGeneral.Text = Resources.Txt_TabPageGeneral;
             tabPageMaps.Text = Resources.Txt_TabPageMaps;
             BTN_UpdateMappacks.Text = Resources.Txt_Btn_UpdateMappacks;
+            GroupBox_GoldDev.Text = Resources.Title_GoldDev;
+            Btn_UpdateDebugger.Text = Resources.Txt_UpdateDebugger;
+            Cb_EnableDebugger.Text = Resources.Txt_DebuggerActive;
+
 
             int idx = CheckedListBox_Mappacks.FindString("EMS");
             CheckedListBox_Mappacks.SetItemChecked(idx, Reg.DownloadMappackEMS);
@@ -141,7 +145,9 @@ namespace S5Updater
                 Btn_UpdateHook.Enabled = true;
                 Updating = true;
                 Cb_EnableHook.Enabled = TaskUpdateHook.IsInstalled(Reg.GoldPath);
-                Cb_EnableHook.Checked = TaskUpdateHook.IsEnabled(Reg.GoldPath);
+                Cb_EnableHook.Checked = TaskUpdateHook.IsEnabled(Reg.GoldPath, Valid);
+                Cb_EnableDebugger.Enabled = TaskUpdateDebugger.IsInstalled(Reg.GoldPath);
+                Cb_EnableDebugger.Checked = TaskUpdateDebugger.IsEnabled(Reg.GoldPath, Valid);
                 Updating = false;
             }
             else
@@ -159,6 +165,8 @@ namespace S5Updater
                 Updating = true;
                 Cb_EnableHook.Checked = false;
                 Cb_EnableHook.Enabled = false;
+                Cb_EnableDebugger.Checked = false;
+                Cb_EnableDebugger.Enabled = false;
                 Updating = false;
             }
             LBL_HE.Text = Resources.Lbl_HE + (Reg.HEPath ?? Resources._null);
@@ -237,6 +245,7 @@ namespace S5Updater
             bool hideInEasy = !EasyMode;
             Btn_GoldSave.Visible = hideInEasy;
             CB_DevMode.Visible = hideInEasy;
+            GroupBox_GoldDev.Visible = hideInEasy;
             UpdateInstallation();
         }
 
@@ -457,7 +466,13 @@ namespace S5Updater
         {
             if (Updating)
                 return;
-            TaskUpdateHook.SetEnabled(Reg.GoldPath, Cb_EnableHook.Checked);
+            TaskManageDebuggerDlls t = new TaskManageDebuggerDlls()
+            {
+                MM = this
+            };
+            Prog.ShowWorkDialog(t, this);
+            UpdateInstallation();
+            CheckStatus(t.Status);
             Log(Resources.Log_SetHookEnabled + Cb_EnableHook.Checked);
         }
 
@@ -480,6 +495,43 @@ namespace S5Updater
             };
             Prog.ShowWorkDialog(t, this);
             CheckStatus(t.Status);
+        }
+
+        internal bool DebuggerEnabled
+        {
+            get => Cb_EnableDebugger.Checked;
+            set => Cb_EnableDebugger.Checked = value;
+        }
+
+        internal bool HookEnabled
+        {
+            get => Cb_EnableHook.Checked;
+            set => Cb_EnableHook.Checked = value;
+        }
+
+        private void Btn_UpdateDebugger_Click(object sender, EventArgs e)
+        {
+            TaskUpdateDebugger t = new TaskUpdateDebugger()
+            {
+                MM = this
+            };
+            Prog.ShowWorkDialog(t, this);
+            UpdateInstallation();
+            CheckStatus(t.Status);
+        }
+
+        private void Cb_EnableDebugger_CheckedChanged(object sender, EventArgs e)
+        {
+            if (Updating)
+                return;
+            TaskManageDebuggerDlls t = new TaskManageDebuggerDlls()
+            {
+                MM = this
+            };
+            Prog.ShowWorkDialog(t, this);
+            UpdateInstallation();
+            CheckStatus(t.Status);
+            Log(Resources.Log_SetDebuggerEnabled + Cb_EnableHook.Checked);
         }
     }
 }

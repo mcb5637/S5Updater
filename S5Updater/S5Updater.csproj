@@ -126,7 +126,10 @@
     </Compile>
     <Compile Include="RegistryHandler.cs" />
     <Compile Include="TaskConvertHE.cs" />
+    <Compile Include="TaskManageDebuggerDlls.cs" />
     <Compile Include="TaskUpdate106.cs" />
+    <Compile Include="TaskUpdateDebugger.cs" />
+    <Compile Include="TaskUpdateFromGitRepo.cs" />
     <Compile Include="TaskUpdateGoldFrom105.cs" />
     <Compile Include="TaskUpdateHook.cs" />
     <Compile Include="TaskUpdateMPMaps.cs" />

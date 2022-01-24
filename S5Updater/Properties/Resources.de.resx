@@ -135,6 +135,9 @@
   <data name="Log_RegGold" xml:space="preserve">
     <value>Gold Registry Pfad gesetzt auf: </value>
   </data>
+  <data name="Log_SetDebuggerEnabled" xml:space="preserve">
+    <value>setze LuaDebugger aktiv: </value>
+  </data>
   <data name="Log_SetDev" xml:space="preserve">
     <value>Setze Entwickler Modus: </value>
   </data>
@@ -145,7 +148,7 @@
     <value>HE Installationspfad gesetzt auf: </value>
   </data>
   <data name="Log_SetHookEnabled" xml:space="preserve">
-    <value>setze hook aktiv: </value>
+    <value>setze CppLogic aktiv: </value>
   </data>
   <data name="Log_SetLang" xml:space="preserve">
     <value>Setze Sprache zu: </value>
@@ -186,6 +189,9 @@
   <data name="TaskConvert_QstSetReg" xml:space="preserve">
     <value>Setze Gold Registry Pfad zu: </value>
   </data>
+  <data name="TaskDebugger_Updating" xml:space="preserve">
+    <value>teste LuaDebugger</value>
+  </data>
   <data name="TaskHook_Ok" xml:space="preserve">
     <value>keine änderung benötigt</value>
   </data>
@@ -193,7 +199,7 @@
     <value>patchen</value>
   </data>
   <data name="TaskHook_Validating" xml:space="preserve">
-    <value>teste hook</value>
+    <value>teste CppLogic</value>
   </data>
   <data name="TaskMPMap_Checkout" xml:space="preserve">
     <value>aktualisiere Dateien</value>
@@ -250,7 +256,7 @@
     <value>Installationsort</value>
   </data>
   <data name="TitleMainMenu" xml:space="preserve">
-    <value>S5 Updater</value>
+    <value>S5 Updater </value>
   </data>
   <data name="TitleReg" xml:space="preserve">
     <value>Registry</value>
@@ -260,6 +266,9 @@
   </data>
   <data name="TitleUpdate" xml:space="preserve">
     <value>Gold</value>
+  </data>
+  <data name="Title_GoldDev" xml:space="preserve">
+    <value>Gold Entwicklertools</value>
   </data>
   <data name="Txt_AllPatchedNO" xml:space="preserve">
     <value>Patch benötigt</value>
@@ -272,6 +281,9 @@
   </data>
   <data name="Txt_Convert" xml:space="preserve">
     <value>Konvertiere HE zu Gold</value>
+  </data>
+  <data name="Txt_DebuggerActive" xml:space="preserve">
+    <value>Aktiviert</value>
   </data>
   <data name="Txt_DevMode" xml:space="preserve">
     <value>Entwickler Modus</value>
@@ -330,11 +342,14 @@
   <data name="Txt_Update106" xml:space="preserve">
     <value>Win 10 fix</value>
   </data>
+  <data name="Txt_UpdateDebugger" xml:space="preserve">
+    <value>aktualisiere LuaDebugger</value>
+  </data>
   <data name="Txt_UpdateFrom105" xml:space="preserve">
     <value>Update von 1.05</value>
   </data>
   <data name="Txt_UpdateHook" xml:space="preserve">
-    <value>aktualisiere hook</value>
+    <value>aktualisiere CppLogic</value>
   </data>
   <data name="Txt_UpdateMP" xml:space="preserve">
     <value>aktualisiere MP Karten</value>

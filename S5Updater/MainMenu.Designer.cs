@@ -68,6 +68,9 @@ namespace S5Updater
             this.CheckedListBox_Mappacks = new System.Windows.Forms.CheckedListBox();
             this.BTN_UpdateMappacks = new System.Windows.Forms.Button();
             this.label_MapDownload = new System.Windows.Forms.Label();
+            this.GroupBox_GoldDev = new System.Windows.Forms.GroupBox();
+            this.Btn_UpdateDebugger = new System.Windows.Forms.Button();
+            this.Cb_EnableDebugger = new System.Windows.Forms.CheckBox();
             this.GroupBox_Installation.SuspendLayout();
             this.GroupBox_Updates.SuspendLayout();
             this.GroupBox_Settings.SuspendLayout();
@@ -76,6 +79,7 @@ namespace S5Updater
             this.TabControl_Main.SuspendLayout();
             this.tabPageGeneral.SuspendLayout();
             this.tabPageMaps.SuspendLayout();
+            this.GroupBox_GoldDev.SuspendLayout();
             this.SuspendLayout();
             // 
             // GroupBox_Installation
@@ -197,7 +201,7 @@ namespace S5Updater
             this.GroupBox_Updates.Size = new System.Drawing.Size(514, 136);
             this.GroupBox_Updates.TabIndex = 2;
             this.GroupBox_Updates.TabStop = false;
-            this.GroupBox_Updates.Text = "groupBox1";
+            this.GroupBox_Updates.Text = "goldupdate";
             // 
             // Cb_EnableHook
             // 
@@ -331,7 +335,7 @@ namespace S5Updater
             this.GroupBox_Registry.Size = new System.Drawing.Size(514, 77);
             this.GroupBox_Registry.TabIndex = 4;
             this.GroupBox_Registry.TabStop = false;
-            this.GroupBox_Registry.Text = "groupBox1";
+            this.GroupBox_Registry.Text = "reg";
             // 
             // CB_ShowIntro
             // 
@@ -402,7 +406,7 @@ namespace S5Updater
             this.GroupBox_Convert.Size = new System.Drawing.Size(514, 50);
             this.GroupBox_Convert.TabIndex = 5;
             this.GroupBox_Convert.TabStop = false;
-            this.GroupBox_Convert.Text = "groupBox1";
+            this.GroupBox_Convert.Text = "converhe";
             // 
             // Btn_MapInstallerHE
             // 
@@ -418,7 +422,7 @@ namespace S5Updater
             // 
             this.Btn_ConvertHE.Location = new System.Drawing.Point(6, 21);
             this.Btn_ConvertHE.Name = "Btn_ConvertHE";
-            this.Btn_ConvertHE.Size = new System.Drawing.Size(169, 23);
+            this.Btn_ConvertHE.Size = new System.Drawing.Size(179, 23);
             this.Btn_ConvertHE.TabIndex = 0;
             this.Btn_ConvertHE.Text = "button1";
             this.Btn_ConvertHE.UseVisualStyleBackColor = true;
@@ -440,6 +444,7 @@ namespace S5Updater
             // 
             // tabPageGeneral
             // 
+            this.tabPageGeneral.Controls.Add(this.GroupBox_GoldDev);
             this.tabPageGeneral.Controls.Add(this.GroupBox_Settings);
             this.tabPageGeneral.Controls.Add(this.GroupBox_Convert);
             this.tabPageGeneral.Controls.Add(this.GroupBox_Registry);
@@ -499,13 +504,45 @@ namespace S5Updater
             this.label_MapDownload.TabIndex = 1;
             this.label_MapDownload.Text = "Mappacks";
             // 
+            // GroupBox_GoldDev
+            // 
+            this.GroupBox_GoldDev.Controls.Add(this.Cb_EnableDebugger);
+            this.GroupBox_GoldDev.Controls.Add(this.Btn_UpdateDebugger);
+            this.GroupBox_GoldDev.Location = new System.Drawing.Point(6, 413);
+            this.GroupBox_GoldDev.Name = "GroupBox_GoldDev";
+            this.GroupBox_GoldDev.Size = new System.Drawing.Size(514, 51);
+            this.GroupBox_GoldDev.TabIndex = 6;
+            this.GroupBox_GoldDev.TabStop = false;
+            this.GroupBox_GoldDev.Text = "golddev";
+            // 
+            // Btn_UpdateDebugger
+            // 
+            this.Btn_UpdateDebugger.Location = new System.Drawing.Point(6, 19);
+            this.Btn_UpdateDebugger.Name = "Btn_UpdateDebugger";
+            this.Btn_UpdateDebugger.Size = new System.Drawing.Size(179, 23);
+            this.Btn_UpdateDebugger.TabIndex = 0;
+            this.Btn_UpdateDebugger.Text = "button1";
+            this.Btn_UpdateDebugger.UseVisualStyleBackColor = true;
+            this.Btn_UpdateDebugger.Click += new System.EventHandler(this.Btn_UpdateDebugger_Click);
+            // 
+            // Cb_EnableDebugger
+            // 
+            this.Cb_EnableDebugger.AutoSize = true;
+            this.Cb_EnableDebugger.Location = new System.Drawing.Point(191, 23);
+            this.Cb_EnableDebugger.Name = "Cb_EnableDebugger";
+            this.Cb_EnableDebugger.Size = new System.Drawing.Size(80, 17);
+            this.Cb_EnableDebugger.TabIndex = 1;
+            this.Cb_EnableDebugger.Text = "checkBox1";
+            this.Cb_EnableDebugger.UseVisualStyleBackColor = true;
+            this.Cb_EnableDebugger.CheckedChanged += new System.EventHandler(this.Cb_EnableDebugger_CheckedChanged);
+            // 
             // MainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(1117, 594);
+            this.ClientSize = new System.Drawing.Size(1117, 596);
             this.Controls.Add(this.TextBox_Output);
             this.Controls.Add(this.TabControl_Main);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
@@ -527,6 +564,8 @@ namespace S5Updater
             this.tabPageGeneral.ResumeLayout(false);
             this.tabPageMaps.ResumeLayout(false);
             this.tabPageMaps.PerformLayout();
+            this.GroupBox_GoldDev.ResumeLayout(false);
+            this.GroupBox_GoldDev.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -573,5 +612,8 @@ namespace S5Updater
         private System.Windows.Forms.Label label_MapDownload;
         private System.Windows.Forms.Button BTN_UpdateMappacks;
         private System.Windows.Forms.CheckedListBox CheckedListBox_Mappacks;
+        private System.Windows.Forms.GroupBox GroupBox_GoldDev;
+        private System.Windows.Forms.Button Btn_UpdateDebugger;
+        private System.Windows.Forms.CheckBox Cb_EnableDebugger;
     }
 }
