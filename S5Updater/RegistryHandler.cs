@@ -90,53 +90,40 @@ namespace S5Updater
             set => Registry.SetValue(GoldDevKey, GoldLanguage, value, RegistryValueKind.String);
         }
 
+        private bool RegistryReadBool(string keyname, string valuename, bool defaultret)
+        {
+            object o = Registry.GetValue(keyname, valuename, defaultret ? 1 : 0);
+            if (o == null)
+                return defaultret;
+            return (int)o > 0;
+        }
+        private void RegistryWriteBool(string keyname, string valuename, bool wr)
+        {
+            Registry.SetValue(keyname, valuename, wr ? 1 : 0, RegistryValueKind.DWord);
+        }
+
         internal bool ShowIntroVideo
         {
-            get
-            {
-                object o = Registry.GetValue(GoldDevKey, GoldVideo, 1);
-                if (o == null)
-                    return true;
-                return (int)o > 0;
-            }
-
-            set => Registry.SetValue(GoldDevKey, GoldVideo, value ? 1 : 0, RegistryValueKind.DWord);
+            get => RegistryReadBool(GoldDevKey, GoldVideo, true);
+            set => RegistryWriteBool(GoldDevKey, GoldVideo, value);
         }
 
         internal bool DownloadMappackEMS
         {
-            get
-            {
-                object o = Registry.GetValue(S5UpdaterKey, MappackEMSKey, 1);
-                if (o == null)
-                    return true;
-                return (int)o > 0;
-            }
-            set => Registry.SetValue(S5UpdaterKey, MappackEMSKey, value ? 1 : 0, RegistryValueKind.DWord);
+            get => RegistryReadBool(S5UpdaterKey, MappackEMSKey, true);
+            set => RegistryWriteBool(S5UpdaterKey, MappackEMSKey, value);
         }
 
         internal bool DownloadMappackSpeedwar
         {
-            get
-            {
-                object o = Registry.GetValue(S5UpdaterKey, MappackSpeedwarKey, 1);
-                if (o == null)
-                    return true;
-                return (int)o > 0;
-            }
-            set => Registry.SetValue(S5UpdaterKey, MappackSpeedwarKey, value ? 1 : 0, RegistryValueKind.DWord);
+            get => RegistryReadBool(S5UpdaterKey, MappackSpeedwarKey, true);
+            set => RegistryWriteBool(S5UpdaterKey, MappackSpeedwarKey, value);
         }
 
         internal bool DownloadMappackBS
         {
-            get
-            {
-                object o = Registry.GetValue(S5UpdaterKey, MappackBSKey, 1);
-                if (o == null)
-                    return true;
-                return (int)o > 0;
-            }
-            set => Registry.SetValue(S5UpdaterKey, MappackBSKey, value ? 1 : 0, RegistryValueKind.DWord);
+            get => RegistryReadBool(S5UpdaterKey, MappackBSKey, true);
+            set => RegistryWriteBool(S5UpdaterKey, MappackBSKey, value);
         }
     }
 }
