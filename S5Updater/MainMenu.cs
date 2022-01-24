@@ -216,8 +216,9 @@ namespace S5Updater
         {
             if (Updating)
                 return;
+            AutoSize = false;
             TextBox_Output.Visible = CB_ShowLog.Checked;
-            Size = new Size(CB_ShowLog.Checked ? 1127 : 560, 594);
+            AutoSize = true;
         }
 
         private void Btn_GoldSave_Click(object sender, EventArgs e)

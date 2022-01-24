@@ -172,12 +172,14 @@ namespace S5Updater
             // 
             this.TextBox_Output.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.TextBox_Output.Location = new System.Drawing.Point(532, 12);
+            this.TextBox_Output.Location = new System.Drawing.Point(534, 12);
+            this.TextBox_Output.MaximumSize = new System.Drawing.Size(571, 570);
+            this.TextBox_Output.MinimumSize = new System.Drawing.Size(571, 570);
             this.TextBox_Output.Multiline = true;
             this.TextBox_Output.Name = "TextBox_Output";
             this.TextBox_Output.ReadOnly = true;
             this.TextBox_Output.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.TextBox_Output.Size = new System.Drawing.Size(567, 575);
+            this.TextBox_Output.Size = new System.Drawing.Size(571, 570);
             this.TextBox_Output.TabIndex = 1;
             this.TextBox_Output.WordWrap = false;
             // 
@@ -271,10 +273,11 @@ namespace S5Updater
             // 
             // GroupBox_Settings
             // 
+            this.GroupBox_Settings.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.GroupBox_Settings.Controls.Add(this.BTN_DBG_HashFile);
             this.GroupBox_Settings.Controls.Add(this.CB_EasyMode);
             this.GroupBox_Settings.Controls.Add(this.CB_ShowLog);
-            this.GroupBox_Settings.Location = new System.Drawing.Point(6, 425);
+            this.GroupBox_Settings.Location = new System.Drawing.Point(6, 501);
             this.GroupBox_Settings.Name = "GroupBox_Settings";
             this.GroupBox_Settings.Size = new System.Drawing.Size(514, 48);
             this.GroupBox_Settings.TabIndex = 3;
@@ -423,9 +426,13 @@ namespace S5Updater
             // 
             // TabControl_Main
             // 
+            this.TabControl_Main.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.TabControl_Main.Controls.Add(this.tabPageGeneral);
             this.TabControl_Main.Controls.Add(this.tabPageMaps);
-            this.TabControl_Main.Location = new System.Drawing.Point(1, 0);
+            this.TabControl_Main.Location = new System.Drawing.Point(0, 0);
+            this.TabControl_Main.MaximumSize = new System.Drawing.Size(533, 587);
+            this.TabControl_Main.MinimumSize = new System.Drawing.Size(533, 587);
             this.TabControl_Main.Name = "TabControl_Main";
             this.TabControl_Main.SelectedIndex = 0;
             this.TabControl_Main.Size = new System.Drawing.Size(533, 587);
@@ -496,7 +503,9 @@ namespace S5Updater
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1111, 599);
+            this.AutoSize = true;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.ClientSize = new System.Drawing.Size(1117, 594);
             this.Controls.Add(this.TextBox_Output);
             this.Controls.Add(this.TabControl_Main);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
