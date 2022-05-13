@@ -63,7 +63,7 @@ namespace S5Updater
             return IsValid(path) && HashGold106Exe.Equals(GetFileHash(Path.Combine(path, ValidFile)));
         }
 
-        internal string GetFileHash(string path)
+        internal static string GetFileHash(string path)
         {
             using (MD5 md5 = MD5.Create())
             {

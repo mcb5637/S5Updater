@@ -82,6 +82,8 @@ namespace S5Updater
             GroupBox_GoldDev.Text = Resources.Title_GoldDev;
             Btn_UpdateDebugger.Text = Resources.Txt_UpdateDebugger;
             Cb_EnableDebugger.Text = Resources.Txt_DebuggerActive;
+            Btn_ExtVersionCheckGold.Text = Resources.Txt_VersionCheckGold;
+            Btn_ExtVersionCheckHE.Text = Resources.Txt_VersionCheckGold;
 
 
             int idx = CheckedListBox_Mappacks.FindString("EMS");
@@ -93,8 +95,10 @@ namespace S5Updater
 
 #if DEBUG
             BTN_DBG_HashFile.Visible = true;
+            BTN_DBG_Xml.Visible = true;
 #else
             BTN_DBG_HashFile.Visible = false;
+            BTN_DBG_Xml.Visible = false;
 #endif
 
             Updating = true;
@@ -184,6 +188,8 @@ namespace S5Updater
                 Btn_ConvertHE.Enabled = false;
                 Btn_MapInstallerHE.Enabled = false;
             }
+            Btn_ExtVersionCheckGold.Enabled = Reg.GoldPath != null;
+            Btn_ExtVersionCheckHE.Enabled = Reg.HEPath != null;
         }
 
         private void BTN_SetGold_Click(object sender, EventArgs e)
@@ -316,7 +322,7 @@ namespace S5Updater
         {
             if (Dlg_OpenFile.ShowDialog() == DialogResult.OK)
             {
-                Log(Path.GetFileName(Dlg_OpenFile.FileName) + " " + Valid.GetFileHash(Dlg_OpenFile.FileName));
+                Log(Path.GetFileName(Dlg_OpenFile.FileName) + " " + InstallValidator.GetFileHash(Dlg_OpenFile.FileName));
             }
         }
 
@@ -532,6 +538,40 @@ namespace S5Updater
             UpdateInstallation();
             CheckStatus(t.Status);
             Log(Resources.Log_SetDebuggerEnabled + Cb_EnableHook.Checked);
+        }
+
+        private void BTN_DBG_Xml_Click(object sender, EventArgs e)
+        {
+            VersionChecker v = new VersionChecker();
+            if (File.Exists("./VersionInfo.xml"))
+                v.LoadFrom("./VersionInfo.xml");
+            v.AddHashesForVersion(Reg.GoldPath, VersionInfo.Patch1_5);
+            v.StoreTo("./VersionInfo.xml");
+        }
+
+        private void VersionCheck(string path)
+        {
+            VersionChecker v = new VersionChecker()
+            {
+                MM = this,
+                WorkPath = path,
+            };
+            Prog.ShowWorkDialog(v, this);
+            CheckStatus(v.Status);
+            if (v.Response != null)
+            {
+                MessageBox.Show(v.Response, "", MessageBoxButtons.OK);
+            }
+        }
+
+        private void Btn_ExtVersionCheckGold_Click(object sender, EventArgs e)
+        {
+            VersionCheck(Reg.GoldPath);
+        }
+
+        private void Btn_ExtVersionCheckHE_Click(object sender, EventArgs e)
+        {
+            VersionCheck(Reg.HEPath);
         }
     }
 }

@@ -77,6 +77,7 @@
   <PropertyGroup />
   <PropertyGroup />
   <PropertyGroup />
+  <PropertyGroup />
   <PropertyGroup>
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
@@ -133,6 +134,7 @@
     <Compile Include="TaskUpdateGoldFrom105.cs" />
     <Compile Include="TaskUpdateHook.cs" />
     <Compile Include="TaskUpdateMPMaps.cs" />
+    <Compile Include="VersionChecker.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="MainMenu.resx">

@@ -100,7 +100,7 @@ namespace S5Updater
                     string path = Path.Combine(MM.Reg.GoldPath, "bin", f.File);
                     if (!File.Exists(path))
                         return true;
-                    if (!MM.Valid.GetFileHash(path).Equals(f.Hash))
+                    if (!InstallValidator.GetFileHash(path).Equals(f.Hash))
                     {
                         r(0, f.File);
                         return true;

@@ -55,7 +55,7 @@ namespace S5Updater
         {
             string cppl = Path.Combine(path, "bin\\S5CppLogic.dll");
             string deb = Path.Combine(path, "bin\\LuaDebugger.dll");
-            return IsInstalled(path) && v.GetFileHash(cppl).Equals(v.GetFileHash(deb));
+            return IsInstalled(path) && InstallValidator.GetFileHash(cppl).Equals(InstallValidator.GetFileHash(deb));
         }
     }
 }

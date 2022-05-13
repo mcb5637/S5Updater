@@ -770,5 +770,41 @@ namespace S5Updater.Properties {
                 return ResourceManager.GetString("Txt_UpdateMP", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Loaded {0} file version infos.
+        /// </summary>
+        internal static string Txt_VersionCheckCount {
+            get {
+                return ResourceManager.GetString("Txt_VersionCheckCount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Calculated Version: {0} with {1}.
+        /// </summary>
+        internal static string Txt_VersioncheckDone {
+            get {
+                return ResourceManager.GetString("Txt_VersioncheckDone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Full version check.
+        /// </summary>
+        internal static string Txt_VersionCheckGold {
+            get {
+                return ResourceManager.GetString("Txt_VersionCheckGold", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Full version check:.
+        /// </summary>
+        internal static string Txt_VersionCheckStart {
+            get {
+                return ResourceManager.GetString("Txt_VersionCheckStart", resourceCulture);
+            }
+        }
     }
 }

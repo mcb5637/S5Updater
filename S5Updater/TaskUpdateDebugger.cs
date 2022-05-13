@@ -48,7 +48,7 @@ namespace S5Updater
             {
                 deb = Path.Combine(path, "bin\\LuaDebuggerOrig.dll");
             }
-            return v.GetFileHash(debfil).Equals(v.GetFileHash(deb));
+            return InstallValidator.GetFileHash(debfil).Equals(InstallValidator.GetFileHash(deb));
         }
     }
 }

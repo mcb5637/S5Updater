@@ -354,4 +354,16 @@
   <data name="Txt_UpdateMP" xml:space="preserve">
     <value>aktualisiere MP Karten</value>
   </data>
+  <data name="Txt_VersionCheckCount" xml:space="preserve">
+    <value>{0} Dateiversionen geladen</value>
+  </data>
+  <data name="Txt_VersioncheckDone" xml:space="preserve">
+    <value>Berechnete Version: {0} mit {1}</value>
+  </data>
+  <data name="Txt_VersionCheckGold" xml:space="preserve">
+    <value>Komplette Versionsprüfung</value>
+  </data>
+  <data name="Txt_VersionCheckStart" xml:space="preserve">
+    <value>Komplette Versionsprüfung:</value>
+  </data>
 </root>

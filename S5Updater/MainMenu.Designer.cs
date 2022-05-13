@@ -64,13 +64,16 @@ namespace S5Updater
             this.Dlg_OpenFile = new System.Windows.Forms.OpenFileDialog();
             this.TabControl_Main = new System.Windows.Forms.TabControl();
             this.tabPageGeneral = new System.Windows.Forms.TabPage();
+            this.GroupBox_GoldDev = new System.Windows.Forms.GroupBox();
+            this.Cb_EnableDebugger = new System.Windows.Forms.CheckBox();
+            this.Btn_UpdateDebugger = new System.Windows.Forms.Button();
             this.tabPageMaps = new System.Windows.Forms.TabPage();
             this.CheckedListBox_Mappacks = new System.Windows.Forms.CheckedListBox();
             this.BTN_UpdateMappacks = new System.Windows.Forms.Button();
             this.label_MapDownload = new System.Windows.Forms.Label();
-            this.GroupBox_GoldDev = new System.Windows.Forms.GroupBox();
-            this.Btn_UpdateDebugger = new System.Windows.Forms.Button();
-            this.Cb_EnableDebugger = new System.Windows.Forms.CheckBox();
+            this.BTN_DBG_Xml = new System.Windows.Forms.Button();
+            this.Btn_ExtVersionCheckGold = new System.Windows.Forms.Button();
+            this.Btn_ExtVersionCheckHE = new System.Windows.Forms.Button();
             this.GroupBox_Installation.SuspendLayout();
             this.GroupBox_Updates.SuspendLayout();
             this.GroupBox_Settings.SuspendLayout();
@@ -78,8 +81,8 @@ namespace S5Updater
             this.GroupBox_Convert.SuspendLayout();
             this.TabControl_Main.SuspendLayout();
             this.tabPageGeneral.SuspendLayout();
-            this.tabPageMaps.SuspendLayout();
             this.GroupBox_GoldDev.SuspendLayout();
+            this.tabPageMaps.SuspendLayout();
             this.SuspendLayout();
             // 
             // GroupBox_Installation
@@ -189,6 +192,7 @@ namespace S5Updater
             // 
             // GroupBox_Updates
             // 
+            this.GroupBox_Updates.Controls.Add(this.Btn_ExtVersionCheckGold);
             this.GroupBox_Updates.Controls.Add(this.Cb_EnableHook);
             this.GroupBox_Updates.Controls.Add(this.Btn_UpdateHook);
             this.GroupBox_Updates.Controls.Add(this.Btn_MapInstallerGold);
@@ -238,7 +242,7 @@ namespace S5Updater
             // 
             this.CB_AllPatched.AutoSize = true;
             this.CB_AllPatched.Enabled = false;
-            this.CB_AllPatched.Location = new System.Drawing.Point(326, 23);
+            this.CB_AllPatched.Location = new System.Drawing.Point(331, 23);
             this.CB_AllPatched.Name = "CB_AllPatched";
             this.CB_AllPatched.Size = new System.Drawing.Size(80, 17);
             this.CB_AllPatched.TabIndex = 3;
@@ -278,6 +282,7 @@ namespace S5Updater
             // GroupBox_Settings
             // 
             this.GroupBox_Settings.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.GroupBox_Settings.Controls.Add(this.BTN_DBG_Xml);
             this.GroupBox_Settings.Controls.Add(this.BTN_DBG_HashFile);
             this.GroupBox_Settings.Controls.Add(this.CB_EasyMode);
             this.GroupBox_Settings.Controls.Add(this.CB_ShowLog);
@@ -290,7 +295,7 @@ namespace S5Updater
             // 
             // BTN_DBG_HashFile
             // 
-            this.BTN_DBG_HashFile.Location = new System.Drawing.Point(326, 15);
+            this.BTN_DBG_HashFile.Location = new System.Drawing.Point(302, 15);
             this.BTN_DBG_HashFile.Name = "BTN_DBG_HashFile";
             this.BTN_DBG_HashFile.Size = new System.Drawing.Size(75, 23);
             this.BTN_DBG_HashFile.TabIndex = 2;
@@ -399,18 +404,19 @@ namespace S5Updater
             // 
             // GroupBox_Convert
             // 
+            this.GroupBox_Convert.Controls.Add(this.Btn_ExtVersionCheckHE);
             this.GroupBox_Convert.Controls.Add(this.Btn_MapInstallerHE);
             this.GroupBox_Convert.Controls.Add(this.Btn_ConvertHE);
             this.GroupBox_Convert.Location = new System.Drawing.Point(6, 357);
             this.GroupBox_Convert.Name = "GroupBox_Convert";
-            this.GroupBox_Convert.Size = new System.Drawing.Size(514, 50);
+            this.GroupBox_Convert.Size = new System.Drawing.Size(514, 81);
             this.GroupBox_Convert.TabIndex = 5;
             this.GroupBox_Convert.TabStop = false;
             this.GroupBox_Convert.Text = "converhe";
             // 
             // Btn_MapInstallerHE
             // 
-            this.Btn_MapInstallerHE.Location = new System.Drawing.Point(331, 21);
+            this.Btn_MapInstallerHE.Location = new System.Drawing.Point(331, 48);
             this.Btn_MapInstallerHE.Name = "Btn_MapInstallerHE";
             this.Btn_MapInstallerHE.Size = new System.Drawing.Size(177, 23);
             this.Btn_MapInstallerHE.TabIndex = 1;
@@ -420,7 +426,7 @@ namespace S5Updater
             // 
             // Btn_ConvertHE
             // 
-            this.Btn_ConvertHE.Location = new System.Drawing.Point(6, 21);
+            this.Btn_ConvertHE.Location = new System.Drawing.Point(9, 19);
             this.Btn_ConvertHE.Name = "Btn_ConvertHE";
             this.Btn_ConvertHE.Size = new System.Drawing.Size(179, 23);
             this.Btn_ConvertHE.TabIndex = 0;
@@ -457,6 +463,38 @@ namespace S5Updater
             this.tabPageGeneral.TabIndex = 0;
             this.tabPageGeneral.Text = "tabPage1";
             this.tabPageGeneral.UseVisualStyleBackColor = true;
+            // 
+            // GroupBox_GoldDev
+            // 
+            this.GroupBox_GoldDev.Controls.Add(this.Cb_EnableDebugger);
+            this.GroupBox_GoldDev.Controls.Add(this.Btn_UpdateDebugger);
+            this.GroupBox_GoldDev.Location = new System.Drawing.Point(6, 444);
+            this.GroupBox_GoldDev.Name = "GroupBox_GoldDev";
+            this.GroupBox_GoldDev.Size = new System.Drawing.Size(514, 51);
+            this.GroupBox_GoldDev.TabIndex = 6;
+            this.GroupBox_GoldDev.TabStop = false;
+            this.GroupBox_GoldDev.Text = "golddev";
+            // 
+            // Cb_EnableDebugger
+            // 
+            this.Cb_EnableDebugger.AutoSize = true;
+            this.Cb_EnableDebugger.Location = new System.Drawing.Point(191, 23);
+            this.Cb_EnableDebugger.Name = "Cb_EnableDebugger";
+            this.Cb_EnableDebugger.Size = new System.Drawing.Size(80, 17);
+            this.Cb_EnableDebugger.TabIndex = 1;
+            this.Cb_EnableDebugger.Text = "checkBox1";
+            this.Cb_EnableDebugger.UseVisualStyleBackColor = true;
+            this.Cb_EnableDebugger.CheckedChanged += new System.EventHandler(this.Cb_EnableDebugger_CheckedChanged);
+            // 
+            // Btn_UpdateDebugger
+            // 
+            this.Btn_UpdateDebugger.Location = new System.Drawing.Point(6, 19);
+            this.Btn_UpdateDebugger.Name = "Btn_UpdateDebugger";
+            this.Btn_UpdateDebugger.Size = new System.Drawing.Size(179, 23);
+            this.Btn_UpdateDebugger.TabIndex = 0;
+            this.Btn_UpdateDebugger.Text = "button1";
+            this.Btn_UpdateDebugger.UseVisualStyleBackColor = true;
+            this.Btn_UpdateDebugger.Click += new System.EventHandler(this.Btn_UpdateDebugger_Click);
             // 
             // tabPageMaps
             // 
@@ -504,37 +542,35 @@ namespace S5Updater
             this.label_MapDownload.TabIndex = 1;
             this.label_MapDownload.Text = "Mappacks";
             // 
-            // GroupBox_GoldDev
+            // BTN_DBG_Xml
             // 
-            this.GroupBox_GoldDev.Controls.Add(this.Cb_EnableDebugger);
-            this.GroupBox_GoldDev.Controls.Add(this.Btn_UpdateDebugger);
-            this.GroupBox_GoldDev.Location = new System.Drawing.Point(6, 413);
-            this.GroupBox_GoldDev.Name = "GroupBox_GoldDev";
-            this.GroupBox_GoldDev.Size = new System.Drawing.Size(514, 51);
-            this.GroupBox_GoldDev.TabIndex = 6;
-            this.GroupBox_GoldDev.TabStop = false;
-            this.GroupBox_GoldDev.Text = "golddev";
+            this.BTN_DBG_Xml.Location = new System.Drawing.Point(400, 15);
+            this.BTN_DBG_Xml.Name = "BTN_DBG_Xml";
+            this.BTN_DBG_Xml.Size = new System.Drawing.Size(75, 23);
+            this.BTN_DBG_Xml.TabIndex = 3;
+            this.BTN_DBG_Xml.Text = "add versxml";
+            this.BTN_DBG_Xml.UseVisualStyleBackColor = true;
+            this.BTN_DBG_Xml.Click += new System.EventHandler(this.BTN_DBG_Xml_Click);
             // 
-            // Btn_UpdateDebugger
+            // Btn_ExtVersionCheckGold
             // 
-            this.Btn_UpdateDebugger.Location = new System.Drawing.Point(6, 19);
-            this.Btn_UpdateDebugger.Name = "Btn_UpdateDebugger";
-            this.Btn_UpdateDebugger.Size = new System.Drawing.Size(179, 23);
-            this.Btn_UpdateDebugger.TabIndex = 0;
-            this.Btn_UpdateDebugger.Text = "button1";
-            this.Btn_UpdateDebugger.UseVisualStyleBackColor = true;
-            this.Btn_UpdateDebugger.Click += new System.EventHandler(this.Btn_UpdateDebugger_Click);
+            this.Btn_ExtVersionCheckGold.Location = new System.Drawing.Point(331, 48);
+            this.Btn_ExtVersionCheckGold.Name = "Btn_ExtVersionCheckGold";
+            this.Btn_ExtVersionCheckGold.Size = new System.Drawing.Size(177, 23);
+            this.Btn_ExtVersionCheckGold.TabIndex = 6;
+            this.Btn_ExtVersionCheckGold.Text = "button1";
+            this.Btn_ExtVersionCheckGold.UseVisualStyleBackColor = true;
+            this.Btn_ExtVersionCheckGold.Click += new System.EventHandler(this.Btn_ExtVersionCheckGold_Click);
             // 
-            // Cb_EnableDebugger
+            // Btn_ExtVersionCheckHE
             // 
-            this.Cb_EnableDebugger.AutoSize = true;
-            this.Cb_EnableDebugger.Location = new System.Drawing.Point(191, 23);
-            this.Cb_EnableDebugger.Name = "Cb_EnableDebugger";
-            this.Cb_EnableDebugger.Size = new System.Drawing.Size(80, 17);
-            this.Cb_EnableDebugger.TabIndex = 1;
-            this.Cb_EnableDebugger.Text = "checkBox1";
-            this.Cb_EnableDebugger.UseVisualStyleBackColor = true;
-            this.Cb_EnableDebugger.CheckedChanged += new System.EventHandler(this.Cb_EnableDebugger_CheckedChanged);
+            this.Btn_ExtVersionCheckHE.Location = new System.Drawing.Point(331, 19);
+            this.Btn_ExtVersionCheckHE.Name = "Btn_ExtVersionCheckHE";
+            this.Btn_ExtVersionCheckHE.Size = new System.Drawing.Size(177, 23);
+            this.Btn_ExtVersionCheckHE.TabIndex = 2;
+            this.Btn_ExtVersionCheckHE.Text = "button1";
+            this.Btn_ExtVersionCheckHE.UseVisualStyleBackColor = true;
+            this.Btn_ExtVersionCheckHE.Click += new System.EventHandler(this.Btn_ExtVersionCheckHE_Click);
             // 
             // MainMenu
             // 
@@ -562,10 +598,10 @@ namespace S5Updater
             this.GroupBox_Convert.ResumeLayout(false);
             this.TabControl_Main.ResumeLayout(false);
             this.tabPageGeneral.ResumeLayout(false);
-            this.tabPageMaps.ResumeLayout(false);
-            this.tabPageMaps.PerformLayout();
             this.GroupBox_GoldDev.ResumeLayout(false);
             this.GroupBox_GoldDev.PerformLayout();
+            this.tabPageMaps.ResumeLayout(false);
+            this.tabPageMaps.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -615,5 +651,8 @@ namespace S5Updater
         private System.Windows.Forms.GroupBox GroupBox_GoldDev;
         private System.Windows.Forms.Button Btn_UpdateDebugger;
         private System.Windows.Forms.CheckBox Cb_EnableDebugger;
+        private System.Windows.Forms.Button BTN_DBG_Xml;
+        private System.Windows.Forms.Button Btn_ExtVersionCheckGold;
+        private System.Windows.Forms.Button Btn_ExtVersionCheckHE;
     }
 }
