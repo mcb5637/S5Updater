@@ -65,7 +65,7 @@ namespace S5Updater
                 Data = (VersionData)seri.Deserialize(w);
             }
         }
-        internal void AddHashesForVersion(string path, VersionInfo i)
+        internal void AddHashesForVersion(string path, VersionInfo thisversion, VersionInfo invalidversion, VersionInfo notfoundversion)
         {
             if (Data == null)
                 Data = new VersionData();
@@ -89,6 +89,8 @@ namespace S5Updater
                         {
                             RelativePath = Path.Combine(rel, f.Name),
                             NotFoundExtras = ex,
+                            InvalidVersion = invalidversion,
+                            NotFoundVersion = notfoundversion,
                         };
                         Data.Files.Add(vi);
                     }
@@ -98,7 +100,7 @@ namespace S5Updater
                         fh = new VersionFileHash() { Hash = h };
                         vi.Versions.Add(fh);
                     }
-                    fh.VersionInfo |= i;
+                    fh.VersionInfo |= thisversion;
                 }
                 foreach (DirectoryInfo d in dir.EnumerateDirectories())
                 {
@@ -106,6 +108,13 @@ namespace S5Updater
                 }
             }
             TravDir(new DirectoryInfo(path), "");
+
+            foreach (VersionFileInfo fil in Data.Files)
+            {
+                string p = Path.Combine(path, fil.RelativePath);
+                if (!File.Exists(p))
+                    fil.NotFoundVersion |= thisversion;
+            }
         }
         internal VersionInfo CheckVersion(string path, out Extras e, ProgressDialog.ReportProgressDel rd, TextWriter log)
         {

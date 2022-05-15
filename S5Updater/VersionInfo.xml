@@ -1,0 +1,1577 @@
+<?xml version="1.0" encoding="utf-8"?>
+<VersionData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Files>
+    <VersionFileInfo>
+      <RelativePath>settlershok.bin</RelativePath>
+      <Versions>
+        <VersionFileHash>
+          <Hash>D4-1D-8C-D9-8F-00-B2-04-E9-80-09-98-EC-F8-42-7E</Hash>
+          <VersionInfo>Patch1_5 Patch1_6 Patch1_6_Win10</VersionInfo>
+        </VersionFileHash>
+      </Versions>
+      <InvalidVersion>Unknown</InvalidVersion>
+      <NotFoundVersion>Unknown</NotFoundVersion>
+      <NotFoundExtras>Base Extra1 Extra2</NotFoundExtras>
+    </VersionFileInfo>
+    <VersionFileInfo>
+      <RelativePath>base\data.bba</RelativePath>
+      <Versions>
+        <VersionFileHash>
+          <Hash>90-87-D9-A8-C7-ED-EA-5E-BB-84-1E-66-ED-B3-E2-1A</Hash>
+          <VersionInfo>Patch1_5 Patch1_6 Patch1_6_Win10</VersionInfo>
+        </VersionFileHash>
+      </Versions>
+      <InvalidVersion>Unknown</InvalidVersion>
+      <NotFoundVersion>Unknown</NotFoundVersion>
+      <NotFoundExtras>Base Extra1 Extra2</NotFoundExtras>
+    </VersionFileInfo>
+    <VersionFileInfo>
+      <RelativePath>base\lang.bba</RelativePath>
+      <Versions>
+        <VersionFileHash>
+          <Hash>5E-D6-0E-6A-79-95-5E-DC-D4-13-C2-68-73-FC-C1-75</Hash>
+          <VersionInfo>Patch1_5 Patch1_6 Patch1_6_Win10</VersionInfo>
+        </VersionFileHash>
+      </Versions>
+      <InvalidVersion>Unknown</InvalidVersion>
+      <NotFoundVersion>Unknown</NotFoundVersion>
+      <NotFoundExtras>Base Extra1 Extra2</NotFoundExtras>
+    </VersionFileInfo>
+    <VersionFileInfo>
+      <RelativePath>base\patch.bba</RelativePath>
+      <Versions>
+        <VersionFileHash>
+          <Hash>16-4D-28-81-A8-59-1C-1C-FC-CD-B4-59-59-58-60-F0</Hash>
+          <VersionInfo>Patch1_5</VersionInfo>
+        </VersionFileHash>
+        <VersionFileHash>
+          <Hash>29-D1-C0-C3-B9-35-6A-9D-3D-6C-1E-D8-DD-64-A4-FF</Hash>
+          <VersionInfo>Patch1_6 Patch1_6_Win10</VersionInfo>
+        </VersionFileHash>
+      </Versions>
+      <InvalidVersion>Unknown</InvalidVersion>
+      <NotFoundVersion>Unknown</NotFoundVersion>
+      <NotFoundExtras>Base Extra1 Extra2</NotFoundExtras>
+    </VersionFileInfo>
+    <VersionFileInfo>
+      <RelativePath>base\shr\music\01_MainTheme1.mp3</RelativePath>
+      <Versions>
+        <VersionFileHash>
+          <Hash>B3-43-CA-33-A9-D9-50-D0-13-C7-E8-06-A5-C7-23-30</Hash>
+          <VersionInfo>Patch1_5 Patch1_6 Patch1_6_Win10</VersionInfo>
+        </VersionFileHash>
+      </Versions>
+      <InvalidVersion>Unknown</InvalidVersion>
+      <NotFoundVersion>Unknown</NotFoundVersion>
+      <NotFoundExtras>Base Extra1 Extra2</NotFoundExtras>
+    </VersionFileInfo>
+    <VersionFileInfo>
+      <RelativePath>base\shr\music\02_MainTheme2.mp3</RelativePath>
+      <Versions>
+        <VersionFileHash>
+          <Hash>C7-60-1C-F7-41-01-E8-CF-69-BC-CC-7A-75-40-F8-BC</Hash>
+          <VersionInfo>Patch1_5 Patch1_6 Patch1_6_Win10</VersionInfo>
+        </VersionFileHash>
+      </Versions>
+      <InvalidVersion>Unknown</InvalidVersion>
+      <NotFoundVersion>Unknown</NotFoundVersion>
+      <NotFoundExtras>Base Extra1 Extra2</NotFoundExtras>
+    </VersionFileInfo>
+    <VersionFileInfo>
+      <RelativePath>base\shr\music\03_CombatEurope1.mp3</RelativePath>
+      <Versions>
+        <VersionFileHash>
+          <Hash>C3-C5-BF-09-D4-BE-71-1C-DD-3E-FC-31-4D-3F-FF-CE</Hash>
+          <VersionInfo>Patch1_5 Patch1_6 Patch1_6_Win10</VersionInfo>
+        </VersionFileHash>
+      </Versions>
+      <InvalidVersion>Unknown</InvalidVersion>
+      <NotFoundVersion>Unknown</NotFoundVersion>
+      <NotFoundExtras>Base Extra1 Extra2</NotFoundExtras>
+    </VersionFileInfo>
+    <VersionFileInfo>
+      <RelativePath>base\shr\music\04_CombatMediterranean1.mp3</RelativePath>
+      <Versions>
+        <VersionFileHash>
+          <Hash>44-29-D7-A7-31-10-A5-4D-10-5F-03-AD-C6-A4-E8-18</Hash>
+          <VersionInfo>Patch1_5 Patch1_6 Patch1_6_Win10</VersionInfo>
+        </VersionFileHash>
+      </Versions>
+      <InvalidVersion>Unknown</InvalidVersion>
+      <NotFoundVersion>Unknown</NotFoundVersion>
+      <NotFoundExtras>Base Extra1 Extra2</NotFoundExtras>
+    </VersionFileInfo>
+    <VersionFileInfo>
+      <RelativePath>base\shr\music\05_CombatEvelance1.mp3</RelativePath>
+      <Versions>
+        <VersionFileHash>
+          <Hash>20-33-EB-B1-CA-CB-79-D2-C3-46-1F-E2-FC-11-9B-3D</Hash>
+          <VersionInfo>Patch1_5 Patch1_6 Patch1_6_Win10</VersionInfo>
+        </VersionFileHash>
+      </Versions>
+      <InvalidVersion>Unknown</InvalidVersion>
+      <NotFoundVersion>Unknown</NotFoundVersion>
+      <NotFoundExtras>Base Extra1 Extra2</NotFoundExtras>
+    </VersionFileInfo>
+    <VersionFileInfo>
+      <RelativePath>base\shr\music\06_MiddleEurope_Summer1.mp3</RelativePath>
+      <Versions>
+        <VersionFileHash>
+          <Hash>96-20-21-47-FB-F3-2C-CB-CF-B5-22-4C-78-86-D8-CE</Hash>
+          <VersionInfo>Patch1_5 Patch1_6 Patch1_6_Win10</VersionInfo>
+        </VersionFileHash>
+      </Versions>
+      <InvalidVersion>Unknown</InvalidVersion>
+      <NotFoundVersion>Unknown</NotFoundVersion>
+      <NotFoundExtras>Base Extra1 Extra2</NotFoundExtras>
+    </VersionFileInfo>
+    <VersionFileInfo>
+      <RelativePath>base\shr\music\07_MiddleEurope_Summer2.mp3</RelativePath>
+      <Versions>
+        <VersionFileHash>
+          <Hash>6E-6E-0B-FE-5E-46-C6-5A-3F-B9-27-BA-C5-30-11-6F</Hash>
+          <VersionInfo>Patch1_5 Patch1_6 Patch1_6_Win10</VersionInfo>
+        </VersionFileHash>
+      </Versions>
+      <InvalidVersion>Unknown</InvalidVersion>
+      <NotFoundVersion>Unknown</NotFoundVersion>
+      <NotFoundExtras>Base Extra1 Extra2</NotFoundExtras>
+    </VersionFileInfo>
+    <VersionFileInfo>
+      <RelativePath>base\shr\music\08_MiddleEurope_Summer3.mp3</RelativePath>
+      <Versions>
+        <VersionFileHash>
+          <Hash>92-0E-F7-C4-DB-44-0B-AA-8D-92-82-6B-40-DD-82-9E</Hash>
+          <VersionInfo>Patch1_5 Patch1_6 Patch1_6_Win10</VersionInfo>
+        </VersionFileHash>
+      </Versions>
+      <InvalidVersion>Unknown</InvalidVersion>
+      <NotFoundVersion>Unknown</NotFoundVersion>
+      <NotFoundExtras>Base Extra1 Extra2</NotFoundExtras>
+    </VersionFileInfo>
+    <VersionFileInfo>
+      <RelativePath>base\shr\music\09_MiddleEurope_Summer4.mp3</RelativePath>
+      <Versions>
+        <VersionFileHash>
+          <Hash>E1-6A-44-54-C6-A1-B1-7D-50-EC-CA-CA-EC-5A-0C-DE</Hash>
+          <VersionInfo>Patch1_5 Patch1_6 Patch1_6_Win10</VersionInfo>
+        </VersionFileHash>
+      </Versions>
+      <InvalidVersion>Unknown</InvalidVersion>
+      <NotFoundVersion>Unknown</NotFoundVersion>
+      <NotFoundExtras>Base Extra1 Extra2</NotFoundExtras>
+    </VersionFileInfo>
+    <VersionFileInfo>
+      <RelativePath>base\shr\music\10_MiddleEurope_Summer5.mp3</RelativePath>
+      <Versions>
+        <VersionFileHash>
+          <Hash>5C-3A-DD-B2-AA-2D-BE-FC-69-13-FB-56-9C-B6-7D-0B</Hash>
+          <VersionInfo>Patch1_5 Patch1_6 Patch1_6_Win10</VersionInfo>
+        </VersionFileHash>
+      </Versions>
+      <InvalidVersion>Unknown</InvalidVersion>
+      <NotFoundVersion>Unknown</NotFoundVersion>
+      <NotFoundExtras>Base Extra1 Extra2</NotFoundExtras>
+    </VersionFileInfo>
+    <VersionFileInfo>
+      <RelativePath>base\shr\music\11_MiddleEurope_Summer6.mp3</RelativePath>
+      <Versions>
+        <VersionFileHash>
+          <Hash>E3-5B-21-B2-48-81-B4-C8-7E-D6-91-72-44-67-97-B4</Hash>
+          <VersionInfo>Patch1_5 Patch1_6 Patch1_6_Win10</VersionInfo>
+        </VersionFileHash>
+      </Versions>
+      <InvalidVersion>Unknown</InvalidVersion>
+      <NotFoundVersion>Unknown</NotFoundVersion>
+      <NotFoundExtras>Base Extra1 Extra2</NotFoundExtras>
+    </VersionFileInfo>
+    <VersionFileInfo>
+      <RelativePath>base\shr\music\12_MiddleEurope_Summer7.mp3</RelativePath>
+      <Versions>
+        <VersionFileHash>
+          <Hash>2F-52-62-55-86-73-97-8C-1C-60-74-94-23-BA-52-4C</Hash>
+          <VersionInfo>Patch1_5 Patch1_6 Patch1_6_Win10</VersionInfo>
+        </VersionFileHash>
+      </Versions>
+      <InvalidVersion>Unknown</InvalidVersion>
+      <NotFoundVersion>Unknown</NotFoundVersion>
+      <NotFoundExtras>Base Extra1 Extra2</NotFoundExtras>
+    </VersionFileInfo>
+    <VersionFileInfo>
+      <RelativePath>base\shr\music\13_MiddleEurope_Summer8.mp3</RelativePath>
+      <Versions>
+        <VersionFileHash>
+          <Hash>4B-75-DA-E6-4B-E1-E1-F6-71-80-EF-C3-81-D3-1B-BD</Hash>
+          <VersionInfo>Patch1_5 Patch1_6 Patch1_6_Win10</VersionInfo>
+        </VersionFileHash>
+      </Versions>
+      <InvalidVersion>Unknown</InvalidVersion>
+      <NotFoundVersion>Unknown</NotFoundVersion>
+      <NotFoundExtras>Base Extra1 Extra2</NotFoundExtras>
+    </VersionFileInfo>
+    <VersionFileInfo>
+      <RelativePath>base\shr\music\14_MiddleEurope_Summer9.mp3</RelativePath>
+      <Versions>
+        <VersionFileHash>
+          <Hash>6A-37-9C-77-B1-A1-95-62-DE-EE-C3-D8-7B-F3-5D-F9</Hash>
+          <VersionInfo>Patch1_5 Patch1_6 Patch1_6_Win10</VersionInfo>
+        </VersionFileHash>
+      </Versions>
+      <InvalidVersion>Unknown</InvalidVersion>
+      <NotFoundVersion>Unknown</NotFoundVersion>
+      <NotFoundExtras>Base Extra1 Extra2</NotFoundExtras>
+    </VersionFileInfo>
+    <VersionFileInfo>
+      <RelativePath>base\shr\music\15_Mediterranean_Summer1.mp3</RelativePath>
+      <Versions>
+        <VersionFileHash>
+          <Hash>56-F1-4E-A0-7B-85-26-95-38-58-FB-CB-63-BA-34-CF</Hash>
+          <VersionInfo>Patch1_5 Patch1_6 Patch1_6_Win10</VersionInfo>
+        </VersionFileHash>
+      </Versions>
+      <InvalidVersion>Unknown</InvalidVersion>
+      <NotFoundVersion>Unknown</NotFoundVersion>
+      <NotFoundExtras>Base Extra1 Extra2</NotFoundExtras>
+    </VersionFileInfo>
+    <VersionFileInfo>
+      <RelativePath>base\shr\music\16_Mediterranean_Summer2.mp3</RelativePath>
+      <Versions>
+        <VersionFileHash>
+          <Hash>CA-9B-4F-2A-81-98-F0-97-05-CD-38-80-18-6C-0D-9E</Hash>
+          <VersionInfo>Patch1_5 Patch1_6 Patch1_6_Win10</VersionInfo>
+        </VersionFileHash>
+      </Versions>
+      <InvalidVersion>Unknown</InvalidVersion>
+      <NotFoundVersion>Unknown</NotFoundVersion>
+      <NotFoundExtras>Base Extra1 Extra2</NotFoundExtras>
+    </VersionFileInfo>
+    <VersionFileInfo>
+      <RelativePath>base\shr\music\17_Highland_Summer1.mp3</RelativePath>
+      <Versions>
+        <VersionFileHash>
+          <Hash>0D-4A-32-D9-0E-FE-2D-5C-44-3E-3C-3D-C1-01-46-F4</Hash>
+          <VersionInfo>Patch1_5 Patch1_6 Patch1_6_Win10</VersionInfo>
+        </VersionFileHash>
+      </Versions>
+      <InvalidVersion>Unknown</InvalidVersion>
+      <NotFoundVersion>Unknown</NotFoundVersion>
+      <NotFoundExtras>Base Extra1 Extra2</NotFoundExtras>
+    </VersionFileInfo>
+    <VersionFileInfo>
+      <RelativePath>base\shr\music\18_Highland_Summer2.mp3</RelativePath>
+      <Versions>
+        <VersionFileHash>
+          <Hash>FF-1F-13-26-05-06-71-A2-A0-D3-FE-F5-F3-F0-62-6B</Hash>
+          <VersionInfo>Patch1_5 Patch1_6 Patch1_6_Win10</VersionInfo>
+        </VersionFileHash>
+      </Versions>
+      <InvalidVersion>Unknown</InvalidVersion>
+      <NotFoundVersion>Unknown</NotFoundVersion>
+      <NotFoundExtras>Base Extra1 Extra2</NotFoundExtras>
+    </VersionFileInfo>
+    <VersionFileInfo>
+      <RelativePath>base\shr\music\19_Evelance_Summer1.mp3</RelativePath>
+      <Versions>
+        <VersionFileHash>
+          <Hash>E1-1A-DF-AF-26-AC-63-48-F9-C6-4F-EB-6D-5E-A8-6F</Hash>
+          <VersionInfo>Patch1_5 Patch1_6 Patch1_6_Win10</VersionInfo>
+        </VersionFileHash>
+      </Versions>
+      <InvalidVersion>Unknown</InvalidVersion>
+      <NotFoundVersion>Unknown</NotFoundVersion>
+      <NotFoundExtras>Base Extra1 Extra2</NotFoundExtras>
+    </VersionFileInfo>
+    <VersionFileInfo>
+      <RelativePath>base\shr\music\20_Evelance_Summer2.mp3</RelativePath>
+      <Versions>
+        <VersionFileHash>
+          <Hash>B3-60-27-9F-C9-50-5B-9F-60-15-DF-1C-02-3F-31-F7</Hash>
+          <VersionInfo>Patch1_5 Patch1_6 Patch1_6_Win10</VersionInfo>
+        </VersionFileHash>
+      </Versions>
+      <InvalidVersion>Unknown</InvalidVersion>
+      <NotFoundVersion>Unknown</NotFoundVersion>
+      <NotFoundExtras>Base Extra1 Extra2</NotFoundExtras>
+    </VersionFileInfo>
+    <VersionFileInfo>
+      <RelativePath>base\shr\music\21_Evelance_Summer3.mp3</RelativePath>
+      <Versions>
+        <VersionFileHash>
+          <Hash>FD-50-9B-53-C6-C6-92-FF-12-95-98-01-42-20-3B-CF</Hash>
+          <VersionInfo>Patch1_5 Patch1_6 Patch1_6_Win10</VersionInfo>
+        </VersionFileHash>
+      </Versions>
+      <InvalidVersion>Unknown</InvalidVersion>
+      <NotFoundVersion>Unknown</NotFoundVersion>
+      <NotFoundExtras>Base Extra1 Extra2</NotFoundExtras>
+    </VersionFileInfo>
+    <VersionFileInfo>
+      <RelativePath>base\shr\music\22_Evelance_Summer4.mp3</RelativePath>
+      <Versions>
+        <VersionFileHash>
+          <Hash>E6-16-02-20-12-2A-D5-58-9D-2F-30-CB-B8-45-26-B1</Hash>
+          <VersionInfo>Patch1_5 Patch1_6 Patch1_6_Win10</VersionInfo>
+        </VersionFileHash>
+      </Versions>
+      <InvalidVersion>Unknown</InvalidVersion>
+      <NotFoundVersion>Unknown</NotFoundVersion>
+      <NotFoundExtras>Base Extra1 Extra2</NotFoundExtras>
+    </VersionFileInfo>
+    <VersionFileInfo>
+      <RelativePath>base\shr\music\23_Evelance_Summer5.mp3</RelativePath>
+      <Versions>
+        <VersionFileHash>
+          <Hash>18-9F-57-F1-12-32-34-D2-3F-DF-C3-FC-BA-6D-4C-D5</Hash>
+          <VersionInfo>Patch1_5 Patch1_6 Patch1_6_Win10</VersionInfo>
+        </VersionFileHash>
+      </Versions>
+      <InvalidVersion>Unknown</InvalidVersion>
+      <NotFoundVersion>Unknown</NotFoundVersion>
+      <NotFoundExtras>Base Extra1 Extra2</NotFoundExtras>
+    </VersionFileInfo>
+    <VersionFileInfo>
+      <RelativePath>base\shr\music\24_Evelance_Summer6.mp3</RelativePath>
+      <Versions>
+        <VersionFileHash>
+          <Hash>E8-0E-58-3C-A6-9F-86-91-60-D1-56-DD-CF-16-5A-F3</Hash>
+          <VersionInfo>Patch1_5 Patch1_6 Patch1_6_Win10</VersionInfo>
+        </VersionFileHash>
+      </Versions>
+      <InvalidVersion>Unknown</InvalidVersion>
+      <NotFoundVersion>Unknown</NotFoundVersion>
+      <NotFoundExtras>Base Extra1 Extra2</NotFoundExtras>
+    </VersionFileInfo>
+    <VersionFileInfo>
+      <RelativePath>base\shr\music\25_MiddleEurope_Winter1.mp3</RelativePath>
+      <Versions>
+        <VersionFileHash>
+          <Hash>BB-16-2A-77-6D-7F-9D-B0-7E-49-F1-9F-64-D8-9C-C9</Hash>
+          <VersionInfo>Patch1_5 Patch1_6 Patch1_6_Win10</VersionInfo>
+        </VersionFileHash>
+      </Versions>
+      <InvalidVersion>Unknown</InvalidVersion>
+      <NotFoundVersion>Unknown</NotFoundVersion>
+      <NotFoundExtras>Base Extra1 Extra2</NotFoundExtras>
+    </VersionFileInfo>
+    <VersionFileInfo>
+      <RelativePath>base\shr\music\26_MiddleEurope_Winter2.mp3</RelativePath>
+      <Versions>
+        <VersionFileHash>
+          <Hash>FD-E6-E0-41-64-2D-62-9E-F6-7E-C9-C5-E1-6C-B4-38</Hash>
+          <VersionInfo>Patch1_5 Patch1_6 Patch1_6_Win10</VersionInfo>
+        </VersionFileHash>
+      </Versions>
+      <InvalidVersion>Unknown</InvalidVersion>
+      <NotFoundVersion>Unknown</NotFoundVersion>
+      <NotFoundExtras>Base Extra1 Extra2</NotFoundExtras>
+    </VersionFileInfo>
+    <VersionFileInfo>
+      <RelativePath>base\shr\music\27_Mediterranean_Winter1.mp3</RelativePath>
+      <Versions>
+        <VersionFileHash>
+          <Hash>F4-2E-62-C8-20-8E-FB-3A-8D-A8-34-84-3D-A8-85-2D</Hash>
+          <VersionInfo>Patch1_5 Patch1_6 Patch1_6_Win10</VersionInfo>
+        </VersionFileHash>
+      </Versions>
+      <InvalidVersion>Unknown</InvalidVersion>
+      <NotFoundVersion>Unknown</NotFoundVersion>
+      <NotFoundExtras>Base Extra1 Extra2</NotFoundExtras>
+    </VersionFileInfo>
+    <VersionFileInfo>
+      <RelativePath>base\shr\music\28_Highland_Winter1.mp3</RelativePath>
+      <Versions>
+        <VersionFileHash>
+          <Hash>3B-90-37-6B-4A-A6-97-0A-1E-4E-A3-B2-F8-3A-75-C8</Hash>
+          <VersionInfo>Patch1_5 Patch1_6 Patch1_6_Win10</VersionInfo>
+        </VersionFileHash>
+      </Versions>
+      <InvalidVersion>Unknown</InvalidVersion>
+      <NotFoundVersion>Unknown</NotFoundVersion>
+      <NotFoundExtras>Base Extra1 Extra2</NotFoundExtras>
+    </VersionFileInfo>
+    <VersionFileInfo>
+      <RelativePath>base\shr\music\29_Evelance_Winter1.mp3</RelativePath>
+      <Versions>
+        <VersionFileHash>
+          <Hash>FE-95-99-89-6F-51-DE-8C-10-FA-22-5A-B8-E0-AC-A9</Hash>
+          <VersionInfo>Patch1_5 Patch1_6 Patch1_6_Win10</VersionInfo>
+        </VersionFileHash>
+      </Versions>
+      <InvalidVersion>Unknown</InvalidVersion>
+      <NotFoundVersion>Unknown</NotFoundVersion>
+      <NotFoundExtras>Base Extra1 Extra2</NotFoundExtras>
+    </VersionFileInfo>
+    <VersionFileInfo>
+      <RelativePath>base\shr\music\30_MiddleEurope_Winter3.mp3</RelativePath>
+      <Versions>
+        <VersionFileHash>
+          <Hash>A4-F8-3D-F0-30-1D-75-88-44-90-F2-76-36-83-C3-5B</Hash>
+          <VersionInfo>Patch1_5 Patch1_6 Patch1_6_Win10</VersionInfo>
+        </VersionFileHash>
+      </Versions>
+      <InvalidVersion>Unknown</InvalidVersion>
+      <NotFoundVersion>Unknown</NotFoundVersion>
+      <NotFoundExtras>Base Extra1 Extra2</NotFoundExtras>
+    </VersionFileInfo>
+    <VersionFileInfo>
+      <RelativePath>base\shr\music\Failed.mp3</RelativePath>
+      <Versions>
+        <VersionFileHash>
+          <Hash>AA-6C-3F-E6-1A-F1-10-37-D6-2C-C2-12-FB-4C-7B-EA</Hash>
+          <VersionInfo>Patch1_5 Patch1_6 Patch1_6_Win10</VersionInfo>
+        </VersionFileHash>
+      </Versions>
+      <InvalidVersion>Unknown</InvalidVersion>
+      <NotFoundVersion>Unknown</NotFoundVersion>
+      <NotFoundExtras>Base Extra1 Extra2</NotFoundExtras>
+    </VersionFileInfo>
+    <VersionFileInfo>
+      <RelativePath>base\shr\music\Win.mp3</RelativePath>
+      <Versions>
+        <VersionFileHash>
+          <Hash>74-65-28-1D-C5-9F-4E-62-E9-C9-D4-58-ED-C5-07-7F</Hash>
+          <VersionInfo>Patch1_5 Patch1_6 Patch1_6_Win10</VersionInfo>
+        </VersionFileHash>
+      </Versions>
+      <InvalidVersion>Unknown</InvalidVersion>
+      <NotFoundVersion>Unknown</NotFoundVersion>
+      <NotFoundExtras>Base Extra1 Extra2</NotFoundExtras>
+    </VersionFileInfo>
+    <VersionFileInfo>
+      <RelativePath>base\shr\videos\BattleOfEvelance.bik</RelativePath>
+      <Versions>
+        <VersionFileHash>
+          <Hash>83-AD-F8-53-FC-4B-2B-87-2B-E7-8B-74-46-06-B3-20</Hash>
+          <VersionInfo>Patch1_5 Patch1_6 Patch1_6_Win10</VersionInfo>
+        </VersionFileHash>
+      </Versions>
+      <InvalidVersion>Unknown</InvalidVersion>
+      <NotFoundVersion>Unknown</NotFoundVersion>
+      <NotFoundExtras>Base Extra1 Extra2</NotFoundExtras>
+    </VersionFileInfo>
+    <VersionFileInfo>
+      <RelativePath>base\shr\videos\BB_Logo.bik</RelativePath>
+      <Versions>
+        <VersionFileHash>
+          <Hash>7C-88-DF-F3-7C-C7-94-BC-D0-82-A6-2B-3F-CB-47-EC</Hash>
+          <VersionInfo>Patch1_5 Patch1_6 Patch1_6_Win10</VersionInfo>
+        </VersionFileHash>
+      </Versions>
+      <InvalidVersion>Unknown</InvalidVersion>
+      <NotFoundVersion>Unknown</NotFoundVersion>
+      <NotFoundExtras>Base Extra1 Extra2</NotFoundExtras>
+    </VersionFileInfo>
+    <VersionFileInfo>
+      <RelativePath>base\shr\videos\Cleycourt.bik</RelativePath>
+      <Versions>
+        <VersionFileHash>
+          <Hash>23-3F-A5-4C-11-A8-A7-A6-5F-05-67-BD-1F-C5-EA-63</Hash>
+          <VersionInfo>Patch1_5 Patch1_6 Patch1_6_Win10</VersionInfo>
+        </VersionFileHash>
+      </Versions>
+      <InvalidVersion>Unknown</InvalidVersion>
+      <NotFoundVersion>Unknown</NotFoundVersion>
+      <NotFoundExtras>Base Extra1 Extra2</NotFoundExtras>
+    </VersionFileInfo>
+    <VersionFileInfo>
+      <RelativePath>base\shr\videos\Crawford.bik</RelativePath>
+      <Versions>
+        <VersionFileHash>
+          <Hash>1F-29-83-4F-72-58-ED-A9-54-6D-40-00-08-46-99-3F</Hash>
+          <VersionInfo>Patch1_5 Patch1_6 Patch1_6_Win10</VersionInfo>
+        </VersionFileHash>
+      </Versions>
+      <InvalidVersion>Unknown</InvalidVersion>
+      <NotFoundVersion>Unknown</NotFoundVersion>
+      <NotFoundExtras>Base Extra1 Extra2</NotFoundExtras>
+    </VersionFileInfo>
+    <VersionFileInfo>
+      <RelativePath>base\shr\videos\Intro.bik</RelativePath>
+      <Versions>
+        <VersionFileHash>
+          <Hash>C2-2F-CA-46-2F-78-23-BE-BE-30-39-D3-66-FE-EF-1C</Hash>
+          <VersionInfo>Patch1_5 Patch1_6 Patch1_6_Win10</VersionInfo>
+        </VersionFileHash>
+      </Versions>
+      <InvalidVersion>Unknown</InvalidVersion>
+      <NotFoundVersion>Unknown</NotFoundVersion>
+      <NotFoundExtras>Base Extra1 Extra2</NotFoundExtras>
+    </VersionFileInfo>
+    <VersionFileInfo>
+      <RelativePath>base\shr\videos\Norfolk.bik</RelativePath>
+      <Versions>
+        <VersionFileHash>
+          <Hash>F8-A7-94-9C-D1-A8-80-33-56-D8-E3-07-F9-6C-5C-B9</Hash>
+          <VersionInfo>Patch1_5 Patch1_6 Patch1_6_Win10</VersionInfo>
+        </VersionFileHash>
+      </Versions>
+      <InvalidVersion>Unknown</InvalidVersion>
+      <NotFoundVersion>Unknown</NotFoundVersion>
+      <NotFoundExtras>Base Extra1 Extra2</NotFoundExtras>
+    </VersionFileInfo>
+    <VersionFileInfo>
+      <RelativePath>base\shr\videos\OldKingsCastle.bik</RelativePath>
+      <Versions>
+        <VersionFileHash>
+          <Hash>DF-BA-E1-84-D1-BA-AD-94-80-64-F3-54-DC-1A-95-6C</Hash>
+          <VersionInfo>Patch1_5 Patch1_6 Patch1_6_Win10</VersionInfo>
+        </VersionFileHash>
+      </Versions>
+      <InvalidVersion>Unknown</InvalidVersion>
+      <NotFoundVersion>Unknown</NotFoundVersion>
+      <NotFoundExtras>Base Extra1 Extra2</NotFoundExtras>
+    </VersionFileInfo>
+    <VersionFileInfo>
+      <RelativePath>base\shr\videos\Outro.bik</RelativePath>
+      <Versions>
+        <VersionFileHash>
+          <Hash>5D-FB-53-D4-EB-82-48-16-7D-20-6F-02-09-3F-31-8E</Hash>
+          <VersionInfo>Patch1_5 Patch1_6 Patch1_6_Win10</VersionInfo>
+        </VersionFileHash>
+      </Versions>
+      <InvalidVersion>Unknown</InvalidVersion>
+      <NotFoundVersion>Unknown</NotFoundVersion>
+      <NotFoundExtras>Base Extra1 Extra2</NotFoundExtras>
+    </VersionFileInfo>
+    <VersionFileInfo>
+      <RelativePath>base\shr\videos\Ubisoft_Logo.bik</RelativePath>
+      <Versions>
+        <VersionFileHash>
+          <Hash>C6-43-EE-C2-ED-F0-AB-71-19-F1-5D-8E-13-61-AA-82</Hash>
+          <VersionInfo>Patch1_5 Patch1_6 Patch1_6_Win10</VersionInfo>
+        </VersionFileHash>
+      </Versions>
+      <InvalidVersion>Unknown</InvalidVersion>
+      <NotFoundVersion>Unknown</NotFoundVersion>
+      <NotFoundExtras>Base Extra1 Extra2</NotFoundExtras>
+    </VersionFileInfo>
+    <VersionFileInfo>
+      <RelativePath>base\shr\videos\VillageAttack1.bik</RelativePath>
+      <Versions>
+        <VersionFileHash>
+          <Hash>5D-36-92-D1-BC-F5-45-87-91-4A-9E-1D-29-AC-1E-C4</Hash>
+          <VersionInfo>Patch1_5 Patch1_6 Patch1_6_Win10</VersionInfo>
+        </VersionFileHash>
+      </Versions>
+      <InvalidVersion>Unknown</InvalidVersion>
+      <NotFoundVersion>Unknown</NotFoundVersion>
+      <NotFoundExtras>Base Extra1 Extra2</NotFoundExtras>
+    </VersionFileInfo>
+    <VersionFileInfo>
+      <RelativePath>base\shr\videos\VillageAttack2.bik</RelativePath>
+      <Versions>
+        <VersionFileHash>
+          <Hash>74-27-0E-12-5F-D4-4C-57-55-F9-3A-16-21-81-2F-FC</Hash>
+          <VersionInfo>Patch1_5 Patch1_6 Patch1_6_Win10</VersionInfo>
+        </VersionFileHash>
+      </Versions>
+      <InvalidVersion>Unknown</InvalidVersion>
+      <NotFoundVersion>Unknown</NotFoundVersion>
+      <NotFoundExtras>Base Extra1 Extra2</NotFoundExtras>
+    </VersionFileInfo>
+    <VersionFileInfo>
+      <RelativePath>bin\AutoUpdate.ini</RelativePath>
+      <Versions>
+        <VersionFileHash>
+          <Hash>8D-E0-A5-53-63-61-5B-53-EB-10-1F-77-C8-A3-CA-E0</Hash>
+          <VersionInfo>Patch1_5 Patch1_6 Patch1_6_Win10</VersionInfo>
+        </VersionFileHash>
+      </Versions>
+      <InvalidVersion>Unknown</InvalidVersion>
+      <NotFoundVersion>Unknown</NotFoundVersion>
+      <NotFoundExtras>Base Extra1 Extra2</NotFoundExtras>
+    </VersionFileInfo>
+    <VersionFileInfo>
+      <RelativePath>bin\binkw32.dll</RelativePath>
+      <Versions>
+        <VersionFileHash>
+          <Hash>25-BE-6C-0D-D8-57-1A-CD-75-20-70-C7-52-30-8F-DB</Hash>
+          <VersionInfo>Patch1_5 Patch1_6 Patch1_6_Win10</VersionInfo>
+        </VersionFileHash>
+      </Versions>
+      <InvalidVersion>Unknown</InvalidVersion>
+      <NotFoundVersion>Unknown</NotFoundVersion>
+      <NotFoundExtras>Base Extra1 Extra2</NotFoundExtras>
+    </VersionFileInfo>
+    <VersionFileInfo>
+      <RelativePath>bin\dbghelp.dll</RelativePath>
+      <Versions>
+        <VersionFileHash>
+          <Hash>6F-29-E2-08-5A-05-9F-54-40-9F-F9-0E-C4-4B-52-2B</Hash>
+          <VersionInfo>Patch1_5 Patch1_6 Patch1_6_Win10</VersionInfo>
+        </VersionFileHash>
+      </Versions>
+      <InvalidVersion>Unknown</InvalidVersion>
+      <NotFoundVersion>Unknown</NotFoundVersion>
+      <NotFoundExtras>Base Extra1 Extra2</NotFoundExtras>
+    </VersionFileInfo>
+    <VersionFileInfo>
+      <RelativePath>bin\mss32.dll</RelativePath>
+      <Versions>
+        <VersionFileHash>
+          <Hash>A4-A5-AA-37-98-C5-F9-8B-59-09-7F-33-D4-67-0B-4A</Hash>
+          <VersionInfo>Patch1_5 Patch1_6 Patch1_6_Win10</VersionInfo>
+        </VersionFileHash>
+      </Versions>
+      <InvalidVersion>Unknown</InvalidVersion>
+      <NotFoundVersion>Unknown</NotFoundVersion>
+      <NotFoundExtras>Base Extra1 Extra2</NotFoundExtras>
+    </VersionFileInfo>
+    <VersionFileInfo>
+      <RelativePath>bin\mssds3d.m3d</RelativePath>
+      <Versions>
+        <VersionFileHash>
+          <Hash>08-C2-15-91-6E-3C-ED-88-E6-11-01-68-8E-15-13-E1</Hash>
+          <VersionInfo>Patch1_5 Patch1_6 Patch1_6_Win10</VersionInfo>
+        </VersionFileHash>
+      </Versions>
+      <InvalidVersion>Unknown</InvalidVersion>
+      <NotFoundVersion>Unknown</NotFoundVersion>
+      <NotFoundExtras>Base Extra1 Extra2</NotFoundExtras>
+    </VersionFileInfo>
+    <VersionFileInfo>
+      <RelativePath>bin\msseax.m3d</RelativePath>
+      <Versions>
+        <VersionFileHash>
+          <Hash>0C-4E-77-E2-F7-A5-C6-95-BD-05-0A-A2-21-27-18-20</Hash>
+          <VersionInfo>Patch1_5 Patch1_6 Patch1_6_Win10</VersionInfo>
+        </VersionFileHash>
+      </Versions>
+      <InvalidVersion>Unknown</InvalidVersion>
+      <NotFoundVersion>Unknown</NotFoundVersion>
+      <NotFoundExtras>Base Extra1 Extra2</NotFoundExtras>
+    </VersionFileInfo>
+    <VersionFileInfo>
+      <RelativePath>bin\mssmp3.asi</RelativePath>
+      <Versions>
+        <VersionFileHash>
+          <Hash>78-3C-8F-F0-94-FC-C9-45-60-FC-6A-4A-27-89-91-B1</Hash>
+          <VersionInfo>Patch1_5 Patch1_6 Patch1_6_Win10</VersionInfo>
+        </VersionFileHash>
+      </Versions>
+      <InvalidVersion>Unknown</InvalidVersion>
+      <NotFoundVersion>Unknown</NotFoundVersion>
+      <NotFoundExtras>Base Extra1 Extra2</NotFoundExtras>
+    </VersionFileInfo>
+    <VersionFileInfo>
+      <RelativePath>bin\msssoft.m3d</RelativePath>
+      <Versions>
+        <VersionFileHash>
+          <Hash>03-56-81-95-97-28-FA-14-E5-B1-32-9F-17-59-6D-DF</Hash>
+          <VersionInfo>Patch1_5 Patch1_6 Patch1_6_Win10</VersionInfo>
+        </VersionFileHash>
+      </Versions>
+      <InvalidVersion>Unknown</InvalidVersion>
+      <NotFoundVersion>Unknown</NotFoundVersion>
+      <NotFoundExtras>Base Extra1 Extra2</NotFoundExtras>
+    </VersionFileInfo>
+    <VersionFileInfo>
+      <RelativePath>bin\S5Lua5.dll</RelativePath>
+      <Versions>
+        <VersionFileHash>
+          <Hash>4D-F2-B8-08-74-73-F1-CC-87-AE-40-62-0B-CB-4E-EE</Hash>
+          <VersionInfo>Patch1_5 Patch1_6 Patch1_6_Win10</VersionInfo>
+        </VersionFileHash>
+      </Versions>
+      <InvalidVersion>Unknown</InvalidVersion>
+      <NotFoundVersion>Unknown</NotFoundVersion>
+      <NotFoundExtras>Base Extra1 Extra2</NotFoundExtras>
+    </VersionFileInfo>
+    <VersionFileInfo>
+      <RelativePath>bin\S5ZLib.dll</RelativePath>
+      <Versions>
+        <VersionFileHash>
+          <Hash>2E-7E-10-B8-59-06-B9-54-25-3C-F1-98-43-7D-A4-5C</Hash>
+          <VersionInfo>Patch1_5 Patch1_6 Patch1_6_Win10</VersionInfo>
+        </VersionFileHash>
+      </Versions>
+      <InvalidVersion>Unknown</InvalidVersion>
+      <NotFoundVersion>Unknown</NotFoundVersion>
+      <NotFoundExtras>Base Extra1 Extra2</NotFoundExtras>
+    </VersionFileInfo>
+    <VersionFileInfo>
+      <RelativePath>bin\settlershok.exe</RelativePath>
+      <Versions>
+        <VersionFileHash>
+          <Hash>C9-56-0B-8C-EE-A9-75-5B-74-24-36-23-CA-63-8E-B1</Hash>
+          <VersionInfo>Patch1_5</VersionInfo>
+        </VersionFileHash>
+        <VersionFileHash>
+          <Hash>32-C5-0B-75-BE-89-42-7F-FA-1C-A2-07-AC-A8-B9-06</Hash>
+          <VersionInfo>Patch1_6</VersionInfo>
+        </VersionFileHash>
+        <VersionFileHash>
+          <Hash>D0-77-66-1D-00-3A-2B-2E-9F-DC-EF-53-A5-59-64-51</Hash>
+          <VersionInfo>Patch1_6_Win10</VersionInfo>
+        </VersionFileHash>
+      </Versions>
+      <InvalidVersion>Unknown</InvalidVersion>
+      <NotFoundVersion>Unknown</NotFoundVersion>
+      <NotFoundExtras>Base Extra1 Extra2</NotFoundExtras>
+    </VersionFileInfo>
+    <VersionFileInfo>
+      <RelativePath>bin\tincat2.dll</RelativePath>
+      <Versions>
+        <VersionFileHash>
+          <Hash>4B-E1-ED-88-39-CE-89-CC-F6-EF-3D-D4-8C-C1-46-27</Hash>
+          <VersionInfo>Patch1_5 Patch1_6 Patch1_6_Win10</VersionInfo>
+        </VersionFileHash>
+      </Versions>
+      <InvalidVersion>Unknown</InvalidVersion>
+      <NotFoundVersion>Unknown</NotFoundVersion>
+      <NotFoundExtras>Base Extra1 Extra2</NotFoundExtras>
+    </VersionFileInfo>
+    <VersionFileInfo>
+      <RelativePath>extra1\bba\data.bba</RelativePath>
+      <Versions>
+        <VersionFileHash>
+          <Hash>85-8F-63-8B-EF-AD-3D-D3-47-1F-11-4F-1F-09-60-60</Hash>
+          <VersionInfo>Patch1_5 Patch1_6 Patch1_6_Win10</VersionInfo>
+        </VersionFileHash>
+      </Versions>
+      <InvalidVersion>Unknown</InvalidVersion>
+      <NotFoundVersion>Unknown</NotFoundVersion>
+      <NotFoundExtras>Base Extra2</NotFoundExtras>
+    </VersionFileInfo>
+    <VersionFileInfo>
+      <RelativePath>extra1\bba\lang.bba</RelativePath>
+      <Versions>
+        <VersionFileHash>
+          <Hash>F5-D3-BD-BC-F8-FC-06-94-4E-C0-56-39-00-49-B0-E3</Hash>
+          <VersionInfo>Patch1_5 Patch1_6 Patch1_6_Win10</VersionInfo>
+        </VersionFileHash>
+      </Versions>
+      <InvalidVersion>Unknown</InvalidVersion>
+      <NotFoundVersion>Unknown</NotFoundVersion>
+      <NotFoundExtras>Base Extra2</NotFoundExtras>
+    </VersionFileInfo>
+    <VersionFileInfo>
+      <RelativePath>extra1\bba\patch.bba</RelativePath>
+      <Versions>
+        <VersionFileHash>
+          <Hash>16-4D-28-81-A8-59-1C-1C-FC-CD-B4-59-59-58-60-F0</Hash>
+          <VersionInfo>Patch1_5</VersionInfo>
+        </VersionFileHash>
+        <VersionFileHash>
+          <Hash>29-D1-C0-C3-B9-35-6A-9D-3D-6C-1E-D8-DD-64-A4-FF</Hash>
+          <VersionInfo>Patch1_6 Patch1_6_Win10</VersionInfo>
+        </VersionFileHash>
+      </Versions>
+      <InvalidVersion>Unknown</InvalidVersion>
+      <NotFoundVersion>Unknown</NotFoundVersion>
+      <NotFoundExtras>Base Extra2</NotFoundExtras>
+    </VersionFileInfo>
+    <VersionFileInfo>
+      <RelativePath>extra1\bba\patchex.bba</RelativePath>
+      <Versions>
+        <VersionFileHash>
+          <Hash>F6-CB-9D-E0-0A-FD-BD-95-94-97-DE-E7-2E-8B-F8-EE</Hash>
+          <VersionInfo>Patch1_5</VersionInfo>
+        </VersionFileHash>
+        <VersionFileHash>
+          <Hash>74-2A-20-97-F6-5F-00-61-53-69-30-17-03-9B-3E-BE</Hash>
+          <VersionInfo>Patch1_6 Patch1_6_Win10</VersionInfo>
+        </VersionFileHash>
+      </Versions>
+      <InvalidVersion>Unknown</InvalidVersion>
+      <NotFoundVersion>Unknown</NotFoundVersion>
+      <NotFoundExtras>Base Extra2</NotFoundExtras>
+    </VersionFileInfo>
+    <VersionFileInfo>
+      <RelativePath>extra1\bin\AutoUpdate.ini</RelativePath>
+      <Versions>
+        <VersionFileHash>
+          <Hash>8D-E0-A5-53-63-61-5B-53-EB-10-1F-77-C8-A3-CA-E0</Hash>
+          <VersionInfo>Patch1_5 Patch1_6 Patch1_6_Win10</VersionInfo>
+        </VersionFileHash>
+      </Versions>
+      <InvalidVersion>Unknown</InvalidVersion>
+      <NotFoundVersion>Unknown</NotFoundVersion>
+      <NotFoundExtras>Base Extra2</NotFoundExtras>
+    </VersionFileInfo>
+    <VersionFileInfo>
+      <RelativePath>extra1\bin\binkw32.dll</RelativePath>
+      <Versions>
+        <VersionFileHash>
+          <Hash>25-BE-6C-0D-D8-57-1A-CD-75-20-70-C7-52-30-8F-DB</Hash>
+          <VersionInfo>Patch1_5 Patch1_6 Patch1_6_Win10</VersionInfo>
+        </VersionFileHash>
+      </Versions>
+      <InvalidVersion>Unknown</InvalidVersion>
+      <NotFoundVersion>Unknown</NotFoundVersion>
+      <NotFoundExtras>Base Extra2</NotFoundExtras>
+    </VersionFileInfo>
+    <VersionFileInfo>
+      <RelativePath>extra1\bin\dbghelp.dll</RelativePath>
+      <Versions>
+        <VersionFileHash>
+          <Hash>6F-29-E2-08-5A-05-9F-54-40-9F-F9-0E-C4-4B-52-2B</Hash>
+          <VersionInfo>Patch1_5 Patch1_6 Patch1_6_Win10</VersionInfo>
+        </VersionFileHash>
+      </Versions>
+      <InvalidVersion>Unknown</InvalidVersion>
+      <NotFoundVersion>Unknown</NotFoundVersion>
+      <NotFoundExtras>Base Extra2</NotFoundExtras>
+    </VersionFileInfo>
+    <VersionFileInfo>
+      <RelativePath>extra1\bin\mss32.dll</RelativePath>
+      <Versions>
+        <VersionFileHash>
+          <Hash>A4-A5-AA-37-98-C5-F9-8B-59-09-7F-33-D4-67-0B-4A</Hash>
+          <VersionInfo>Patch1_5 Patch1_6 Patch1_6_Win10</VersionInfo>
+        </VersionFileHash>
+      </Versions>
+      <InvalidVersion>Unknown</InvalidVersion>
+      <NotFoundVersion>Unknown</NotFoundVersion>
+      <NotFoundExtras>Base Extra2</NotFoundExtras>
+    </VersionFileInfo>
+    <VersionFileInfo>
+      <RelativePath>extra1\bin\mssds3d.m3d</RelativePath>
+      <Versions>
+        <VersionFileHash>
+          <Hash>08-C2-15-91-6E-3C-ED-88-E6-11-01-68-8E-15-13-E1</Hash>
+          <VersionInfo>Patch1_5 Patch1_6 Patch1_6_Win10</VersionInfo>
+        </VersionFileHash>
+      </Versions>
+      <InvalidVersion>Unknown</InvalidVersion>
+      <NotFoundVersion>Unknown</NotFoundVersion>
+      <NotFoundExtras>Base Extra2</NotFoundExtras>
+    </VersionFileInfo>
+    <VersionFileInfo>
+      <RelativePath>extra1\bin\msseax.m3d</RelativePath>
+      <Versions>
+        <VersionFileHash>
+          <Hash>0C-4E-77-E2-F7-A5-C6-95-BD-05-0A-A2-21-27-18-20</Hash>
+          <VersionInfo>Patch1_5 Patch1_6 Patch1_6_Win10</VersionInfo>
+        </VersionFileHash>
+      </Versions>
+      <InvalidVersion>Unknown</InvalidVersion>
+      <NotFoundVersion>Unknown</NotFoundVersion>
+      <NotFoundExtras>Base Extra2</NotFoundExtras>
+    </VersionFileInfo>
+    <VersionFileInfo>
+      <RelativePath>extra1\bin\mssmp3.asi</RelativePath>
+      <Versions>
+        <VersionFileHash>
+          <Hash>78-3C-8F-F0-94-FC-C9-45-60-FC-6A-4A-27-89-91-B1</Hash>
+          <VersionInfo>Patch1_5 Patch1_6 Patch1_6_Win10</VersionInfo>
+        </VersionFileHash>
+      </Versions>
+      <InvalidVersion>Unknown</InvalidVersion>
+      <NotFoundVersion>Unknown</NotFoundVersion>
+      <NotFoundExtras>Base Extra2</NotFoundExtras>
+    </VersionFileInfo>
+    <VersionFileInfo>
+      <RelativePath>extra1\bin\msssoft.m3d</RelativePath>
+      <Versions>
+        <VersionFileHash>
+          <Hash>03-56-81-95-97-28-FA-14-E5-B1-32-9F-17-59-6D-DF</Hash>
+          <VersionInfo>Patch1_5 Patch1_6 Patch1_6_Win10</VersionInfo>
+        </VersionFileHash>
+      </Versions>
+      <InvalidVersion>Unknown</InvalidVersion>
+      <NotFoundVersion>Unknown</NotFoundVersion>
+      <NotFoundExtras>Base Extra2</NotFoundExtras>
+    </VersionFileInfo>
+    <VersionFileInfo>
+      <RelativePath>extra1\bin\S5Lua5.dll</RelativePath>
+      <Versions>
+        <VersionFileHash>
+          <Hash>4D-F2-B8-08-74-73-F1-CC-87-AE-40-62-0B-CB-4E-EE</Hash>
+          <VersionInfo>Patch1_5 Patch1_6 Patch1_6_Win10</VersionInfo>
+        </VersionFileHash>
+      </Versions>
+      <InvalidVersion>Unknown</InvalidVersion>
+      <NotFoundVersion>Unknown</NotFoundVersion>
+      <NotFoundExtras>Base Extra2</NotFoundExtras>
+    </VersionFileInfo>
+    <VersionFileInfo>
+      <RelativePath>extra1\bin\S5ZLib.dll</RelativePath>
+      <Versions>
+        <VersionFileHash>
+          <Hash>2E-7E-10-B8-59-06-B9-54-25-3C-F1-98-43-7D-A4-5C</Hash>
+          <VersionInfo>Patch1_5 Patch1_6 Patch1_6_Win10</VersionInfo>
+        </VersionFileHash>
+      </Versions>
+      <InvalidVersion>Unknown</InvalidVersion>
+      <NotFoundVersion>Unknown</NotFoundVersion>
+      <NotFoundExtras>Base Extra2</NotFoundExtras>
+    </VersionFileInfo>
+    <VersionFileInfo>
+      <RelativePath>extra1\bin\settlershok.exe</RelativePath>
+      <Versions>
+        <VersionFileHash>
+          <Hash>C9-56-0B-8C-EE-A9-75-5B-74-24-36-23-CA-63-8E-B1</Hash>
+          <VersionInfo>Patch1_5</VersionInfo>
+        </VersionFileHash>
+        <VersionFileHash>
+          <Hash>32-C5-0B-75-BE-89-42-7F-FA-1C-A2-07-AC-A8-B9-06</Hash>
+          <VersionInfo>Patch1_6</VersionInfo>
+        </VersionFileHash>
+        <VersionFileHash>
+          <Hash>D0-77-66-1D-00-3A-2B-2E-9F-DC-EF-53-A5-59-64-51</Hash>
+          <VersionInfo>Patch1_6_Win10</VersionInfo>
+        </VersionFileHash>
+      </Versions>
+      <InvalidVersion>Unknown</InvalidVersion>
+      <NotFoundVersion>Unknown</NotFoundVersion>
+      <NotFoundExtras>Base Extra2</NotFoundExtras>
+    </VersionFileInfo>
+    <VersionFileInfo>
+      <RelativePath>extra1\bin\shokmapeditor.exe</RelativePath>
+      <Versions>
+        <VersionFileHash>
+          <Hash>39-96-34-6D-55-C2-C7-72-40-0D-FA-11-AA-2B-FF-C8</Hash>
+          <VersionInfo>Patch1_5</VersionInfo>
+        </VersionFileHash>
+        <VersionFileHash>
+          <Hash>5F-3F-F0-88-13-F5-CC-E8-CF-96-66-BE-7C-1F-4B-8F</Hash>
+          <VersionInfo>Patch1_6</VersionInfo>
+        </VersionFileHash>
+        <VersionFileHash>
+          <Hash>BC-8A-EC-E3-20-9A-98-D1-07-8D-42-EE-D6-08-30-E7</Hash>
+          <VersionInfo>Patch1_6_Win10</VersionInfo>
+        </VersionFileHash>
+      </Versions>
+      <InvalidVersion>Unknown</InvalidVersion>
+      <NotFoundVersion>Unknown</NotFoundVersion>
+      <NotFoundExtras>Base Extra2</NotFoundExtras>
+    </VersionFileInfo>
+    <VersionFileInfo>
+      <RelativePath>extra1\bin\tincat2.dll</RelativePath>
+      <Versions>
+        <VersionFileHash>
+          <Hash>4B-E1-ED-88-39-CE-89-CC-F6-EF-3D-D4-8C-C1-46-27</Hash>
+          <VersionInfo>Patch1_5 Patch1_6 Patch1_6_Win10</VersionInfo>
+        </VersionFileHash>
+      </Versions>
+      <InvalidVersion>Unknown</InvalidVersion>
+      <NotFoundVersion>Unknown</NotFoundVersion>
+      <NotFoundExtras>Base Extra2</NotFoundExtras>
+    </VersionFileInfo>
+    <VersionFileInfo>
+      <RelativePath>extra1\shr\music\40_Extra1_BridgeBuild.mp3</RelativePath>
+      <Versions>
+        <VersionFileHash>
+          <Hash>36-8B-AC-D5-E1-51-69-35-48-73-42-CB-69-D2-40-AE</Hash>
+          <VersionInfo>Patch1_5 Patch1_6 Patch1_6_Win10</VersionInfo>
+        </VersionFileHash>
+      </Versions>
+      <InvalidVersion>Unknown</InvalidVersion>
+      <NotFoundVersion>Unknown</NotFoundVersion>
+      <NotFoundExtras>Base Extra2</NotFoundExtras>
+    </VersionFileInfo>
+    <VersionFileInfo>
+      <RelativePath>extra1\shr\music\41_Extra1_DarkMoor_Theme1.mp3</RelativePath>
+      <Versions>
+        <VersionFileHash>
+          <Hash>68-E8-AA-74-27-36-C9-31-E8-53-FF-76-6E-F1-A8-46</Hash>
+          <VersionInfo>Patch1_5 Patch1_6 Patch1_6_Win10</VersionInfo>
+        </VersionFileHash>
+      </Versions>
+      <InvalidVersion>Unknown</InvalidVersion>
+      <NotFoundVersion>Unknown</NotFoundVersion>
+      <NotFoundExtras>Base Extra2</NotFoundExtras>
+    </VersionFileInfo>
+    <VersionFileInfo>
+      <RelativePath>extra1\shr\music\42_Extra1_DarkMoor_Theme2.mp3</RelativePath>
+      <Versions>
+        <VersionFileHash>
+          <Hash>DA-75-2F-70-63-B8-66-4D-46-D6-91-87-22-BA-4F-4D</Hash>
+          <VersionInfo>Patch1_5 Patch1_6 Patch1_6_Win10</VersionInfo>
+        </VersionFileHash>
+      </Versions>
+      <InvalidVersion>Unknown</InvalidVersion>
+      <NotFoundVersion>Unknown</NotFoundVersion>
+      <NotFoundExtras>Base Extra2</NotFoundExtras>
+    </VersionFileInfo>
+    <VersionFileInfo>
+      <RelativePath>extra1\shr\music\43_Extra1_DarkMoor_Combat.mp3</RelativePath>
+      <Versions>
+        <VersionFileHash>
+          <Hash>8F-23-4F-FB-0B-CC-04-92-9E-99-53-CA-32-29-B4-11</Hash>
+          <VersionInfo>Patch1_5 Patch1_6 Patch1_6_Win10</VersionInfo>
+        </VersionFileHash>
+      </Versions>
+      <InvalidVersion>Unknown</InvalidVersion>
+      <NotFoundVersion>Unknown</NotFoundVersion>
+      <NotFoundExtras>Base Extra2</NotFoundExtras>
+    </VersionFileInfo>
+    <VersionFileInfo>
+      <RelativePath>extra2\bba\data.bba</RelativePath>
+      <Versions>
+        <VersionFileHash>
+          <Hash>75-42-84-32-C5-52-97-FF-08-8C-D6-A1-32-BD-3A-B9</Hash>
+          <VersionInfo>Patch1_5 Patch1_6 Patch1_6_Win10</VersionInfo>
+        </VersionFileHash>
+      </Versions>
+      <InvalidVersion>Unknown</InvalidVersion>
+      <NotFoundVersion>Unknown</NotFoundVersion>
+      <NotFoundExtras>Base Extra1</NotFoundExtras>
+    </VersionFileInfo>
+    <VersionFileInfo>
+      <RelativePath>extra2\bba\lang.bba</RelativePath>
+      <Versions>
+        <VersionFileHash>
+          <Hash>BF-D4-9E-37-E2-E3-FB-26-07-D8-00-EC-29-1A-6B-5F</Hash>
+          <VersionInfo>Patch1_5 Patch1_6 Patch1_6_Win10</VersionInfo>
+        </VersionFileHash>
+      </Versions>
+      <InvalidVersion>Unknown</InvalidVersion>
+      <NotFoundVersion>Unknown</NotFoundVersion>
+      <NotFoundExtras>Base Extra1</NotFoundExtras>
+    </VersionFileInfo>
+    <VersionFileInfo>
+      <RelativePath>extra2\bba\patch.bba</RelativePath>
+      <Versions>
+        <VersionFileHash>
+          <Hash>16-4D-28-81-A8-59-1C-1C-FC-CD-B4-59-59-58-60-F0</Hash>
+          <VersionInfo>Patch1_5</VersionInfo>
+        </VersionFileHash>
+        <VersionFileHash>
+          <Hash>29-D1-C0-C3-B9-35-6A-9D-3D-6C-1E-D8-DD-64-A4-FF</Hash>
+          <VersionInfo>Patch1_6 Patch1_6_Win10</VersionInfo>
+        </VersionFileHash>
+      </Versions>
+      <InvalidVersion>Unknown</InvalidVersion>
+      <NotFoundVersion>Unknown</NotFoundVersion>
+      <NotFoundExtras>Base Extra1</NotFoundExtras>
+    </VersionFileInfo>
+    <VersionFileInfo>
+      <RelativePath>extra2\bba\patche2.bba</RelativePath>
+      <Versions>
+        <VersionFileHash>
+          <Hash>7F-2E-AC-8B-A8-C5-1E-AF-F0-70-F8-E1-E8-AC-49-9E</Hash>
+          <VersionInfo>Patch1_5</VersionInfo>
+        </VersionFileHash>
+        <VersionFileHash>
+          <Hash>6E-B4-38-55-42-5C-3A-A8-40-7C-85-B3-E0-5C-0E-42</Hash>
+          <VersionInfo>Patch1_6 Patch1_6_Win10</VersionInfo>
+        </VersionFileHash>
+      </Versions>
+      <InvalidVersion>Unknown</InvalidVersion>
+      <NotFoundVersion>Unknown</NotFoundVersion>
+      <NotFoundExtras>Base Extra1</NotFoundExtras>
+    </VersionFileInfo>
+    <VersionFileInfo>
+      <RelativePath>extra2\bin\AutoUpdate.ini</RelativePath>
+      <Versions>
+        <VersionFileHash>
+          <Hash>8D-E0-A5-53-63-61-5B-53-EB-10-1F-77-C8-A3-CA-E0</Hash>
+          <VersionInfo>Patch1_5 Patch1_6 Patch1_6_Win10</VersionInfo>
+        </VersionFileHash>
+      </Versions>
+      <InvalidVersion>Unknown</InvalidVersion>
+      <NotFoundVersion>Unknown</NotFoundVersion>
+      <NotFoundExtras>Base Extra1</NotFoundExtras>
+    </VersionFileInfo>
+    <VersionFileInfo>
+      <RelativePath>extra2\bin\binkw32.dll</RelativePath>
+      <Versions>
+        <VersionFileHash>
+          <Hash>25-BE-6C-0D-D8-57-1A-CD-75-20-70-C7-52-30-8F-DB</Hash>
+          <VersionInfo>Patch1_5 Patch1_6 Patch1_6_Win10</VersionInfo>
+        </VersionFileHash>
+      </Versions>
+      <InvalidVersion>Unknown</InvalidVersion>
+      <NotFoundVersion>Unknown</NotFoundVersion>
+      <NotFoundExtras>Base Extra1</NotFoundExtras>
+    </VersionFileInfo>
+    <VersionFileInfo>
+      <RelativePath>extra2\bin\dbghelp.dll</RelativePath>
+      <Versions>
+        <VersionFileHash>
+          <Hash>6F-29-E2-08-5A-05-9F-54-40-9F-F9-0E-C4-4B-52-2B</Hash>
+          <VersionInfo>Patch1_5 Patch1_6 Patch1_6_Win10</VersionInfo>
+        </VersionFileHash>
+      </Versions>
+      <InvalidVersion>Unknown</InvalidVersion>
+      <NotFoundVersion>Unknown</NotFoundVersion>
+      <NotFoundExtras>Base Extra1</NotFoundExtras>
+    </VersionFileInfo>
+    <VersionFileInfo>
+      <RelativePath>extra2\bin\mss32.dll</RelativePath>
+      <Versions>
+        <VersionFileHash>
+          <Hash>A4-A5-AA-37-98-C5-F9-8B-59-09-7F-33-D4-67-0B-4A</Hash>
+          <VersionInfo>Patch1_5 Patch1_6 Patch1_6_Win10</VersionInfo>
+        </VersionFileHash>
+      </Versions>
+      <InvalidVersion>Unknown</InvalidVersion>
+      <NotFoundVersion>Unknown</NotFoundVersion>
+      <NotFoundExtras>Base Extra1</NotFoundExtras>
+    </VersionFileInfo>
+    <VersionFileInfo>
+      <RelativePath>extra2\bin\mssds3d.m3d</RelativePath>
+      <Versions>
+        <VersionFileHash>
+          <Hash>08-C2-15-91-6E-3C-ED-88-E6-11-01-68-8E-15-13-E1</Hash>
+          <VersionInfo>Patch1_5 Patch1_6 Patch1_6_Win10</VersionInfo>
+        </VersionFileHash>
+      </Versions>
+      <InvalidVersion>Unknown</InvalidVersion>
+      <NotFoundVersion>Unknown</NotFoundVersion>
+      <NotFoundExtras>Base Extra1</NotFoundExtras>
+    </VersionFileInfo>
+    <VersionFileInfo>
+      <RelativePath>extra2\bin\msseax.m3d</RelativePath>
+      <Versions>
+        <VersionFileHash>
+          <Hash>0C-4E-77-E2-F7-A5-C6-95-BD-05-0A-A2-21-27-18-20</Hash>
+          <VersionInfo>Patch1_5 Patch1_6 Patch1_6_Win10</VersionInfo>
+        </VersionFileHash>
+      </Versions>
+      <InvalidVersion>Unknown</InvalidVersion>
+      <NotFoundVersion>Unknown</NotFoundVersion>
+      <NotFoundExtras>Base Extra1</NotFoundExtras>
+    </VersionFileInfo>
+    <VersionFileInfo>
+      <RelativePath>extra2\bin\mssmp3.asi</RelativePath>
+      <Versions>
+        <VersionFileHash>
+          <Hash>78-3C-8F-F0-94-FC-C9-45-60-FC-6A-4A-27-89-91-B1</Hash>
+          <VersionInfo>Patch1_5 Patch1_6 Patch1_6_Win10</VersionInfo>
+        </VersionFileHash>
+      </Versions>
+      <InvalidVersion>Unknown</InvalidVersion>
+      <NotFoundVersion>Unknown</NotFoundVersion>
+      <NotFoundExtras>Base Extra1</NotFoundExtras>
+    </VersionFileInfo>
+    <VersionFileInfo>
+      <RelativePath>extra2\bin\msssoft.m3d</RelativePath>
+      <Versions>
+        <VersionFileHash>
+          <Hash>03-56-81-95-97-28-FA-14-E5-B1-32-9F-17-59-6D-DF</Hash>
+          <VersionInfo>Patch1_5 Patch1_6 Patch1_6_Win10</VersionInfo>
+        </VersionFileHash>
+      </Versions>
+      <InvalidVersion>Unknown</InvalidVersion>
+      <NotFoundVersion>Unknown</NotFoundVersion>
+      <NotFoundExtras>Base Extra1</NotFoundExtras>
+    </VersionFileInfo>
+    <VersionFileInfo>
+      <RelativePath>extra2\bin\S5Lua5.dll</RelativePath>
+      <Versions>
+        <VersionFileHash>
+          <Hash>4D-F2-B8-08-74-73-F1-CC-87-AE-40-62-0B-CB-4E-EE</Hash>
+          <VersionInfo>Patch1_5 Patch1_6 Patch1_6_Win10</VersionInfo>
+        </VersionFileHash>
+      </Versions>
+      <InvalidVersion>Unknown</InvalidVersion>
+      <NotFoundVersion>Unknown</NotFoundVersion>
+      <NotFoundExtras>Base Extra1</NotFoundExtras>
+    </VersionFileInfo>
+    <VersionFileInfo>
+      <RelativePath>extra2\bin\S5ZLib.dll</RelativePath>
+      <Versions>
+        <VersionFileHash>
+          <Hash>2E-7E-10-B8-59-06-B9-54-25-3C-F1-98-43-7D-A4-5C</Hash>
+          <VersionInfo>Patch1_5 Patch1_6 Patch1_6_Win10</VersionInfo>
+        </VersionFileHash>
+      </Versions>
+      <InvalidVersion>Unknown</InvalidVersion>
+      <NotFoundVersion>Unknown</NotFoundVersion>
+      <NotFoundExtras>Base Extra1</NotFoundExtras>
+    </VersionFileInfo>
+    <VersionFileInfo>
+      <RelativePath>extra2\bin\settlershok.exe</RelativePath>
+      <Versions>
+        <VersionFileHash>
+          <Hash>C9-56-0B-8C-EE-A9-75-5B-74-24-36-23-CA-63-8E-B1</Hash>
+          <VersionInfo>Patch1_5</VersionInfo>
+        </VersionFileHash>
+        <VersionFileHash>
+          <Hash>32-C5-0B-75-BE-89-42-7F-FA-1C-A2-07-AC-A8-B9-06</Hash>
+          <VersionInfo>Patch1_6</VersionInfo>
+        </VersionFileHash>
+        <VersionFileHash>
+          <Hash>D0-77-66-1D-00-3A-2B-2E-9F-DC-EF-53-A5-59-64-51</Hash>
+          <VersionInfo>Patch1_6_Win10</VersionInfo>
+        </VersionFileHash>
+      </Versions>
+      <InvalidVersion>Unknown</InvalidVersion>
+      <NotFoundVersion>Unknown</NotFoundVersion>
+      <NotFoundExtras>Base Extra1</NotFoundExtras>
+    </VersionFileInfo>
+    <VersionFileInfo>
+      <RelativePath>extra2\bin\shokmapeditor.exe</RelativePath>
+      <Versions>
+        <VersionFileHash>
+          <Hash>39-96-34-6D-55-C2-C7-72-40-0D-FA-11-AA-2B-FF-C8</Hash>
+          <VersionInfo>Patch1_5</VersionInfo>
+        </VersionFileHash>
+        <VersionFileHash>
+          <Hash>5F-3F-F0-88-13-F5-CC-E8-CF-96-66-BE-7C-1F-4B-8F</Hash>
+          <VersionInfo>Patch1_6</VersionInfo>
+        </VersionFileHash>
+        <VersionFileHash>
+          <Hash>BC-8A-EC-E3-20-9A-98-D1-07-8D-42-EE-D6-08-30-E7</Hash>
+          <VersionInfo>Patch1_6_Win10</VersionInfo>
+        </VersionFileHash>
+      </Versions>
+      <InvalidVersion>Unknown</InvalidVersion>
+      <NotFoundVersion>Unknown</NotFoundVersion>
+      <NotFoundExtras>Base Extra1</NotFoundExtras>
+    </VersionFileInfo>
+    <VersionFileInfo>
+      <RelativePath>extra2\bin\tincat2.dll</RelativePath>
+      <Versions>
+        <VersionFileHash>
+          <Hash>4B-E1-ED-88-39-CE-89-CC-F6-EF-3D-D4-8C-C1-46-27</Hash>
+          <VersionInfo>Patch1_5 Patch1_6 Patch1_6_Win10</VersionInfo>
+        </VersionFileHash>
+      </Versions>
+      <InvalidVersion>Unknown</InvalidVersion>
+      <NotFoundVersion>Unknown</NotFoundVersion>
+      <NotFoundExtras>Base Extra1</NotFoundExtras>
+    </VersionFileInfo>
+    <VersionFileInfo>
+      <RelativePath>extra2\shr\music\40_Extra1_BridgeBuild.mp3</RelativePath>
+      <Versions>
+        <VersionFileHash>
+          <Hash>36-8B-AC-D5-E1-51-69-35-48-73-42-CB-69-D2-40-AE</Hash>
+          <VersionInfo>Patch1_5 Patch1_6 Patch1_6_Win10</VersionInfo>
+        </VersionFileHash>
+      </Versions>
+      <InvalidVersion>Unknown</InvalidVersion>
+      <NotFoundVersion>Unknown</NotFoundVersion>
+      <NotFoundExtras>Base Extra1</NotFoundExtras>
+    </VersionFileInfo>
+    <VersionFileInfo>
+      <RelativePath>extra2\shr\music\41_Extra1_DarkMoor_Theme1.mp3</RelativePath>
+      <Versions>
+        <VersionFileHash>
+          <Hash>68-E8-AA-74-27-36-C9-31-E8-53-FF-76-6E-F1-A8-46</Hash>
+          <VersionInfo>Patch1_5 Patch1_6 Patch1_6_Win10</VersionInfo>
+        </VersionFileHash>
+      </Versions>
+      <InvalidVersion>Unknown</InvalidVersion>
+      <NotFoundVersion>Unknown</NotFoundVersion>
+      <NotFoundExtras>Base Extra1</NotFoundExtras>
+    </VersionFileInfo>
+    <VersionFileInfo>
+      <RelativePath>extra2\shr\music\42_Extra1_DarkMoor_Theme2.mp3</RelativePath>
+      <Versions>
+        <VersionFileHash>
+          <Hash>DA-75-2F-70-63-B8-66-4D-46-D6-91-87-22-BA-4F-4D</Hash>
+          <VersionInfo>Patch1_5 Patch1_6 Patch1_6_Win10</VersionInfo>
+        </VersionFileHash>
+      </Versions>
+      <InvalidVersion>Unknown</InvalidVersion>
+      <NotFoundVersion>Unknown</NotFoundVersion>
+      <NotFoundExtras>Base Extra1</NotFoundExtras>
+    </VersionFileInfo>
+    <VersionFileInfo>
+      <RelativePath>extra2\shr\music\43_Extra1_DarkMoor_Combat.mp3</RelativePath>
+      <Versions>
+        <VersionFileHash>
+          <Hash>8F-23-4F-FB-0B-CC-04-92-9E-99-53-CA-32-29-B4-11</Hash>
+          <VersionInfo>Patch1_5 Patch1_6 Patch1_6_Win10</VersionInfo>
+        </VersionFileHash>
+      </Versions>
+      <InvalidVersion>Unknown</InvalidVersion>
+      <NotFoundVersion>Unknown</NotFoundVersion>
+      <NotFoundExtras>Base Extra1</NotFoundExtras>
+    </VersionFileInfo>
+    <VersionFileInfo>
+      <RelativePath>support\autoupdate\SHoKAutoUpdate.exe</RelativePath>
+      <Versions>
+        <VersionFileHash>
+          <Hash>2F-DC-8A-D2-64-B6-D5-DA-15-76-70-93-69-B9-C7-5B</Hash>
+          <VersionInfo>Patch1_5 Patch1_6 Patch1_6_Win10</VersionInfo>
+        </VersionFileHash>
+      </Versions>
+      <InvalidVersion>Unknown</InvalidVersion>
+      <NotFoundVersion>Unknown</NotFoundVersion>
+      <NotFoundExtras>Base Extra1 Extra2</NotFoundExtras>
+    </VersionFileInfo>
+    <VersionFileInfo>
+      <RelativePath>support\Detection\detectionapi.dll</RelativePath>
+      <Versions>
+        <VersionFileHash>
+          <Hash>84-AA-DB-76-7D-0E-94-E0-5B-86-13-24-E1-C8-20-EF</Hash>
+          <VersionInfo>Patch1_5 Patch1_6 Patch1_6_Win10</VersionInfo>
+        </VersionFileHash>
+      </Versions>
+      <InvalidVersion>Unknown</InvalidVersion>
+      <NotFoundVersion>Unknown</NotFoundVersion>
+      <NotFoundExtras>Base Extra1 Extra2</NotFoundExtras>
+    </VersionFileInfo>
+    <VersionFileInfo>
+      <RelativePath>support\Detection\directx9tests.dll</RelativePath>
+      <Versions>
+        <VersionFileHash>
+          <Hash>26-BA-6F-52-66-C3-7D-62-8D-70-09-0A-72-E8-4F-73</Hash>
+          <VersionInfo>Patch1_5 Patch1_6 Patch1_6_Win10</VersionInfo>
+        </VersionFileHash>
+      </Versions>
+      <InvalidVersion>Unknown</InvalidVersion>
+      <NotFoundVersion>Unknown</NotFoundVersion>
+      <NotFoundExtras>Base Extra1 Extra2</NotFoundExtras>
+    </VersionFileInfo>
+    <VersionFileInfo>
+      <RelativePath>support\Detection\directxtests.tst</RelativePath>
+      <Versions>
+        <VersionFileHash>
+          <Hash>F6-3A-1D-AD-AC-3E-84-89-E2-B0-BF-16-62-7A-B0-EC</Hash>
+          <VersionInfo>Patch1_5 Patch1_6 Patch1_6_Win10</VersionInfo>
+        </VersionFileHash>
+      </Versions>
+      <InvalidVersion>Unknown</InvalidVersion>
+      <NotFoundVersion>Unknown</NotFoundVersion>
+      <NotFoundExtras>Base Extra1 Extra2</NotFoundExtras>
+    </VersionFileInfo>
+    <VersionFileInfo>
+      <RelativePath>support\Detection\MFC71.dll</RelativePath>
+      <Versions>
+        <VersionFileHash>
+          <Hash>F3-5A-58-4E-94-7A-5B-40-1F-EB-0F-E0-1D-B4-A0-D7</Hash>
+          <VersionInfo>Patch1_5 Patch1_6 Patch1_6_Win10</VersionInfo>
+        </VersionFileHash>
+      </Versions>
+      <InvalidVersion>Unknown</InvalidVersion>
+      <NotFoundVersion>Unknown</NotFoundVersion>
+      <NotFoundExtras>Base Extra1 Extra2</NotFoundExtras>
+    </VersionFileInfo>
+    <VersionFileInfo>
+      <RelativePath>support\Detection\msvcp71.dll</RelativePath>
+      <Versions>
+        <VersionFileHash>
+          <Hash>56-1F-A2-AB-B3-1D-FA-8F-AB-76-21-45-F8-16-67-C2</Hash>
+          <VersionInfo>Patch1_5 Patch1_6 Patch1_6_Win10</VersionInfo>
+        </VersionFileHash>
+      </Versions>
+      <InvalidVersion>Unknown</InvalidVersion>
+      <NotFoundVersion>Unknown</NotFoundVersion>
+      <NotFoundExtras>Base Extra1 Extra2</NotFoundExtras>
+    </VersionFileInfo>
+    <VersionFileInfo>
+      <RelativePath>support\Detection\msvcr71.dll</RelativePath>
+      <Versions>
+        <VersionFileHash>
+          <Hash>86-F1-89-5A-E8-C5-E8-B1-7D-99-EC-E7-68-A7-07-32</Hash>
+          <VersionInfo>Patch1_5 Patch1_6 Patch1_6_Win10</VersionInfo>
+        </VersionFileHash>
+      </Versions>
+      <InvalidVersion>Unknown</InvalidVersion>
+      <NotFoundVersion>Unknown</NotFoundVersion>
+      <NotFoundExtras>Base Extra1 Extra2</NotFoundExtras>
+    </VersionFileInfo>
+    <VersionFileInfo>
+      <RelativePath>support\Detection\s5detection.exe</RelativePath>
+      <Versions>
+        <VersionFileHash>
+          <Hash>73-85-F1-59-20-A9-21-1A-B0-B0-B8-08-AA-CC-03-E8</Hash>
+          <VersionInfo>Patch1_5 Patch1_6 Patch1_6_Win10</VersionInfo>
+        </VersionFileHash>
+      </Versions>
+      <InvalidVersion>Unknown</InvalidVersion>
+      <NotFoundVersion>Unknown</NotFoundVersion>
+      <NotFoundExtras>Base Extra1 Extra2</NotFoundExtras>
+    </VersionFileInfo>
+    <VersionFileInfo>
+      <RelativePath>support\Detection\s5detectionlocal.dll</RelativePath>
+      <Versions>
+        <VersionFileHash>
+          <Hash>E6-04-DD-3F-35-AB-71-2F-E5-BE-25-24-45-B4-39-8E</Hash>
+          <VersionInfo>Patch1_5 Patch1_6 Patch1_6_Win10</VersionInfo>
+        </VersionFileHash>
+      </Versions>
+      <InvalidVersion>Unknown</InvalidVersion>
+      <NotFoundVersion>Unknown</NotFoundVersion>
+      <NotFoundExtras>Base Extra1 Extra2</NotFoundExtras>
+    </VersionFileInfo>
+    <VersionFileInfo>
+      <RelativePath>support\Detection\s5interpreterlocal.ini</RelativePath>
+      <Versions>
+        <VersionFileHash>
+          <Hash>94-A5-E6-B1-DF-8B-49-3A-D1-51-E7-76-A8-75-1F-4F</Hash>
+          <VersionInfo>Patch1_5 Patch1_6 Patch1_6_Win10</VersionInfo>
+        </VersionFileHash>
+      </Versions>
+      <InvalidVersion>Unknown</InvalidVersion>
+      <NotFoundVersion>Unknown</NotFoundVersion>
+      <NotFoundExtras>Base Extra1 Extra2</NotFoundExtras>
+    </VersionFileInfo>
+    <VersionFileInfo>
+      <RelativePath>support\Detection\s5interpreters.intr</RelativePath>
+      <Versions>
+        <VersionFileHash>
+          <Hash>69-DF-74-7A-D9-D4-9A-F8-19-13-2B-CE-55-4C-53-B6</Hash>
+          <VersionInfo>Patch1_5 Patch1_6 Patch1_6_Win10</VersionInfo>
+        </VersionFileHash>
+      </Versions>
+      <InvalidVersion>Unknown</InvalidVersion>
+      <NotFoundVersion>Unknown</NotFoundVersion>
+      <NotFoundExtras>Base Extra1 Extra2</NotFoundExtras>
+    </VersionFileInfo>
+    <VersionFileInfo>
+      <RelativePath>support\Detection\systemtests.tst</RelativePath>
+      <Versions>
+        <VersionFileHash>
+          <Hash>25-4D-72-DC-C6-54-8F-17-80-BB-A9-1F-DC-51-56-A0</Hash>
+          <VersionInfo>Patch1_5 Patch1_6 Patch1_6_Win10</VersionInfo>
+        </VersionFileHash>
+      </Versions>
+      <InvalidVersion>Unknown</InvalidVersion>
+      <NotFoundVersion>Unknown</NotFoundVersion>
+      <NotFoundExtras>Base Extra1 Extra2</NotFoundExtras>
+    </VersionFileInfo>
+    <VersionFileInfo>
+      <RelativePath>support\Manual\EditorTutorial.pdf</RelativePath>
+      <Versions>
+        <VersionFileHash>
+          <Hash>C6-A6-63-17-ED-B3-E0-F3-7C-21-29-B9-E7-D4-12-B0</Hash>
+          <VersionInfo>Patch1_5 Patch1_6 Patch1_6_Win10</VersionInfo>
+        </VersionFileHash>
+      </Versions>
+      <InvalidVersion>Unknown</InvalidVersion>
+      <NotFoundVersion>Unknown</NotFoundVersion>
+      <NotFoundExtras>Base Extra1 Extra2</NotFoundExtras>
+    </VersionFileInfo>
+    <VersionFileInfo>
+      <RelativePath>support\Manual\LeseprobeLoesungsbuch.pdf</RelativePath>
+      <Versions>
+        <VersionFileHash>
+          <Hash>90-EF-9D-1F-2C-73-CF-FB-CC-05-AF-10-19-5F-E3-8E</Hash>
+          <VersionInfo>Patch1_5 Patch1_6 Patch1_6_Win10</VersionInfo>
+        </VersionFileHash>
+      </Versions>
+      <InvalidVersion>Unknown</InvalidVersion>
+      <NotFoundVersion>Unknown</NotFoundVersion>
+      <NotFoundExtras>Base Extra1 Extra2</NotFoundExtras>
+    </VersionFileInfo>
+    <VersionFileInfo>
+      <RelativePath>support\Manual\License.txt</RelativePath>
+      <Versions>
+        <VersionFileHash>
+          <Hash>58-CF-62-A7-D0-7A-BA-82-A1-CB-CB-7F-E4-05-8C-13</Hash>
+          <VersionInfo>Patch1_5 Patch1_6 Patch1_6_Win10</VersionInfo>
+        </VersionFileHash>
+      </Versions>
+      <InvalidVersion>Unknown</InvalidVersion>
+      <NotFoundVersion>Unknown</NotFoundVersion>
+      <NotFoundExtras>Base Extra1 Extra2</NotFoundExtras>
+    </VersionFileInfo>
+    <VersionFileInfo>
+      <RelativePath>support\Manual\Manual_extra1.pdf</RelativePath>
+      <Versions>
+        <VersionFileHash>
+          <Hash>7E-98-19-55-57-83-57-B3-5E-FE-2F-C2-A9-06-38-D5</Hash>
+          <VersionInfo>Patch1_5 Patch1_6 Patch1_6_Win10</VersionInfo>
+        </VersionFileHash>
+      </Versions>
+      <InvalidVersion>Unknown</InvalidVersion>
+      <NotFoundVersion>Unknown</NotFoundVersion>
+      <NotFoundExtras>Base Extra1 Extra2</NotFoundExtras>
+    </VersionFileInfo>
+    <VersionFileInfo>
+      <RelativePath>support\Manual\Manual_extra2.pdf</RelativePath>
+      <Versions>
+        <VersionFileHash>
+          <Hash>22-1E-63-E4-4C-F9-61-95-F6-4C-7A-73-88-D9-0A-FE</Hash>
+          <VersionInfo>Patch1_5 Patch1_6 Patch1_6_Win10</VersionInfo>
+        </VersionFileHash>
+      </Versions>
+      <InvalidVersion>Unknown</InvalidVersion>
+      <NotFoundVersion>Unknown</NotFoundVersion>
+      <NotFoundExtras>Base Extra1 Extra2</NotFoundExtras>
+    </VersionFileInfo>
+    <VersionFileInfo>
+      <RelativePath>support\Manual\Manual_gold.pdf</RelativePath>
+      <Versions>
+        <VersionFileHash>
+          <Hash>1D-8C-99-72-FA-7E-C0-5B-0B-36-91-9F-CC-3C-C5-8B</Hash>
+          <VersionInfo>Patch1_5 Patch1_6 Patch1_6_Win10</VersionInfo>
+        </VersionFileHash>
+      </Versions>
+      <InvalidVersion>Unknown</InvalidVersion>
+      <NotFoundVersion>Unknown</NotFoundVersion>
+      <NotFoundExtras>Base Extra1 Extra2</NotFoundExtras>
+    </VersionFileInfo>
+    <VersionFileInfo>
+      <RelativePath>support\Manual\Manual_main.pdf</RelativePath>
+      <Versions>
+        <VersionFileHash>
+          <Hash>02-04-8F-37-B2-EC-59-96-84-1F-3C-BA-F1-95-42-79</Hash>
+          <VersionInfo>Patch1_5 Patch1_6 Patch1_6_Win10</VersionInfo>
+        </VersionFileHash>
+      </Versions>
+      <InvalidVersion>Unknown</InvalidVersion>
+      <NotFoundVersion>Unknown</NotFoundVersion>
+      <NotFoundExtras>Base Extra1 Extra2</NotFoundExtras>
+    </VersionFileInfo>
+    <VersionFileInfo>
+      <RelativePath>support\Manual\ReadMe.txt</RelativePath>
+      <Versions>
+        <VersionFileHash>
+          <Hash>09-0A-FC-7A-1D-2C-02-A8-0D-A1-68-B0-68-64-F6-A9</Hash>
+          <VersionInfo>Patch1_5 Patch1_6 Patch1_6_Win10</VersionInfo>
+        </VersionFileHash>
+      </Versions>
+      <InvalidVersion>Unknown</InvalidVersion>
+      <NotFoundVersion>Unknown</NotFoundVersion>
+      <NotFoundExtras>Base Extra1 Extra2</NotFoundExtras>
+    </VersionFileInfo>
+    <VersionFileInfo>
+      <RelativePath>support\Manual\ScriptingReference.html</RelativePath>
+      <Versions>
+        <VersionFileHash>
+          <Hash>68-50-39-42-43-5B-C1-7A-F6-03-40-E7-3E-90-FA-E3</Hash>
+          <VersionInfo>Patch1_5 Patch1_6 Patch1_6_Win10</VersionInfo>
+        </VersionFileHash>
+      </Versions>
+      <InvalidVersion>Unknown</InvalidVersion>
+      <NotFoundVersion>Unknown</NotFoundVersion>
+      <NotFoundExtras>Base Extra1 Extra2</NotFoundExtras>
+    </VersionFileInfo>
+    <VersionFileInfo>
+      <RelativePath>support\Manual\TechTree.jpg</RelativePath>
+      <Versions>
+        <VersionFileHash>
+          <Hash>53-39-76-6A-32-B1-B0-6D-77-1A-CE-59-AB-63-79-CD</Hash>
+          <VersionInfo>Patch1_5 Patch1_6 Patch1_6_Win10</VersionInfo>
+        </VersionFileHash>
+      </Versions>
+      <InvalidVersion>Unknown</InvalidVersion>
+      <NotFoundVersion>Unknown</NotFoundVersion>
+      <NotFoundExtras>Base Extra1 Extra2</NotFoundExtras>
+    </VersionFileInfo>
+    <VersionFileInfo>
+      <RelativePath>support\Register\RegistrationReminder.exe</RelativePath>
+      <Versions>
+        <VersionFileHash>
+          <Hash>0D-C1-C1-56-49-2F-D4-2F-08-AA-51-D1-94-AA-CB-4F</Hash>
+          <VersionInfo>Patch1_5 Patch1_6 Patch1_6_Win10</VersionInfo>
+        </VersionFileHash>
+      </Versions>
+      <InvalidVersion>Unknown</InvalidVersion>
+      <NotFoundVersion>Unknown</NotFoundVersion>
+      <NotFoundExtras>Base Extra1 Extra2</NotFoundExtras>
+    </VersionFileInfo>
+    <VersionFileInfo>
+      <RelativePath>Patch.txt</RelativePath>
+      <Versions>
+        <VersionFileHash>
+          <Hash>3F-2A-74-06-ED-A8-A2-F1-15-83-8C-C5-A7-BE-5B-62</Hash>
+          <VersionInfo>Patch1_6 Patch1_6_Win10</VersionInfo>
+        </VersionFileHash>
+      </Versions>
+      <InvalidVersion>Unknown</InvalidVersion>
+      <NotFoundVersion>Patch1_5</NotFoundVersion>
+      <NotFoundExtras>Base Extra1 Extra2</NotFoundExtras>
+    </VersionFileInfo>
+    <VersionFileInfo>
+      <RelativePath>bin\shokmapeditor.exe</RelativePath>
+      <Versions>
+        <VersionFileHash>
+          <Hash>BC-8A-EC-E3-20-9A-98-D1-07-8D-42-EE-D6-08-30-E7</Hash>
+          <VersionInfo>Patch1_6_Win10</VersionInfo>
+        </VersionFileHash>
+      </Versions>
+      <InvalidVersion>Unknown</InvalidVersion>
+      <NotFoundVersion>Unknown</NotFoundVersion>
+      <NotFoundExtras>Base Extra1 Extra2</NotFoundExtras>
+    </VersionFileInfo>
+  </Files>
+</VersionData>

@@ -545,7 +545,9 @@ namespace S5Updater
             VersionChecker v = new VersionChecker();
             if (File.Exists("./VersionInfo.xml"))
                 v.LoadFrom("./VersionInfo.xml");
-            v.AddHashesForVersion(Reg.GoldPath, VersionInfo.Patch1_5);
+            v.AddHashesForVersion(Reg.GoldPath, VersionInfo.Coverted_HE, VersionInfo.Unknown, VersionInfo.Unknown);
+            v.AddHashesForVersion(Reg.HEPath, VersionInfo.HE, VersionInfo.Unknown, VersionInfo.Unknown);
+            v.AddHashesForVersion(Reg.GoldPath, VersionInfo.Coverted_HE, VersionInfo.Unknown, VersionInfo.Unknown);
             v.StoreTo("./VersionInfo.xml");
         }
 
