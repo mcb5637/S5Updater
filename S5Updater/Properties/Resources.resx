@@ -186,8 +186,17 @@
   <data name="TaskConvert_PatchFont" xml:space="preserve">
     <value>Patching fonts</value>
   </data>
+  <data name="TaskConvert_QstRu" xml:space="preserve">
+    <value>Do you want to use Russian as language?</value>
+  </data>
+  <data name="TaskConvert_QstRuFull" xml:space="preserve">
+    <value>Skip patching Fonts? Patching Fonts causes UI errors when using Russian as language and is required for other languages.</value>
+  </data>
   <data name="TaskConvert_QstSetReg" xml:space="preserve">
     <value>Set Gold Registry path to: </value>
+  </data>
+  <data name="TaskConvert_SkipFont" xml:space="preserve">
+    <value>Skiping fonts</value>
   </data>
   <data name="TaskDebugger_Updating" xml:space="preserve">
     <value>validating LuaDebugger</value>

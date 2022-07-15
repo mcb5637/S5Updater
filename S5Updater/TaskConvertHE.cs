@@ -40,6 +40,16 @@ namespace S5Updater
         {
             try
             {
+                if (Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName != "de" || !MM.EasyMode)
+                {
+                    if (MessageBox.Show(MM.EasyMode ? Resources.TaskConvert_QstRu : Resources.TaskConvert_QstRuFull,
+                        Resources.TitleMainMenu, MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        r(0, Resources.TaskConvert_SkipFont);
+                        return;
+                    }
+                }
+
                 string patchfile = Path.Combine(MM.Reg.GoldPath, "Tmp_font.zip");
                 r(0, Resources.TaskConvert_DownloadFont);
                 MainUpdater.DownlaodFile("https://cdn.discordapp.com/attachments/276409631746686976/788789883300741140/Schriftarten.zip", patchfile, r);
@@ -48,10 +58,10 @@ namespace S5Updater
                 string[] extras = new string[] { "base", "extra1", "extra2" };
                 using (ZipArchive a = ZipFile.OpenRead(patchfile))
                 {
+                    int filenium = a.Entries.Count;
+                    int count = 0;
                     foreach (ZipArchiveEntry e in a.Entries)
                     {
-                        int filenium = a.Entries.Count;
-                        int count = 0;
                         if (e.IsFolder())
                         {
                             count++;

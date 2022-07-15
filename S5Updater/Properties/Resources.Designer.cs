@@ -268,11 +268,38 @@ namespace S5Updater.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Do you want to use Russian as language?.
+        /// </summary>
+        internal static string TaskConvert_QstRu {
+            get {
+                return ResourceManager.GetString("TaskConvert_QstRu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Skip patching Fonts? Patching Fonts causes UI errors when using Russian as language and is required for other languages..
+        /// </summary>
+        internal static string TaskConvert_QstRuFull {
+            get {
+                return ResourceManager.GetString("TaskConvert_QstRuFull", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Set Gold Registry path to: .
         /// </summary>
         internal static string TaskConvert_QstSetReg {
             get {
                 return ResourceManager.GetString("TaskConvert_QstSetReg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Skiping fonts.
+        /// </summary>
+        internal static string TaskConvert_SkipFont {
+            get {
+                return ResourceManager.GetString("TaskConvert_SkipFont", resourceCulture);
             }
         }
         

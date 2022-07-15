@@ -186,8 +186,14 @@
   <data name="TaskConvert_PatchFont" xml:space="preserve">
     <value>aktualisiere Schriftarten</value>
   </data>
+  <data name="TaskConvert_QstRuFull" xml:space="preserve">
+    <value>Schriftarten überspringen? Schriftarten aktualisieren verursacht Anzeigefehler bei Russischen Texten, ist aber für alle anderen Sprachen benötigt.</value>
+  </data>
   <data name="TaskConvert_QstSetReg" xml:space="preserve">
     <value>Setze Gold Registry Pfad zu: </value>
+  </data>
+  <data name="TaskConvert_SkipFont" xml:space="preserve">
+    <value>Überspringe Schriftarten</value>
   </data>
   <data name="TaskDebugger_Updating" xml:space="preserve">
     <value>teste LuaDebugger</value>
