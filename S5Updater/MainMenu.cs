@@ -28,6 +28,7 @@ namespace S5Updater
         internal ProgressDialog Prog;
         internal DevHashCalc HashCalc;
         internal InstallValidator Valid;
+        internal UserScriptManager USM;
 
         private static readonly Resolution[] Resolutions = new Resolution[] { new Resolution("default", "0", false),
             new Resolution("select", "select", false), new Resolution("1920x1080", "1920 x 1080 x 32", true), new Resolution("2500x1400", "2500 x 1400 x 32", true),
@@ -37,6 +38,9 @@ namespace S5Updater
             new Language("French", "fr"), new Language("Polish", "pl"), new Language("Chinese", "zh"), new Language("Czech", "cs"), new Language("Dutch", "nl"),
             new Language("Hungarian", "hu"), new Language("Italian", "it"), new Language("Russian", "ru"), new Language("Slovakian", "sk"),
             new Language("Spanish", "sp")
+        };
+        private static readonly PlayerColor[] PlayerColors = new PlayerColor[] { new PlayerColor("default", -1),
+            new PlayerColor("blue", 1), new PlayerColor("green", 12),
         };
 
         private bool Updating = false;
@@ -52,6 +56,7 @@ namespace S5Updater
             Prog = new ProgressDialog();
             HashCalc = new DevHashCalc();
             Valid = new InstallValidator();
+            USM = new UserScriptManager();
 
             Text = Resources.TitleMainMenu + typeof(MainMenu).GetTypeInfo().Assembly.GetName().Version;
             GroupBox_Installation.Text = Resources.TitleInstallation;
@@ -78,12 +83,15 @@ namespace S5Updater
             Cb_EnableHook.Text = Resources.Txt_EnableHook;
             tabPageGeneral.Text = Resources.Txt_TabPageGeneral;
             tabPageMaps.Text = Resources.Txt_TabPageMaps;
+            tabPageUserscript.Text = Resources.Txt_TabPageUserscript;
             BTN_UpdateMappacks.Text = Resources.Txt_Btn_UpdateMappacks;
             GroupBox_GoldDev.Text = Resources.Title_GoldDev;
             Btn_UpdateDebugger.Text = Resources.Txt_UpdateDebugger;
             Cb_EnableDebugger.Text = Resources.Txt_DebuggerActive;
             Btn_ExtVersionCheckGold.Text = Resources.Txt_VersionCheckGold;
             Btn_ExtVersionCheckHE.Text = Resources.Txt_VersionCheckGold;
+            CB_USZoom.Text = Resources.Txt_UserScriptZoom;
+            Lbl_Color.Text = Resources.Txt_UserScriptColor;
 
 
             int idx = CheckedListBox_Mappacks.FindString("EMS");
@@ -99,6 +107,8 @@ namespace S5Updater
 #else
             BTN_DBG_HashFile.Visible = false;
             BTN_DBG_Xml.Visible = false;
+            Btn_ExtVersionCheckGold.Visible = false;
+            Btn_ExtVersionCheckHE.Visible = false;
 #endif
 
             Updating = true;
@@ -114,6 +124,8 @@ namespace S5Updater
                 i = 0;
             ComboBox_Langua.SelectedIndex = i;
 
+            ComboBox_Color.Items.AddRange(PlayerColors);
+
             CB_ShowIntro.Checked = Reg.ShowIntroVideo;
             Updating = false;
 
@@ -128,6 +140,7 @@ namespace S5Updater
             Log(Resources.Log_SetGold + (Reg.GoldPath ?? Resources._null));
             Log(Resources.Log_SetHE + (Reg.HEPath ?? Resources._null));
             UpdateInstallation();
+            UpdateUserscript();
         }
 
         private void UpdateInstallation()
@@ -574,6 +587,34 @@ namespace S5Updater
         private void Btn_ExtVersionCheckHE_Click(object sender, EventArgs e)
         {
             VersionCheck(Reg.HEPath);
+        }
+
+        private void UpdateUserscript()
+        {
+            Updating = true;
+            USM.Read();
+            CB_USZoom.Checked = USM.Zoom;
+            int i = PlayerColors.IndexOfArrayElement(USM.PlayerColor, (X) => X.Value);
+            if (i == -1)
+                i = 0;
+            ComboBox_Color.SelectedIndex = i;
+            Updating = false;
+        }
+
+        private void CB_USZoom_CheckedChanged(object sender, EventArgs e)
+        {
+            if (Updating)
+                return;
+            USM.Zoom = CB_USZoom.Checked;
+            USM.Update();
+        }
+
+        private void ComboBox_Color_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (Updating)
+                return;
+            USM.PlayerColor = PlayerColors[ComboBox_Color.SelectedIndex].Value;
+            USM.Update();
         }
     }
 }

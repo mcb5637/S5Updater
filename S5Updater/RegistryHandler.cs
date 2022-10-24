@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace S5Updater
 {
-    class RegistryHandler
+    internal class RegistryHandler
     {
         internal string GoldPath;
         internal bool GoldHasReg;

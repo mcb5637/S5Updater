@@ -41,4 +41,21 @@ namespace S5Updater
             return Show;
         }
     }
+
+    class PlayerColor
+    {
+        internal string Name;
+        internal int Value;
+
+        public PlayerColor(string name, int val)
+        {
+            Name = name;
+            Value = val;
+        }
+
+        public override string ToString()
+        {
+            return Name;
+        }
+    }
 }

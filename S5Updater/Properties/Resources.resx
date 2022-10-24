@@ -348,6 +348,9 @@
   <data name="Txt_TabPageMaps" xml:space="preserve">
     <value>Maps</value>
   </data>
+  <data name="Txt_TabPageUserscript" xml:space="preserve">
+    <value>UserScript</value>
+  </data>
   <data name="Txt_Update106" xml:space="preserve">
     <value>Win 10 Fix</value>
   </data>
@@ -362,6 +365,12 @@
   </data>
   <data name="Txt_UpdateMP" xml:space="preserve">
     <value>update MP maps</value>
+  </data>
+  <data name="Txt_UserScriptColor" xml:space="preserve">
+    <value>Player Color:</value>
+  </data>
+  <data name="Txt_UserScriptZoom" xml:space="preserve">
+    <value>Zoom</value>
   </data>
   <data name="Txt_VersionCheckCount" xml:space="preserve">
     <value>Loaded {0} file version infos</value>

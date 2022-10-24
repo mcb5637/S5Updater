@@ -13,7 +13,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-[assembly:AssemblyVersion("0.1.7.0")]
+[assembly:AssemblyVersion("0.1.8.0")]
 
 namespace S5Updater
 {
@@ -91,6 +91,13 @@ namespace S5Updater
         {
             for (int i = 0; i < array.Length; i++)
                 if (f(array[i]).Equals(o))
+                    return i;
+            return -1;
+        }
+        internal static int IndexOfArrayElement<T>(this T[] array, int o, Func<T, int> f)
+        {
+            for (int i = 0; i < array.Length; i++)
+                if (f(array[i]) == o)
                     return i;
             return -1;
         }

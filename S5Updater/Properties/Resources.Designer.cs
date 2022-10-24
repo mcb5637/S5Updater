@@ -754,6 +754,15 @@ namespace S5Updater.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to UserScript.
+        /// </summary>
+        internal static string Txt_TabPageUserscript {
+            get {
+                return ResourceManager.GetString("Txt_TabPageUserscript", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Win 10 Fix.
         /// </summary>
         internal static string Txt_Update106 {
@@ -795,6 +804,24 @@ namespace S5Updater.Properties {
         internal static string Txt_UpdateMP {
             get {
                 return ResourceManager.GetString("Txt_UpdateMP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Player Color:.
+        /// </summary>
+        internal static string Txt_UserScriptColor {
+            get {
+                return ResourceManager.GetString("Txt_UserScriptColor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zoom.
+        /// </summary>
+        internal static string Txt_UserScriptZoom {
+            get {
+                return ResourceManager.GetString("Txt_UserScriptZoom", resourceCulture);
             }
         }
         
