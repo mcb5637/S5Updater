@@ -12,7 +12,7 @@ namespace S5Updater
 {
     internal class UserScriptManager
     {
-        internal bool Zoom = true;
+        internal bool Zoom = false;
         internal int PlayerColor = -1;
         private string FileGold => Path.Combine(FolderGold, "Script\\UserScript.lua");
         private string FileHE => Path.Combine(FolderHE, "Script\\UserScript.lua");
@@ -35,6 +35,8 @@ namespace S5Updater
 
         private void WriteTo(string file)
         {
+            if (!Directory.Exists(Path.GetDirectoryName(file)))
+                Directory.CreateDirectory(Path.GetDirectoryName(file));
             using (StreamWriter w = new StreamWriter(file, false))
             {
                 w.WriteLine($"UserScriptSettings = {{Weather = {(Zoom ? "true" : "false")}, Zoom = {(Zoom ? "2" : "nil")}, PlayerColor = {(PlayerColor > 0 ? PlayerColor.ToString() : "nil")}, Debug = nil}}");
