@@ -340,6 +340,15 @@ namespace S5Updater.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to CppLogic Settings File exists for %s: remove?\nIf you do not, make sure the file does not disable CppLogic..
+        /// </summary>
+        internal static string TaskManageDlls_QstRemoveSettings {
+            get {
+                return ResourceManager.GetString("TaskManageDlls_QstRemoveSettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to checking out.
         /// </summary>
         internal static string TaskMPMap_Checkout {

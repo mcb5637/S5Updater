@@ -207,6 +207,9 @@
   <data name="TaskHook_Validating" xml:space="preserve">
     <value>teste CppLogic</value>
   </data>
+  <data name="TaskManageDlls_QstRemoveSettings" xml:space="preserve">
+    <value>CppLogic Einstellungsdatei existiert für %s, entfernen?\nWenn nicht, bitte sicherstellen, das dort CppLogic nicht abgeschaltet ist.</value>
+  </data>
   <data name="TaskMPMap_Checkout" xml:space="preserve">
     <value>aktualisiere Dateien</value>
   </data>

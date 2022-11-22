@@ -1,9 +1,12 @@
-﻿using System;
+﻿using Microsoft.SqlServer.Server;
+using S5Updater.Properties;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace S5Updater
 {
@@ -25,6 +28,17 @@ namespace S5Updater
                     {
                         string debug = Path.Combine(MM.Reg.GoldPath, e, "LuaDebugger.dll");
                         File.Copy(Path.Combine(MM.Reg.GoldPath, e, "S5CppLogic.dll"), debug, true);
+
+                        string sett = Path.Combine(MM.Reg.GoldPath, e, "CppLogicOptions.txt");
+                        if (File.Exists(sett))
+                        {
+                            string txt = File.ReadAllText(sett).Trim();
+                            if (txt.Equals("DoNotLoad=1") || txt.Equals("DoNotLoad=0")
+                                || MessageBox.Show(string.Format(Resources.TaskManageDlls_QstRemoveSettings, sett), "", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                            {
+                                File.Delete(sett);
+                            }
+                        }
                     }
                     if (MM.DebuggerEnabled && TaskUpdateDebugger.IsInstalled(MM.Reg.GoldPath))
                     {

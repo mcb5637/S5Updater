@@ -210,6 +210,9 @@
   <data name="TaskHook_Validating" xml:space="preserve">
     <value>validating CppLogic</value>
   </data>
+  <data name="TaskManageDlls_QstRemoveSettings" xml:space="preserve">
+    <value>CppLogic Settings File exists for %s: remove?\nIf you do not, make sure the file does not disable CppLogic.</value>
+  </data>
   <data name="TaskMPMap_Checkout" xml:space="preserve">
     <value>checking out</value>
   </data>
