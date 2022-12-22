@@ -26,7 +26,7 @@ namespace S5Updater
             {
                 string patchfile = Path.Combine(MM.Reg.GoldPath, "Tmp_w10cu.zip");
                 r(0, Resources.TaskUpdate106_DownloadFileExe);
-                MainUpdater.DownlaodFile("http://www.dedk.de/patch/w10cu.zip", patchfile, r);
+                MainUpdater.DownlaodFile("https://cdn.discordapp.com/attachments/869930097854001222/1055269169400119377/w10cu.zip", patchfile, r);
                 r(100, Resources.Done);
                 r(0, Resources.TaskUpdate106_PatchExe);
                 string settlershok = Path.Combine(MM.Reg.GoldPath, "bin\\settlershok.exe");
