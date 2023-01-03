@@ -75,9 +75,9 @@ namespace S5Updater
             this.BTN_UpdateMappacks = new System.Windows.Forms.Button();
             this.label_MapDownload = new System.Windows.Forms.Label();
             this.tabPageUserscript = new System.Windows.Forms.TabPage();
-            this.CB_USZoom = new System.Windows.Forms.CheckBox();
-            this.ComboBox_Color = new System.Windows.Forms.ComboBox();
             this.Lbl_Color = new System.Windows.Forms.Label();
+            this.ComboBox_Color = new System.Windows.Forms.ComboBox();
+            this.CB_USZoom = new System.Windows.Forms.CheckBox();
             this.GroupBox_Installation.SuspendLayout();
             this.GroupBox_Updates.SuspendLayout();
             this.GroupBox_Settings.SuspendLayout();
@@ -179,6 +179,10 @@ namespace S5Updater
             this.LBL_Gold.Size = new System.Drawing.Size(35, 13);
             this.LBL_Gold.TabIndex = 0;
             this.LBL_Gold.Text = "label1";
+            // 
+            // Dlg_FolderBrowser
+            // 
+            this.Dlg_FolderBrowser.RootFolder = System.Environment.SpecialFolder.MyComputer;
             // 
             // TextBox_Output
             // 
@@ -591,16 +595,14 @@ namespace S5Updater
             this.tabPageUserscript.Text = "tabPage1";
             this.tabPageUserscript.UseVisualStyleBackColor = true;
             // 
-            // CB_USZoom
+            // Lbl_Color
             // 
-            this.CB_USZoom.AutoSize = true;
-            this.CB_USZoom.Location = new System.Drawing.Point(8, 6);
-            this.CB_USZoom.Name = "CB_USZoom";
-            this.CB_USZoom.Size = new System.Drawing.Size(80, 17);
-            this.CB_USZoom.TabIndex = 0;
-            this.CB_USZoom.Text = "checkBox1";
-            this.CB_USZoom.UseVisualStyleBackColor = true;
-            this.CB_USZoom.CheckedChanged += new System.EventHandler(this.CB_USZoom_CheckedChanged);
+            this.Lbl_Color.AutoSize = true;
+            this.Lbl_Color.Location = new System.Drawing.Point(8, 32);
+            this.Lbl_Color.Name = "Lbl_Color";
+            this.Lbl_Color.Size = new System.Drawing.Size(35, 13);
+            this.Lbl_Color.TabIndex = 2;
+            this.Lbl_Color.Text = "label1";
             // 
             // ComboBox_Color
             // 
@@ -612,14 +614,16 @@ namespace S5Updater
             this.ComboBox_Color.TabIndex = 1;
             this.ComboBox_Color.SelectedIndexChanged += new System.EventHandler(this.ComboBox_Color_SelectedIndexChanged);
             // 
-            // Lbl_Color
+            // CB_USZoom
             // 
-            this.Lbl_Color.AutoSize = true;
-            this.Lbl_Color.Location = new System.Drawing.Point(8, 32);
-            this.Lbl_Color.Name = "Lbl_Color";
-            this.Lbl_Color.Size = new System.Drawing.Size(35, 13);
-            this.Lbl_Color.TabIndex = 2;
-            this.Lbl_Color.Text = "label1";
+            this.CB_USZoom.AutoSize = true;
+            this.CB_USZoom.Location = new System.Drawing.Point(8, 6);
+            this.CB_USZoom.Name = "CB_USZoom";
+            this.CB_USZoom.Size = new System.Drawing.Size(80, 17);
+            this.CB_USZoom.TabIndex = 0;
+            this.CB_USZoom.Text = "checkBox1";
+            this.CB_USZoom.UseVisualStyleBackColor = true;
+            this.CB_USZoom.CheckedChanged += new System.EventHandler(this.CB_USZoom_CheckedChanged);
             // 
             // MainMenu
             // 
