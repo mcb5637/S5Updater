@@ -41,7 +41,10 @@ namespace S5Updater
             {
                 w.WriteLine($"UserScriptSettings = {{Weather = {(Zoom ? "true" : "false")}, Zoom = {(Zoom ? "2" : "nil")}, PlayerColor = {(PlayerColor > 0 ? PlayerColor.ToString() : "nil")}, Debug = nil}}");
                 w.Flush();
-                Assembly.GetExecutingAssembly().GetManifestResourceStream("S5Updater.UserScript.lua").CopyTo(w.BaseStream);
+                using (StreamReader r = new StreamReader(Assembly.GetExecutingAssembly().GetManifestResourceStream("S5Updater.UserScript.lua")))
+                {
+                    w.Write(r.ReadToEnd());
+                }
             }
         }
 
