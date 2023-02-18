@@ -40,7 +40,10 @@ namespace S5Updater
             new Language("Spanish", "sp")
         };
         private static readonly PlayerColor[] PlayerColors = new PlayerColor[] { new PlayerColor("default", -1),
-            new PlayerColor("blue", 1), new PlayerColor("green", 12),
+            new PlayerColor("blue", 1), new PlayerColor("red", 2), new PlayerColor("yellow", 3), new PlayerColor("teal", 4),
+            new PlayerColor("orange", 5), new PlayerColor("purple", 6), new PlayerColor("pink", 7), new PlayerColor("light green", 8),
+            new PlayerColor("dark green", 9), new PlayerColor("light gray", 10), new PlayerColor("brown", 11), new PlayerColor("gray", 12),
+            new PlayerColor("white", 13), new PlayerColor("black", 14), new PlayerColor("teal 2", 15), new PlayerColor("pink 2", 16),
         };
 
         private bool Updating = false;

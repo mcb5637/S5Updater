@@ -13,7 +13,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-[assembly:AssemblyVersion("0.1.8.5")]
+[assembly:AssemblyVersion("0.1.8.6")]
 
 namespace S5Updater
 {
