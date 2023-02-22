@@ -13,7 +13,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-[assembly:AssemblyVersion("0.1.8.6")]
+[assembly:AssemblyVersion("0.1.8.7")]
 
 namespace S5Updater
 {
@@ -203,6 +203,30 @@ namespace S5Updater
             }
 
             return isChild;
+        }
+
+        public static void CreateLinkPS(string lnk, string to, string para = "", Action<string> log = null)
+        {
+            ProcessStartInfo i = new ProcessStartInfo
+            {
+                FileName = "powershell",
+                Arguments = $"$WshShell = New-Object -comObject WScript.Shell\n$Shortcut = $WshShell.CreateShortcut(\\\"{lnk}\\\")\n$Shortcut.TargetPath = \\\"{to}\\\"\n$shortcut.Arguments = \\\"{para}\\\"\n$Shortcut.Save()",
+                RedirectStandardError = true,
+                RedirectStandardOutput = true,
+                CreateNoWindow = true,
+                UseShellExecute = false
+            };
+            Process pr = new Process
+            {
+                StartInfo = i
+            };
+            pr.Start();
+            pr.WaitForExit();
+            if (log != null)
+            {
+                log("out: " + pr.StandardOutput.ReadToEnd());
+                log("err: " + pr.StandardError.ReadToEnd());
+            }
         }
     }
 }

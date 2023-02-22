@@ -186,6 +186,12 @@
   <data name="TaskConvert_PatchFont" xml:space="preserve">
     <value>aktualisiere Schriftarten</value>
   </data>
+  <data name="TaskConvert_QstLink" xml:space="preserve">
+    <value>Verknüpfungen zum Spiel auf dem Desktop erstellen?</value>
+  </data>
+  <data name="TaskConvert_QstLinkEditor" xml:space="preserve">
+    <value>Verknüpfungen zum Mapeditor auf dem Desktop erstellen?</value>
+  </data>
   <data name="TaskConvert_QstRuFull" xml:space="preserve">
     <value>Schriftarten überspringen? Schriftarten aktualisieren verursacht Anzeigefehler bei Russischen Texten, ist aber für alle anderen Sprachen benötigt.</value>
   </data>
@@ -317,6 +323,12 @@
   </data>
   <data name="Txt_GoldSetReg" xml:space="preserve">
     <value>setze Registry</value>
+  </data>
+  <data name="Txt_HEEditor_CreateLinks" xml:space="preserve">
+    <value>Verknüpfungen zu Nebelreich &amp; Legenden Mapeditor auf dem Desktop erstellen?</value>
+  </data>
+  <data name="Txt_HEFixEditor" xml:space="preserve">
+    <value>Repariere Mapeditor</value>
   </data>
   <data name="Txt_InstallMap" xml:space="preserve">
     <value>Installiere Map</value>

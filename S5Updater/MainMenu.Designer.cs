@@ -78,6 +78,7 @@ namespace S5Updater
             this.Lbl_Color = new System.Windows.Forms.Label();
             this.ComboBox_Color = new System.Windows.Forms.ComboBox();
             this.CB_USZoom = new System.Windows.Forms.CheckBox();
+            this.Btn_HEFixEditor = new System.Windows.Forms.Button();
             this.GroupBox_Installation.SuspendLayout();
             this.GroupBox_Updates.SuspendLayout();
             this.GroupBox_Settings.SuspendLayout();
@@ -433,6 +434,7 @@ namespace S5Updater
             // 
             // GroupBox_Convert
             // 
+            this.GroupBox_Convert.Controls.Add(this.Btn_HEFixEditor);
             this.GroupBox_Convert.Controls.Add(this.Btn_ExtVersionCheckHE);
             this.GroupBox_Convert.Controls.Add(this.Btn_MapInstallerHE);
             this.GroupBox_Convert.Controls.Add(this.Btn_ConvertHE);
@@ -465,7 +467,7 @@ namespace S5Updater
             // 
             // Btn_ConvertHE
             // 
-            this.Btn_ConvertHE.Location = new System.Drawing.Point(9, 19);
+            this.Btn_ConvertHE.Location = new System.Drawing.Point(6, 19);
             this.Btn_ConvertHE.Name = "Btn_ConvertHE";
             this.Btn_ConvertHE.Size = new System.Drawing.Size(179, 23);
             this.Btn_ConvertHE.TabIndex = 0;
@@ -625,6 +627,16 @@ namespace S5Updater
             this.CB_USZoom.UseVisualStyleBackColor = true;
             this.CB_USZoom.CheckedChanged += new System.EventHandler(this.CB_USZoom_CheckedChanged);
             // 
+            // Btn_HEFixEditor
+            // 
+            this.Btn_HEFixEditor.Location = new System.Drawing.Point(6, 48);
+            this.Btn_HEFixEditor.Name = "Btn_HEFixEditor";
+            this.Btn_HEFixEditor.Size = new System.Drawing.Size(179, 23);
+            this.Btn_HEFixEditor.TabIndex = 3;
+            this.Btn_HEFixEditor.Text = "button1";
+            this.Btn_HEFixEditor.UseVisualStyleBackColor = true;
+            this.Btn_HEFixEditor.Click += new System.EventHandler(this.Btn_HEFixEditor_Click);
+            // 
             // MainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -713,5 +725,6 @@ namespace S5Updater
         private System.Windows.Forms.CheckBox CB_USZoom;
         private System.Windows.Forms.Label Lbl_Color;
         private System.Windows.Forms.ComboBox ComboBox_Color;
+        private System.Windows.Forms.Button Btn_HEFixEditor;
     }
 }

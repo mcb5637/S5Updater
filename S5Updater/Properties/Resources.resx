@@ -186,6 +186,12 @@
   <data name="TaskConvert_PatchFont" xml:space="preserve">
     <value>Patching fonts</value>
   </data>
+  <data name="TaskConvert_QstLink" xml:space="preserve">
+    <value>Create shortcuts to game on desktop?</value>
+  </data>
+  <data name="TaskConvert_QstLinkEditor" xml:space="preserve">
+    <value>Create shortcuts to mapeditor on desktop?</value>
+  </data>
   <data name="TaskConvert_QstRu" xml:space="preserve">
     <value>Do you want to use Russian as language?</value>
   </data>
@@ -320,6 +326,12 @@
   </data>
   <data name="Txt_GoldSetReg" xml:space="preserve">
     <value>set registry</value>
+  </data>
+  <data name="Txt_HEEditor_CreateLinks" xml:space="preserve">
+    <value>Create shortcuts to extra1 &amp; extra2 on desktop?</value>
+  </data>
+  <data name="Txt_HEFixEditor" xml:space="preserve">
+    <value>Fix Mapeditor</value>
   </data>
   <data name="Txt_InstallMap" xml:space="preserve">
     <value>install map</value>

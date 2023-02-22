@@ -34,6 +34,9 @@ namespace S5Updater
             if (Status != MainMenu.Status_OK)
                 return;
             PatchFonts(r);
+            if (Status != MainMenu.Status_OK)
+                return;
+            CreateSortcuts(r);
         }
 
         private void PatchFonts(ProgressDialog.ReportProgressDel r)
@@ -191,6 +194,31 @@ namespace S5Updater
             if (!MM.Reg.GoldHasReg && (MM.EasyMode || MessageBox.Show(Resources.TaskConvert_QstSetReg + MM.Reg.GoldPath, "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes))
             {
                 MM.Reg.SetGoldReg();
+            }
+        }
+
+        private void CreateSortcuts(ProgressDialog.ReportProgressDel r)
+        {
+            string p = MM.Reg.GoldPath;
+            Action<string> log = (s) =>
+            {
+                r(0, s);
+            };
+            if (MessageBox.Show(Resources.TaskConvert_QstLink, "", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                MainUpdater.CreateLinkPS(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "Settlers HoK Base.lnk"),
+                    Path.Combine(p, "bin/settlershok.exe"), "", log);
+                MainUpdater.CreateLinkPS(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "Settlers HoK Extra1.lnk"),
+                    Path.Combine(p, "extra1/bin/settlershok.exe"), "", log);
+                MainUpdater.CreateLinkPS(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "Settlers HoK Extra2.lnk"),
+                    Path.Combine(p, "extra2/bin/settlershok.exe"), "", log);
+            }
+            if (MessageBox.Show(Resources.TaskConvert_QstLinkEditor, "", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                MainUpdater.CreateLinkPS(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "Settlers HoK Extra1 Editor.lnk"),
+                    Path.Combine(p, "extra1/bin/shokmapeditor.exe"), "", log);
+                MainUpdater.CreateLinkPS(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "Settlers HoK Extra2 Editor.lnk"),
+                    Path.Combine(p, "extra2/bin/shokmapeditor.exe"), "", log);
             }
         }
     }

@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.IO.Compression;
@@ -95,6 +96,7 @@ namespace S5Updater
             Btn_ExtVersionCheckHE.Text = Resources.Txt_VersionCheckGold;
             CB_USZoom.Text = Resources.Txt_UserScriptZoom;
             Lbl_Color.Text = Resources.Txt_UserScriptColor;
+            Btn_HEFixEditor.Text = Resources.Txt_HEFixEditor;
 
 
             int idx = CheckedListBox_Mappacks.FindString("EMS");
@@ -196,6 +198,7 @@ namespace S5Updater
                 CB_HEOk.Checked = true;
                 Btn_ConvertHE.Enabled = !goldValid && (string.IsNullOrEmpty(Reg.GoldPath) || (MainUpdater.IsDirNotExistingOrEmpty(Reg.GoldPath) && !MainUpdater.IsSubDirectoryOf(Reg.GoldPath, Reg.HEPath)));
                 Btn_MapInstallerHE.Enabled = true;
+                Btn_HEFixEditor.Enabled = true;
             }
             else
             {
@@ -203,6 +206,7 @@ namespace S5Updater
                 CB_HEOk.Checked = false;
                 Btn_ConvertHE.Enabled = false;
                 Btn_MapInstallerHE.Enabled = false;
+                Btn_HEFixEditor.Enabled = false;
             }
             Btn_ExtVersionCheckGold.Enabled = Reg.GoldPath != null;
             Btn_ExtVersionCheckHE.Enabled = Reg.HEPath != null;
@@ -268,6 +272,7 @@ namespace S5Updater
             Btn_GoldSave.Visible = hideInEasy;
             CB_DevMode.Visible = hideInEasy;
             GroupBox_GoldDev.Visible = hideInEasy;
+            Btn_HEFixEditor.Visible = hideInEasy;
             UpdateInstallation();
         }
 
@@ -618,6 +623,34 @@ namespace S5Updater
                 return;
             USM.PlayerColor = PlayerColors[ComboBox_Color.SelectedIndex].Value;
             USM.Update();
+        }
+
+        private void Btn_HEFixEditor_Click(object sender, EventArgs e)
+        {
+            string p = Reg.HEPath;
+            try
+            {
+                File.Delete(Path.Combine(p, "extra2\\shr\\MapEditor\\LandscapeSets\\customset.xml"));
+            }
+            catch (IOException ex)
+            {
+                Log(ex.ToString());
+            }
+            try
+            {
+                File.Delete(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Documents\\THE SETTLERS 5 - History Edition\\MapEditor\\LandscapeSets\\customset.xml"));
+            }
+            catch (IOException ex)
+            {
+                Log(ex.ToString());
+            }
+            if (MessageBox.Show(Resources.Txt_HEEditor_CreateLinks, "", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                MainUpdater.CreateLinkPS(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "Settlers HoK Editor Extra1.lnk"),
+                    Path.Combine(p, "bin/shokmapeditor.exe"), "-extra1", Log);
+                MainUpdater.CreateLinkPS(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "Settlers HoK Editor Extra2.lnk"),
+                    Path.Combine(p, "bin/shokmapeditor.exe"), "-extra2", Log);
+            }
         }
     }
 }

@@ -268,6 +268,24 @@ namespace S5Updater.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Create shortcuts to game on desktop?.
+        /// </summary>
+        internal static string TaskConvert_QstLink {
+            get {
+                return ResourceManager.GetString("TaskConvert_QstLink", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create shortcuts to mapeditor on desktop?.
+        /// </summary>
+        internal static string TaskConvert_QstLinkEditor {
+            get {
+                return ResourceManager.GetString("TaskConvert_QstLinkEditor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Do you want to use Russian as language?.
         /// </summary>
         internal static string TaskConvert_QstRu {
@@ -669,6 +687,24 @@ namespace S5Updater.Properties {
         internal static string Txt_GoldSetReg {
             get {
                 return ResourceManager.GetString("Txt_GoldSetReg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create shortcuts to extra1 &amp; extra2 on desktop?.
+        /// </summary>
+        internal static string Txt_HEEditor_CreateLinks {
+            get {
+                return ResourceManager.GetString("Txt_HEEditor_CreateLinks", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fix Mapeditor.
+        /// </summary>
+        internal static string Txt_HEFixEditor {
+            get {
+                return ResourceManager.GetString("Txt_HEFixEditor", resourceCulture);
             }
         }
         
