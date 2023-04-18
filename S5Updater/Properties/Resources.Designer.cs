@@ -511,6 +511,15 @@ namespace S5Updater.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Written UserScript to {0}.
+        /// </summary>
+        internal static string TaskUserScript_WriteLog {
+            get {
+                return ResourceManager.GetString("TaskUserScript_WriteLog", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Gold Development Tools.
         /// </summary>
         internal static string Title_GoldDev {

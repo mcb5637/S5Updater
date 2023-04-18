@@ -16,15 +16,15 @@ namespace S5Updater
         internal int PlayerColor = -1;
         private string FileGold => Path.Combine(FolderGold, "Script\\UserScript.lua");
         private string FileHE => Path.Combine(FolderHE, "Script\\UserScript.lua");
-        private string FolderGold => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Documents\\DIE SIEDLER - DEdK");
-        private string FolderHE => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Documents\\THE SETTLERS 5 - History Edition");
+        private string FolderGold => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "DIE SIEDLER - DEdK");
+        private string FolderHE => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "THE SETTLERS 5 - History Edition");
 
-        internal void Update()
+        internal void Update(Action<string> log)
         {
             if (Directory.Exists(FolderGold))
-                WriteTo(FileGold);
+                WriteTo(FileGold, log);
             if (Directory.Exists(FolderHE))
-                WriteTo(FileHE);
+                WriteTo(FileHE, log);
         }
 
         internal void Read()
@@ -33,10 +33,11 @@ namespace S5Updater
                 ReadFrom(FileHE);
         }
 
-        private void WriteTo(string file)
+        private void WriteTo(string file, Action<string> log)
         {
             if (!Directory.Exists(Path.GetDirectoryName(file)))
                 Directory.CreateDirectory(Path.GetDirectoryName(file));
+            log(string.Format(Resources.TaskUserScript_WriteLog, file));
             using (StreamWriter w = new StreamWriter(file, false))
             {
                 w.WriteLine($"UserScriptSettings = {{Weather = {(Zoom ? "true" : "false")}, Zoom = {(Zoom ? "2" : "nil")}, PlayerColor = {(PlayerColor > 0 ? PlayerColor.ToString() : "nil")}, Debug = nil}}");

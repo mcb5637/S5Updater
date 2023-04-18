@@ -614,7 +614,7 @@ namespace S5Updater
             if (Updating)
                 return;
             USM.Zoom = CB_USZoom.Checked;
-            USM.Update();
+            USM.Update(Log);
         }
 
         private void ComboBox_Color_SelectedIndexChanged(object sender, EventArgs e)
@@ -622,7 +622,7 @@ namespace S5Updater
             if (Updating)
                 return;
             USM.PlayerColor = PlayerColors[ComboBox_Color.SelectedIndex].Value;
-            USM.Update();
+            USM.Update(Log);
         }
 
         private void Btn_HEFixEditor_Click(object sender, EventArgs e)

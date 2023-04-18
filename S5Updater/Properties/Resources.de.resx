@@ -264,6 +264,9 @@
   <data name="TaskUpdate106_PatchExe" xml:space="preserve">
     <value>Ersetze exe</value>
   </data>
+  <data name="TaskUserScript_WriteLog" xml:space="preserve">
+    <value>UserScript nach {0} geschrieben</value>
+  </data>
   <data name="TitleConvert" xml:space="preserve">
     <value>History Edition</value>
   </data>
