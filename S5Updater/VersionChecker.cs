@@ -65,6 +65,75 @@ namespace S5Updater
                 Data = (VersionData)seri.Deserialize(w);
             }
         }
+        internal void FixFileInfoCase()
+        {
+            List<VersionFileInfo> newf = new List<VersionFileInfo>();
+            foreach (var f in Data.Files)
+            {
+                string fn = f.RelativePath.ToLower();
+                if (fn.Contains("shr\\maps\\user"))
+                    continue;
+                var nf = newf.FirstOrDefault(x => x.RelativePath == fn);
+                if (nf == null)
+                {
+                    newf.Add(f);
+                    f.RelativePath = fn;
+                }
+                else
+                {
+                    foreach (var fha in f.Versions)
+                    {
+                        var nfh = nf.Versions.FirstOrDefault(x => x.Hash == fha.Hash);
+                        if (nfh == null)
+                        {
+                            nf.Versions.Add(fha);
+                        }
+                        else
+                        {
+                            nfh.VersionInfo |= fha.VersionInfo;
+                        }
+                    }
+                    nf.InvalidVersion |= f.InvalidVersion;
+                    nf.NotFoundVersion |= f.NotFoundVersion;
+                    nf.NotFoundExtras |= f.NotFoundExtras;
+                }
+            }
+            Data.Files = newf;
+        }
+        internal void FixNotAllVersionExtra()
+        {
+            foreach (var f in Data.Files)
+            {
+                if (f.RelativePath.StartsWith("extra"))
+                {
+                    VersionInfo i = VersionInfo.Unknown;
+                    foreach (var fha in f.Versions)
+                    {
+                        i |= fha.VersionInfo;
+                    }
+                    i &= VersionInfo.Patch1_5 | VersionInfo.Patch1_6 | VersionInfo.Patch1_6_Win10;
+                    if (i != (VersionInfo.Patch1_5 | VersionInfo.Patch1_6 | VersionInfo.Patch1_6_Win10))
+                    {
+                        f.NotFoundExtras = Extras.Base | Extras.Extra1 | Extras.Extra2;
+                    }
+                }
+            }
+        }
+        static internal string AnalyzeLog(string path, string suspected, string req)
+        {
+            string r = "";
+            using (TextReader read = new StreamReader(path))
+            {
+                string l = read.ReadLine();
+                while (l != null)
+                {
+                    if (l.Contains(req) && !l.Contains(suspected))
+                        r += l + "\n";
+                    l = read.ReadLine();
+                }
+            }
+            return r;
+        }
         internal void AddHashesForVersion(string path, VersionInfo thisversion, VersionInfo invalidversion, VersionInfo notfoundversion)
         {
             if (Data == null)

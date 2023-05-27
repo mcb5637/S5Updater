@@ -112,8 +112,6 @@ namespace S5Updater
 #else
             BTN_DBG_HashFile.Visible = false;
             BTN_DBG_Xml.Visible = false;
-            Btn_ExtVersionCheckGold.Visible = false;
-            Btn_ExtVersionCheckHE.Visible = false;
 #endif
 
             Updating = true;
@@ -563,13 +561,15 @@ namespace S5Updater
 
         private void BTN_DBG_Xml_Click(object sender, EventArgs e)
         {
-            VersionChecker v = new VersionChecker();
-            if (File.Exists("./VersionInfo.xml"))
-                v.LoadFrom("./VersionInfo.xml");
-            v.AddHashesForVersion(Reg.GoldPath, VersionInfo.Coverted_HE, VersionInfo.Unknown, VersionInfo.Unknown);
-            v.AddHashesForVersion(Reg.HEPath, VersionInfo.HE, VersionInfo.Unknown, VersionInfo.Unknown);
-            v.AddHashesForVersion(Reg.GoldPath, VersionInfo.Coverted_HE, VersionInfo.Unknown, VersionInfo.Unknown);
-            v.StoreTo("./VersionInfo.xml");
+            //VersionChecker v = new VersionChecker();
+            //if (File.Exists("./VersionInfo.xml"))
+            //    v.LoadFrom("./VersionInfo.xml");
+            //v.FixFileInfoCase();
+            //v.FixNotAllVersionExtra();
+            //v.AddHashesForVersion(Reg.GoldPath, VersionInfo.Patch1_6_Win10, VersionInfo.Unknown, VersionInfo.Unknown);
+            //v.StoreTo("./VersionInfo.xml");
+            string r = VersionChecker.AnalyzeLog("./VersionLog.txt", "Extra1", "not found");
+            MessageBox.Show(r);
         }
 
         private void VersionCheck(string path)
