@@ -271,6 +271,8 @@ namespace S5Updater
             CB_DevMode.Visible = hideInEasy;
             GroupBox_GoldDev.Visible = hideInEasy;
             Btn_HEFixEditor.Visible = hideInEasy;
+            Btn_ExtVersionCheckGold.Visible = hideInEasy;
+            Btn_ExtVersionCheckHE.Visible = hideInEasy;
             UpdateInstallation();
         }
 
