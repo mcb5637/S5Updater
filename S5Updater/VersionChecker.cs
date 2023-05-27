@@ -194,8 +194,11 @@ namespace S5Updater
             foreach (VersionFileInfo vi in Data.Files)
             {
                 log.Write($"file {vi.RelativePath} -> ");
-                rd(curr * 100 / Data.Files.Count, null);
-                rd(-1, vi.RelativePath);
+                if (curr % 10 == 0)
+                {
+                    rd(curr * 100 / Data.Files.Count, null);
+                    rd(-1, vi.RelativePath);
+                }
                 string p = Path.Combine(path, vi.RelativePath);
                 string h = InstallValidator.GetFileHash(p);
                 if (h == null)
