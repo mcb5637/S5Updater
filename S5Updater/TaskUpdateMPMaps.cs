@@ -41,6 +41,10 @@ namespace S5Updater
                     HandleRepo(Path.Combine(MM.Reg.GoldPath, "extra2\\shr\\maps\\user\\Balancing_Stuff_Maps"), "main", "https://github.com/GhoulMadness/Balancing_Stuff_Maps.git", r);
                 }
 
+                if (MM.ShouldMappackBeDownloaded("Stronghold"))
+                {
+                    HandleRepo(Path.Combine(MM.Reg.GoldPath, "extra2\\shr\\maps\\user\\StrongholdMP"), "master", "https://github.com/totalwarANGEL1993/stronghold_s5mp_release.git", r);
+                }
 
                 r(0, Resources.TaskMPMap_CopyFiles);
 
@@ -49,7 +53,10 @@ namespace S5Updater
                 
                 if (MM.ShouldMappackBeDownloaded("BS"))
                     MainUpdater.Copy(Path.Combine(MM.Reg.GoldPath, "extra2\\shr\\maps\\user\\Balancing_Stuff_Maps"), Path.Combine(MM.Reg.GoldPath, "extra2\\shr\\maps\\user"), Exclude);
-                
+
+                if (MM.ShouldMappackBeDownloaded("Stronghold"))
+                    MainUpdater.Copy(Path.Combine(MM.Reg.GoldPath, "extra2\\shr\\maps\\user\\StrongholdMP"), Path.Combine(MM.Reg.GoldPath, "extra2\\shr\\maps\\user"), Exclude);
+
                 r(100, Resources.Done);
             }
             catch (Exception e)

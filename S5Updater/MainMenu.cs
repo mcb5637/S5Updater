@@ -105,6 +105,8 @@ namespace S5Updater
             CheckedListBox_Mappacks.SetItemChecked(idx, Reg.DownloadMappackSpeedwar);
             idx = CheckedListBox_Mappacks.FindString("BS");
             CheckedListBox_Mappacks.SetItemChecked(idx, Reg.DownloadMappackBS);
+            idx = CheckedListBox_Mappacks.FindString("Stronghold");
+            CheckedListBox_Mappacks.SetItemChecked(idx, Reg.DownloadMappackStronghold);
 
 #if DEBUG
             BTN_DBG_HashFile.Visible = true;
@@ -512,6 +514,8 @@ namespace S5Updater
             Reg.DownloadMappackSpeedwar = CheckedListBox_Mappacks.GetItemChecked(idx);
             idx = CheckedListBox_Mappacks.FindString("BS");
             Reg.DownloadMappackBS = CheckedListBox_Mappacks.GetItemChecked(idx);
+            idx = CheckedListBox_Mappacks.FindString("Stronghold");
+            Reg.DownloadMappackStronghold = CheckedListBox_Mappacks.GetItemChecked(idx);
         }
 
         private void BTN_UpdateMappacks_Click(object sender, EventArgs e)

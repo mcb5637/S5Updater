@@ -61,6 +61,7 @@ namespace S5Updater
             this.LBL_Reso = new System.Windows.Forms.Label();
             this.ComboBox_Reso = new System.Windows.Forms.ComboBox();
             this.GroupBox_Convert = new System.Windows.Forms.GroupBox();
+            this.Btn_HEFixEditor = new System.Windows.Forms.Button();
             this.Btn_ExtVersionCheckHE = new System.Windows.Forms.Button();
             this.Btn_MapInstallerHE = new System.Windows.Forms.Button();
             this.Btn_ConvertHE = new System.Windows.Forms.Button();
@@ -78,7 +79,6 @@ namespace S5Updater
             this.Lbl_Color = new System.Windows.Forms.Label();
             this.ComboBox_Color = new System.Windows.Forms.ComboBox();
             this.CB_USZoom = new System.Windows.Forms.CheckBox();
-            this.Btn_HEFixEditor = new System.Windows.Forms.Button();
             this.GroupBox_Installation.SuspendLayout();
             this.GroupBox_Updates.SuspendLayout();
             this.GroupBox_Settings.SuspendLayout();
@@ -445,6 +445,16 @@ namespace S5Updater
             this.GroupBox_Convert.TabStop = false;
             this.GroupBox_Convert.Text = "converhe";
             // 
+            // Btn_HEFixEditor
+            // 
+            this.Btn_HEFixEditor.Location = new System.Drawing.Point(6, 48);
+            this.Btn_HEFixEditor.Name = "Btn_HEFixEditor";
+            this.Btn_HEFixEditor.Size = new System.Drawing.Size(179, 23);
+            this.Btn_HEFixEditor.TabIndex = 3;
+            this.Btn_HEFixEditor.Text = "button1";
+            this.Btn_HEFixEditor.UseVisualStyleBackColor = true;
+            this.Btn_HEFixEditor.Click += new System.EventHandler(this.Btn_HEFixEditor_Click);
+            // 
             // Btn_ExtVersionCheckHE
             // 
             this.Btn_ExtVersionCheckHE.Location = new System.Drawing.Point(331, 19);
@@ -558,16 +568,17 @@ namespace S5Updater
             this.CheckedListBox_Mappacks.Items.AddRange(new object[] {
             "EMS",
             "BS",
-            "Speedwar"});
+            "Speedwar",
+            "Stronghold"});
             this.CheckedListBox_Mappacks.Location = new System.Drawing.Point(10, 36);
             this.CheckedListBox_Mappacks.Name = "CheckedListBox_Mappacks";
-            this.CheckedListBox_Mappacks.Size = new System.Drawing.Size(509, 49);
+            this.CheckedListBox_Mappacks.Size = new System.Drawing.Size(509, 64);
             this.CheckedListBox_Mappacks.TabIndex = 3;
             this.CheckedListBox_Mappacks.SelectedIndexChanged += new System.EventHandler(this.CheckedListBox_Mappacks_SelectedIndexChanged);
             // 
             // BTN_UpdateMappacks
             // 
-            this.BTN_UpdateMappacks.Location = new System.Drawing.Point(10, 91);
+            this.BTN_UpdateMappacks.Location = new System.Drawing.Point(10, 106);
             this.BTN_UpdateMappacks.Name = "BTN_UpdateMappacks";
             this.BTN_UpdateMappacks.Size = new System.Drawing.Size(509, 23);
             this.BTN_UpdateMappacks.TabIndex = 2;
@@ -626,16 +637,6 @@ namespace S5Updater
             this.CB_USZoom.Text = "checkBox1";
             this.CB_USZoom.UseVisualStyleBackColor = true;
             this.CB_USZoom.CheckedChanged += new System.EventHandler(this.CB_USZoom_CheckedChanged);
-            // 
-            // Btn_HEFixEditor
-            // 
-            this.Btn_HEFixEditor.Location = new System.Drawing.Point(6, 48);
-            this.Btn_HEFixEditor.Name = "Btn_HEFixEditor";
-            this.Btn_HEFixEditor.Size = new System.Drawing.Size(179, 23);
-            this.Btn_HEFixEditor.TabIndex = 3;
-            this.Btn_HEFixEditor.Text = "button1";
-            this.Btn_HEFixEditor.UseVisualStyleBackColor = true;
-            this.Btn_HEFixEditor.Click += new System.EventHandler(this.Btn_HEFixEditor_Click);
             // 
             // MainMenu
             // 
