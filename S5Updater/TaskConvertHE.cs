@@ -55,7 +55,7 @@ namespace S5Updater
 
                 string patchfile = Path.Combine(MM.Reg.GoldPath, "Tmp_font.zip");
                 r(0, Resources.TaskConvert_DownloadFont);
-                MainUpdater.DownlaodFile("https://cdn.discordapp.com/attachments/276409631746686976/788789883300741140/Schriftarten.zip", patchfile, r);
+                MainUpdater.DownlaodFile("https://github.com/mcb5637/s5HEfonts/archive/refs/heads/master.zip", patchfile, r);
                 r(100, Resources.Done);
                 r(0, Resources.TaskConvert_PatchFont);
                 string[] extras = new string[] { "base", "extra1", "extra2" };
@@ -73,7 +73,7 @@ namespace S5Updater
                         r(count * 100 / filenium, null);
                         foreach (string s in extras)
                         {
-                            string destinationFileName = Path.Combine(MM.Reg.GoldPath, s, "shr\\menu\\Fonts", e.FullName);
+                            string destinationFileName = Path.Combine(MM.Reg.GoldPath, s, "shr\\menu\\Fonts", Path.GetFileName(e.FullName));
                             Directory.CreateDirectory(Path.GetDirectoryName(destinationFileName));
                             e.ExtractToFile(destinationFileName, true);
                         }
@@ -96,7 +96,7 @@ namespace S5Updater
             {
                 string patchfile = Path.Combine(MM.Reg.GoldPath, "Tmp_data.zip");
                 r(0, Resources.TaskConvert_DownloadFileData);
-                MainUpdater.DownlaodFile("https://cdn.discordapp.com/attachments/869930097854001222/1055269168833908797/HEModification.zip", patchfile, r);
+                MainUpdater.DownlaodFile("https://github.com/mcb5637/s5HEmodification/archive/refs/heads/master.zip", patchfile, r);
                 r(100, Resources.Done);
                 r(0, Resources.TaskConvert_PatchData);
                 File.Delete(Path.Combine(MM.Reg.GoldPath, "base\\shr\\menu\\Projects\\mainmenu.xml"));
@@ -112,9 +112,9 @@ namespace S5Updater
                 {
                     int filenium = a.Entries.Count;
                     int count = 0;
-                    Regex gui = new Regex("^HEModification/(base|extra1|extra2)/mainmenu.xml");
-                    Regex config = new Regex("^HEModification/(base|extra1|extra2)/config/");
-                    Regex script = new Regex("^HEModification/(base|extra1|extra2)/[Ss]cript/");
+                    Regex gui = new Regex("^s5HEmodification-master/(base|extra1|extra2)/mainmenu.xml");
+                    Regex config = new Regex("^s5HEmodification-master/(base|extra1|extra2)/config/");
+                    Regex script = new Regex("^s5HEmodification-master/(base|extra1|extra2)/[Ss]cript/");
                     foreach (ZipArchiveEntry e in a.Entries)
                     {
                         if (e.IsFolder())
@@ -123,11 +123,11 @@ namespace S5Updater
                             continue;
                         }
                         string extrapath = null;
-                        if (e.FullName.StartsWith("HEModification/base"))
+                        if (e.FullName.StartsWith("s5HEmodification-master/base"))
                             extrapath = "base\\shr";
-                        else if (e.FullName.StartsWith("HEModification/extra1"))
+                        else if (e.FullName.StartsWith("s5HEmodification-master/extra1"))
                             extrapath = "extra1\\shr";
-                        else if (e.FullName.StartsWith("HEModification/extra2"))
+                        else if (e.FullName.StartsWith("s5HEmodification-master/extra2"))
                             extrapath = "extra2\\shr";
                         else
                         {

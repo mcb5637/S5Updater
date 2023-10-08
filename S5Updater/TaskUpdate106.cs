@@ -26,7 +26,7 @@ namespace S5Updater
             {
                 string patchfile = Path.Combine(MM.Reg.GoldPath, "Tmp_w10cu.zip");
                 r(0, Resources.TaskUpdate106_DownloadFileExe);
-                MainUpdater.DownlaodFile("https://cdn.discordapp.com/attachments/869930097854001222/1055269169400119377/w10cu.zip", patchfile, r);
+                MainUpdater.DownlaodFile("https://github.com/mcb5637/s5winfix/archive/refs/heads/master.zip", patchfile, r);
                 r(100, Resources.Done);
                 r(0, Resources.TaskUpdate106_PatchExe);
                 string settlershok = Path.Combine(MM.Reg.GoldPath, "bin\\settlershok.exe");
@@ -35,8 +35,8 @@ namespace S5Updater
                 {
                     CheckReadOnly(settlershok);
                     CheckReadOnly(mapeditor);
-                    a.GetEntry("settlershok_w10cu.exe").ExtractToFile(settlershok, true);
-                    a.GetEntry("shokmapeditor_w10cu.exe").ExtractToFile(mapeditor, true);
+                    a.GetEntry("s5winfix-master\\settlershok_w10cu.exe").ExtractToFile(settlershok, true);
+                    a.GetEntry("s5winfix-master\\shokmapeditor_w10cu.exe").ExtractToFile(mapeditor, true);
                 }
                 CopyExtra(settlershok, mapeditor, "extra1\\bin");
                 CopyExtra(settlershok, mapeditor, "extra2\\bin");
