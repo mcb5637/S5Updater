@@ -35,8 +35,8 @@ namespace S5Updater
                 {
                     CheckReadOnly(settlershok);
                     CheckReadOnly(mapeditor);
-                    a.GetEntry("s5winfix-master\\settlershok_w10cu.exe").ExtractToFile(settlershok, true);
-                    a.GetEntry("s5winfix-master\\shokmapeditor_w10cu.exe").ExtractToFile(mapeditor, true);
+                    a.GetEntry("s5winfix-master/settlershok_w10cu.exe").ExtractToFile(settlershok, true);
+                    a.GetEntry("s5winfix-master/shokmapeditor_w10cu.exe").ExtractToFile(mapeditor, true);
                 }
                 CopyExtra(settlershok, mapeditor, "extra1\\bin");
                 CopyExtra(settlershok, mapeditor, "extra2\\bin");
