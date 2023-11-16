@@ -13,22 +13,23 @@ namespace S5Updater
         internal string GoldPath;
         internal bool GoldHasReg;
         internal string HEPath;
-        internal static readonly string GoldKey = "HKEY_LOCAL_MACHINE\\SOFTWARE\\Blue Byte\\The Settlers - Heritage of Kings";
-        internal static readonly string GoldDevKey = GoldKey + "\\Development";
-        internal static readonly string GoldInstallLoc = "InstallPath";
-        internal static readonly string GoldReso = "DefaultResolution";
-        internal static readonly string GoldDevMode = "DevelopmentMachine";
-        internal static readonly string GoldLanguage = "Language";
-        internal static readonly string GoldVideo = "PlayIntroVideos";
-        internal static readonly string HEKey = "HKEY_LOCAL_MACHINE\\SOFTWARE\\Ubisoft\\Launcher\\Installs\\11786";
-        internal static readonly string HEInstallLoc = "InstallDir";
+        internal const string GoldKey = "HKEY_LOCAL_MACHINE\\SOFTWARE\\Blue Byte\\The Settlers - Heritage of Kings";
+        internal const string GoldDevKey = GoldKey + "\\Development";
+        internal const string GoldInstallLoc = "InstallPath";
+        internal const string GoldReso = "DefaultResolution";
+        internal const string GoldDevMode = "DevelopmentMachine";
+        internal const string GoldLanguage = "Language";
+        internal const string GoldVideo = "PlayIntroVideos";
+        internal const string HEKey = "HKEY_LOCAL_MACHINE\\SOFTWARE\\Ubisoft\\Launcher\\Installs\\11786";
+        internal const string HEInstallLoc = "InstallDir";
 
-        internal static readonly string HEDefaultSteamInstall = "C:\\Program Files (x86)\\Steam\\steamapps\\common\\The Settlers - Heritage of Kings - History Edition";
+        internal const string HEDefaultSteamInstall = "C:\\Program Files (x86)\\Steam\\steamapps\\common\\The Settlers - Heritage of Kings - History Edition";
 
-        internal static readonly string S5UpdaterKey = "HKEY_LOCAL_MACHINE\\SOFTWARE\\S5Updater";
-        internal static readonly string MappackEMSKey = "EMS";
-        internal static readonly string MappackSpeedwarKey = "Speedwar";
-        internal static readonly string MappackBSKey = "BS";
+        internal const string S5UpdaterKey = "HKEY_LOCAL_MACHINE\\SOFTWARE\\S5Updater";
+        internal const string MappackEMSKey = "EMS";
+        internal const string MappackSpeedwarKey = "Speedwar";
+        internal const string MappackBSKey = "BS";
+        internal const string MappackStrongholdKey = "Stronghold";
 
         internal string LoadGoldPathFromRegistry(InstallValidator vali)
         {
@@ -124,6 +125,12 @@ namespace S5Updater
         {
             get => RegistryReadBool(S5UpdaterKey, MappackBSKey, true);
             set => RegistryWriteBool(S5UpdaterKey, MappackBSKey, value);
+        }
+
+        internal bool DownloadMappackStronghold
+        {
+            get => RegistryReadBool(S5UpdaterKey, MappackStrongholdKey, true);
+            set => RegistryWriteBool(S5UpdaterKey, MappackStrongholdKey, value);
         }
     }
 }
