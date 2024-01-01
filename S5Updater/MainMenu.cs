@@ -402,12 +402,38 @@ namespace S5Updater
                                 name += "\n" + n;
                                 File.Delete(extractfile);
                             }
+                            else if (e.Name.ToLower() == "info.xml")
+                            {
+                                XDocument doc = XDocument.Load(e.Open());
+                                string outPath = GetMapFileExtraPath(doc, out string n);
+                                if (outPath == null)
+                                    continue;
+                                string dir = Path.GetDirectoryName(e.FullName);
+                                outPath = Path.Combine(path, outPath, Path.GetFileName(dir));
+                                if (Directory.Exists(outPath))
+                                    Directory.Delete(outPath, true);
+                                Directory.CreateDirectory(outPath);
+                                foreach (ZipArchiveEntry e2 in a.Entries)
+                                {
+                                    if (e2.IsFolder())
+                                        continue;
+                                    if (Path.GetDirectoryName(e2.FullName) == dir)
+                                    {
+                                        e2.ExtractToFile(Path.Combine(outPath, e2.Name), true);
+                                    }
+                                }
+                                name += "\n" + n;
+                            }
                         }
                     }
                 }
                 else if (Path.GetExtension(file) == ".s5x")
                 {
-                    string outPath = GetMapFileExtraPath(file, out name);
+                    BbaArchive a = new BbaArchive();
+                    a.ReadBba(file, InfoInternalPath);
+                    XDocument doc = XDocument.Load(a.GetFileByName(InfoInternalPath).GetStream());
+                    string outPath = GetMapFileExtraPath(doc, out name);
+                    a.Clear();
                     if (outPath == null)
                         return;
                     outPath = Path.Combine(path, outPath, Path.GetFileName(file));
@@ -421,15 +447,12 @@ namespace S5Updater
             }
         }
 
-        private string GetMapFileExtraPath(string file, out string name)
+        private string GetMapFileExtraPath(XDocument doc, out string name)
         {
             try
             {
-                BbaArchive a = new BbaArchive();
-                a.ReadBba(file, InfoInternalPath);
-                XDocument doc = XDocument.Load(a.GetFileByName(InfoInternalPath).GetStream());
-                a.Clear();
-                int key = int.Parse(doc.Element("root").Element("Key").Value);
+                var k = doc.Element("root").Element("Key");
+                int key = k == null ? 0 : int.Parse(k.Value);
                 string outPath = "base\\shr\\maps\\user";
                 string into = Resources.Txt_Extra0;
                 if (key == 2)
