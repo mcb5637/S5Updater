@@ -250,7 +250,7 @@
     <value>Lade Patch herunter</value>
   </data>
   <data name="TaskUpdate105_MsgPatch" xml:space="preserve">
-    <value>Führe externen Patch aus, installiere in eigenem Fenster.</value>
+    <value>Öffne Browser für download. Bitte ausführen sobald heruntergeladen, dann OK klicken.</value>
   </data>
   <data name="TaskUpdate105_Successful" xml:space="preserve">
     <value>Erfolgreich: </value>

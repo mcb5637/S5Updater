@@ -253,7 +253,7 @@
     <value>Downloading patch</value>
   </data>
   <data name="TaskUpdate105_MsgPatch" xml:space="preserve">
-    <value>Executing external patcher, please follow its UI.</value>
+    <value>Opening a browser window for download. Please execute, if it finishes, then press OK.</value>
   </data>
   <data name="TaskUpdate105_Successful" xml:space="preserve">
     <value>Successful: </value>

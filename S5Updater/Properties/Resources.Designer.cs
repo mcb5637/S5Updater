@@ -466,7 +466,7 @@ namespace S5Updater.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Executing external patcher, please follow its UI..
+        ///   Looks up a localized string similar to Opening a browser window for download. Please execute, if it finishes, then press OK..
         /// </summary>
         internal static string TaskUpdate105_MsgPatch {
             get {
