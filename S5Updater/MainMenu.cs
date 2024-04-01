@@ -22,6 +22,11 @@ namespace S5Updater
     public partial class MainMenu : Form
     {
         private const string InfoInternalPath = "maps\\externalmap\\info.xml";
+        private const string MappackEMS = "EMS";
+        private const string MappackSpeedwar = "Speedwar";
+        private const string MappackBS = "BS";
+        private const string MappackStronghold = "Stronghold";
+        private const string MappackRandomChaos = "Random Chaos";
         internal static readonly int Status_OK = 0;
         internal static readonly int Status_Error = 1;
 
@@ -98,16 +103,15 @@ namespace S5Updater
             Lbl_Color.Text = Resources.Txt_UserScriptColor;
             Btn_HEFixEditor.Text = Resources.Txt_HEFixEditor;
 
-
-            int idx = CheckedListBox_Mappacks.FindString("EMS");
+            int idx = CheckedListBox_Mappacks.FindString(MappackEMS);
             CheckedListBox_Mappacks.SetItemChecked(idx, Reg.DownloadMappackEMS);
-            idx = CheckedListBox_Mappacks.FindString("Speedwar");
+            idx = CheckedListBox_Mappacks.FindString(MappackSpeedwar);
             CheckedListBox_Mappacks.SetItemChecked(idx, Reg.DownloadMappackSpeedwar);
-            idx = CheckedListBox_Mappacks.FindString("BS");
+            idx = CheckedListBox_Mappacks.FindString(MappackBS);
             CheckedListBox_Mappacks.SetItemChecked(idx, Reg.DownloadMappackBS);
-            idx = CheckedListBox_Mappacks.FindString("Stronghold");
+            idx = CheckedListBox_Mappacks.FindString(MappackStronghold);
             CheckedListBox_Mappacks.SetItemChecked(idx, Reg.DownloadMappackStronghold);
-            idx = CheckedListBox_Mappacks.FindString("Random Chaos");
+            idx = CheckedListBox_Mappacks.FindString(MappackRandomChaos);
             CheckedListBox_Mappacks.SetItemChecked(idx, Reg.DownloadMappackRandomChaos);
 
 #if DEBUG
@@ -242,11 +246,16 @@ namespace S5Updater
             set => CB_EasyMode.Checked = value;
         }
 
-        public bool ShouldMappackBeDownloaded(string name)
+        private bool ShouldMappackBeDownloaded(string name)
         {
             int index = CheckedListBox_Mappacks.FindString(name);
             return CheckedListBox_Mappacks.GetItemChecked(index);
         }
+        public bool MappackDownloadEMS => ShouldMappackBeDownloaded(MappackEMS);
+        public bool MappackDownloadSpeedwar => ShouldMappackBeDownloaded(MappackSpeedwar);
+        public bool MappackDownloadBS => ShouldMappackBeDownloaded(MappackBS);
+        public bool MappackDownloadStronghold => ShouldMappackBeDownloaded(MappackStronghold);
+        public bool MappackDownloadRandomChaos => ShouldMappackBeDownloaded(MappackRandomChaos);
 
         private void CB_ShowLog_CheckedChanged(object sender, EventArgs e)
         {
@@ -533,15 +542,15 @@ namespace S5Updater
         private void CheckedListBox_Mappacks_SelectedIndexChanged(object sender, EventArgs e)
         {
             // update registry
-            int idx = CheckedListBox_Mappacks.FindString("EMS");
+            int idx = CheckedListBox_Mappacks.FindString(MappackEMS);
             Reg.DownloadMappackEMS = CheckedListBox_Mappacks.GetItemChecked(idx);
-            idx = CheckedListBox_Mappacks.FindString("Speedwar");
+            idx = CheckedListBox_Mappacks.FindString(MappackSpeedwar);
             Reg.DownloadMappackSpeedwar = CheckedListBox_Mappacks.GetItemChecked(idx);
-            idx = CheckedListBox_Mappacks.FindString("BS");
+            idx = CheckedListBox_Mappacks.FindString(MappackBS);
             Reg.DownloadMappackBS = CheckedListBox_Mappacks.GetItemChecked(idx);
-            idx = CheckedListBox_Mappacks.FindString("Stronghold");
+            idx = CheckedListBox_Mappacks.FindString(MappackStronghold);
             Reg.DownloadMappackStronghold = CheckedListBox_Mappacks.GetItemChecked(idx);
-            idx = CheckedListBox_Mappacks.FindString("Random Chaos");
+            idx = CheckedListBox_Mappacks.FindString(MappackRandomChaos);
             Reg.DownloadMappackRandomChaos = CheckedListBox_Mappacks.GetItemChecked(idx);
         }
 

@@ -25,44 +25,44 @@ namespace S5Updater
 
             try
             {
-                if (MM.ShouldMappackBeDownloaded("EMS"))
+                if (MM.MappackDownloadEMS)
                 {
                     HandleRepo(Path.Combine(MM.Reg.GoldPath, "extra2\\shr\\maps\\user\\EMSGit"), "master", "https://github.com/MadShadow-/EMS.git", r);
                     HandleRepo(Path.Combine(MM.Reg.GoldPath, "extra2\\shr\\maps\\user\\EMS\\tools\\s5CommunityLib"), "master", "https://github.com/mcb5637/s5CommunityLib.git", r);
                 }
-                if (MM.ShouldMappackBeDownloaded("Speedwar"))
+                if (MM.MappackDownloadSpeedwar)
                 {
                     HandleRepo(Path.Combine(MM.Reg.GoldPath, "extra2\\shr\\maps\\user\\speedwar"), "master", "https://github.com/MadShadow-/speedwar.git", r);
                 }
 
-                if (MM.ShouldMappackBeDownloaded("BS"))
+                if (MM.MappackDownloadBS)
                 {
                     HandleRepo(Path.Combine(MM.Reg.GoldPath, "extra2\\shr\\maps\\user\\Balancing_Stuff_in_Dev"), "master", "https://github.com/GhoulMadness/Balancing-Stuff.git", r);
                     HandleRepo(Path.Combine(MM.Reg.GoldPath, "extra2\\shr\\maps\\user\\Balancing_Stuff_Maps"), "main", "https://github.com/GhoulMadness/Balancing_Stuff_Maps.git", r);
                 }
 
-                if (MM.ShouldMappackBeDownloaded("Stronghold"))
+                if (MM.MappackDownloadStronghold)
                 {
                     HandleRepo(Path.Combine(MM.Reg.GoldPath, "extra2\\shr\\maps\\user\\StrongholdMP"), "master", "https://github.com/totalwarANGEL1993/stronghold_s5mp_release.git", r);
                 }
 
-                if (MM.ShouldMappackBeDownloaded("Random Chaos"))
+                if (MM.MappackDownloadRandomChaos)
                 {
                     HandleRepo(Path.Combine(MM.Reg.GoldPath, "extra2\\shr\\maps\\user\\RandomChaos"), "main", "https://github.com/RobbiTheFox/S5RandomChaos.git", r);
                 }
 
                 r(0, Resources.TaskMPMap_CopyFiles);
 
-                if (MM.ShouldMappackBeDownloaded("EMS"))
+                if (MM.MappackDownloadEMS)
                     MainUpdater.Copy(Path.Combine(MM.Reg.GoldPath, "extra2\\shr\\maps\\user\\EMSGit"), Path.Combine(MM.Reg.GoldPath, "extra2\\shr\\maps\\user"), Exclude);
                 
-                if (MM.ShouldMappackBeDownloaded("BS"))
+                if (MM.MappackDownloadBS)
                     MainUpdater.Copy(Path.Combine(MM.Reg.GoldPath, "extra2\\shr\\maps\\user\\Balancing_Stuff_Maps"), Path.Combine(MM.Reg.GoldPath, "extra2\\shr\\maps\\user"), Exclude);
 
-                if (MM.ShouldMappackBeDownloaded("Stronghold"))
+                if (MM.MappackDownloadStronghold)
                     MainUpdater.Copy(Path.Combine(MM.Reg.GoldPath, "extra2\\shr\\maps\\user\\StrongholdMP"), Path.Combine(MM.Reg.GoldPath, "extra2\\shr\\maps\\user"), Exclude);
 
-                if (MM.ShouldMappackBeDownloaded("Random Chaos"))
+                if (MM.MappackDownloadRandomChaos)
                 {
                     string repo = Path.Combine(MM.Reg.GoldPath, "extra2\\shr\\maps\\user\\RandomChaos");
                     MainUpdater.Copy(Path.Combine(repo, "ModsMP"), Path.Combine(MM.Reg.GoldPath, "MP_SettlerServer\\Mods"), Exclude.Append("randomchaos"));
