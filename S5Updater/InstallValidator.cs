@@ -51,7 +51,7 @@ namespace S5Updater
 
         internal bool IsExeGold(string path)
         {
-            return IsValid(path) && HashGoldExe.Equals(GetFileHash(Path.Combine(path, ValidFile)));
+            return IsValid(path) && HashGold106ExeOldPatch.Equals(GetFileHash(Path.Combine(path, ValidFile)));
         }
 
         internal bool IsGold105(string path)
@@ -62,7 +62,7 @@ namespace S5Updater
         internal bool IsGold106(string path)
         {
             string h = GetFileHash(Path.Combine(path, ValidFile));
-            return IsValid(path) && (HashGold106Exe.Equals(h) || HashGold106ExeOldPatch.Equals(h));
+            return IsValid(path) && (HashGold106Exe.Equals(h) || HashGoldExe.Equals(h));
         }
 
         internal static string GetFileHash(string path)
