@@ -30,6 +30,7 @@ namespace S5Updater
         internal const string MappackSpeedwarKey = "Speedwar";
         internal const string MappackBSKey = "BS";
         internal const string MappackStrongholdKey = "Stronghold";
+        internal const string MappackRandomChaosKey = "RandomChaos";
 
         internal string LoadGoldPathFromRegistry(InstallValidator vali)
         {
@@ -131,6 +132,11 @@ namespace S5Updater
         {
             get => RegistryReadBool(S5UpdaterKey, MappackStrongholdKey, true);
             set => RegistryWriteBool(S5UpdaterKey, MappackStrongholdKey, value);
+        }
+        internal bool DownloadMappackRandomChaos
+        {
+            get => RegistryReadBool(S5UpdaterKey, MappackRandomChaosKey, true);
+            set => RegistryWriteBool(S5UpdaterKey, MappackRandomChaosKey, value);
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using S5Updater.Properties;
+﻿using bbaToolS5;
+using S5Updater.Properties;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -85,6 +86,15 @@ namespace S5Updater
                 DirectoryInfo nextTargetSubDir = target.CreateSubdirectory(diSourceSubDir.Name);
                 CopyAll(diSourceSubDir, nextTargetSubDir, exclude);
             }
+        }
+
+        internal static void PackDirToBba(string sourcedir, string targetfile)
+        {
+            BbaArchive a = new BbaArchive();
+            a.ReadFromFolder(sourcedir);
+            Directory.CreateDirectory(Path.GetDirectoryName(targetfile));
+            a.WriteToBba(targetfile);
+            a.Clear();
         }
 
         internal static int IndexOfArrayElement<T, E>(this T[] array, E o, Func<T, E> f) where E: class

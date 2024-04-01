@@ -46,6 +46,11 @@ namespace S5Updater
                     HandleRepo(Path.Combine(MM.Reg.GoldPath, "extra2\\shr\\maps\\user\\StrongholdMP"), "master", "https://github.com/totalwarANGEL1993/stronghold_s5mp_release.git", r);
                 }
 
+                if (MM.ShouldMappackBeDownloaded("Random Chaos"))
+                {
+                    HandleRepo(Path.Combine(MM.Reg.GoldPath, "extra2\\shr\\maps\\user\\RandomChaos"), "main", "https://github.com/RobbiTheFox/S5RandomChaos.git", r);
+                }
+
                 r(0, Resources.TaskMPMap_CopyFiles);
 
                 if (MM.ShouldMappackBeDownloaded("EMS"))
@@ -57,6 +62,16 @@ namespace S5Updater
                 if (MM.ShouldMappackBeDownloaded("Stronghold"))
                     MainUpdater.Copy(Path.Combine(MM.Reg.GoldPath, "extra2\\shr\\maps\\user\\StrongholdMP"), Path.Combine(MM.Reg.GoldPath, "extra2\\shr\\maps\\user"), Exclude);
 
+                if (MM.ShouldMappackBeDownloaded("Random Chaos"))
+                {
+                    string repo = Path.Combine(MM.Reg.GoldPath, "extra2\\shr\\maps\\user\\RandomChaos");
+                    MainUpdater.Copy(Path.Combine(repo, "ModsMP"), Path.Combine(MM.Reg.GoldPath, "MP_SettlerServer\\Mods"), Exclude.Append("randomchaos"));
+                    MainUpdater.PackDirToBba(Path.Combine(repo, "ModsMP\\randomchaos\\randomchaos"), Path.Combine(MM.Reg.GoldPath, "MP_SettlerServer\\Mods\\randomchaos\\randomchaos.bba"));
+                    MainUpdater.Copy(Path.Combine(repo, "ModsSP"), Path.Combine(MM.Reg.GoldPath, "CSinglePlayer\\Mods"), Exclude.Append("randomchaos"));
+                    MainUpdater.Copy(Path.Combine(repo, "ModsSP\\randomchaos"), Path.Combine(MM.Reg.GoldPath, "CSinglePlayer\\Mods\\randomchaos"), Exclude.Append("randomchaos"));
+                    MainUpdater.PackDirToBba(Path.Combine(repo, "ModsSP\\randomchaos\\randomchaos"), Path.Combine(MM.Reg.GoldPath, "CSinglePlayer\\Mods\\randomchaos\\randomchaos.bba"));
+                }
+
                 r(100, Resources.Done);
             }
             catch (Exception e)
@@ -64,7 +79,6 @@ namespace S5Updater
                 r(0, e.ToString());
                 Status = MainMenu.Status_Error;
             }
-            
         }
 
         private void HandleRepo(string repo, string branch, string url, ProgressDialog.ReportProgressDel r)
