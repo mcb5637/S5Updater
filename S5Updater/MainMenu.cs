@@ -27,6 +27,7 @@ namespace S5Updater
         private const string MappackBS = "BS";
         private const string MappackStronghold = "Stronghold";
         private const string MappackRandomChaos = "Random Chaos";
+        private const string MappackMPW = "MPW";
         internal static readonly int Status_OK = 0;
         internal static readonly int Status_Error = 1;
 
@@ -113,6 +114,8 @@ namespace S5Updater
             CheckedListBox_Mappacks.SetItemChecked(idx, Reg.DownloadMappackStronghold);
             idx = CheckedListBox_Mappacks.FindString(MappackRandomChaos);
             CheckedListBox_Mappacks.SetItemChecked(idx, Reg.DownloadMappackRandomChaos);
+            idx = CheckedListBox_Mappacks.FindString(MappackMPW);
+            CheckedListBox_Mappacks.SetItemChecked(idx, Reg.DownloadMappackMPW);
 
 #if DEBUG
             BTN_DBG_HashFile.Visible = true;
@@ -256,6 +259,7 @@ namespace S5Updater
         public bool MappackDownloadBS => ShouldMappackBeDownloaded(MappackBS);
         public bool MappackDownloadStronghold => ShouldMappackBeDownloaded(MappackStronghold);
         public bool MappackDownloadRandomChaos => ShouldMappackBeDownloaded(MappackRandomChaos);
+        public bool MappackDownloadMPW => ShouldMappackBeDownloaded(MappackMPW);
 
         private void CB_ShowLog_CheckedChanged(object sender, EventArgs e)
         {
@@ -552,6 +556,8 @@ namespace S5Updater
             Reg.DownloadMappackStronghold = CheckedListBox_Mappacks.GetItemChecked(idx);
             idx = CheckedListBox_Mappacks.FindString(MappackRandomChaos);
             Reg.DownloadMappackRandomChaos = CheckedListBox_Mappacks.GetItemChecked(idx);
+            idx = CheckedListBox_Mappacks.FindString(MappackMPW);
+            Reg.DownloadMappackMPW = CheckedListBox_Mappacks.GetItemChecked(idx);
         }
 
         private void BTN_UpdateMappacks_Click(object sender, EventArgs e)

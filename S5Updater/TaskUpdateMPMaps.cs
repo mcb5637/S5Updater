@@ -51,6 +51,11 @@ namespace S5Updater
                     HandleRepo(Path.Combine(MM.Reg.GoldPath, "extra2\\shr\\maps\\user\\RandomChaos"), "main", "https://github.com/RobbiTheFox/S5RandomChaos.git", r);
                 }
 
+                if (MM.MappackDownloadMPW)
+                {
+                    HandleRepo(Path.Combine(MM.Reg.GoldPath, "extra2\\shr\\maps\\user\\MPW"), "master", "https://github.com/Novator12/Multiplayer-Workover-MPW.git", r);
+                }
+
                 r(0, Resources.TaskMPMap_CopyFiles);
 
                 if (MM.MappackDownloadEMS)
@@ -70,6 +75,17 @@ namespace S5Updater
                     MainUpdater.Copy(Path.Combine(repo, "ModsSP"), Path.Combine(MM.Reg.GoldPath, "CSinglePlayer\\Mods"), Exclude.Append("randomchaos"));
                     MainUpdater.Copy(Path.Combine(repo, "ModsSP\\randomchaos"), Path.Combine(MM.Reg.GoldPath, "CSinglePlayer\\Mods\\randomchaos"), Exclude.Append("randomchaos"));
                     MainUpdater.PackDirToBba(Path.Combine(repo, "ModsSP\\randomchaos\\randomchaos"), Path.Combine(MM.Reg.GoldPath, "CSinglePlayer\\Mods\\randomchaos\\randomchaos.bba"));
+                }
+
+                if (MM.MappackDownloadMPW)
+                {
+                    string repo = Path.Combine(MM.Reg.GoldPath, "extra2\\shr\\maps\\user\\MPW");
+                    MainUpdater.Copy(Path.Combine(repo, "Settlers5\\MP_SettlerServer\\Mods"), Path.Combine(MM.Reg.GoldPath, "MP_SettlerServer\\Mods"), Exclude);
+                    MainUpdater.Copy(Path.Combine(repo, "Settlers5\\CSinglePlayer\\Mods"), Path.Combine(MM.Reg.GoldPath, "CSinglePlayer\\Mods"), Exclude);
+                    foreach (DirectoryInfo f in new DirectoryInfo(Path.Combine(repo, "bba")).EnumerateDirectories())
+                    {
+                        MainUpdater.PackDirToBba(f.FullName, Path.Combine(MM.Reg.GoldPath, "MP_SettlerServer\\Mods\\MPW\\Ingame", f.Name+".bba"));
+                    }
                 }
 
                 r(100, Resources.Done);

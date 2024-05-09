@@ -570,16 +570,17 @@ namespace S5Updater
             "BS",
             "Speedwar",
             "Stronghold",
-            "Random Chaos"});
+            "Random Chaos",
+            "MPW"});
             this.CheckedListBox_Mappacks.Location = new System.Drawing.Point(10, 36);
             this.CheckedListBox_Mappacks.Name = "CheckedListBox_Mappacks";
-            this.CheckedListBox_Mappacks.Size = new System.Drawing.Size(509, 79);
+            this.CheckedListBox_Mappacks.Size = new System.Drawing.Size(509, 94);
             this.CheckedListBox_Mappacks.TabIndex = 3;
             this.CheckedListBox_Mappacks.SelectedIndexChanged += new System.EventHandler(this.CheckedListBox_Mappacks_SelectedIndexChanged);
             // 
             // BTN_UpdateMappacks
             // 
-            this.BTN_UpdateMappacks.Location = new System.Drawing.Point(10, 121);
+            this.BTN_UpdateMappacks.Location = new System.Drawing.Point(13, 136);
             this.BTN_UpdateMappacks.Name = "BTN_UpdateMappacks";
             this.BTN_UpdateMappacks.Size = new System.Drawing.Size(509, 23);
             this.BTN_UpdateMappacks.TabIndex = 2;
