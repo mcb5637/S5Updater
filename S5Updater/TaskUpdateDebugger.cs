@@ -14,11 +14,11 @@ namespace S5Updater
         protected override string ZipAdress => "https://github.com/mcb5637/SettlersLuaDebugger/releases/latest/download/DebugS5.zip";
         protected override string ValidatingLog => Resources.TaskDebugger_Updating;
 
-        protected override string FileNameRedirect(string name)
+        protected override string ZipPathToExtractPath(string e, string name)
         {
             if ("LuaDebugger.dll".Equals(name))
-                return "LuaDebuggerFile.dll";
-            return base.FileNameRedirect(name);
+                name = "LuaDebuggerFile.dll";
+            return base.ZipPathToExtractPath(e, name);
         }
 
         protected override void PostUpdate(ProgressDialog.ReportProgressDel r)

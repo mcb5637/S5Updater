@@ -57,5 +57,17 @@ namespace S5Updater
             string deb = Path.Combine(path, "bin\\LuaDebugger.dll");
             return IsInstalled(path) && InstallValidator.GetFileHash(cppl).Equals(InstallValidator.GetFileHash(deb));
         }
+
+        protected override string ZipPathToExtractPath(string e, string name)
+        {
+            if (name == "CppLogic.bba")
+            {
+                if (e == "base")
+                    return Path.Combine(MM.Reg.GoldPath, "ModPacks", name);
+                else
+                    return null;
+            }
+            return base.ZipPathToExtractPath(e, name);
+        }
     }
 }

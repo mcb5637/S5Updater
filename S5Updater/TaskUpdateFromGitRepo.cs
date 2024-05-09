@@ -31,9 +31,9 @@ namespace S5Updater
         {
 
         }
-        protected virtual string FileNameRedirect(string name)
+        protected virtual string ZipPathToExtractPath(string e, string name)
         {
-            return name;
+            return Path.Combine(MM.Reg.GoldPath, e, name);
         }
 
         public void Work(ProgressDialog.ReportProgressDel r)
@@ -70,10 +70,10 @@ namespace S5Updater
                             foreach (ZipArchiveEntry en in a.Entries)
                             {
                                 if (en.IsFolder())
-                                {
                                     continue;
-                                }
-                                string destinationFileName = Path.Combine(MM.Reg.GoldPath, e, FileNameRedirect(en.FullName));
+                                string destinationFileName = ZipPathToExtractPath(e, en.FullName);
+                                if (destinationFileName == null)
+                                    continue;
                                 Directory.CreateDirectory(Path.GetDirectoryName(destinationFileName));
                                 en.ExtractToFile(destinationFileName, true);
                             }
