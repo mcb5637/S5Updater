@@ -1,4 +1,7 @@
 ﻿
+
+// Do not download this file raw from GitHub. it will not work. (Missing config and wring line endings.)
+
 if UserScript then
     return
 end
