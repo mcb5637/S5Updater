@@ -62,7 +62,7 @@ namespace S5Updater
         {
             if (name == "CppLogic.bba")
             {
-                if (e == "base")
+                if (e == "bin")
                     return Path.Combine(MM.Reg.GoldPath, "ModPacks", name);
                 else
                     return null;
