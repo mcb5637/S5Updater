@@ -60,7 +60,7 @@ namespace S5Updater
                 PreUpdate();
                 r(0, Resources.TaskHook_Patching);
                 string patchfile = Path.Combine(MM.Reg.GoldPath, "Tmp_gitrepo.zip");
-                MainUpdater.DownlaodFile(ZipAdress, patchfile, r);
+                MainUpdater.DownloadFile(ZipAdress, patchfile, r);
                 foreach (string e in Extras)
                 {
                     if (File.Exists(Path.Combine(MM.Reg.GoldPath, e, "settlershok.exe")))
@@ -97,7 +97,9 @@ namespace S5Updater
                     return true;
                 foreach (FileWithHash f in hashes)
                 {
-                    string path = Path.Combine(MM.Reg.GoldPath, "bin", f.File);
+                    string path = ZipPathToExtractPath("bin", f.File);
+                    if (path == null)
+                        continue;
                     if (!File.Exists(path))
                         return true;
                     if (!InstallValidator.GetFileHash(path).Equals(f.Hash))
@@ -121,7 +123,7 @@ namespace S5Updater
             try
             {
                 r(0, ValidatingLog);
-                byte[] d = MainUpdater.DownlaodFileBytes(HashesAdress, r);
+                byte[] d = MainUpdater.DownloadFileBytes(HashesAdress, r);
                 List<FileWithHash> files = new List<FileWithHash>();
                 using (StreamReader re = new StreamReader(new MemoryStream(d)))
                 {

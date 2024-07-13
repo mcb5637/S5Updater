@@ -26,7 +26,7 @@ namespace S5Updater
             {
                 string patchfile = Path.Combine(MM.Reg.GoldPath, "Tmp_w10cu.zip");
                 r(0, Resources.TaskUpdate106_DownloadFileExe);
-                MainUpdater.DownlaodFile("https://github.com/mcb5637/s5winfix/archive/refs/heads/master.zip", patchfile, r);
+                MainUpdater.DownloadFile("https://github.com/mcb5637/s5winfix/archive/refs/heads/master.zip", patchfile, r);
                 r(100, Resources.Done);
                 r(0, Resources.TaskUpdate106_PatchExe);
                 string settlershok = Path.Combine(MM.Reg.GoldPath, "bin\\settlershok.exe");

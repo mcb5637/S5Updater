@@ -55,7 +55,7 @@ namespace S5Updater
 
                 string patchfile = Path.Combine(MM.Reg.GoldPath, "Tmp_font.zip");
                 r(0, Resources.TaskConvert_DownloadFont);
-                MainUpdater.DownlaodFile("https://github.com/mcb5637/s5HEfonts/archive/refs/heads/master.zip", patchfile, r);
+                MainUpdater.DownloadFile("https://github.com/mcb5637/s5HEfonts/archive/refs/heads/master.zip", patchfile, r);
                 r(100, Resources.Done);
                 r(0, Resources.TaskConvert_PatchFont);
                 string[] extras = new string[] { "base", "extra1", "extra2" };
@@ -96,7 +96,7 @@ namespace S5Updater
             {
                 string patchfile = Path.Combine(MM.Reg.GoldPath, "Tmp_data.zip");
                 r(0, Resources.TaskConvert_DownloadFileData);
-                MainUpdater.DownlaodFile("https://github.com/mcb5637/s5HEmodification/archive/refs/heads/master.zip", patchfile, r);
+                MainUpdater.DownloadFile("https://github.com/mcb5637/s5HEmodification/archive/refs/heads/master.zip", patchfile, r);
                 r(100, Resources.Done);
                 r(0, Resources.TaskConvert_PatchData);
                 File.Delete(Path.Combine(MM.Reg.GoldPath, "base\\shr\\menu\\Projects\\mainmenu.xml"));

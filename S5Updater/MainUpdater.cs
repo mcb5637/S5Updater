@@ -14,7 +14,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-[assembly:AssemblyVersion("0.1.9.8")]
+[assembly:AssemblyVersion("0.1.9.9")]
 
 namespace S5Updater
 {
@@ -41,7 +41,7 @@ namespace S5Updater
         {
             try
             {
-                byte[] d = DownlaodFileBytes("https://github.com/mcb5637/S5Updater/releases/latest/download/versionguid.txt", null);
+                byte[] d = DownloadFileBytes("https://github.com/mcb5637/S5Updater/releases/latest/download/versionguid.txt", null);
                 if (Encoding.ASCII.GetString(d) != Assembly.GetExecutingAssembly().ManifestModule.ModuleVersionId.ToString())
                 {
                     if (MessageBox.Show(Resources.Qst_UpdateUpdater, Resources.TitleMainMenu, MessageBoxButtons.YesNo) != DialogResult.Yes)
@@ -117,7 +117,7 @@ namespace S5Updater
             return !Directory.Exists(dir) || !Directory.EnumerateFileSystemEntries(dir).Any();
         }
 
-        internal static void DownlaodFile(string uri, string file, ProgressDialog.ReportProgressDel r)
+        internal static void DownloadFile(string uri, string file, ProgressDialog.ReportProgressDel r)
         {
             if (File.Exists(file))
                 File.Delete(file);
@@ -147,7 +147,7 @@ namespace S5Updater
             }
         }
 
-        internal static byte[] DownlaodFileBytes(string uri, ProgressDialog.ReportProgressDel r)
+        internal static byte[] DownloadFileBytes(string uri, ProgressDialog.ReportProgressDel r)
         {
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
             using (WebClient cl = new WebClient())
