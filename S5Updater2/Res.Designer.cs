@@ -277,6 +277,15 @@ namespace S5Updater2 {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to MapPacks:.
+        /// </summary>
+        public static string MapPacks {
+            get {
+                return ResourceManager.GetString("MapPacks", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Mapping:.
         /// </summary>
         public static string Mapping {
@@ -412,6 +421,15 @@ namespace S5Updater2 {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string Resgistry {
+            get {
+                return ResourceManager.GetString("Resgistry", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Resolution:.
         /// </summary>
         public static string Resolution {
@@ -448,11 +466,20 @@ namespace S5Updater2 {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Settings:.
+        ///   Looks up a localized string similar to Settings.
         /// </summary>
         public static string Settings {
             get {
                 return ResourceManager.GetString("Settings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Settings:.
+        /// </summary>
+        public static string SettingsBottom {
+            get {
+                return ResourceManager.GetString("SettingsBottom", resourceCulture);
             }
         }
         
@@ -475,7 +502,7 @@ namespace S5Updater2 {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Updater.
+        ///   Looks up a localized string similar to Game.
         /// </summary>
         public static string TabMain {
             get {
@@ -484,11 +511,11 @@ namespace S5Updater2 {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to MapPacks.
+        ///   Looks up a localized string similar to Maps.
         /// </summary>
-        public static string TabMapPacks {
+        public static string TabMaps {
             get {
-                return ResourceManager.GetString("TabMapPacks", resourceCulture);
+                return ResourceManager.GetString("TabMaps", resourceCulture);
             }
         }
         
@@ -691,6 +718,15 @@ namespace S5Updater2 {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Update.
+        /// </summary>
+        public static string Update {
+            get {
+                return ResourceManager.GetString("Update", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Update from 1.05.
         /// </summary>
         public static string Update105 {
@@ -736,7 +772,7 @@ namespace S5Updater2 {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to UserScript.
+        ///   Looks up a localized string similar to UserScript:.
         /// </summary>
         public static string UserScript {
             get {

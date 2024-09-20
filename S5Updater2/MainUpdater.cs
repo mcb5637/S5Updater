@@ -129,6 +129,15 @@ namespace S5Updater2
             return s.ToArray();
         }
 
+        internal static async Task<string> DownloadFileString(string uri, ProgressDialog.ReportProgressDel r)
+        {
+            using MemoryStream s = new();
+            await DownloadAsync(uri, r, s);
+            s.Position = 0;
+            using StreamReader sr = new(s);
+            return sr.ReadToEnd();
+        }
+
         internal static bool IsFolder(this ZipArchiveEntry entry)
         {
             return entry.FullName.EndsWith('/');

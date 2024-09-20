@@ -303,8 +303,8 @@
   <data name="TaskMPMap_Start" xml:space="preserve">
     <value>aktualisiere MP Karten und Scripte</value>
   </data>
-  <data name="TabMapPacks" xml:space="preserve">
-    <value>MapPacks</value>
+  <data name="TabMaps" xml:space="preserve">
+    <value>Maps</value>
   </data>
   <data name="HEFixEditor" xml:space="preserve">
     <value>Repariere Mapeditor</value>
@@ -322,7 +322,7 @@
     <value>Zoom</value>
   </data>
   <data name="UserScript" xml:space="preserve">
-    <value>UserScript</value>
+    <value>UserScript:</value>
   </data>
   <data name="InstallMap" xml:space="preserve">
     <value>Installiere Map</value>
@@ -339,13 +339,22 @@
   <data name="Paths" xml:space="preserve">
     <value>Pfade:</value>
   </data>
-  <data name="Resgistry" xml:space="preserve">
-    <value>Registry:</value>
-  </data>
   <data name="Mapping" xml:space="preserve">
     <value>Mapping:</value>
   </data>
   <data name="Settings" xml:space="preserve">
+    <value>Einstellungen</value>
+  </data>
+  <data name="SettingsBottom" xml:space="preserve">
     <value>Einstellungen:</value>
+  </data>
+  <data name="Resgistry" xml:space="preserve">
+    <value>Registry:</value>
+  </data>
+  <data name="MapPacks" xml:space="preserve">
+    <value>MapPacks:</value>
+  </data>
+  <data name="Update" xml:space="preserve">
+    <value>Update</value>
   </data>
 </root>

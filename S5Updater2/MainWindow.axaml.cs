@@ -17,7 +17,7 @@ namespace S5Updater2
     {
 
         internal RegistryHandler Reg = new();
-        internal ProgressDialog Prog;
+        internal ProgressDialog Prog => new() { MM = this };
         internal InstallValidator Valid = new();
         internal UserScriptManager USM = new();
 
@@ -38,8 +38,6 @@ namespace S5Updater2
                 InitializeComponent();
                 return;
             }
-
-            Prog = new() { MM = this };
 
             Reg.LoadGoldPathFromRegistry(Valid);
             Reg.LoadHEPathFromRegistry();
@@ -476,6 +474,33 @@ namespace S5Updater2
             TaskUpdateMPMaps t = new()
             {
                 MM = this
+            };
+            await Prog.ShowProgressDialog(t);
+            UpdateEverything();
+            await CheckStatus(t.Status);
+        }
+
+        internal IList<string> ModPacks { get; private set; } = [];
+        private async void ScanModPacks(object sender, RoutedEventArgs e)
+        {
+            TaskScanModPack t = new()
+            {
+                MM = this
+            };
+            await Prog.ShowProgressDialog(t);
+            ModPacks = t.ModPacks;
+            UpdateEverything();
+            await CheckStatus(t.Status);
+        }
+        private async void UpdateModPacks(object sender, RoutedEventArgs e)
+        {
+            System.Collections.IList? s = ModpackSelection.SelectedItems;
+            if (s == null)
+                return;
+            TaskUpdateModPack t = new()
+            {
+                MM = this,
+                ModPacks = s.OfType<string>(),
             };
             await Prog.ShowProgressDialog(t);
             UpdateEverything();

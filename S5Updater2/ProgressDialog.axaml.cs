@@ -38,7 +38,7 @@ internal partial class ProgressDialog : Window
         }
         finally
         {
-            Dispatcher.UIThread.Invoke(Hide);
+            Dispatcher.UIThread.Invoke(Close);
         }
     }
     private void ReportProgress(int c, int m, string? progresstext, string? log)
