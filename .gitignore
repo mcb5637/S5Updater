@@ -339,3 +339,4 @@ ASALocalRun/
 # BeatPulse healthcheck temp database
 healthchecksdb
 /S5Updater/resources/bbaToolS5.exe
+/S5Updater2/lib

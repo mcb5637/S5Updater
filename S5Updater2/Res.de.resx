@@ -1,0 +1,351 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="TabMain" xml:space="preserve">
+    <value>Updater</value>
+  </data>
+  <data name="Open" xml:space="preserve">
+    <value>Öffnen</value>
+  </data>
+  <data name="SetRegistry" xml:space="preserve">
+    <value>setze registry</value>
+  </data>
+  <data name="GoldPath" xml:space="preserve">
+    <value>Gold: </value>
+  </data>
+  <data name="HEPath" xml:space="preserve">
+    <value>HE: </value>
+  </data>
+  <data name="SelectGold" xml:space="preserve">
+    <value>Wähle Gold Installationsordner</value>
+  </data>
+  <data name="SelectHE" xml:space="preserve">
+    <value>Wähle HE Installationsordner</value>
+  </data>
+  <data name="Log_SetGoldPath" xml:space="preserve">
+    <value>Setze Gold Pfad auf: </value>
+  </data>
+  <data name="Log_SetHEPath" xml:space="preserve">
+    <value>Setze HE Pfad auf: </value>
+  </data>
+  <data name="ShowLog" xml:space="preserve">
+    <value>zeige Log</value>
+  </data>
+  <data name="Log_SetGoldReg" xml:space="preserve">
+    <value>Setze Gold registry Pfad auf: </value>
+  </data>
+  <data name="ReallyOverrideRegistry" xml:space="preserve">
+    <value>Wirklich registry überschreiben?</value>
+  </data>
+  <data name="EasyMode" xml:space="preserve">
+    <value>Einfacher Modus</value>
+  </data>
+  <data name="Update105" xml:space="preserve">
+    <value>Update von 1.05</value>
+  </data>
+  <data name="Update106" xml:space="preserve">
+    <value>Win 10 Fix</value>
+  </data>
+  <data name="UpdateMapPacks" xml:space="preserve">
+    <value>Update MapPacks</value>
+  </data>
+  <data name="UpdateCppLogic" xml:space="preserve">
+    <value>Update CppLogic</value>
+  </data>
+  <data name="Enabled" xml:space="preserve">
+    <value>aktiv</value>
+  </data>
+  <data name="AllPatched" xml:space="preserve">
+    <value>alles gepatcht</value>
+  </data>
+  <data name="Prog_U106_Download" xml:space="preserve">
+    <value>Lade exe patch herunter</value>
+  </data>
+  <data name="Prog_U106_Copy" xml:space="preserve">
+    <value>Ersetze exe</value>
+  </data>
+  <data name="Done" xml:space="preserve">
+    <value>fertig</value>
+  </data>
+  <data name="ErrorDetected" xml:space="preserve">
+    <value>Ein Fehler ist aufgetreten. Bitte in den Log sehen und diesen Kopieren&amp;Einfügen, wenn nach Hilfe gefragt wird.</value>
+  </data>
+  <data name="Prog_U105_MsgPatch" xml:space="preserve">
+    <value>Öffne Browser für download. Bitte ausführen sobald heruntergeladen, dann OK klicken.</value>
+  </data>
+  <data name="Prog_U105_DownloadPatch" xml:space="preserve">
+    <value>Lade Patch herunter</value>
+  </data>
+  <data name="Prog_U105_Successful" xml:space="preserve">
+    <value>Erfolgreich: </value>
+  </data>
+  <data name="Prog_U105_WaitForExec" xml:space="preserve">
+    <value>Führe Patch aus, warte auf beenden...</value>
+  </data>
+  <data name="Prog_GRel_NoChange" xml:space="preserve">
+    <value>keine änderung benötigt</value>
+  </data>
+  <data name="Prog_GRel_Patching" xml:space="preserve">
+    <value>patchen</value>
+  </data>
+  <data name="Prog_CppL_Validating" xml:space="preserve">
+    <value>teste CppLogic</value>
+  </data>
+  <data name="Resolution" xml:space="preserve">
+    <value>Auflösung</value>
+  </data>
+  <data name="Language" xml:space="preserve">
+    <value>Sprache:</value>
+  </data>
+  <data name="Log_SetLang" xml:space="preserve">
+    <value>Setze Sprache zu: </value>
+  </data>
+  <data name="Log_SetReso" xml:space="preserve">
+    <value>Setze Auflösung: </value>
+  </data>
+  <data name="DevMode" xml:space="preserve">
+    <value>Entwickler Modus</value>
+  </data>
+  <data name="Log_SetDev" xml:space="preserve">
+    <value>Setze Entwickler Modus: </value>
+  </data>
+  <data name="ShowIntro" xml:space="preserve">
+    <value>zeige Startvideo</value>
+  </data>
+  <data name="UpdateDebugger" xml:space="preserve">
+    <value>Update LuaDebugger</value>
+  </data>
+  <data name="Prog_Debugger_Updating" xml:space="preserve">
+    <value>teste LuaDebugger</value>
+  </data>
+  <data name="Log_SetDebuggerEnabled" xml:space="preserve">
+    <value>setze LuaDebugger aktiv: </value>
+  </data>
+  <data name="Log_SetHookEnabled" xml:space="preserve">
+    <value>setze CppLogic aktiv: </value>
+  </data>
+  <data name="ConvertHE" xml:space="preserve">
+    <value>Konvertiere HE zu Gold</value>
+  </data>
+  <data name="TaskConvert_SkipFont" xml:space="preserve">
+    <value>Überspringe Schriftarten</value>
+  </data>
+  <data name="TaskConvert_QstSetReg" xml:space="preserve">
+    <value>Setze Gold Registry Pfad zu: </value>
+  </data>
+  <data name="TaskConvert_QstRuFull" xml:space="preserve">
+    <value>Schriftarten überspringen? Schriftarten aktualisieren verursacht Anzeigefehler bei Russischen Texten, ist aber für alle anderen Sprachen benötigt.</value>
+  </data>
+  <data name="TaskConvert_QstLinkEditor" xml:space="preserve">
+    <value>Verknüpfungen zum Mapeditor auf dem Desktop erstellen?</value>
+  </data>
+  <data name="TaskConvert_QstLink" xml:space="preserve">
+    <value>Verknüpfungen zum Spiel auf dem Desktop erstellen?</value>
+  </data>
+  <data name="TaskConvert_PatchFont" xml:space="preserve">
+    <value>aktualisiere Schriftarten</value>
+  </data>
+  <data name="TaskConvert_PatchData" xml:space="preserve">
+    <value>Ersetze Daten</value>
+  </data>
+  <data name="TaskConvert_DownloadFont" xml:space="preserve">
+    <value>Lade Schriftarten herunter</value>
+  </data>
+  <data name="TaskConvert_DownloadFileData" xml:space="preserve">
+    <value>Lade Daten Patch herunter</value>
+  </data>
+  <data name="TaskConvert_CopyingInstall" xml:space="preserve">
+    <value>Kopiere Installation</value>
+  </data>
+  <data name="TaskMPMap_Checkout" xml:space="preserve">
+    <value>aktualisiere Dateien</value>
+  </data>
+  <data name="TaskMPMap_Cloning" xml:space="preserve">
+    <value>Nicht gefunden, neu runterladen</value>
+  </data>
+  <data name="TaskMPMap_CopyFiles" xml:space="preserve">
+    <value>kopiere Dateien</value>
+  </data>
+  <data name="TaskMPMap_DirtyDeleting" xml:space="preserve">
+    <value>Änderungen werden gelöscht</value>
+  </data>
+  <data name="TaskMPMap_DirtyKeep" xml:space="preserve">
+    <value>Fehler! Änderungen im repo, aber Behalten gewählt</value>
+  </data>
+  <data name="TaskMPMap_ErrDirty" xml:space="preserve">
+    <value>Änderungen in {0}, löschen?</value>
+  </data>
+  <data name="TaskMPMap_Fetch" xml:space="preserve">
+    <value>Gefunden, aktualisiere</value>
+  </data>
+  <data name="TaskMPMap_LatestComm" xml:space="preserve">
+    <value>letzte Aktualisierung: </value>
+  </data>
+  <data name="TaskMPMap_Repo" xml:space="preserve">
+    <value>Prüfe Repo </value>
+  </data>
+  <data name="TaskMPMap_Start" xml:space="preserve">
+    <value>aktualisiere MP Karten und Scripte</value>
+  </data>
+  <data name="TabMapPacks" xml:space="preserve">
+    <value>MapPacks</value>
+  </data>
+  <data name="HEFixEditor" xml:space="preserve">
+    <value>Repariere Mapeditor</value>
+  </data>
+  <data name="HEEditor_CreateLinks" xml:space="preserve">
+    <value>Verknüpfungen zu Nebelreich &amp; Legenden Mapeditor auf dem Desktop erstellen?</value>
+  </data>
+  <data name="TaskUserScript_WriteLog" xml:space="preserve">
+    <value>UserScript nach {0} geschrieben</value>
+  </data>
+  <data name="UserScriptColor" xml:space="preserve">
+    <value>Player color:</value>
+  </data>
+  <data name="UserScriptZoom" xml:space="preserve">
+    <value>Zoom</value>
+  </data>
+  <data name="UserScript" xml:space="preserve">
+    <value>UserScript</value>
+  </data>
+  <data name="InstallMap" xml:space="preserve">
+    <value>Installiere Map</value>
+  </data>
+  <data name="Log_InstallMap" xml:space="preserve">
+    <value>Map installiert: </value>
+  </data>
+  <data name="Log_InstallModPack" xml:space="preserve">
+    <value>ModPack installiert: </value>
+  </data>
+  <data name="CopyAll" xml:space="preserve">
+    <value>alles kopieren</value>
+  </data>
+  <data name="Paths" xml:space="preserve">
+    <value>Pfade:</value>
+  </data>
+  <data name="Resgistry" xml:space="preserve">
+    <value>Registry:</value>
+  </data>
+  <data name="Mapping" xml:space="preserve">
+    <value>Mapping:</value>
+  </data>
+  <data name="Settings" xml:space="preserve">
+    <value>Einstellungen:</value>
+  </data>
+</root>

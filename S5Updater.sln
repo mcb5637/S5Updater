@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30804.86
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35222.181
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "S5Updater", "S5Updater\S5Updater.csproj", "{49DD1D6D-DFEE-4089-B6C8-54E692C0956F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoDownloader", "AutoDownloader\AutoDownloader.csproj", "{7D46F76D-F159-4F84-A886-6A8A8D88E297}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "S5Updater2", "S5Updater2\S5Updater2.csproj", "{D2626361-78B2-450F-8ABB-E260B31E6066}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,6 +33,14 @@ Global
 		{7D46F76D-F159-4F84-A886-6A8A8D88E297}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7D46F76D-F159-4F84-A886-6A8A8D88E297}.Release|x86.ActiveCfg = Release|Any CPU
 		{7D46F76D-F159-4F84-A886-6A8A8D88E297}.Release|x86.Build.0 = Release|Any CPU
+		{D2626361-78B2-450F-8ABB-E260B31E6066}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2626361-78B2-450F-8ABB-E260B31E6066}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2626361-78B2-450F-8ABB-E260B31E6066}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{D2626361-78B2-450F-8ABB-E260B31E6066}.Debug|x86.Build.0 = Debug|Any CPU
+		{D2626361-78B2-450F-8ABB-E260B31E6066}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2626361-78B2-450F-8ABB-E260B31E6066}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D2626361-78B2-450F-8ABB-E260B31E6066}.Release|x86.ActiveCfg = Release|Any CPU
+		{D2626361-78B2-450F-8ABB-E260B31E6066}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
