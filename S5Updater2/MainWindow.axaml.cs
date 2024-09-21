@@ -135,6 +135,8 @@ namespace S5Updater2
             {
                 Reg.GoldPath = f[0].Path.LocalPath;
                 Log(Res.Log_SetGoldPath + Reg.GoldPath);
+                Maps = [];
+                ModPacks = [];
                 UpdateEverything();
             }
         }
@@ -480,15 +482,16 @@ namespace S5Updater2
             await CheckStatus(t.Status);
         }
 
-        internal IList<string> ModPacks { get; private set; } = [];
+        internal IList<MapUpdate> ModPacks { get; private set; } = [];
         private async void ScanModPacks(object sender, RoutedEventArgs e)
         {
-            TaskScanModPack t = new()
+            TaskScanMaps t = new()
             {
-                MM = this
+                MM = this,
+                Type = new TaskUpdateMapsTypeModPack(),
             };
             await Prog.ShowProgressDialog(t);
-            ModPacks = t.ModPacks;
+            ModPacks = t.Maps;
             UpdateEverything();
             await CheckStatus(t.Status);
         }
@@ -497,10 +500,39 @@ namespace S5Updater2
             System.Collections.IList? s = ModpackSelection.SelectedItems;
             if (s == null)
                 return;
-            TaskUpdateModPack t = new()
+            TaskUpdateMaps t = new()
             {
                 MM = this,
-                ModPacks = s.OfType<string>(),
+                Maps = s.OfType<MapUpdate>(),
+                Type = new TaskUpdateMapsTypeModPack(),
+            };
+            await Prog.ShowProgressDialog(t);
+            UpdateEverything();
+            await CheckStatus(t.Status);
+        }
+        internal IList<MapUpdate> Maps { get; private set; } = [];
+        private async void ScanMaps(object sender, RoutedEventArgs e)
+        {
+            TaskScanMaps t = new()
+            {
+                MM = this,
+                Type = new TaskUpdateMapsTypeMap(),
+            };
+            await Prog.ShowProgressDialog(t);
+            Maps = t.Maps;
+            UpdateEverything();
+            await CheckStatus(t.Status);
+        }
+        private async void UpdateMaps(object sender, RoutedEventArgs e)
+        {
+            System.Collections.IList? s = MapSelection.SelectedItems;
+            if (s == null)
+                return;
+            TaskUpdateMaps t = new()
+            {
+                MM = this,
+                Maps = s.OfType<MapUpdate>(),
+                Type = new TaskUpdateMapsTypeMap(),
             };
             await Prog.ShowProgressDialog(t);
             UpdateEverything();

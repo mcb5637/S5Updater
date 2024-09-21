@@ -10,6 +10,7 @@ using System.Linq;
 using System.Net.Http;
 using bbaLib;
 using System.Threading.Tasks;
+using System.Text;
 
 namespace S5Updater2
 {
@@ -134,7 +135,7 @@ namespace S5Updater2
             using MemoryStream s = new();
             await DownloadAsync(uri, r, s);
             s.Position = 0;
-            using StreamReader sr = new(s);
+            using StreamReader sr = new(s, Encoding.UTF8);
             return sr.ReadToEnd();
         }
 

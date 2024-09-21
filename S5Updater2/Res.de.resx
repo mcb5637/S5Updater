@@ -339,6 +339,9 @@
   <data name="Paths" xml:space="preserve">
     <value>Pfade:</value>
   </data>
+  <data name="Registry" xml:space="preserve">
+    <value>Registry:</value>
+  </data>
   <data name="Mapping" xml:space="preserve">
     <value>Mapping:</value>
   </data>
@@ -348,13 +351,19 @@
   <data name="SettingsBottom" xml:space="preserve">
     <value>Einstellungen:</value>
   </data>
-  <data name="Resgistry" xml:space="preserve">
-    <value>Registry:</value>
-  </data>
   <data name="MapPacks" xml:space="preserve">
     <value>MapPacks:</value>
   </data>
   <data name="Update" xml:space="preserve">
     <value>Update</value>
+  </data>
+  <data name="Scan" xml:space="preserve">
+    <value>Suche</value>
+  </data>
+  <data name="ModPacks" xml:space="preserve">
+    <value>ModPacks:</value>
+  </data>
+  <data name="Maps" xml:space="preserve">
+    <value>Maps:</value>
   </data>
 </root>

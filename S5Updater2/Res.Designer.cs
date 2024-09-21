@@ -295,6 +295,24 @@ namespace S5Updater2 {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Maps:.
+        /// </summary>
+        public static string Maps {
+            get {
+                return ResourceManager.GetString("Maps", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ModPacks:.
+        /// </summary>
+        public static string ModPacks {
+            get {
+                return ResourceManager.GetString("ModPacks", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Open.
         /// </summary>
         public static string Open {
@@ -421,20 +439,20 @@ namespace S5Updater2 {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
-        /// </summary>
-        public static string Resgistry {
-            get {
-                return ResourceManager.GetString("Resgistry", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Resolution:.
         /// </summary>
         public static string Resolution {
             get {
                 return ResourceManager.GetString("Resolution", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Scan.
+        /// </summary>
+        public static string Scan {
+            get {
+                return ResourceManager.GetString("Scan", resourceCulture);
             }
         }
         
