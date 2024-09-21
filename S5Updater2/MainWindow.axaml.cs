@@ -493,6 +493,7 @@ namespace S5Updater2
             await Prog.ShowProgressDialog(t);
             ModPacks = t.Maps;
             UpdateEverything();
+            ModpackSelection.SelectedItems = t.Maps;
             await CheckStatus(t.Status);
         }
         private async void UpdateModPacks(object sender, RoutedEventArgs e)
@@ -521,6 +522,7 @@ namespace S5Updater2
             await Prog.ShowProgressDialog(t);
             Maps = t.Maps;
             UpdateEverything();
+            MapSelection.SelectedItems = t.Maps;
             await CheckStatus(t.Status);
         }
         private async void UpdateMaps(object sender, RoutedEventArgs e)

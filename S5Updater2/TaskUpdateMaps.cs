@@ -44,7 +44,7 @@ namespace S5Updater2
                         r(0, 100, "not needed", "not needed");
                         continue;
                     }
-                    string tmp = Path.Combine(MM.Reg.GoldPath, n + Path.GetExtension(i.UpdateURL));
+                    string tmp = Path.Combine(MM.Reg.GoldPath, n.Name + Path.GetExtension(i.UpdateURL));
                     await MainUpdater.DownloadFile(i.UpdateURL, tmp, r);
                     TaskInstallMap inst = new()
                     {
@@ -52,6 +52,7 @@ namespace S5Updater2
                         Files = [tmp],
                         TargetPath = MM.Reg.GoldPath,
                         AllowModPacks = true,
+                        OnlyName = n.Name,
                     };
                     await inst.Work(r);
                     File.Delete(tmp);
@@ -86,20 +87,19 @@ namespace S5Updater2
                     string outPath = Path.Combine(MM.Reg.GoldPath, sp);
                     if (!Directory.Exists(outPath))
                         continue;
-                    foreach (FileInfo mp in new DirectoryInfo(outPath).EnumerateFiles())
+                    DirectoryInfo dirinfo = new(outPath);
+                    foreach (FileInfo mp in dirinfo.EnumerateFiles())
                     {
                         r(0, 100, mp.Name, null);
-                        TaskUpdateMapsType.Info? i = Type.GetInfo(mp.FullName);
-                        if (i == null)
-                            continue;
-                        if (i.VersionURL == null || i.UpdateURL == null)
-                            continue;
-                        string n = Path.GetFileNameWithoutExtension(mp.FullName);
-                        Maps.Add(new MapUpdate()
+                        handle(mp);
+                    }
+                    if (Type.SearchDirs)
+                    {
+                        foreach (DirectoryInfo di in dirinfo.EnumerateDirectories())
                         {
-                            File = mp.FullName,
-                            Name = n,
-                        });
+                            r(0, 100, di.Name, null);
+                            handle(di);
+                        }
                     }
                 }
             }
@@ -109,6 +109,21 @@ namespace S5Updater2
                 Status = Status.Error;
             }
             return Task.CompletedTask;
+
+            void handle(FileSystemInfo fi)
+            {
+                TaskUpdateMapsType.Info? i = Type.GetInfo(fi.FullName);
+                if (i == null)
+                    return;
+                if (i.VersionURL == null || i.UpdateURL == null)
+                    return;
+                string n = Path.GetFileNameWithoutExtension(fi.FullName);
+                Maps.Add(new MapUpdate()
+                {
+                    File = fi.FullName,
+                    Name = n,
+                });
+            }
         }
     }
     internal abstract class TaskUpdateMapsType
@@ -121,10 +136,12 @@ namespace S5Updater2
         }
         internal abstract Info? GetInfo(string path);
         internal abstract string[] SearchPath { get; }
+        internal abstract bool SearchDirs { get; }
     }
     internal class TaskUpdateMapsTypeModPack : TaskUpdateMapsType
     {
         internal override string[] SearchPath => ["ModPacks"];
+        internal override bool SearchDirs => false;
 
         internal override Info? GetInfo(string path)
         {
@@ -147,14 +164,21 @@ namespace S5Updater2
     internal class TaskUpdateMapsTypeMap : TaskUpdateMapsType
     {
         internal override string[] SearchPath => ["base\\shr\\maps\\user", "extra1\\shr\\maps\\user", "extra2\\shr\\maps\\user"];
+        internal override bool SearchDirs => true;
 
         internal override Info? GetInfo(string path)
         {
-            if (Path.GetExtension(path) != ".s5x")
-                return null;
             using BbaArchive a = new();
-            a.ReadBba(path);
-            string n = Path.GetFileNameWithoutExtension(path);
+            if (Directory.Exists(path))
+            {
+                a.AddFileFromFilesystem(Path.Combine(path, "info.xml"), BbaArchive.InfoXML);
+            }
+            else
+            {
+                if (Path.GetExtension(path) != ".s5x")
+                    return null;
+                a.ReadBba(path);
+            }
             S5MapInfo? i = a.MapInfo;
             if (i == null)
                 return null;

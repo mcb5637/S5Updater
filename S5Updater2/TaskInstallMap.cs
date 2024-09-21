@@ -20,6 +20,7 @@ namespace S5Updater2
         internal required string TargetPath;
         internal required string[] Files;
         internal required bool AllowModPacks;
+        internal string? OnlyName;
 
         public Task Work(ProgressDialog.ReportProgressDel r)
         {
@@ -65,6 +66,14 @@ namespace S5Updater2
                             string? dir = Path.GetDirectoryName(e.FullName);
                             if (dir == null)
                                 continue;
+                            if (OnlyName != null)
+                            {
+                                if (Path.GetFileNameWithoutExtension(dir) != OnlyName)
+                                {
+                                    r(0, 100, dir + " failed check", dir + " failed check");
+                                    continue;
+                                }
+                            }
                             outPath = Path.Combine(TargetPath, outPath, Path.GetFileName(dir));
                             if (Directory.Exists(outPath))
                                 Directory.Delete(outPath, true);
@@ -84,6 +93,14 @@ namespace S5Updater2
                 }
                 else if (Path.GetExtension(file) == ".s5x")
                 {
+                    if (OnlyName != null)
+                    {
+                        if (Path.GetFileNameWithoutExtension(file) != OnlyName)
+                        {
+                            r(0, 100, file + " failed check", file + " failed check");
+                            return;
+                        }
+                    }
                     using BbaArchive a = new();
                     a.ReadBba(file);
                     S5MapInfo? i = a.MapInfo;
@@ -101,6 +118,14 @@ namespace S5Updater2
                 }
                 else if (AllowModPacks && Path.GetExtension(file) == ".bba")
                 {
+                    if (OnlyName != null)
+                    {
+                        if (Path.GetFileNameWithoutExtension(file) != OnlyName)
+                        {
+                            r(0, 100, file + " failed check", file + " failed check");
+                            return;
+                        }
+                    }
                     using BbaArchive a = new();
                     a.ReadBba(file);
                     string? modname = Path.GetFileNameWithoutExtension(file);
