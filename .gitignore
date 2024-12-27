@@ -340,3 +340,5 @@ ASALocalRun/
 healthchecksdb
 /S5Updater/resources/bbaToolS5.exe
 /S5Updater2/lib
+/publish_local
+/publish_local.zip
