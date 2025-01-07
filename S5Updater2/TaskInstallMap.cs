@@ -78,13 +78,19 @@ namespace S5Updater2
                             if (Directory.Exists(outPath))
                                 Directory.Delete(outPath, true);
                             Directory.CreateDirectory(outPath);
+                            string checkDir = (dir + "/").Replace("\\", "/");
                             foreach (ZipArchiveEntry e2 in a.Entries)
                             {
                                 if (e2.IsFolder())
                                     continue;
-                                if (Path.GetDirectoryName(e2.FullName) == dir)
+                                string e2pathcheck = e2.FullName.Replace("\\", "/");
+                                if (e2pathcheck.StartsWith(checkDir, StringComparison.InvariantCultureIgnoreCase))
                                 {
-                                    e2.ExtractToFile(Path.Combine(outPath, e2.Name), true);
+                                    string of = Path.Combine(outPath, e2pathcheck.Remove(0, checkDir.Length));
+                                    string? ofdir = Path.GetDirectoryName(of);
+                                    if (ofdir != null)
+                                        Directory.CreateDirectory(ofdir);
+                                    e2.ExtractToFile(of, true);
                                 }
                             }
                             r(0, 100, Res.Log_InstallMap + outPath, Res.Log_InstallMap + outPath);

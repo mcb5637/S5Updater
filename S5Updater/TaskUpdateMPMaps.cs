@@ -114,7 +114,7 @@ namespace S5Updater
                     r(0, Resources.TaskMPMap_Fetch);
                     using (Repository rep = new Repository(repo))
                     {
-                        FetchRepo(r, rep);
+                        FetchRepo(r, rep, branch);
                         StatusOptions statusopt = new StatusOptions
                         {
                             ExcludeSubmodules = false,
@@ -168,7 +168,7 @@ namespace S5Updater
             r(100, Resources.TaskMPMap_LatestComm + rep.Head.Tip.Message);
         }
 
-        private void FetchRepo(ProgressDialog.ReportProgressDel r, Repository rep)
+        private void FetchRepo(ProgressDialog.ReportProgressDel r, Repository rep, string branch)
         {
             FetchOptions fetchopt = new FetchOptions
             {
@@ -181,9 +181,10 @@ namespace S5Updater
                 {
                     r(-1, s);
                     return true;
-                }
+                },
+                Depth = 1,
             };
-            Commands.Fetch(rep, "origin", rep.Network.Remotes["origin"].FetchRefSpecs.Select((x) => x.Specification), fetchopt, null);
+            Commands.Fetch(rep, "origin", new string[] { $"+refs/heads/{branch}:refs/remotes/origin/{branch}" }, fetchopt, null);
         }
 
         private void CloneRepo(string repo, string branch, string url, ProgressDialog.ReportProgressDel r)
@@ -194,21 +195,22 @@ namespace S5Updater
             {
                 RecurseSubmodules = true,
                 BranchName = branch,
-                OnTransferProgress = (t) =>
-                {
-                    r(t.TotalObjects == 0 ? 100 : t.ReceivedObjects * 100 / t.TotalObjects, null);
-                    return true;
-                },
                 OnCheckoutProgress = (path, com, tot) =>
                 {
                     r(tot == 0 ? 100 : com * 100 / tot, null);
                 },
-                OnProgress = (s) =>
-                {
-                    r(-1, s);
-                    return true;
-                }
             };
+            cloneopt.FetchOptions.OnProgress = (s) =>
+            {
+                r(-1, s);
+                return true;
+            };
+            cloneopt.FetchOptions.OnTransferProgress = (t) =>
+            {
+                r(t.TotalObjects == 0 ? 100 : t.ReceivedObjects * 100 / t.TotalObjects, null);
+                return true;
+            };
+            cloneopt.FetchOptions.Depth = 1;
             Repository.Clone(url, repo, cloneopt);
         }
     }

@@ -14,8 +14,9 @@ namespace S5Updater2
         internal string? GoldPath;
         internal bool GoldHasReg;
         internal string? HEPath;
-        internal const string GoldKey = "HKEY_LOCAL_MACHINE\\SOFTWARE\\Blue Byte\\The Settlers - Heritage of Kings";
-        internal const string GoldDevKey = GoldKey + "\\Development";
+        internal const string GoldKey32 = "HKEY_LOCAL_MACHINE\\SOFTWARE\\Blue Byte\\The Settlers - Heritage of Kings";
+        internal const string GoldKey64 = "HKEY_LOCAL_MACHINE\\SOFTWARE\\WOW6432Node\\Blue Byte\\The Settlers - Heritage of Kings";
+        internal const string GoldDevKeyA = "\\Development";
         internal const string GoldInstallLoc = "InstallPath";
         internal const string GoldReso = "DefaultResolution";
         internal const string GoldDevMode = "DevelopmentMachine";
@@ -28,6 +29,9 @@ namespace S5Updater2
 
         internal const string S5UpdaterKey = "HKEY_LOCAL_MACHINE\\SOFTWARE\\S5Updater";
 
+        internal static string GoldKey => Environment.Is64BitProcess ? GoldKey64 : GoldKey32;
+        internal static string GoldDevKey => GoldKey + GoldDevKeyA;
+
         internal static object? GetReg(string keyname, string? valName, object? defaultval)
         {
             if (OperatingSystem.IsWindows())
@@ -38,19 +42,26 @@ namespace S5Updater2
         {
             if (!OperatingSystem.IsWindows())
                 return;
-            if (val == null)
+            try
             {
-                if (valName == null)
-                    return;
-                using RegistryKey? key = Registry.CurrentUser.OpenSubKey(keyName, true);
-                key?.DeleteValue(valName);
+                if (val == null)
+                {
+                    if (valName == null)
+                        return;
+                    using RegistryKey? key = Registry.CurrentUser.OpenSubKey(keyName, true);
+                    key?.DeleteValue(valName);
+                }
+                else
+                {
+                    RegistryValueKind k = RegistryValueKind.DWord;
+                    if (val is string)
+                        k = RegistryValueKind.String;
+                    Registry.SetValue(keyName, valName, val, k);
+                }
             }
-            else
+            catch (UnauthorizedAccessException)
             {
-                RegistryValueKind k = RegistryValueKind.DWord;
-                if (val is string)
-                    k = RegistryValueKind.String;
-                Registry.SetValue(keyName, valName, val, k);
+                
             }
         }
 

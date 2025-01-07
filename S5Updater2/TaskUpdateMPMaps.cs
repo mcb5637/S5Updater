@@ -280,7 +280,7 @@ namespace S5Updater2
                 {
                     r(0, 100, Res.TaskMPMap_Fetch, Res.TaskMPMap_Fetch);
                     using Repository rep = new(repo);
-                    FetchRepo(r, rep);
+                    FetchRepo(r, rep, branch);
                     StatusOptions statusopt = new()
                     {
                         ExcludeSubmodules = false,
@@ -325,7 +325,7 @@ namespace S5Updater2
 
         private void CheckoutRepo(string branch, ProgressDialog.ReportProgressDel r, Repository rep)
         {
-            CheckoutOptions checkoutopt = new CheckoutOptions
+            CheckoutOptions checkoutopt = new()
             {
                 OnCheckoutProgress = (path, com, tot) =>
                 {
@@ -339,9 +339,9 @@ namespace S5Updater2
             r(100, 100, Res.TaskMPMap_LatestComm + rep.Head.Tip.Message, Res.TaskMPMap_LatestComm + rep.Head.Tip.Message);
         }
 
-        private void FetchRepo(ProgressDialog.ReportProgressDel r, Repository rep)
+        private void FetchRepo(ProgressDialog.ReportProgressDel r, Repository rep, string branch)
         {
-            FetchOptions fetchopt = new FetchOptions
+            FetchOptions fetchopt = new()
             {
                 OnTransferProgress = (t) =>
                 {
@@ -352,9 +352,10 @@ namespace S5Updater2
                 {
                     r(-1, 0, s, null);
                     return true;
-                }
+                },
+                Depth = 1,
             };
-            Commands.Fetch(rep, "origin", rep.Network.Remotes["origin"].FetchRefSpecs.Select((x) => x.Specification), fetchopt, null);
+            Commands.Fetch(rep, "origin", [$"+refs/heads/{branch}:refs/remotes/origin/{branch}"], fetchopt, null);
         }
 
         private void CloneRepo(string repo, string branch, string url, ProgressDialog.ReportProgressDel r)
@@ -380,6 +381,7 @@ namespace S5Updater2
                 r(t.TotalObjects, t.ReceivedObjects, null, null);
                 return true;
             };
+            cloneopt.FetchOptions.Depth = 1;
             Repository.Clone(url, repo, cloneopt);
         }
     }
