@@ -1,4 +1,5 @@
 using Avalonia.Controls;
+using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Input;
 using Avalonia.Interactivity;
 using Avalonia.Platform.Storage;
@@ -20,6 +21,7 @@ namespace S5Updater2
         internal ProgressDialog Prog => new() { MM = this };
         internal InstallValidator Valid = new();
         internal UserScriptManager USM = new();
+        internal Settings Set;
 
         private static readonly Resolution[] Resolutions = [ new Resolution("default", "0", false),
             new Resolution("select", "select", false), new Resolution("1920x1080", "1920 x 1080 x 32", true), new Resolution("2500x1400", "2500 x 1400 x 32", true),
@@ -36,12 +38,14 @@ namespace S5Updater2
             if (Design.IsDesignMode)
             {
                 InitializeComponent();
+                Set = new();
                 return;
             }
 
             Reg.LoadGoldPathFromRegistry(Valid);
             Reg.LoadHEPathFromRegistry();
             USM.Read();
+            Set = Settings.Load();
 
             DataContext = this;
             InitializeComponent();
@@ -53,6 +57,7 @@ namespace S5Updater2
         private void OnClosing(object s, WindowClosingEventArgs a)
         {
             Prog.Close();
+            Set.Save();
         }
 
         public new event PropertyChangedEventHandler? PropertyChanged;
@@ -259,7 +264,7 @@ namespace S5Updater2
             IReadOnlyList<IStorageFile> r = await StorageProvider.OpenFilePickerAsync(new FilePickerOpenOptions()
             {
                 AllowMultiple = true,
-                FileTypeFilter = [new("Maps") {Patterns=["*.s5x", "*.zip", "*.bba"]}],
+                FileTypeFilter = [new("Maps") { Patterns = ["*.s5x", "*.zip", "*.bba"] }],
             });
             if (r.Count > 0)
             {
@@ -449,21 +454,24 @@ namespace S5Updater2
         }
 
         internal static IList<MapPack> MapPacksData => TaskUpdateMPMaps.Packs;
-        internal static IList<MapPack> MapPacksSelected
+        internal IList<MapPack> MapPacksSelected
         {
             get
             {
-                return MapPacksData.Where((p) => RegistryHandler.GetUpdateMapPack(p.RegKey)).ToList();
+                return MapPacksData.Where(GetMapPackUpdateFromSettings).ToList();
             }
             set
             {
                 foreach (MapPack p in MapPacksData)
                 {
                     bool s = value.Contains(p);
-                    if (RegistryHandler.GetUpdateMapPack(p.RegKey) != s)
-                        RegistryHandler.SetUpdateMapPack(p.RegKey, s);
+                    Set.SelectedMapPacks[p.RegKey] = s;
                 }
             }
+        }
+        internal bool GetMapPackUpdateFromSettings(MapPack p)
+        {
+            return !Set.SelectedMapPacks.TryGetValue(p.RegKey, out bool r) || r;
         }
         // binding MapPacksSelected only reads...
         internal void MapPacksSelected_Changed(object sender, SelectionChangedEventArgs e)
@@ -483,6 +491,31 @@ namespace S5Updater2
         }
 
         internal IList<MapUpdate> ModPacks { get; private set; } = [];
+        internal IList<MapUpdate> ModPacksSelected
+        {
+            get
+            {
+                return ModPacks.Where(GetModPacksUpdateFromSettings).ToList();
+            }
+            set
+            {
+                foreach (MapUpdate p in ModPacks)
+                {
+                    bool s = value.Any((x) => x.File == p.File);
+                    Set.SelectedModPacks[p.File] = s;
+                }
+            }
+        }
+        internal bool GetModPacksUpdateFromSettings(MapUpdate p)
+        {
+            return !Set.SelectedModPacks.TryGetValue(p.File, out bool r) || r;
+        }
+        // binding ModPacksSelected only reads...
+        internal void ModPacksSelected_Changed(object sender, SelectionChangedEventArgs e)
+        {
+            if ((sender as ListBox)?.SelectedItems is IList<MapUpdate> i)
+                ModPacksSelected = i;
+        }
         private async void ScanModPacks(object sender, RoutedEventArgs e)
         {
             TaskScanMaps t = new()
@@ -493,25 +526,47 @@ namespace S5Updater2
             await Prog.ShowProgressDialog(t);
             ModPacks = t.Maps;
             UpdateEverything();
-            ModpackSelection.SelectedItems = t.Maps;
             await CheckStatus(t.Status);
         }
         private async void UpdateModPacks(object sender, RoutedEventArgs e)
         {
-            System.Collections.IList? s = ModpackSelection.SelectedItems;
-            if (s == null)
-                return;
             TaskUpdateMaps t = new()
             {
                 MM = this,
-                Maps = s.OfType<MapUpdate>(),
+                Maps = ModPacksSelected,
                 Type = new TaskUpdateMapsTypeModPack(),
             };
             await Prog.ShowProgressDialog(t);
             UpdateEverything();
             await CheckStatus(t.Status);
         }
+
         internal IList<MapUpdate> Maps { get; private set; } = [];
+        internal IList<MapUpdate> MapsSelected
+        {
+            get
+            {
+                return Maps.Where(GetMapsUpdateFromSettings).ToList();
+            }
+            set
+            {
+                foreach (MapUpdate p in Maps)
+                {
+                    bool s = value.Any((x) => x.File == p.File);
+                    Set.SelectedMaps[p.File] = s;
+                }
+            }
+        }
+        internal bool GetMapsUpdateFromSettings(MapUpdate p)
+        {
+            return !Set.SelectedMaps.TryGetValue(p.File, out bool r) || r;
+        }
+        // binding ModPacksSelected only reads...
+        internal void MapsSelected_Changed(object sender, SelectionChangedEventArgs e)
+        {
+            if ((sender as ListBox)?.SelectedItems is IList<MapUpdate> i)
+                MapsSelected = i;
+        }
         private async void ScanMaps(object sender, RoutedEventArgs e)
         {
             TaskScanMaps t = new()
@@ -522,18 +577,14 @@ namespace S5Updater2
             await Prog.ShowProgressDialog(t);
             Maps = t.Maps;
             UpdateEverything();
-            MapSelection.SelectedItems = t.Maps;
             await CheckStatus(t.Status);
         }
         private async void UpdateMaps(object sender, RoutedEventArgs e)
         {
-            System.Collections.IList? s = MapSelection.SelectedItems;
-            if (s == null)
-                return;
             TaskUpdateMaps t = new()
             {
                 MM = this,
-                Maps = s.OfType<MapUpdate>(),
+                Maps = MapsSelected,
                 Type = new TaskUpdateMapsTypeMap(),
             };
             await Prog.ShowProgressDialog(t);
@@ -560,5 +611,7 @@ namespace S5Updater2
                 USM.Update(Log);
             }
         }
+
+        internal int MaxScrollerHeight => 500;
     }
 }

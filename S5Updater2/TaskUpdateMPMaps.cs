@@ -226,7 +226,7 @@ namespace S5Updater2
 
             try
             {
-                foreach (MapPack p in Packs)
+                foreach (MapPack p in Packs.Where(MM.GetMapPackUpdateFromSettings))
                     HandleMapPack(p, r);
                 
                 r(100, 100, Res.Done, Res.Done);
@@ -243,8 +243,6 @@ namespace S5Updater2
         {
             try
             {
-                if (!RegistryHandler.GetUpdateMapPack(p.RegKey))
-                    return;
                 if (MM.Reg.GoldPath == null)
                     throw new NullReferenceException();
                 foreach (MapPackSource s in p.Sources)

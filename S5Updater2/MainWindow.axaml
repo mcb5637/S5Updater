@@ -16,7 +16,7 @@
 		<SplitView.Pane>
 			<Grid ColumnDefinitions="*" RowDefinitions="*,Auto">
 				<Border BorderBrush="Black" BorderThickness="1" Margin="5">
-					<ScrollViewer Height="400">
+					<ScrollViewer MaxHeight="{Binding MaxScrollerHeight}">
 						<SelectableTextBlock Name="OutputLog" TextWrapping="Wrap"></SelectableTextBlock>
 					</ScrollViewer>
 				</Border>
@@ -106,7 +106,7 @@
 						<TextBlock Text="{x:Static L:Res.MapPacks}" Margin="5,10,5,0"></TextBlock>
 						<Border BorderBrush="Black" BorderThickness="1" Margin="5" Grid.Row="1">
 							<Grid ColumnDefinitions="Auto,Auto" RowDefinitions="Auto,Auto">
-								<ListBox ItemsSource="{Binding MapPacksData}" SelectedItems="{Binding MapPacksSelected, Mode=TwoWay}" SelectionChanged="MapPacksSelected_Changed" SelectionMode="Multiple,Toggle" Margin="5">
+								<ListBox ItemsSource="{Binding MapPacksData}" SelectedItems="{Binding MapPacksSelected, Mode=TwoWay}" SelectionChanged="MapPacksSelected_Changed" SelectionMode="Multiple,Toggle" Margin="5" MaxHeight="{Binding MaxScrollerHeight}">
 								</ListBox>
 								<Button Click="UpdateMappacks" IsEnabled="{Binding GoldAllPatched}" Grid.Row="1" Margin="5">
 									<TextBlock Text="{x:Static L:Res.Update}"></TextBlock>
@@ -117,7 +117,7 @@
 						<TextBlock Text="{x:Static L:Res.ModPacks}" Margin="5,10,5,0" Grid.Column="1"></TextBlock>
 						<Border BorderBrush="Black" BorderThickness="1" Margin="5" Grid.Row="1" Grid.Column="1">
 							<Grid ColumnDefinitions="Auto,Auto" RowDefinitions="Auto,Auto,Auto">
-								<ListBox Name="ModpackSelection" ItemsSource="{Binding ModPacks}" SelectionMode="Multiple,Toggle" Margin="5">
+								<ListBox ItemsSource="{Binding ModPacks}" SelectedItems="{Binding ModPacksSelected, Mode=TwoWay}" SelectionChanged="ModPacksSelected_Changed" SelectionMode="Multiple,Toggle" Margin="5" MaxHeight="{Binding MaxScrollerHeight}">
 								</ListBox>
 								<Button Click="ScanModPacks" IsEnabled="{Binding GoldAllPatched}" Grid.Row="1" Margin="5">
 									<TextBlock Text="{x:Static L:Res.Scan}"></TextBlock>
@@ -131,7 +131,7 @@
 						<TextBlock Text="{x:Static L:Res.Maps}" Margin="5,10,5,0" Grid.Column="2"></TextBlock>
 						<Border BorderBrush="Black" BorderThickness="1" Margin="5" Grid.Row="1" Grid.Column="2">
 							<Grid ColumnDefinitions="Auto,Auto" RowDefinitions="Auto,Auto,Auto">
-								<ListBox Name="MapSelection" ItemsSource="{Binding Maps}" SelectionMode="Multiple,Toggle" Margin="5">
+								<ListBox ItemsSource="{Binding Maps}" SelectedItems="{Binding MapsSelected, Mode=TwoWay}" SelectionChanged="MapsSelected_Changed"  SelectionMode="Multiple,Toggle" Margin="5" MaxHeight="{Binding MaxScrollerHeight}">
 								</ListBox>
 								<Button Click="ScanMaps" IsEnabled="{Binding GoldAllPatched}" Grid.Row="1" Margin="5">
 									<TextBlock Text="{x:Static L:Res.Scan}"></TextBlock>

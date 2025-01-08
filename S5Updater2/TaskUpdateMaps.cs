@@ -169,25 +169,32 @@ namespace S5Updater2
         internal override Info? GetInfo(string path)
         {
             using BbaArchive a = new();
-            if (Directory.Exists(path))
+            try
             {
-                a.AddFileFromFilesystem(Path.Combine(path, "info.xml"), BbaArchive.InfoXML);
-            }
-            else
-            {
-                if (Path.GetExtension(path) != ".s5x")
+                if (Directory.Exists(path))
+                {
+                    a.AddFileFromFilesystem(Path.Combine(path, "info.xml"), BbaArchive.InfoXML);
+                }
+                else
+                {
+                    if (Path.GetExtension(path) != ".s5x")
+                        return null;
+                    a.ReadBba(path);
+                }
+                S5MapInfo? i = a.MapInfo;
+                if (i == null)
                     return null;
-                a.ReadBba(path);
+                return new Info()
+                {
+                    VersionURL = i.VersionURL,
+                    UpdateURL = i.UpdateURL,
+                    Version = i.GUID.Data,
+                };
             }
-            S5MapInfo? i = a.MapInfo;
-            if (i == null)
-                return null;
-            return new Info()
+            catch (FileNotFoundException)
             {
-                VersionURL = i.VersionURL,
-                UpdateURL = i.UpdateURL,
-                Version = i.GUID.Data,
-            };
+                return null;
+            }
         }
     }
 }

@@ -27,8 +27,6 @@ namespace S5Updater2
 
         internal const string HEDefaultSteamInstall = "C:\\Program Files (x86)\\Steam\\steamapps\\common\\The Settlers - Heritage of Kings - History Edition";
 
-        internal const string S5UpdaterKey = "HKEY_LOCAL_MACHINE\\SOFTWARE\\S5Updater";
-
         internal static string GoldKey => Environment.Is64BitProcess ? GoldKey64 : GoldKey32;
         internal static string GoldDevKey => GoldKey + GoldDevKeyA;
 
@@ -142,15 +140,6 @@ namespace S5Updater2
         {
             get => RegistryReadBool(GoldDevKey, GoldVideo, true);
             set => RegistryWriteBool(GoldDevKey, GoldVideo, value);
-        }
-
-        static internal bool GetUpdateMapPack(string key)
-        {
-            return RegistryReadBool(S5UpdaterKey, key, true);
-        }
-        static internal void SetUpdateMapPack(string key, bool v)
-        {
-            RegistryWriteBool(S5UpdaterKey, key, v);
         }
     }
 }
