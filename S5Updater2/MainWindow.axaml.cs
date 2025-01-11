@@ -3,6 +3,7 @@ using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Input;
 using Avalonia.Interactivity;
 using Avalonia.Platform.Storage;
+using Avalonia.Threading;
 using MsBox.Avalonia;
 using System;
 using System.Collections.Generic;
@@ -11,6 +12,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using static S5Updater2.MainUpdater;
 
 namespace S5Updater2
 {
@@ -88,6 +90,20 @@ namespace S5Updater2
                 await box.ShowAsync();
             }
         }
+        private async Task CheckExitCode(AWExitCode status, string log, string suc)
+        {
+            if (status != AWExitCode.Success)
+            {
+                Log(log + status);
+                var box = MessageBoxManager.GetMessageBoxStandard("", Res.ErrorDetected, MsBox.Avalonia.Enums.ButtonEnum.Ok);
+                ShowLog.IsChecked = true;
+                await box.ShowAsync();
+            }
+            else
+            {
+                Log(suc);
+            }
+        }
         private async Task InstallMap(string path, bool allowModPacks, params string[] files)
         {
             TaskInstallMap t = new()
@@ -163,8 +179,7 @@ namespace S5Updater2
             var box = MessageBoxManager.GetMessageBoxStandard("", Res.ReallyOverrideRegistry, MsBox.Avalonia.Enums.ButtonEnum.YesNo);
             if (await box.ShowAsync() == MsBox.Avalonia.Enums.ButtonResult.Yes)
             {
-                Reg.SetGoldReg();
-                Log(Res.Log_SetGoldReg + Reg.HEPath);
+                await CheckExitCode(Reg.SetGoldReg(), Res.Log_SetGoldReg, Res.Log_SetGoldReg + Reg.GoldPath);
             }
         }
 
@@ -281,11 +296,17 @@ namespace S5Updater2
                 var res = RegistryHandler.Resolution;
                 return Resolutions.FirstOrDefault((r) => r.RegValue == res, Resolutions[0]);
             }
-            set
+        }
+        internal async void SelectedResolution_Changed(object sender, SelectionChangedEventArgs e)
+        {
+            if ((sender as ComboBox)?.SelectedItem is Resolution value)
             {
-                RegistryHandler.Resolution = value.RegValue;
+                if (RegistryHandler.Resolution == value.RegValue)
+                    return;
+                await CheckExitCode(RegistryHandler.SetResolution(value.RegValue), Res.Log_SetReso, Res.Log_SetReso + value.Show);
                 if (value.NeedsDev)
-                    DevMode = true;
+                    await SetDevMode(true);
+                UpdateEverything();
             }
         }
         internal static IList<Language> LanguageData => Languages;
@@ -296,17 +317,55 @@ namespace S5Updater2
                 var res = RegistryHandler.Language;
                 return Languages.FirstOrDefault((r) => r.RegValue == res, Languages[0]);
             }
-            set => RegistryHandler.Language = value.RegValue;
+        }
+        internal async void SelectedLanguage_Changed(object sender, SelectionChangedEventArgs e)
+        {
+            if ((sender as ComboBox)?.SelectedItem is Language value)
+            {
+                if (RegistryHandler.Language == value.RegValue)
+                    return;
+                await CheckExitCode(RegistryHandler.SetLanguage(value.RegValue), Res.Log_SetLang, Res.Log_SetLang + value.Show);
+                UpdateEverything();
+            }
         }
         internal static bool DevMode
         {
             get => DevHashCalc.CalcHash(RegistryHandler.GetPCName()) == RegistryHandler.DevMode;
-            set => RegistryHandler.DevMode = value ? DevHashCalc.CalcHash(RegistryHandler.GetPCName()) : 0;
         }
+        internal async void DevMode_Changed(object sender, RoutedEventArgs e)
+        {
+            if (sender is CheckBox cb)
+            {
+                if (cb.IsChecked == null)
+                    return;
+                await SetDevMode((bool)cb.IsChecked);
+            }
+        }
+        private async Task SetDevMode(bool val)
+        {
+            if (DevMode == val)
+                return;
+            uint v = val ? DevHashCalc.CalcHash(RegistryHandler.GetPCName()) : 0;
+            await CheckExitCode(RegistryHandler.SetDevMode(v), Res.Log_SetDev, Res.Log_SetDev + v);
+            UpdateEverything();
+        }
+
         internal static bool ShowIntroVideo
         {
             get => RegistryHandler.ShowIntroVideo;
-            set => RegistryHandler.ShowIntroVideo = value;
+        }
+        internal async void ShowIntroVideo_Changed(object sender, RoutedEventArgs e)
+        {
+            if (sender is CheckBox cb)
+            {
+                if (cb.IsChecked == null)
+                    return;
+                bool val = (bool)cb.IsChecked;
+                if (RegistryHandler.ShowIntroVideo == val)
+                    return;
+                await CheckExitCode(RegistryHandler.SetShowIntroVideo(val), Res.Log_SetIntroVideo, Res.Log_SetIntroVideo + val);
+                UpdateEverything();
+            }
         }
 
 
@@ -613,5 +672,18 @@ namespace S5Updater2
         }
 
         internal int MaxScrollerHeight => 500;
+
+        // never call from main thread!!!
+        public async Task EnsureWriteAccess(string dir)
+        {
+            if (!HasWriteAccess(dir))
+            {
+                var ec = RunFullAccess(dir);
+                await Dispatcher.UIThread.InvokeAsync(async () =>
+                {
+                    await CheckExitCode(ec, Res.Log_AllowAccess, Res.Log_AllowAccess + dir);
+                });
+            }
+        }
     }
 }

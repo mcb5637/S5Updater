@@ -65,6 +65,7 @@ namespace S5Updater2
             {
                 if (MM.Reg.GoldPath == null)
                     throw new NullReferenceException();
+                await MM.EnsureWriteAccess(MM.Reg.GoldPath);
                 await PreUpdate();
                 r(0, 100, Res.Prog_GRel_Patching, Res.Prog_GRel_Patching);
                 string patchfile = Path.Combine(MM.Reg.GoldPath, "Tmp_gitrepo.zip");

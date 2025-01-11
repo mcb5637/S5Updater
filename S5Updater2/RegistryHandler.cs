@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static S5Updater2.MainUpdater;
 
 namespace S5Updater2
 {
@@ -36,18 +37,19 @@ namespace S5Updater2
                 return Registry.GetValue(keyname, valName, defaultval);
             return null;
         }
-        internal static void SetReg(string keyName, string? valName, object? val)
+        internal static AWExitCode SetReg(string keyName, string valName, object? val)
         {
             if (!OperatingSystem.IsWindows())
-                return;
+                return AWExitCode.InvalidOS;
             try
             {
                 if (val == null)
                 {
                     if (valName == null)
-                        return;
+                        return AWExitCode.Invalid;
                     using RegistryKey? key = Registry.CurrentUser.OpenSubKey(keyName, true);
                     key?.DeleteValue(valName);
+                    return AWExitCode.Success;
                 }
                 else
                 {
@@ -55,11 +57,12 @@ namespace S5Updater2
                     if (val is string)
                         k = RegistryValueKind.String;
                     Registry.SetValue(keyName, valName, val, k);
+                    return AWExitCode.Success;
                 }
             }
             catch (UnauthorizedAccessException)
             {
-                
+                return RunAdminReg(keyName, valName, val);
             }
         }
 
@@ -78,10 +81,10 @@ namespace S5Updater2
             return r;
         }
 
-        internal void SetGoldReg()
+        internal AWExitCode SetGoldReg()
         {
             GoldHasReg = true;
-            SetReg(GoldKey, GoldInstallLoc, GoldPath);
+            return SetReg(GoldKey, GoldInstallLoc, GoldPath);
         }
 
         internal string? LoadHEPathFromRegistry()
@@ -102,7 +105,10 @@ namespace S5Updater2
         internal static string? Resolution
         {
             get => GetReg(GoldDevKey, GoldReso, null) as string;
-            set => SetReg(GoldDevKey, GoldReso, value);
+        }
+        internal static AWExitCode SetResolution(string value)
+        {
+            return SetReg(GoldDevKey, GoldReso, value);
         }
 
         internal static uint? DevMode
@@ -115,13 +121,19 @@ namespace S5Updater2
                 int i = (int)r;
                 return unchecked((uint)i);
             }
-            set => SetReg(GoldDevKey, GoldDevMode, value == null ? null : unchecked((int)(uint)value));
+        }
+        internal static AWExitCode SetDevMode(uint? value)
+        {
+            return SetReg(GoldDevKey, GoldDevMode, value == null ? null : unchecked((int)(uint)value));
         }
 
         internal static string? Language
         {
             get => GetReg(GoldDevKey, GoldLanguage, null) as string;
-            set => SetReg(GoldDevKey, GoldLanguage, value);
+        }
+        internal static AWExitCode SetLanguage(string value)
+        {
+            return SetReg(GoldDevKey, GoldLanguage, value);
         }
 
         private static bool RegistryReadBool(string keyname, string valuename, bool defaultret)
@@ -131,15 +143,18 @@ namespace S5Updater2
                 return defaultret;
             return (int)o > 0;
         }
-        private static void RegistryWriteBool(string keyname, string valuename, bool wr)
+        private static AWExitCode RegistryWriteBool(string keyname, string valuename, bool wr)
         {
-            SetReg(keyname, valuename, wr ? 1 : 0);
+            return SetReg(keyname, valuename, wr ? 1 : 0);
         }
 
         internal static bool ShowIntroVideo
         {
             get => RegistryReadBool(GoldDevKey, GoldVideo, true);
-            set => RegistryWriteBool(GoldDevKey, GoldVideo, value);
+        }
+        internal static AWExitCode SetShowIntroVideo(bool value)
+        {
+            return RegistryWriteBool(GoldDevKey, GoldVideo, value);
         }
     }
 }

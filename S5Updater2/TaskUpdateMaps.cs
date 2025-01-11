@@ -31,6 +31,7 @@ namespace S5Updater2
             {
                 if (MM.Reg.GoldPath == null)
                     throw new NullReferenceException();
+                await MM.EnsureWriteAccess(MM.Reg.GoldPath);
                 foreach (MapUpdate n in Maps)
                 {
                     r(0, 100, n.Name, n.Name);

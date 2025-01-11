@@ -11,6 +11,7 @@ using System.Net.Http;
 using bbaLib;
 using System.Threading.Tasks;
 using System.Text;
+using System.ComponentModel;
 
 namespace S5Updater2
 {
@@ -196,6 +197,99 @@ namespace S5Updater2
             {
                 log("out: " + pr.StandardOutput.ReadToEnd());
                 log("err: " + pr.StandardError.ReadToEnd());
+            }
+        }
+
+        public enum AWExitCode
+        {
+            Success = 0,
+            Invalid = 1,
+            Unknown,
+            InvalidOS,
+            AccessDenied,
+        }
+
+        public static AWExitCode RunAdminReg(string k, string k2, object? v)
+        {
+            string vs;
+            string vt;
+            if (v is string s)
+            {
+                vs = s;
+                vt = "string";
+            }
+            else if (v is int d)
+            {
+                vs = d.ToString();
+                vt = "dword";
+            }
+            else
+            {
+                return AWExitCode.Invalid;
+            }
+            ProcessStartInfo i = new()
+            {
+                FileName = ".\\S5UpdaterAdminWorker.exe",
+                CreateNoWindow = true,
+                UseShellExecute = true,
+                Verb = "runas",
+            };
+            i.ArgumentList.Add("SetReg");
+            i.ArgumentList.Add(k);
+            i.ArgumentList.Add(k2);
+            i.ArgumentList.Add(vs);
+            i.ArgumentList.Add(vt);
+            Process pr = new()
+            {
+                StartInfo = i
+            };
+            try
+            {
+                pr.Start();
+                pr.WaitForExit();
+                return (AWExitCode)pr.ExitCode;
+            }
+            catch (Win32Exception)
+            {
+                return AWExitCode.AccessDenied;
+            }
+        }
+        public static AWExitCode RunFullAccess(string d)
+        {
+            ProcessStartInfo i = new()
+            {
+                FileName = ".\\S5UpdaterAdminWorker.exe",
+                CreateNoWindow = true,
+                UseShellExecute = true,
+                Verb = "runas",
+            };
+            i.ArgumentList.Add("FullAccess");
+            i.ArgumentList.Add(d);
+            Process pr = new()
+            {
+                StartInfo = i
+            };
+            try
+            {
+                pr.Start();
+                pr.WaitForExit();
+                return (AWExitCode)pr.ExitCode;
+            }
+            catch (Win32Exception)
+            {
+                return AWExitCode.AccessDenied;
+            }
+        }
+        public static bool HasWriteAccess(string dir)
+        {
+            try
+            {
+                using FileStream fs = File.Create(Path.Combine(dir, "updatertestfile"), 1, FileOptions.DeleteOnClose);
+                return true;
+            }
+            catch
+            {
+                return false;
             }
         }
     }

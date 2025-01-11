@@ -20,6 +20,7 @@ namespace S5Updater2
             {
                 if (MM.Reg.GoldPath == null)
                     throw new NullReferenceException();
+                await MM.EnsureWriteAccess(MM.Reg.GoldPath);
                 //new Process()
                 //{
                 //    StartInfo = new ProcessStartInfo()

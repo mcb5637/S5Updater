@@ -225,6 +225,9 @@
   <data name="Log_SetDev" xml:space="preserve">
     <value>Setze Entwickler Modus: </value>
   </data>
+  <data name="Log_SetIntroVideo" xml:space="preserve">
+    <value>Setze Intro Video: </value>
+  </data>
   <data name="ShowIntro" xml:space="preserve">
     <value>zeige Startvideo</value>
   </data>
@@ -365,5 +368,8 @@
   </data>
   <data name="Maps" xml:space="preserve">
     <value>Maps:</value>
+  </data>
+  <data name="Log_AllowAccess" xml:space="preserve">
+    <value>Gebe Ordner frei: </value>
   </data>
 </root>

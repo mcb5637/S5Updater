@@ -150,14 +150,14 @@
 						<Border BorderBrush="Black" BorderThickness="1" Margin="5">
 							<Grid ColumnDefinitions="Auto,Auto,30,Auto" RowDefinitions="Auto,Auto">
 								<TextBlock Text="{x:Static L:Res.Language}" Margin="5"></TextBlock>
-								<ComboBox ItemsSource="{Binding LanguageData}" SelectedValue="{Binding SelectedLanguage}" Grid.Column="1" Margin="5"></ComboBox>
+								<ComboBox ItemsSource="{Binding LanguageData}" SelectedValue="{Binding SelectedLanguage}" SelectionChanged="SelectedLanguage_Changed" Grid.Column="1" Margin="5"></ComboBox>
 								<TextBlock Text="{x:Static L:Res.Resolution}" Grid.Row="1" Margin="5"></TextBlock>
-								<ComboBox ItemsSource="{Binding ResolutionData}" SelectedValue="{Binding SelectedResolution}" Grid.Column="1" Grid.Row="1" Margin="5"></ComboBox>
+								<ComboBox ItemsSource="{Binding ResolutionData}" SelectedValue="{Binding SelectedResolution}" SelectionChanged="SelectedResolution_Changed" Grid.Column="1" Grid.Row="1" Margin="5"></ComboBox>
 
-								<CheckBox IsVisible="{Binding !EasyMode}" IsChecked="{Binding DevMode}" Grid.Column="3" Margin="5">
+								<CheckBox IsVisible="{Binding !EasyMode}" IsChecked="{Binding DevMode}" Checked="DevMode_Changed" Unchecked="DevMode_Changed" Grid.Column="3" Margin="5">
 									<TextBlock Text="{x:Static L:Res.DevMode}"></TextBlock>
 								</CheckBox>
-								<CheckBox IsChecked="{Binding ShowIntroVideo}" Grid.Column="3" Grid.Row="1" Margin="5">
+								<CheckBox IsChecked="{Binding ShowIntroVideo}" Checked="ShowIntroVideo_Changed" Unchecked="ShowIntroVideo_Changed" Grid.Column="3" Grid.Row="1" Margin="5">
 									<TextBlock Text="{x:Static L:Res.ShowIntro}"></TextBlock>
 								</CheckBox>
 							</Grid>

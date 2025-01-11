@@ -225,6 +225,9 @@
   <data name="Log_SetDev" xml:space="preserve">
     <value>Set Dev Mode to: </value>
   </data>
+  <data name="Log_SetIntroVideo" xml:space="preserve">
+    <value>Set Intro Video to: </value>
+  </data>
   <data name="ShowIntro" xml:space="preserve">
     <value>show intro video</value>
   </data>
@@ -368,5 +371,8 @@
   </data>
   <data name="Maps" xml:space="preserve">
     <value>Maps:</value>
+  </data>
+  <data name="Log_AllowAccess" xml:space="preserve">
+    <value>Allow access to: </value>
   </data>
 </root>

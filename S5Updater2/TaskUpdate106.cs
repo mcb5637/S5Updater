@@ -25,6 +25,7 @@ namespace S5Updater2
             {
                 if (MM.Reg.GoldPath == null)
                     throw new NullReferenceException();
+                await MM.EnsureWriteAccess(MM.Reg.GoldPath);
                 string patchfile = Path.Combine(MM.Reg.GoldPath, "Tmp_w10cu.zip");
                 r(0, 100, Res.Prog_U106_Download, Res.Prog_U106_Download);
                 await MainUpdater.DownloadFile("https://github.com/mcb5637/s5winfix/archive/refs/heads/master.zip", patchfile, r);

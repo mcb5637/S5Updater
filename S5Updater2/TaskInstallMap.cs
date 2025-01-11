@@ -22,11 +22,12 @@ namespace S5Updater2
         internal required bool AllowModPacks;
         internal string? OnlyName;
 
-        public Task Work(ProgressDialog.ReportProgressDel r)
+        public async Task Work(ProgressDialog.ReportProgressDel r)
         {
             Status = Status.Ok;
             try
             {
+                await MM.EnsureWriteAccess(TargetPath);
                 foreach (var file in Files)
                     HandleMap(file, r);
             }
@@ -35,7 +36,6 @@ namespace S5Updater2
                 r(0, 100, e.ToString(), e.ToString());
                 Status = Status.Error;
             }
-            return Task.CompletedTask;
         }
 
         private void HandleMap(string file, ProgressDialog.ReportProgressDel r)

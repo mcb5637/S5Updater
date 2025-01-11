@@ -187,6 +187,15 @@ namespace S5Updater2 {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Allow access to: .
+        /// </summary>
+        public static string Log_AllowAccess {
+            get {
+                return ResourceManager.GetString("Log_AllowAccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Map installed: .
         /// </summary>
         public static string Log_InstallMap {
@@ -255,6 +264,15 @@ namespace S5Updater2 {
         public static string Log_SetHookEnabled {
             get {
                 return ResourceManager.GetString("Log_SetHookEnabled", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Set Intro Video to: .
+        /// </summary>
+        public static string Log_SetIntroVideo {
+            get {
+                return ResourceManager.GetString("Log_SetIntroVideo", resourceCulture);
             }
         }
         

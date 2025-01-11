@@ -219,13 +219,16 @@ namespace S5Updater2
             },
         ];
 
-        public Task Work(ProgressDialog.ReportProgressDel r)
+        public async Task Work(ProgressDialog.ReportProgressDel r)
         {
             Status = Status.Ok;
             r(0, 100, Res.TaskMPMap_Start, Res.TaskMPMap_Start);
 
             try
             {
+                if (MM.Reg.GoldPath == null)
+                    throw new NullReferenceException();
+                await MM.EnsureWriteAccess(MM.Reg.GoldPath);
                 foreach (MapPack p in Packs.Where(MM.GetMapPackUpdateFromSettings))
                     HandleMapPack(p, r);
                 
@@ -236,7 +239,6 @@ namespace S5Updater2
                 r(0, 100, e.ToString(), e.ToString());
                 Status = Status.Error;
             }
-            return Task.CompletedTask;
         }
 
         private void HandleMapPack(MapPack p, ProgressDialog.ReportProgressDel r)
