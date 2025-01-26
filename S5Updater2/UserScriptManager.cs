@@ -27,6 +27,8 @@ namespace S5Updater2
 
         internal void Update(Action<string> log)
         {
+            if (MainUpdater.IsControlledFolderAccessForbidden())
+                MainUpdater.SetControlledFolderAccessException();
             if (Directory.Exists(FolderGold))
                 WriteTo(FileGold, log);
             if (Directory.Exists(FolderHE))

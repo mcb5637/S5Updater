@@ -12,6 +12,7 @@ using bbaLib;
 using System.Threading.Tasks;
 using System.Text;
 using System.ComponentModel;
+using System.Reflection;
 
 namespace S5Updater2
 {
@@ -290,6 +291,79 @@ namespace S5Updater2
             catch
             {
                 return false;
+            }
+        }
+
+        public static bool IsControlledFolderAccessForbidden()
+        {
+            ProcessStartInfo i = new()
+            {
+                FileName = "powershell",
+                Arguments = $"$p = Get-MpPreference\n$p.EnableControlledFolderAccess\n",
+                RedirectStandardError = true,
+                RedirectStandardOutput = true,
+                CreateNoWindow = true,
+                UseShellExecute = false
+            };
+            Process pr = new()
+            {
+                StartInfo = i
+            };
+            pr.Start();
+            string s = pr.StandardOutput.ReadToEnd();
+            pr.WaitForExit();
+            if (s == "")
+                return false;
+            if (s.Trim() == "0")
+                return false;
+            i = new()
+            {
+                FileName = "powershell",
+                Arguments = $"$p = Get-MpPreference\n$p.ControlledFolderAccessAllowedApplications\n",
+                RedirectStandardError = true,
+                RedirectStandardOutput = true,
+                CreateNoWindow = true,
+                UseShellExecute = false
+            };
+            pr = new()
+            {
+                StartInfo = i
+            };
+            pr.Start();
+            string loc = Assembly.GetExecutingAssembly().Location;
+            for (string? l = pr.StandardOutput.ReadLine(); l != null; l = pr.StandardOutput.ReadLine())
+            {
+                if (loc == l.Trim())
+                    return true;
+            }
+            pr.WaitForExit();
+            return true;
+        }
+
+        public static AWExitCode SetControlledFolderAccessException(string? path = null)
+        {
+            path ??= Assembly.GetExecutingAssembly().Location;
+            ProcessStartInfo i = new()
+            {
+                FileName = "powershell",
+                Arguments = $"Add-MpPreference -ControlledFolderAccessAllowedApplications \"{path}\"\n",
+                CreateNoWindow = true,
+                UseShellExecute = true,
+                Verb = "runas",
+            };
+            Process pr = new()
+            {
+                StartInfo = i
+            };
+            try
+            {
+                pr.Start();
+                pr.WaitForExit();
+                return (AWExitCode)pr.ExitCode;
+            }
+            catch (Win32Exception)
+            {
+                return AWExitCode.AccessDenied;
             }
         }
     }
