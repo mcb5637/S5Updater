@@ -32,7 +32,7 @@ namespace S5Updater2
         private static readonly Language[] Languages = [new Language("Deutsch", "de"), new Language("English", "en"), new Language("US-English", "us"),
             new Language("French", "fr"), new Language("Polish", "pl"), new Language("Chinese", "zh"), new Language("Czech", "cs"), new Language("Dutch", "nl"),
             new Language("Hungarian", "hu"), new Language("Italian", "it"), new Language("Russian", "ru"), new Language("Slovakian", "sk"),
-            new Language("Spanish", "sp")
+            new Language("Spanish", "es")
         ];
 
         public MainWindow()
