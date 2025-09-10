@@ -1,4 +1,5 @@
 ﻿using Avalonia.Animation;
+using bbaLib;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
@@ -6,6 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 using static S5Updater2.MainUpdater;
 
 namespace S5Updater2
@@ -155,6 +157,31 @@ namespace S5Updater2
         internal static AWExitCode SetShowIntroVideo(bool value)
         {
             return RegistryWriteBool(GoldDevKey, GoldVideo, value);
+        }
+
+        internal string? GoldDocuments
+        {
+            get
+            {
+                string? g = GoldPath;
+                if (g == null)
+                    return null;
+                string? f = "THE SETTLERS - Heritage of Kings";
+                string arch = Path.Combine(g, "base\\lang.bba");
+                if (File.Exists(arch))
+                {
+                    BbaArchive a = new();
+                    a.ReadBba(arch);
+                    var file = a.GetFileByName("config\\language.xml");
+                    if (file != null)
+                    {
+                        f = XDocument.Load(file.GetStream()).Element("root")?.Element("MyDocumentsSubfolder")?.Value;
+                    }
+                }
+                if (f == null)
+                    return null;
+                return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), f);
+            }
         }
     }
 }

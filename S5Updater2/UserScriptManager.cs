@@ -13,9 +13,7 @@ namespace S5Updater2
     {
         internal bool Zoom = false;
         internal int PlayerColor = -1;
-        private static string FileGold => Path.Combine(FolderGold, "Script\\UserScript.lua");
         private static string FileHE => Path.Combine(FolderHE, "Script\\UserScript.lua");
-        private static string FolderGold => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "DIE SIEDLER - DEdK");
         private static string FolderHE => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "THE SETTLERS 5 - History Edition");
 
         internal static readonly PlayerColor[] PlayerColors = [ new PlayerColor("default", -1),
@@ -25,24 +23,34 @@ namespace S5Updater2
             new PlayerColor("white", 13), new PlayerColor("black", 14), new PlayerColor("teal 2", 15), new PlayerColor("pink 2", 16),
         ];
 
-        internal void Update(Action<string> log)
+        private string? FileGold(RegistryHandler reg)
+        {
+            var g = reg.GoldDocuments;
+            if (g == null)
+                return null;
+            return Path.Combine(g, "Script\\UserScript.lua");
+        }
+
+        internal void Update(RegistryHandler reg, Action<string> log)
         {
             if (MainUpdater.IsControlledFolderAccessForbidden())
                 MainUpdater.SetControlledFolderAccessException();
-            if (Directory.Exists(FolderGold))
-                WriteTo(FileGold, log);
+            if (Directory.Exists(reg.GoldDocuments))
+                WriteTo(FileGold(reg), log);
             if (Directory.Exists(FolderHE))
                 WriteTo(FileHE, log);
         }
 
-        internal void Read()
+        internal void Read(RegistryHandler reg)
         {
-            if (!ReadFrom(FileGold))
+            if (!ReadFrom(FileGold(reg)))
                 ReadFrom(FileHE);
         }
 
-        private void WriteTo(string file, Action<string> log)
+        private void WriteTo(string? file, Action<string> log)
         {
+            if (file == null)
+                return;
             string? folder = Path.GetDirectoryName(file);
             if (folder != null && !Directory.Exists(folder))
                 Directory.CreateDirectory(folder);
@@ -50,14 +58,16 @@ namespace S5Updater2
             using StreamWriter w = new(file, false);
             w.WriteLine($"UserScriptSettings = {{Weather = {(Zoom ? "true" : "false")}, Zoom = {(Zoom ? "2" : "nil")}, PlayerColor = {(PlayerColor > 0 ? PlayerColor.ToString() : "nil")}, Debug = nil}}");
             w.Flush();
-            using StreamReader r = new(Assembly.GetExecutingAssembly().GetManifestResourceStream("S5Updater.UserScript.lua")?? throw new NullReferenceException("res not found"));
+            using StreamReader r = new(Assembly.GetExecutingAssembly().GetManifestResourceStream("S5Updater2.UserScript.lua")?? throw new NullReferenceException("res not found"));
             w.Write(r.ReadToEnd());
         }
 
-        private bool ReadFrom(string file)
+        private bool ReadFrom(string? file)
         {
             try
             {
+                if (file == null)
+                    return false;
                 using StreamReader r = new(file);
                 string? line = r.ReadLine();
                 if (line == null)
@@ -71,7 +81,6 @@ namespace S5Updater2
             }
             catch (IOException)
             {
-
             }
             return false;
         }

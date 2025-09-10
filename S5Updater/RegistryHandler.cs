@@ -1,10 +1,12 @@
-﻿using Microsoft.Win32;
+﻿using bbaToolS5;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace S5Updater
 {
@@ -143,6 +145,26 @@ namespace S5Updater
         {
             get => RegistryReadBool(S5UpdaterKey, MappackMPWKey, true);
             set => RegistryWriteBool(S5UpdaterKey, MappackMPWKey, value);
+        }
+
+        internal string GoldDocuments
+        {
+            get
+            {
+                string f = "THE SETTLERS - Heritage of Kings";
+                string arch = Path.Combine(GoldPath, "base\\lang.bba");
+                if (File.Exists(arch))
+                {
+                    BbaArchive a = new BbaArchive();
+                    a.ReadBba(arch);
+                    var file = a.GetFileByName("config\\language.xml");
+                    if (file != null)
+                    {
+                        f = XDocument.Load(file.GetStream()).Element("root").Element("MyDocumentsSubfolder").Value;
+                    }
+                }
+                return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), f);
+            }
         }
     }
 }

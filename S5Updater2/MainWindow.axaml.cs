@@ -46,7 +46,7 @@ namespace S5Updater2
 
             Reg.LoadGoldPathFromRegistry(Valid);
             Reg.LoadHEPathFromRegistry();
-            USM.Read();
+            USM.Read(Reg);
             Set = Settings.Load();
 
             DataContext = this;
@@ -657,7 +657,7 @@ namespace S5Updater2
             set
             {
                 USM.Zoom = value;
-                USM.Update(Log);
+                USM.Update(Reg, Log);
             }
         }
         internal static IList<PlayerColor> ColorData => UserScriptManager.PlayerColors;
@@ -667,7 +667,7 @@ namespace S5Updater2
             set
             {
                 USM.PlayerColor = value.Value;
-                USM.Update(Log);
+                USM.Update(Reg, Log);
             }
         }
 

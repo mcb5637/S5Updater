@@ -654,7 +654,7 @@ namespace S5Updater
         private void UpdateUserscript()
         {
             Updating = true;
-            USM.Read();
+            USM.Read(Reg);
             CB_USZoom.Checked = USM.Zoom;
             int i = PlayerColors.IndexOfArrayElement(USM.PlayerColor, (X) => X.Value);
             if (i == -1)
@@ -668,7 +668,7 @@ namespace S5Updater
             if (Updating)
                 return;
             USM.Zoom = CB_USZoom.Checked;
-            USM.Update(Log);
+            USM.Update(Reg, Log);
         }
 
         private void ComboBox_Color_SelectedIndexChanged(object sender, EventArgs e)
@@ -676,7 +676,7 @@ namespace S5Updater
             if (Updating)
                 return;
             USM.PlayerColor = PlayerColors[ComboBox_Color.SelectedIndex].Value;
-            USM.Update(Log);
+            USM.Update(Reg, Log);
         }
 
         private void Btn_HEFixEditor_Click(object sender, EventArgs e)

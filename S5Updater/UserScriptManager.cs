@@ -14,22 +14,25 @@ namespace S5Updater
     {
         internal bool Zoom = false;
         internal int PlayerColor = -1;
-        private string FileGold => Path.Combine(FolderGold, "Script\\UserScript.lua");
         private string FileHE => Path.Combine(FolderHE, "Script\\UserScript.lua");
-        private string FolderGold => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "DIE SIEDLER - DEdK");
         private string FolderHE => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "THE SETTLERS 5 - History Edition");
 
-        internal void Update(Action<string> log)
+        private string FileGold(RegistryHandler reg)
         {
-            if (Directory.Exists(FolderGold))
-                WriteTo(FileGold, log);
+            return Path.Combine(reg.GoldDocuments, "Script\\UserScript.lua");
+        }
+
+        internal void Update(RegistryHandler reg, Action<string> log)
+        {
+            if (Directory.Exists(reg.GoldDocuments))
+                WriteTo(FileGold(reg), log);
             if (Directory.Exists(FolderHE))
                 WriteTo(FileHE, log);
         }
 
-        internal void Read()
+        internal void Read(RegistryHandler reg)
         {
-            if (!ReadFrom(FileGold))
+            if (!ReadFrom(FileGold(reg)))
                 ReadFrom(FileHE);
         }
 
