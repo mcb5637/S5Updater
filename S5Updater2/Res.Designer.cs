@@ -358,6 +358,24 @@ namespace S5Updater2 {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Downloading and installing Extension.
+        /// </summary>
+        public static string Prog_Debugger_Extension {
+            get {
+                return ResourceManager.GetString("Prog_Debugger_Extension", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Installing extension to: .
+        /// </summary>
+        public static string Prog_Debugger_Extension_Into {
+            get {
+                return ResourceManager.GetString("Prog_Debugger_Extension_Into", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to validating LuaDebugger.
         /// </summary>
         public static string Prog_Debugger_Updating {
@@ -795,6 +813,15 @@ namespace S5Updater2 {
         public static string UpdateDebugger {
             get {
                 return ResourceManager.GetString("UpdateDebugger", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New VSC Adaptor.
+        /// </summary>
+        public static string UpdateDebugger_VSCAdaptor {
+            get {
+                return ResourceManager.GetString("UpdateDebugger_VSCAdaptor", resourceCulture);
             }
         }
         

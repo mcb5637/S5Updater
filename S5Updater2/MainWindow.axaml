@@ -89,12 +89,15 @@
 						</Border>
 						<TextBlock Text="{x:Static L:Res.Mapping}" IsVisible="{Binding !EasyMode}" Margin="5,10,5,0"></TextBlock>
 						<Border IsVisible="{Binding !EasyMode}" BorderBrush="Black" BorderThickness="1" Margin="5">
-							<Grid ColumnDefinitions="Auto,Auto" RowDefinitions="Auto">
+							<Grid ColumnDefinitions="Auto,Auto" RowDefinitions="Auto,Auto">
 								<Button Click="UpdateDebugger" IsEnabled="{Binding GoldAllPatched}" Margin="5">
 									<TextBlock Text="{x:Static L:Res.UpdateDebugger}"></TextBlock>
 								</Button>
-								<CheckBox IsChecked="{Binding DebuggerEnabled}" IsEnabled="{Binding DebuggerInstalled}" Grid.Row="2" Grid.Column="1" Margin="5">
+								<CheckBox IsChecked="{Binding DebuggerEnabled}" IsEnabled="{Binding DebuggerInstalled}" Grid.Row="0" Grid.Column="1" Margin="5">
 									<TextBlock Text="{x:Static L:Res.Enabled}"></TextBlock>
+								</CheckBox>
+								<CheckBox IsChecked="{Binding DebuggerVSCAdaptor}" IsEnabled="{Binding DebuggerInstalled}" Grid.Row="1" Grid.Column="0" Margin="5">
+									<TextBlock Text="{x:Static L:Res.UpdateDebugger_VSCAdaptor}"></TextBlock>
 								</CheckBox>
 							</Grid>
 						</Border>

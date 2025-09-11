@@ -183,5 +183,17 @@ namespace S5Updater2
                 return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), f);
             }
         }
+
+        // see https://github.com/Microsoft/vscode/issues/37807
+        internal static readonly string[] VSCGuids = ["EA457B21-F73E-494C-ACAB-524FDE069978", "F8A2A208-72B3-4D61-95FC-8A65D340689B", "1287CAD5-7C8D-410D-88B9-0D1EE4A83FF2", "C26E74D1-022E-4238-8B9D-1E7564A36CC9"];
+        internal static IEnumerable<string> VSCCmdPaths
+        {
+            get
+            {
+                return VSCGuids.Select(x => $"HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\{{{x}}}_is1")
+                    .Select(x => GetReg(x, "DisplayIcon", null)).OfType<string>().Select(Path.GetDirectoryName).NotNull()
+                    .Select(x => Path.Combine(x, "bin\\code.cmd")).Where(File.Exists);
+            }
+        }
     }
 }

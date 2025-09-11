@@ -372,4 +372,13 @@
   <data name="Log_AllowAccess" xml:space="preserve">
     <value>Gebe Ordner frei: </value>
   </data>
+  <data name="UpdateDebugger_VSCAdaptor" xml:space="preserve">
+    <value>Neuer VSC Adaptor</value>
+  </data>
+  <data name="Prog_Debugger_Extension" xml:space="preserve">
+    <value>Extension downloaden und installieren</value>
+  </data>
+  <data name="Prog_Debugger_Extension_Into" xml:space="preserve">
+    <value>Installiere Extension in: </value>
+  </data>
 </root>

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -9,10 +10,15 @@ namespace S5Updater2
 {
     class TaskUpdateDebugger : TaskUpdateFromGitRelease
     {
-        protected override string HashesAdress => "https://github.com/mcb5637/SettlersLuaDebugger/releases/latest/download/debuggerhashes.txt";
-        protected override string ZipAdress => "https://github.com/mcb5637/SettlersLuaDebugger/releases/latest/download/DebugS5.zip";
+        protected override string HashesAdress =>
+            VSCAdaptor ? "https://github.com/mcb5637/S5DebugAdaptor/releases/latest/download/debuggerhashes.txt" : "https://github.com/mcb5637/SettlersLuaDebugger/releases/latest/download/debuggerhashes.txt";
+        protected override string ZipAdress =>
+            VSCAdaptor ? "https://github.com/mcb5637/S5DebugAdaptor/releases/latest/download/DebugS5.zip" : "https://github.com/mcb5637/SettlersLuaDebugger/releases/latest/download/DebugS5.zip";
         protected override string ValidatingLog => Res.Prog_Debugger_Updating;
         private bool Debugger = false, CppLogic = false;
+        private bool VSCAdaptor => MM.DebuggerVSCAdaptor;
+
+        private const string ExtensionAdress = "https://github.com/mcb5637/S5DebugAdaptor/releases/latest/download/debuggerlatestextension.txt";
 
         protected override string? ZipPathToExtractPath(string e, string name)
         {
@@ -40,6 +46,39 @@ namespace S5Updater2
             };
             await t.Work(r);
             Status = t.Status;
+            if (Status != Status.Ok)
+                return;
+            if (VSCAdaptor)
+            {
+                if (MM.Reg.GoldPath == null)
+                    throw new NullReferenceException();
+                r(0, 100, Res.Prog_Debugger_Extension, Res.Prog_Debugger_Extension);
+                string v = await MainUpdater.DownloadFileString(ExtensionAdress, r);
+                string patchfile = Path.Combine(MM.Reg.GoldPath, $"s5luadebug-{v}.vsix");
+                await MainUpdater.DownloadFile($"https://github.com/mcb5637/S5DebugAdaptor/releases/latest/download/s5luadebug-{v}.vsix", patchfile, r);
+                foreach (string p in RegistryHandler.VSCCmdPaths)
+                {
+                    string log = Res.Prog_Debugger_Extension_Into + p;
+                    r(0, 100, log, log);
+                    ProcessStartInfo i = new()
+                    {
+                        FileName = p,
+                        Arguments = $"--install-extension \"{patchfile}\"",
+                        RedirectStandardError = true,
+                        RedirectStandardOutput = true,
+                        CreateNoWindow = true,
+                        UseShellExecute = false
+                    };
+                    Process pr = new()
+                    {
+                        StartInfo = i
+                    };
+                    pr.Start();
+                    string s = pr.StandardOutput.ReadToEnd();
+                    r(0, 100, s, s);
+                    pr.WaitForExit();
+                }
+            }
         }
 
         static public bool IsInstalled(string? path)

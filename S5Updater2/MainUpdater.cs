@@ -366,5 +366,12 @@ namespace S5Updater2
                 return AWExitCode.AccessDenied;
             }
         }
+
+        public static IEnumerable<T> NotNull<T>(this IEnumerable<T?> l)
+        {
+            foreach (var v in l)
+                if (v is not null)
+                    yield return v;
+        }
     }
 }

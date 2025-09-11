@@ -456,6 +456,10 @@ namespace S5Updater2
             }
         }
 
+        public bool DebuggerVSCAdaptor
+        {
+            get; set;
+        }
         private async void UpdateDebugger(object sender, RoutedEventArgs e)
         {
             TaskUpdateDebugger t = new()
