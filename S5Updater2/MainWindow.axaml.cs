@@ -458,7 +458,8 @@ namespace S5Updater2
 
         public bool DebuggerVSCAdaptor
         {
-            get; set;
+            get => Set.DebuggerVSCAdaptor;
+            set => Set.DebuggerVSCAdaptor = value;
         }
         private async void UpdateDebugger(object sender, RoutedEventArgs e)
         {

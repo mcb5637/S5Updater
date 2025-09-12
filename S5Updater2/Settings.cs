@@ -11,6 +11,7 @@ namespace S5Updater2
     internal class Settings
     {
         public Dictionary<string, bool> SelectedModPacks = [], SelectedMaps = [], SelectedMapPacks = [];
+        public bool DebuggerVSCAdaptor = true;
 
 
         private const string FilePath = "./settings.json";
