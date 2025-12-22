@@ -11,9 +11,9 @@ namespace S5Updater2
 {
     class InstallValidator
     {
-        private static readonly string ValidFile = "bin\\settlershok.exe";
-        private static readonly string ValidGold = "base\\data.bba";
-        private static readonly string ValidHE = "base\\lng";
+        private static readonly string ValidFile = "bin/settlershok.exe";
+        private static readonly string ValidGold = "base/data.bba";
+        private static readonly string ValidHE = "base/lng";
 
         private static readonly string HashGoldExe = "37-A5-45-96-7A-62-1F-9A-AB-3C-4A-3C-E2-07-E0-DC";
         private static readonly string HashGold105Exe = "C9-56-0B-8C-EE-A9-75-5B-74-24-36-23-CA-63-8E-B1";
