@@ -76,7 +76,7 @@ namespace S5Updater2
             a.WriteToBba(targetfile, (s) =>
             {
                 r(s.Progress, 100, s.AdditionalString, null);
-            }, true);
+            }, true, _ => true);
         }
 
         internal static int IndexOfArrayElement<T, E>(this T[] array, E o, Func<T, E> f) where E : class
@@ -296,6 +296,8 @@ namespace S5Updater2
 
         public static bool IsControlledFolderAccessForbidden()
         {
+            if (!OperatingSystem.IsWindows())
+                return false;
             ProcessStartInfo i = new()
             {
                 FileName = "powershell",

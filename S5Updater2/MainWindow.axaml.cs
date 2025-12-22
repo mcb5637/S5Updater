@@ -1,5 +1,4 @@
 using Avalonia.Controls;
-using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Input;
 using Avalonia.Interactivity;
 using Avalonia.Platform.Storage;
@@ -8,7 +7,6 @@ using MsBox.Avalonia;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
@@ -19,21 +17,23 @@ namespace S5Updater2
     public partial class MainWindow : Window, INotifyPropertyChanged
     {
 
-        internal RegistryHandler Reg = new();
-        internal ProgressDialog Prog => new() { MM = this };
-        internal InstallValidator Valid = new();
-        internal UserScriptManager USM = new();
-        internal Settings Set;
+        internal readonly RegistryHandler Reg = new();
+        private ProgressDialog Prog => new() { MM = this };
+        internal readonly InstallValidator Valid = new();
+        private readonly UserScriptManager UserScript = new();
+        private readonly Settings Set;
 
-        private static readonly Resolution[] Resolutions = [ new Resolution("default", "0", false),
-            new Resolution("select", "select", false), new Resolution("1920x1080", "1920 x 1080 x 32", true), new Resolution("2500x1400", "2500 x 1400 x 32", true),
-            new Resolution("2560x1440", "2560 x 1440 x 32", true), new Resolution("3440x1440", "3440 x 1440 x 32", true), new Resolution("1680x1050", "1680 x 1050 x 32", true)
-        ]; // todo maybe add current screnn resolution?
-        private static readonly Language[] Languages = [new Language("Deutsch", "de"), new Language("English", "en"), new Language("US-English", "us"),
-            new Language("French", "fr"), new Language("Polish", "pl"), new Language("Chinese", "zh"), new Language("Czech", "cs"), new Language("Dutch", "nl"),
-            new Language("Hungarian", "hu"), new Language("Italian", "it"), new Language("Russian", "ru"), new Language("Slovakian", "sk"),
-            new Language("Spanish", "es")
+        private static readonly Resolution[] Resolutions = [ new("default", "0", false),
+            new("select", "select", false), new("1920x1080", "1920 x 1080 x 32", true), new("2500x1400", "2500 x 1400 x 32", true),
+            new("2560x1440", "2560 x 1440 x 32", true), new("3440x1440", "3440 x 1440 x 32", true), new("1680x1050", "1680 x 1050 x 32", true)
+        ]; // todo maybe add current screen resolution?
+        private static readonly Language[] Languages = [new("Deutsch", "de"), new("English", "en"), new("US-English", "us"),
+            new("French", "fr"), new("Polish", "pl"), new("Chinese", "zh"), new("Czech", "cs"), new("Dutch", "nl"),
+            new("Hungarian", "hu"), new("Italian", "it"), new("Russian", "ru"), new("Slovakian", "sk"),
+            new("Spanish", "es")
         ];
+
+        private bool ListenToEvents = false;
 
         public MainWindow()
         {
@@ -46,7 +46,7 @@ namespace S5Updater2
 
             Reg.LoadGoldPathFromRegistry(Valid);
             Reg.LoadHEPathFromRegistry();
-            USM.Read(Reg);
+            UserScript.Read(Reg);
             Set = Settings.Load();
 
             DataContext = this;
@@ -54,6 +54,7 @@ namespace S5Updater2
             AddHandler(DragDrop.DropEvent, DropFile);
 
             UpdateEverything();
+            ListenToEvents = true;
         }
 
         private void OnClosing(object s, WindowClosingEventArgs a)
@@ -73,11 +74,18 @@ namespace S5Updater2
         }
         internal async void CopyLog(object sender, RoutedEventArgs e)
         {
-            if (Clipboard == null)
-                return;
-            await Clipboard.SetTextAsync(OutputLog.Text);
+            try
+            {
+                if (Clipboard == null)
+                    return;
+                await Clipboard.SetTextAsync(OutputLog.Text);
+            }
+            catch (Exception ex)
+            {
+                Log(ex.ToString());
+            }
         }
-        internal void UpdateEverything()
+        private void UpdateEverything()
         {
             OnPropertyChanged(null);
         }
@@ -85,7 +93,7 @@ namespace S5Updater2
         {
             if (status != Status.Ok)
             {
-                var box = MessageBoxManager.GetMessageBoxStandard("", Res.ErrorDetected, MsBox.Avalonia.Enums.ButtonEnum.Ok);
+                var box = MessageBoxManager.GetMessageBoxStandard("", Res.ErrorDetected);
                 ShowLog.IsChecked = true;
                 await box.ShowAsync();
             }
@@ -95,7 +103,7 @@ namespace S5Updater2
             if (status != AWExitCode.Success)
             {
                 Log(log + status);
-                var box = MessageBoxManager.GetMessageBoxStandard("", Res.ErrorDetected, MsBox.Avalonia.Enums.ButtonEnum.Ok);
+                var box = MessageBoxManager.GetMessageBoxStandard("", Res.ErrorDetected);
                 ShowLog.IsChecked = true;
                 await box.ShowAsync();
             }
@@ -118,27 +126,34 @@ namespace S5Updater2
         }
         private async void DropFile(object? sender, DragEventArgs e)
         {
-            if (e.Data.Contains(DataFormats.Files))
+            try
             {
-                string? gold = Reg.GoldPath;
-                string? he = Reg.HEPath;
-                bool gv = Valid.IsValidGold(gold);
-                bool hv = Valid.IsValidHENotConverted(he);
-                string[]? files = e.Data.GetFiles()?.Select((x) => x.Path.LocalPath)?.ToArray();
-                if (files == null)
-                    return;
-                if (gv)
+                if (e.Data.Contains(DataFormats.Files))
                 {
-                    if (gold == null)
-                        throw new NullReferenceException();
-                    await InstallMap(gold, true, files);
+                    string? gold = Reg.GoldPath;
+                    string? he = Reg.HEPath;
+                    bool gv = Valid.IsValidGold(gold);
+                    bool hv = Valid.IsValidHENotConverted(he);
+                    string[]? files = e.Data.GetFiles()?.Select((x) => x.Path.LocalPath).ToArray();
+                    if (files == null)
+                        return;
+                    if (gv)
+                    {
+                        if (gold == null)
+                            throw new NullReferenceException();
+                        await InstallMap(gold, true, files);
+                    }
+                    if (hv)
+                    {
+                        if (he == null)
+                            throw new NullReferenceException();
+                        await InstallMap(he, false, files);
+                    }
                 }
-                if (hv)
-                {
-                    if (he == null)
-                        throw new NullReferenceException();
-                    await InstallMap(he, false, files);
-                }
+            }
+            catch (Exception ex)
+            {
+                Log(ex.ToString());
             }
         }
 
@@ -148,38 +163,59 @@ namespace S5Updater2
         internal bool HEPathValid => Valid.IsValidHENotConverted(Reg.HEPath);
         private async void SelectGoldVersionAsync(object sender, RoutedEventArgs e)
         {
-            IReadOnlyList<IStorageFolder> f = await StorageProvider.OpenFolderPickerAsync(new FolderPickerOpenOptions()
+            try
             {
-                Title = Res.SelectGold,
-            });
-            if (f.Count > 0)
+                IReadOnlyList<IStorageFolder> f = await StorageProvider.OpenFolderPickerAsync(new FolderPickerOpenOptions()
+                {
+                    Title = Res.SelectGold,
+                });
+                if (f.Count > 0)
+                {
+                    Reg.GoldPath = f[0].Path.LocalPath;
+                    Log(Res.Log_SetGoldPath + Reg.GoldPath);
+                    Maps = [];
+                    ModPacks = [];
+                    UpdateEverything();
+                }
+            }
+            catch (Exception ex)
             {
-                Reg.GoldPath = f[0].Path.LocalPath;
-                Log(Res.Log_SetGoldPath + Reg.GoldPath);
-                Maps = [];
-                ModPacks = [];
-                UpdateEverything();
+                Log(ex.ToString());
             }
         }
         private async void SelectHEVersionAsync(object sender, RoutedEventArgs e)
         {
-            IReadOnlyList<IStorageFolder> f = await StorageProvider.OpenFolderPickerAsync(new FolderPickerOpenOptions()
+            try
             {
-                Title = Res.SelectHE,
-            });
-            if (f.Count > 0)
+                IReadOnlyList<IStorageFolder> f = await StorageProvider.OpenFolderPickerAsync(new FolderPickerOpenOptions()
+                {
+                    Title = Res.SelectHE,
+                });
+                if (f.Count > 0)
+                {
+                    Reg.HEPath = f[0].Path.LocalPath;
+                    Log(Res.Log_SetHEPath + Reg.HEPath);
+                    UpdateEverything();
+                }
+            }
+            catch (Exception ex)
             {
-                Reg.HEPath = f[0].Path.LocalPath;
-                Log(Res.Log_SetHEPath + Reg.HEPath);
-                UpdateEverything();
+                Log(ex.ToString());
             }
         }
         private async void SetGoldRegistry(object s, RoutedEventArgs e)
         {
-            var box = MessageBoxManager.GetMessageBoxStandard("", Res.ReallyOverrideRegistry, MsBox.Avalonia.Enums.ButtonEnum.YesNo);
-            if (await box.ShowAsync() == MsBox.Avalonia.Enums.ButtonResult.Yes)
+            try
             {
-                await CheckExitCode(Reg.SetGoldReg(), Res.Log_SetGoldReg, Res.Log_SetGoldReg + Reg.GoldPath);
+                var box = MessageBoxManager.GetMessageBoxStandard("", Res.ReallyOverrideRegistry, MsBox.Avalonia.Enums.ButtonEnum.YesNo);
+                if (await box.ShowAsync() == MsBox.Avalonia.Enums.ButtonResult.Yes)
+                {
+                    await CheckExitCode(Reg.SetGoldReg(), Res.Log_SetGoldReg, Res.Log_SetGoldReg + Reg.GoldPath);
+                }
+            }
+            catch (Exception ex)
+            {
+                Log(ex.ToString());
             }
         }
 
@@ -197,13 +233,20 @@ namespace S5Updater2
         }
         private async void Patch105(object s, RoutedEventArgs e)
         {
-            TaskUpdateGoldFrom105 t = new()
+            try
             {
-                MM = this
-            };
-            await Prog.ShowProgressDialog(t);
-            UpdateEverything();
-            await CheckStatus(t.Status);
+                TaskUpdateGoldFrom105 t = new()
+                {
+                    MM = this
+                };
+                await Prog.ShowProgressDialog(t);
+                UpdateEverything();
+                await CheckStatus(t.Status);
+            }
+            catch (Exception ex)
+            {
+                Log(ex.ToString());
+            }
         }
         internal bool Patch106Enabled
         {
@@ -219,13 +262,20 @@ namespace S5Updater2
         }
         private async void Patch106(object s, RoutedEventArgs e)
         {
-            TaskUpdate106 t = new()
+            try
             {
-                MM = this
-            };
-            await Prog.ShowProgressDialog(t);
-            UpdateEverything();
-            await CheckStatus(t.Status);
+                TaskUpdate106 t = new()
+                {
+                    MM = this
+                };
+                await Prog.ShowProgressDialog(t);
+                UpdateEverything();
+                await CheckStatus(t.Status);
+            }
+            catch (Exception ex)
+            {
+                Log(ex.ToString());
+            }
         }
         internal bool GoldAllPatched
         {
@@ -251,19 +301,32 @@ namespace S5Updater2
         }
         private async void UpdateCppLogic(object s, RoutedEventArgs e)
         {
-            TaskUpdateHook t = new()
+            try
             {
-                MM = this
-            };
-            await Prog.ShowProgressDialog(t);
-            UpdateEverything();
-            await CheckStatus(t.Status);
+                TaskUpdateHook t = new()
+                {
+                    MM = this
+                };
+                await Prog.ShowProgressDialog(t);
+                UpdateEverything();
+                await CheckStatus(t.Status);
+            }
+            catch (Exception ex)
+            {
+                Log(ex.ToString());
+            }
         }
         public bool CppLogicEnabled
         {
             get => TaskUpdateHook.IsEnabled(Reg.GoldPath, Valid);
-            set => DebuggerDllChanged(null, value);
+            set
+            {
+                if (!ListenToEvents)
+                    return;
+                DebuggerDllChanged(null, value);
+            }
         }
+
         public bool CppLogicInstalled
         {
             get
@@ -276,15 +339,22 @@ namespace S5Updater2
         }
         private async void InstallMapGold(object s, RoutedEventArgs e)
         {
-            IReadOnlyList<IStorageFile> r = await StorageProvider.OpenFilePickerAsync(new FilePickerOpenOptions()
+            try
             {
-                AllowMultiple = true,
-                FileTypeFilter = [new("Maps") { Patterns = ["*.s5x", "*.zip", "*.bba"] }],
-            });
-            if (r.Count > 0)
+                IReadOnlyList<IStorageFile> r = await StorageProvider.OpenFilePickerAsync(new FilePickerOpenOptions()
+                {
+                    AllowMultiple = true,
+                    FileTypeFilter = [new("Maps") { Patterns = ["*.s5x", "*.zip", "*.bba"] }],
+                });
+                if (r.Count > 0)
+                {
+                    string p = Reg.GoldPath ?? throw new NullReferenceException();
+                    await InstallMap(p, true, r.Select((x) => x.Path.LocalPath).ToArray());
+                }
+            }
+            catch (Exception ex)
             {
-                string p = Reg.GoldPath ?? throw new NullReferenceException();
-                await InstallMap(p, true, r.Select((x) => x.Path.LocalPath).ToArray());
+                Log(ex.ToString());
             }
         }
 
@@ -299,14 +369,23 @@ namespace S5Updater2
         }
         internal async void SelectedResolution_Changed(object sender, SelectionChangedEventArgs e)
         {
-            if ((sender as ComboBox)?.SelectedItem is Resolution value)
+            try
             {
-                if (RegistryHandler.Resolution == value.RegValue)
+                if (!ListenToEvents)
                     return;
-                await CheckExitCode(RegistryHandler.SetResolution(value.RegValue), Res.Log_SetReso, Res.Log_SetReso + value.Show);
-                if (value.NeedsDev)
-                    await SetDevMode(true);
-                UpdateEverything();
+                if ((sender as ComboBox)?.SelectedItem is Resolution value)
+                {
+                    if (RegistryHandler.Resolution == value.RegValue)
+                        return;
+                    await CheckExitCode(RegistryHandler.SetResolution(value.RegValue), Res.Log_SetReso, Res.Log_SetReso + value.Show);
+                    if (value.NeedsDev)
+                        await SetDevMode(true);
+                    UpdateEverything();
+                }
+            }
+            catch (Exception ex)
+            {
+                Log(ex.ToString());
             }
         }
         internal static IList<Language> LanguageData => Languages;
@@ -320,25 +399,41 @@ namespace S5Updater2
         }
         internal async void SelectedLanguage_Changed(object sender, SelectionChangedEventArgs e)
         {
-            if ((sender as ComboBox)?.SelectedItem is Language value)
+            try
             {
-                if (RegistryHandler.Language == value.RegValue)
+                if (!ListenToEvents)
                     return;
-                await CheckExitCode(RegistryHandler.SetLanguage(value.RegValue), Res.Log_SetLang, Res.Log_SetLang + value.Show);
-                UpdateEverything();
+                if ((sender as ComboBox)?.SelectedItem is Language value)
+                {
+                    if (RegistryHandler.Language == value.RegValue)
+                        return;
+                    await CheckExitCode(RegistryHandler.SetLanguage(value.RegValue), Res.Log_SetLang, Res.Log_SetLang + value.Show);
+                    UpdateEverything();
+                }
+            }
+            catch (Exception ex)
+            {
+                Log(ex.ToString());
             }
         }
-        internal static bool DevMode
-        {
-            get => DevHashCalc.CalcHash(RegistryHandler.GetPCName()) == RegistryHandler.DevMode;
-        }
+        internal static bool DevMode => DevHashCalc.CalcHash(RegistryHandler.GetPCName()) == RegistryHandler.DevMode;
+
         internal async void DevMode_Changed(object sender, RoutedEventArgs e)
         {
-            if (sender is CheckBox cb)
+            try
             {
-                if (cb.IsChecked == null)
+                if (!ListenToEvents)
                     return;
-                await SetDevMode((bool)cb.IsChecked);
+                if (sender is CheckBox cb)
+                {
+                    if (cb.IsChecked == null)
+                        return;
+                    await SetDevMode((bool)cb.IsChecked);
+                }
+            }
+            catch (Exception ex)
+            {
+                Log(ex.ToString());
             }
         }
         private async Task SetDevMode(bool val)
@@ -350,34 +445,48 @@ namespace S5Updater2
             UpdateEverything();
         }
 
-        internal static bool ShowIntroVideo
-        {
-            get => RegistryHandler.ShowIntroVideo;
-        }
+        internal static bool ShowIntroVideo => RegistryHandler.ShowIntroVideo;
+
         internal async void ShowIntroVideo_Changed(object sender, RoutedEventArgs e)
         {
-            if (sender is CheckBox cb)
+            try
             {
-                if (cb.IsChecked == null)
+                if (!ListenToEvents)
                     return;
-                bool val = (bool)cb.IsChecked;
-                if (RegistryHandler.ShowIntroVideo == val)
-                    return;
-                await CheckExitCode(RegistryHandler.SetShowIntroVideo(val), Res.Log_SetIntroVideo, Res.Log_SetIntroVideo + val);
-                UpdateEverything();
+                if (sender is CheckBox cb)
+                {
+                    if (cb.IsChecked == null)
+                        return;
+                    bool val = (bool)cb.IsChecked;
+                    if (RegistryHandler.ShowIntroVideo == val)
+                        return;
+                    await CheckExitCode(RegistryHandler.SetShowIntroVideo(val), Res.Log_SetIntroVideo, Res.Log_SetIntroVideo + val);
+                    UpdateEverything();
+                }
+            }
+            catch (Exception ex)
+            {
+                Log(ex.ToString());
             }
         }
 
 
         private async void ConvertHE(object sender, RoutedEventArgs e)
         {
-            TaskConvertHE t = new()
+            try
             {
-                MM = this
-            };
-            await Prog.ShowProgressDialog(t);
-            UpdateEverything();
-            await CheckStatus(t.Status);
+                TaskConvertHE t = new()
+                {
+                    MM = this
+                };
+                await Prog.ShowProgressDialog(t);
+                UpdateEverything();
+                await CheckStatus(t.Status);
+            }
+            catch (Exception ex)
+            {
+                Log(ex.ToString());
+            }
         }
         internal bool ConvertHEEnabled
         {
@@ -412,70 +521,102 @@ namespace S5Updater2
         }
         private async void HEFixEditor(object sender, RoutedEventArgs e)
         {
-            string? p = Reg.HEPath;
-            if (p == null)
-                return;
-            if (!Valid.IsValidHE(p))
-                return;
             try
             {
-                File.Delete(Path.Combine(p, "extra2\\shr\\MapEditor\\LandscapeSets\\customset.xml"));
+                string? p = Reg.HEPath;
+                if (p == null)
+                    return;
+                if (!Valid.IsValidHE(p))
+                    return;
+                try
+                {
+                    File.Delete(Path.Combine(p, "extra2\\shr\\MapEditor\\LandscapeSets\\customset.xml"));
+                }
+                catch (IOException ex)
+                {
+                    Log(ex.ToString());
+                }
+                try
+                {
+                    File.Delete(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Documents\\THE SETTLERS 5 - History Edition\\MapEditor\\LandscapeSets\\customset.xml"));
+                }
+                catch (IOException ex)
+                {
+                    Log(ex.ToString());
+                }
+                var box = MessageBoxManager.GetMessageBoxStandard("", Res.HEEditor_CreateLinks, MsBox.Avalonia.Enums.ButtonEnum.YesNo);
+                if (await box.ShowAsync() == MsBox.Avalonia.Enums.ButtonResult.Yes)
+                {
+                    MainUpdater.CreateLinkPS(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "Settlers HoK Editor Extra1.lnk"),
+                        Path.Combine(p, "bin/shokmapeditor.exe"), "-extra1", Log);
+                    MainUpdater.CreateLinkPS(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "Settlers HoK Editor Extra2.lnk"),
+                        Path.Combine(p, "bin/shokmapeditor.exe"), "-extra2", Log);
+                }
             }
-            catch (IOException ex)
+            catch (Exception ex)
             {
                 Log(ex.ToString());
-            }
-            try
-            {
-                File.Delete(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Documents\\THE SETTLERS 5 - History Edition\\MapEditor\\LandscapeSets\\customset.xml"));
-            }
-            catch (IOException ex)
-            {
-                Log(ex.ToString());
-            }
-            var box = MessageBoxManager.GetMessageBoxStandard("", Res.HEEditor_CreateLinks, MsBox.Avalonia.Enums.ButtonEnum.YesNo);
-            if (await box.ShowAsync() == MsBox.Avalonia.Enums.ButtonResult.Yes)
-            {
-                MainUpdater.CreateLinkPS(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "Settlers HoK Editor Extra1.lnk"),
-                    Path.Combine(p, "bin/shokmapeditor.exe"), "-extra1", Log);
-                MainUpdater.CreateLinkPS(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "Settlers HoK Editor Extra2.lnk"),
-                    Path.Combine(p, "bin/shokmapeditor.exe"), "-extra2", Log);
             }
         }
         private async void InstallMapHE(object s, RoutedEventArgs e)
         {
-            IReadOnlyList<IStorageFile> r = await StorageProvider.OpenFilePickerAsync(new FilePickerOpenOptions()
+            try
             {
-                AllowMultiple = true,
-                FileTypeFilter = [new("Maps") { Patterns = ["*.s5x", "*.zip"] }],
-            });
-            if (r.Count > 0)
+                IReadOnlyList<IStorageFile> r = await StorageProvider.OpenFilePickerAsync(new FilePickerOpenOptions()
+                {
+                    AllowMultiple = true,
+                    FileTypeFilter = [new("Maps") { Patterns = ["*.s5x", "*.zip"] }],
+                });
+                if (r.Count > 0)
+                {
+                    string p = Reg.HEPath ?? throw new NullReferenceException();
+                    await InstallMap(p, false, r.Select((x) => x.Path.LocalPath).ToArray());
+                }
+            }
+            catch (Exception ex)
             {
-                string p = Reg.HEPath ?? throw new NullReferenceException();
-                await InstallMap(p, false, r.Select((x) => x.Path.LocalPath).ToArray());
+                Log(ex.ToString());
             }
         }
 
         public bool DebuggerVSCAdaptor
         {
             get => Set.DebuggerVSCAdaptor;
-            set => Set.DebuggerVSCAdaptor = value;
+            set
+            {
+                if (!ListenToEvents)
+                    return;
+                Set.DebuggerVSCAdaptor = value;
+            }
         }
+
         private async void UpdateDebugger(object sender, RoutedEventArgs e)
         {
-            TaskUpdateDebugger t = new()
+            try
             {
-                MM = this
-            };
-            await Prog.ShowProgressDialog(t);
-            UpdateEverything();
-            await CheckStatus(t.Status);
+                TaskUpdateDebugger t = new()
+                {
+                    MM = this
+                };
+                await Prog.ShowProgressDialog(t);
+                UpdateEverything();
+                await CheckStatus(t.Status);
+            }
+            catch (Exception ex)
+            {
+                Log(ex.ToString());
+            }
         }
         public bool DebuggerEnabled
         {
             get => TaskUpdateDebugger.IsEnabled(Reg.GoldPath, Valid);
-            set => DebuggerDllChanged(value, null);
+            set { 
+                if (!ListenToEvents)
+                    return;
+                DebuggerDllChanged(value, null);
+            }
         }
+
         public bool DebuggerInstalled
         {
             get
@@ -488,44 +629,55 @@ namespace S5Updater2
         }
         private async void DebuggerDllChanged(bool? debugger, bool? cpplogic)
         {
-            TaskManageDebuggerDlls t = new()
+            try
             {
-                MM = this,
-                Debugger = debugger ?? DebuggerEnabled,
-                CppLogic = cpplogic ?? CppLogicEnabled,
-            };
-            await Prog.ShowProgressDialog(t);
-            Log(Res.Log_SetDebuggerEnabled + t.Debugger);
-            Log(Res.Log_SetHookEnabled + t.CppLogic);
-            UpdateEverything();
-            await CheckStatus(t.Status);
+                TaskManageDebuggerDlls t = new()
+                {
+                    MM = this,
+                    Debugger = debugger ?? DebuggerEnabled,
+                    CppLogic = cpplogic ?? CppLogicEnabled,
+                };
+                await Prog.ShowProgressDialog(t);
+                Log(Res.Log_SetDebuggerEnabled + t.Debugger);
+                Log(Res.Log_SetHookEnabled + t.CppLogic);
+                UpdateEverything();
+                await CheckStatus(t.Status);
+            }
+            catch (Exception ex)
+            {
+                Log(ex.ToString());
+            }
         }
 
         private void ShowLogChanged(object sender, RoutedEventArgs e)
         {
+            if (!ListenToEvents)
+                return;
             bool show = ShowLog.IsChecked == true;
             LogSplit.DisplayMode = show ? SplitViewDisplayMode.Inline : SplitViewDisplayMode.Overlay;
             LogSplit.IsPaneOpen = show;
         }
-        private bool _easyMode = !Design.IsDesignMode;
-        internal bool EasyMode {
-            get => _easyMode;
+
+        internal bool EasyMode
+        {
+            get;
             set
             {
-                _easyMode = value;
+                if (!ListenToEvents)
+                    return;
+                field = value;
                 OnPropertyChanged(null);
             }
-        }
+        } = !Design.IsDesignMode;
 
         internal static IList<MapPack> MapPacksData => TaskUpdateMPMaps.Packs;
         internal IList<MapPack> MapPacksSelected
         {
-            get
-            {
-                return MapPacksData.Where(GetMapPackUpdateFromSettings).ToList();
-            }
+            get => MapPacksData.Where(GetMapPackUpdateFromSettings).ToList();
             set
             {
+                if (!ListenToEvents)
+                    return;
                 foreach (MapPack p in MapPacksData)
                 {
                     bool s = value.Contains(p);
@@ -540,29 +692,37 @@ namespace S5Updater2
         // binding MapPacksSelected only reads...
         internal void MapPacksSelected_Changed(object sender, SelectionChangedEventArgs e)
         {
+            if (!ListenToEvents)
+                return;
             if ((sender as ListBox)?.SelectedItems is IList<MapPack> i)
                 MapPacksSelected = i;
         }
         private async void UpdateMappacks(object sender, RoutedEventArgs e)
         {
-            TaskUpdateMPMaps t = new()
+            try
             {
-                MM = this
-            };
-            await Prog.ShowProgressDialog(t);
-            UpdateEverything();
-            await CheckStatus(t.Status);
+                TaskUpdateMPMaps t = new()
+                {
+                    MM = this
+                };
+                await Prog.ShowProgressDialog(t);
+                UpdateEverything();
+                await CheckStatus(t.Status);
+            }
+            catch (Exception ex)
+            {
+                Log(ex.ToString());
+            }
         }
 
         internal IList<MapUpdate> ModPacks { get; private set; } = [];
         internal IList<MapUpdate> ModPacksSelected
         {
-            get
-            {
-                return ModPacks.Where(GetModPacksUpdateFromSettings).ToList();
-            }
+            get => ModPacks.Where(GetModPacksUpdateFromSettings).ToList();
             set
             {
+                if (!ListenToEvents)
+                    return;
                 foreach (MapUpdate p in ModPacks)
                 {
                     bool s = value.Any((x) => x.File == p.File);
@@ -570,50 +730,65 @@ namespace S5Updater2
                 }
             }
         }
-        internal bool GetModPacksUpdateFromSettings(MapUpdate p)
+        private bool GetModPacksUpdateFromSettings(MapUpdate p)
         {
             return !Set.SelectedModPacks.TryGetValue(p.File, out bool r) || r;
         }
         // binding ModPacksSelected only reads...
         internal void ModPacksSelected_Changed(object sender, SelectionChangedEventArgs e)
         {
+            if (!ListenToEvents)
+                return;
             if ((sender as ListBox)?.SelectedItems is IList<MapUpdate> i)
                 ModPacksSelected = i;
         }
         private async void ScanModPacks(object sender, RoutedEventArgs e)
         {
-            TaskScanMaps t = new()
+            try
             {
-                MM = this,
-                Type = new TaskUpdateMapsTypeModPack(),
-            };
-            await Prog.ShowProgressDialog(t);
-            ModPacks = t.Maps;
-            UpdateEverything();
-            await CheckStatus(t.Status);
+                TaskScanMaps t = new()
+                {
+                    MM = this,
+                    Type = new TaskUpdateMapsTypeModPack(),
+                };
+                await Prog.ShowProgressDialog(t);
+                ModPacks = t.Maps;
+                UpdateEverything();
+                await CheckStatus(t.Status);
+            }
+            catch (Exception ex)
+            {
+                Log(ex.ToString());
+            }
         }
         private async void UpdateModPacks(object sender, RoutedEventArgs e)
         {
-            TaskUpdateMaps t = new()
+            try
             {
-                MM = this,
-                Maps = ModPacksSelected,
-                Type = new TaskUpdateMapsTypeModPack(),
-            };
-            await Prog.ShowProgressDialog(t);
-            UpdateEverything();
-            await CheckStatus(t.Status);
+                TaskUpdateMaps t = new()
+                {
+                    MM = this,
+                    Maps = ModPacksSelected,
+                    Type = new TaskUpdateMapsTypeModPack(),
+                };
+                await Prog.ShowProgressDialog(t);
+                UpdateEverything();
+                await CheckStatus(t.Status);
+            }
+            catch (Exception ex)
+            {
+                Log(ex.ToString());
+            }
         }
 
         internal IList<MapUpdate> Maps { get; private set; } = [];
         internal IList<MapUpdate> MapsSelected
         {
-            get
-            {
-                return Maps.Where(GetMapsUpdateFromSettings).ToList();
-            }
+            get => Maps.Where(GetMapsUpdateFromSettings).ToList();
             set
             {
+                if (!ListenToEvents)
+                    return;
                 foreach (MapUpdate p in Maps)
                 {
                     bool s = value.Any((x) => x.File == p.File);
@@ -621,58 +796,78 @@ namespace S5Updater2
                 }
             }
         }
-        internal bool GetMapsUpdateFromSettings(MapUpdate p)
+        private bool GetMapsUpdateFromSettings(MapUpdate p)
         {
             return !Set.SelectedMaps.TryGetValue(p.File, out bool r) || r;
         }
         // binding ModPacksSelected only reads...
         internal void MapsSelected_Changed(object sender, SelectionChangedEventArgs e)
         {
+            if (!ListenToEvents)
+                return;
             if ((sender as ListBox)?.SelectedItems is IList<MapUpdate> i)
                 MapsSelected = i;
         }
         private async void ScanMaps(object sender, RoutedEventArgs e)
         {
-            TaskScanMaps t = new()
+            try
             {
-                MM = this,
-                Type = new TaskUpdateMapsTypeMap(),
-            };
-            await Prog.ShowProgressDialog(t);
-            Maps = t.Maps;
-            UpdateEverything();
-            await CheckStatus(t.Status);
+                TaskScanMaps t = new()
+                {
+                    MM = this,
+                    Type = new TaskUpdateMapsTypeMap(),
+                };
+                await Prog.ShowProgressDialog(t);
+                Maps = t.Maps;
+                UpdateEverything();
+                await CheckStatus(t.Status);
+            }
+            catch (Exception ex)
+            {
+                Log(ex.ToString());
+            }
         }
         private async void UpdateMaps(object sender, RoutedEventArgs e)
         {
-            TaskUpdateMaps t = new()
+            try
             {
-                MM = this,
-                Maps = MapsSelected,
-                Type = new TaskUpdateMapsTypeMap(),
-            };
-            await Prog.ShowProgressDialog(t);
-            UpdateEverything();
-            await CheckStatus(t.Status);
+                TaskUpdateMaps t = new()
+                {
+                    MM = this,
+                    Maps = MapsSelected,
+                    Type = new TaskUpdateMapsTypeMap(),
+                };
+                await Prog.ShowProgressDialog(t);
+                UpdateEverything();
+                await CheckStatus(t.Status);
+            }
+            catch (Exception ex)
+            {
+                Log(ex.ToString());
+            }
         }
 
-        internal bool US_Zoom
+        internal bool UserScriptZoom
         {
-            get => USM.Zoom;
+            get => UserScript.Zoom;
             set
             {
-                USM.Zoom = value;
-                USM.Update(Reg, Log);
+                if (!ListenToEvents)
+                    return;
+                UserScript.Zoom = value;
+                UserScript.Update(Reg, Log);
             }
         }
         internal static IList<PlayerColor> ColorData => UserScriptManager.PlayerColors;
         internal PlayerColor ColorSelected
         {
-            get => ColorData.FirstOrDefault((c) => c.Value == USM.PlayerColor, ColorData[0]);
+            get => ColorData.FirstOrDefault((c) => c.Value == UserScript.PlayerColor, ColorData[0]);
             set
             {
-                USM.PlayerColor = value.Value;
-                USM.Update(Reg, Log);
+                if (!ListenToEvents)
+                    return;
+                UserScript.PlayerColor = value.Value;
+                UserScript.Update(Reg, Log);
             }
         }
 
