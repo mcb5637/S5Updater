@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace S5Updater2
+﻿namespace S5Updater2
 {
-    internal class DevHashCalc
+    internal static class DevHashCalc
     {
         internal static uint CalcHash(string n)
         {
@@ -14,9 +8,8 @@ namespace S5Updater2
                 return 0;
             uint hash = 0;
             n = n.ToLower();
-            for (int i = 0; i < n.Length; i++)
+            foreach (var c in n)
             {
-                char c = n[i];
                 hash = c + (hash << 4);
                 if ((hash & 0xf0000000) != 0)
                 {

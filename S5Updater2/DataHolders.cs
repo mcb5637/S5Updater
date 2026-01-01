@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace S5Updater2
+﻿namespace S5Updater2
 {
     internal enum Status
     {
@@ -14,9 +8,9 @@ namespace S5Updater2
 
     internal class Resolution
     {
-        internal string Show;
-        internal string RegValue;
-        internal bool NeedsDev;
+        internal readonly string Show;
+        internal readonly string RegValue;
+        internal readonly bool NeedsDev;
 
         public Resolution(string show, string regValue, bool needsDev)
         {
@@ -33,8 +27,8 @@ namespace S5Updater2
 
     internal class Language
     {
-        internal string Show;
-        internal string RegValue;
+        internal readonly string Show;
+        internal readonly string RegValue;
 
         public Language(string show, string regValue)
         {
@@ -50,8 +44,8 @@ namespace S5Updater2
 
     internal class PlayerColor
     {
-        internal string Name;
-        internal int Value;
+        internal readonly string Name;
+        internal readonly int Value;
 
         public PlayerColor(string name, int val)
         {

@@ -1,17 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.IO.Compression;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace S5Updater2
 {
     class TaskUpdateHook : TaskUpdateFromGitRelease
     {
-        protected override string HashesAdress => "https://github.com/mcb5637/S5BinkHook/releases/latest/download/hashes.txt";
-        protected override string ZipAdress => "https://github.com/mcb5637/S5BinkHook/releases/latest/download/S5CppLogic.zip";
+        protected override string HashesAddress => "https://github.com/mcb5637/S5BinkHook/releases/latest/download/hashes.txt";
+        protected override string ZipAddress => "https://github.com/mcb5637/S5BinkHook/releases/latest/download/S5CppLogic.zip";
         protected override string ValidatingLog => Res.Prog_CppL_Validating;
         private bool Debugger = false, CppLogic = false;
 
@@ -19,7 +15,7 @@ namespace S5Updater2
         {
             if (MM.Reg.GoldPath == null)
                 throw new NullReferenceException();
-            return File.Exists(Path.Combine(MM.Reg.GoldPath, "bin\\binkw32_orig.dll"));
+            return File.Exists(Path.Combine(MM.Reg.GoldPath, "bin/binkw32_orig.dll"));
         }
 
         protected override Task PreUpdate()
@@ -55,21 +51,21 @@ namespace S5Updater2
             Status = t.Status;
         }
 
-        static public bool IsInstalled(string? path)
+        public static bool IsInstalled(string? path)
         {
             if (path == null)
                 return false;
-            return File.Exists(Path.Combine(path, "bin\\S5CppLogic.dll")) && !File.Exists(Path.Combine(path, "bin\\binkw32_orig.dll"));
+            return File.Exists(Path.Combine(path, "bin/S5CppLogic.dll")) && !File.Exists(Path.Combine(path, "bin/binkw32_orig.dll"));
         }
 
-        static public bool IsEnabled(string? path, InstallValidator v)
+        public static bool IsEnabled(string? path, InstallValidator v)
         {
             if (path == null)
                 return false;
             if (!IsInstalled(path))
                 return false;
-            string cppl = Path.Combine(path, "bin\\S5CppLogic.dll");
-            string deb = Path.Combine(path, "bin\\LuaDebugger.dll");
+            string cppl = Path.Combine(path, "bin/S5CppLogic.dll");
+            string deb = Path.Combine(path, "bin/LuaDebugger.dll");
             string? cpplhash = InstallValidator.GetFileHash(cppl);
             string? debhash = InstallValidator.GetFileHash(deb);
             return cpplhash == debhash;

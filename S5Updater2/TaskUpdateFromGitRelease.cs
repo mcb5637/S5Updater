@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.IO;
 using System.IO.Compression;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace S5Updater2
@@ -13,9 +11,9 @@ namespace S5Updater2
         internal required MainWindow MM;
         internal Status Status;
 
-        protected static readonly string[] Extras = ["bin", "extra1\\bin", "extra2\\bin"];
-        protected abstract string HashesAdress { get; }
-        protected abstract string ZipAdress { get; }
+        protected static readonly string[] Extras = ["bin", "extra1/bin", "extra2/bin"];
+        protected abstract string HashesAddress { get; }
+        protected abstract string ZipAddress { get; }
         protected abstract string ValidatingLog { get; }
 
         protected virtual bool ForceUpdate()
@@ -69,12 +67,12 @@ namespace S5Updater2
                 await PreUpdate();
                 r(0, 100, Res.Prog_GRel_Patching, Res.Prog_GRel_Patching);
                 string patchfile = Path.Combine(MM.Reg.GoldPath, "Tmp_gitrepo.zip");
-                await MainUpdater.DownloadFile(ZipAdress, patchfile, r);
+                await MainUpdater.DownloadFile(ZipAddress, patchfile, r);
                 foreach (string e in Extras)
                 {
                     if (File.Exists(Path.Combine(MM.Reg.GoldPath, e, "settlershok.exe")))
                     {
-                        using ZipArchive a = ZipFile.OpenRead(patchfile);
+                        await using ZipArchive a = await ZipFile.OpenReadAsync(patchfile);
                         foreach (ZipArchiveEntry en in a.Entries)
                         {
                             if (en.IsFolder())
@@ -85,7 +83,7 @@ namespace S5Updater2
                             string? dirname = Path.GetDirectoryName(destinationFileName);
                             if (dirname != null)
                                 Directory.CreateDirectory(dirname);
-                            en.ExtractToFile(destinationFileName, true);
+                            await en.ExtractToFileAsync(destinationFileName, true);
                         }
                     }
                 }
@@ -133,22 +131,21 @@ namespace S5Updater2
             try
             {
                 r(0, 100, ValidatingLog, ValidatingLog);
-                byte[] d = await MainUpdater.DownloadFileBytes(HashesAdress, r);
+                byte[] d = await MainUpdater.DownloadFileBytes(HashesAddress, r);
                 List<FileWithHash> files = [];
-                using (StreamReader re = new(new MemoryStream(d)))
+                using StreamReader re = new(new MemoryStream(d));
+                string? s = await re.ReadLineAsync();
+                while (s != null)
                 {
-                    string? s = re.ReadLine();
-                    while (s != null)
+                    string[] spl = s.Split(' ');
+                    files.Add(new FileWithHash()
                     {
-                        string[] spl = s.Split(' ');
-                        files.Add(new FileWithHash()
-                        {
-                            File = spl[0],
-                            Hash = spl[1]
-                        });
-                        s = re.ReadLine();
-                    }
+                        File = spl[0],
+                        Hash = spl[1]
+                    });
+                    s = await re.ReadLineAsync();
                 }
+
                 return files;
             }
             catch (Exception e)

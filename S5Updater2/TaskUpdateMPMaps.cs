@@ -1,13 +1,8 @@
-﻿using Avalonia.Data.Converters;
-using LibGit2Sharp;
+﻿using LibGit2Sharp;
 using MsBox.Avalonia;
 using System;
-using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Linq;
-using System.Resources;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace S5Updater2
@@ -32,41 +27,41 @@ namespace S5Updater2
     }
     internal interface IMapPackCopy
     {
-        void CopyTo(MainWindow MM, ProgressDialog.ReportProgressDel r);
+        void CopyTo(MainWindow mm, ProgressDialog.ReportProgressDel r);
     }
     internal class MapPackCopyFolder : IMapPackCopy
     {
         public required string From, To;
         public string[] ExcludeAppend = [];
-        public void CopyTo(MainWindow MM, ProgressDialog.ReportProgressDel r)
+        public void CopyTo(MainWindow mm, ProgressDialog.ReportProgressDel r)
         {
-            if (MM.Reg.GoldPath == null)
+            if (mm.Reg.GoldPath == null)
                 throw new NullReferenceException();
-            MainUpdater.Copy(Path.Combine(MM.Reg.GoldPath, From), Path.Combine(MM.Reg.GoldPath, To), TaskUpdateMPMaps.Exclude.Concat(ExcludeAppend), r);
+            MainUpdater.Copy(Path.Combine(mm.Reg.GoldPath, From), Path.Combine(mm.Reg.GoldPath, To), TaskUpdateMPMaps.Exclude.Concat(ExcludeAppend), r);
         }
     }
     internal class MapPackCopyBba : IMapPackCopy
     {
         public required string From, To;
-        public string[] ExcludeAppend = [];
-        public void CopyTo(MainWindow MM, ProgressDialog.ReportProgressDel r)
+        public readonly string[] ExcludeAppend = [];
+        public void CopyTo(MainWindow mm, ProgressDialog.ReportProgressDel r)
         {
-            if (MM.Reg.GoldPath == null)
+            if (mm.Reg.GoldPath == null)
                 throw new NullReferenceException();
-            MainUpdater.PackDirToBba(Path.Combine(MM.Reg.GoldPath, From), Path.Combine(MM.Reg.GoldPath, To), TaskUpdateMPMaps.Exclude.Concat(ExcludeAppend), r);
+            MainUpdater.PackDirToBba(Path.Combine(mm.Reg.GoldPath, From), Path.Combine(mm.Reg.GoldPath, To), TaskUpdateMPMaps.Exclude.Concat(ExcludeAppend), r);
         }
     }
     internal class MapPackCopyMultiBba : IMapPackCopy
     {
         public required string From, To;
-        public string[] ExcludeAppend = [];
-        public void CopyTo(MainWindow MM, ProgressDialog.ReportProgressDel r)
+        public readonly string[] ExcludeAppend = [];
+        public void CopyTo(MainWindow mm, ProgressDialog.ReportProgressDel r)
         {
-            if (MM.Reg.GoldPath == null)
+            if (mm.Reg.GoldPath == null)
                 throw new NullReferenceException();
-            foreach (DirectoryInfo f in new DirectoryInfo(Path.Combine(MM.Reg.GoldPath, From)).EnumerateDirectories())
+            foreach (DirectoryInfo f in new DirectoryInfo(Path.Combine(mm.Reg.GoldPath, From)).EnumerateDirectories())
             {
-                MainUpdater.PackDirToBba(f.FullName, Path.Combine(MM.Reg.GoldPath, To, f.Name + ".bba"), TaskUpdateMPMaps.Exclude.Concat(ExcludeAppend), r);
+                MainUpdater.PackDirToBba(f.FullName, Path.Combine(mm.Reg.GoldPath, To, f.Name + ".bba"), TaskUpdateMPMaps.Exclude.Concat(ExcludeAppend), r);
             }
         }
     }
@@ -76,8 +71,8 @@ namespace S5Updater2
         internal required MainWindow MM;
         internal Status Status;
 
-        static internal readonly string[] Exclude = [".git", ".gitignore", ".gitmodules", ".gitattributes"];
-        static internal MapPack[] Packs = [
+        internal static readonly string[] Exclude = [".git", ".gitignore", ".gitmodules", ".gitattributes"];
+        internal static readonly MapPack[] Packs = [
             new MapPack() {
                 DisplayName = "EMS",
                 RegKey = "EMS",
@@ -85,18 +80,18 @@ namespace S5Updater2
                     new MapPackSource() {
                         URL = "https://github.com/MadShadow-/EMS.git",
                         Branch = "master",
-                        TargetFolder = "extra2\\shr\\maps\\user\\EMSGit",
+                        TargetFolder = "extra2/shr/maps/user/EMSGit",
                     },
                     new MapPackSource() {
                         URL = "https://github.com/mcb5637/s5CommunityLib.git",
                         Branch = "master",
-                        TargetFolder = "extra2\\shr\\maps\\user\\EMS\\tools\\s5CommunityLib",
+                        TargetFolder = "extra2/shr/maps/user/EMS/tools/s5CommunityLib",
                     },
                 ],
                 Copies = [
                     new MapPackCopyFolder() {
-                        From = "extra2\\shr\\maps\\user\\EMSGit",
-                        To = "extra2\\shr\\maps\\user",
+                        From = "extra2/shr/maps/user/EMSGit",
+                        To = "extra2/shr/maps/user",
                     },
                 ],
             },
@@ -107,15 +102,10 @@ namespace S5Updater2
                     new MapPackSource() {
                         URL = "https://github.com/MadShadow-/speedwar.git",
                         Branch = "master",
-                        TargetFolder = "extra2\\shr\\maps\\user\\speedwar",
+                        TargetFolder = "extra2/shr/maps/user/speedwar",
                     },
                 ],
-                Copies = [
-                    new MapPackCopyFolder() {
-                        From = "extra2\\shr\\maps\\user\\Balancing_Stuff_Maps",
-                        To = "extra2\\shr\\maps\\user",
-                    },
-                ],
+                Copies = [],
             },
             new MapPack() {
                 DisplayName = "BS",
@@ -124,18 +114,18 @@ namespace S5Updater2
                     new MapPackSource() {
                         URL = "https://github.com/GhoulMadness/Balancing-Stuff.git",
                         Branch = "master",
-                        TargetFolder = "extra2\\shr\\maps\\user\\Balancing_Stuff_in_Dev",
+                        TargetFolder = "extra2/shr/maps/user/Balancing_Stuff_in_Dev",
                     },
                     new MapPackSource() {
                         URL = "https://github.com/GhoulMadness/Balancing_Stuff_Maps.git",
                         Branch = "main",
-                        TargetFolder = "extra2\\shr\\maps\\user\\Balancing_Stuff_Maps",
+                        TargetFolder = "extra2/shr/maps/user/Balancing_Stuff_Maps",
                     },
                 ],
                 Copies = [
                     new MapPackCopyFolder() {
-                        From = "extra2\\shr\\maps\\user\\Balancing_Stuff_Maps",
-                        To = "extra2\\shr\\maps\\user",
+                        From = "extra2/shr/maps/user/Balancing_Stuff_Maps",
+                        To = "extra2/shr/maps/user",
                     },
                 ],
             },
@@ -146,13 +136,13 @@ namespace S5Updater2
                     new MapPackSource() {
                         URL = "https://github.com/totalwarANGEL1993/stronghold_s5mp_release.git",
                         Branch = "master",
-                        TargetFolder = "extra2\\shr\\maps\\user\\StrongholdMP",
+                        TargetFolder = "extra2/shr/maps/user/StrongholdMP",
                     },
                 ],
                 Copies = [
                     new MapPackCopyFolder() {
-                        From = "extra2\\shr\\maps\\user\\StrongholdMP",
-                        To = "extra2\\shr\\maps\\user",
+                        From = "extra2/shr/maps/user/StrongholdMP",
+                        To = "extra2/shr/maps/user",
                     },
                 ],
             },
@@ -163,32 +153,32 @@ namespace S5Updater2
                     new MapPackSource() {
                         URL = "https://github.com/RobbiTheFox/S5RandomChaos.git",
                         Branch = "main",
-                        TargetFolder = "extra2\\shr\\maps\\user\\RandomChaos",
+                        TargetFolder = "extra2/shr/maps/user/RandomChaos",
                     },
                 ],
                 Copies = [
                     new MapPackCopyFolder() {
-                        From = "extra2\\shr\\maps\\user\\RandomChaos\\ModsMP",
-                        To = "MP_SettlerServer\\Mods",
+                        From = "extra2/shr/maps/user/RandomChaos/ModsMP",
+                        To = "MP_SettlerServer/Mods",
                         ExcludeAppend = ["randomchaos"],
                     },
                     new MapPackCopyBba() {
-                        From = "extra2\\shr\\maps\\user\\RandomChaos\\ModsMP\\randomchaos\\randomchaos",
-                        To = "MP_SettlerServer\\Mods\\randomchaos\\randomchaos.bba",
+                        From = "extra2/shr/maps/user/RandomChaos/ModsMP/randomchaos/randomchaos",
+                        To = "MP_SettlerServer/Mods/randomchaos/randomchaos.bba",
                     },
                     new MapPackCopyFolder() {
-                        From = "extra2\\shr\\maps\\user\\RandomChaos\\ModsSP",
-                        To = "CSinglePlayer\\Mods",
+                        From = "extra2/shr/maps/user/RandomChaos/ModsSP",
+                        To = "CSinglePlayer/Mods",
                         ExcludeAppend = ["randomchaos"],
                     },
                     new MapPackCopyFolder() {
-                        From = "extra2\\shr\\maps\\user\\RandomChaos\\ModsSP\\randomchaos",
-                        To = "CSinglePlayer\\Mods\\randomchaos",
+                        From = "extra2/shr/maps/user/RandomChaos/ModsSP/randomchaos",
+                        To = "CSinglePlayer/Mods/randomchaos",
                         ExcludeAppend = ["randomchaos"],
                     },
                     new MapPackCopyBba() {
-                        From = "extra2\\shr\\maps\\user\\RandomChaos\\ModsSP\\randomchaos\\randomchaos",
-                        To = "CSinglePlayer\\Mods\\randomchaos\\randomchaos.bba",
+                        From = "extra2/shr/maps/user/RandomChaos/ModsSP/randomchaos/randomchaos",
+                        To = "CSinglePlayer/Mods/randomchaos/randomchaos.bba",
                     },
                 ],
             },
@@ -199,21 +189,21 @@ namespace S5Updater2
                     new MapPackSource() {
                         URL = "https://github.com/Novator12/Multiplayer-Workover-MPW.git",
                         Branch = "master",
-                        TargetFolder = "extra2\\shr\\maps\\user\\MPW",
+                        TargetFolder = "extra2/shr/maps/user/MPW",
                     },
                 ],
                 Copies = [
                     new MapPackCopyFolder() {
-                        From = "extra2\\shr\\maps\\user\\MPW\\Settlers5\\MP_SettlerServer\\Mods",
-                        To = "MP_SettlerServer\\Mods",
+                        From = "extra2/shr/maps/user/MPW/Settlers5/MP_SettlerServer/Mods",
+                        To = "MP_SettlerServer/Mods",
                     },
                     new MapPackCopyFolder() {
-                        From = "extra2\\shr\\maps\\user\\MPW\\Settlers5\\CSinglePlayer\\Mods",
-                        To = "CSinglePlayer\\Mods",
+                        From = "extra2/shr/maps/user/MPW/Settlers5/CSinglePlayer/Mods",
+                        To = "CSinglePlayer/Mods",
                     },
                     new MapPackCopyMultiBba() {
-                        From = "extra2\\shr\\maps\\user\\MPW\\bba",
-                        To = "MP_SettlerServer\\Mods\\MPW\\Ingame",
+                        From = "extra2/shr/maps/user/MPW/bba",
+                        To = "MP_SettlerServer/Mods/MPW/Ingame",
                     },
                 ],
             },
@@ -289,7 +279,7 @@ namespace S5Updater2
                     RepositoryStatus stat = rep.RetrieveStatus(statusopt);
                     if (stat.IsDirty)
                     {
-                        if (MM.EasyMode || await messagebox(string.Format(Res.TaskMPMap_ErrDirty, reponame)))
+                        if (MM.EasyMode || await Messagebox(string.Format(Res.TaskMPMap_ErrDirty, reponame)))
                         {
                             r(0, 100, Res.TaskMPMap_DirtyDeleting, Res.TaskMPMap_DirtyDeleting);
                             foreach (StatusEntry f in stat.Untracked)
@@ -316,7 +306,7 @@ namespace S5Updater2
                 Status = Status.Error;
             }
 
-            async Task<bool> messagebox(string q)
+            async Task<bool> Messagebox(string q)
             {
                 var box = MessageBoxManager.GetMessageBoxStandard("", q, MsBox.Avalonia.Enums.ButtonEnum.YesNo);
                 return await box.ShowAsync() == MsBox.Avalonia.Enums.ButtonResult.Yes;
@@ -345,7 +335,7 @@ namespace S5Updater2
             {
                 OnTransferProgress = (t) =>
                 {
-                    r(t.TotalObjects, t.ReceivedObjects, null, null);
+                    r(t.ReceivedObjects, t.TotalObjects, null, null);
                     return true;
                 },
                 OnProgress = (s) =>
@@ -370,18 +360,21 @@ namespace S5Updater2
                 {
                     r(com, tot, path, null);
                 },
+                FetchOptions =
+                {
+                    OnProgress = (s) =>
+                    {
+                        r(-1, 0, s, null);
+                        return true;
+                    },
+                    OnTransferProgress = (t) =>
+                    {
+                        r(t.ReceivedObjects, t.TotalObjects, null, null);
+                        return true;
+                    },
+                    Depth = 1
+                }
             };
-            cloneopt.FetchOptions.OnProgress = (s) =>
-            {
-                r(-1, 0, s, null);
-                return true;
-            };
-            cloneopt.FetchOptions.OnTransferProgress = (t) =>
-            {
-                r(t.TotalObjects, t.ReceivedObjects, null, null);
-                return true;
-            };
-            cloneopt.FetchOptions.Depth = 1;
             Repository.Clone(url, repo, cloneopt);
         }
     }

@@ -46,8 +46,13 @@ namespace S5Updater2
 
             Reg.LoadGoldPathFromRegistry(Valid);
             Reg.LoadHEPathFromRegistry();
-            UserScript.Read(Reg);
             Set = Settings.Load();
+            if (!OperatingSystem.IsWindows())
+            {
+                Reg.GoldPath = Set.GoldPath;
+                Reg.HEPath = Set.HEPath;
+            }
+            UserScript.Read(Reg);
 
             DataContext = this;
             InitializeComponent();
@@ -172,6 +177,8 @@ namespace S5Updater2
                 if (f.Count > 0)
                 {
                     Reg.GoldPath = f[0].Path.LocalPath;
+                    if (!OperatingSystem.IsWindows())
+                        Set.GoldPath = f[0].Path.LocalPath;
                     Log(Res.Log_SetGoldPath + Reg.GoldPath);
                     Maps = [];
                     ModPacks = [];
@@ -194,6 +201,8 @@ namespace S5Updater2
                 if (f.Count > 0)
                 {
                     Reg.HEPath = f[0].Path.LocalPath;
+                    if (!OperatingSystem.IsWindows())
+                        Set.HEPath = f[0].Path.LocalPath;
                     Log(Res.Log_SetHEPath + Reg.HEPath);
                     UpdateEverything();
                 }
@@ -547,9 +556,9 @@ namespace S5Updater2
                 var box = MessageBoxManager.GetMessageBoxStandard("", Res.HEEditor_CreateLinks, MsBox.Avalonia.Enums.ButtonEnum.YesNo);
                 if (await box.ShowAsync() == MsBox.Avalonia.Enums.ButtonResult.Yes)
                 {
-                    MainUpdater.CreateLinkPS(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "Settlers HoK Editor Extra1.lnk"),
+                    MainUpdater.CreateLinkPowershell(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "Settlers HoK Editor Extra1.lnk"),
                         Path.Combine(p, "bin/shokmapeditor.exe"), "-extra1", Log);
-                    MainUpdater.CreateLinkPS(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "Settlers HoK Editor Extra2.lnk"),
+                    MainUpdater.CreateLinkPowershell(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "Settlers HoK Editor Extra2.lnk"),
                         Path.Combine(p, "bin/shokmapeditor.exe"), "-extra2", Log);
                 }
             }

@@ -1,12 +1,9 @@
-﻿using Avalonia.Animation;
-using bbaLib;
+﻿using bbaLib;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml.Linq;
 using static S5Updater2.MainUpdater;
 
@@ -28,7 +25,7 @@ namespace S5Updater2
         internal const string HEKey = "HKEY_LOCAL_MACHINE\\SOFTWARE\\Ubisoft\\Launcher\\Installs\\11786";
         internal const string HEInstallLoc = "InstallDir";
 
-        internal const string HEDefaultSteamInstall = "C:\\Program Files (x86)\\Steam\\steamapps\\common\\The Settlers - Heritage of Kings - History Edition";
+        internal const string HEDefaultSteamInstall = "C:/Program Files (x86)/Steam/steamapps/common/The Settlers - Heritage of Kings - History Edition";
 
         internal static string GoldKey => Environment.Is64BitProcess ? GoldKey64 : GoldKey32;
         internal static string GoldDevKey => GoldKey + GoldDevKeyA;
@@ -47,8 +44,6 @@ namespace S5Updater2
             {
                 if (val == null)
                 {
-                    if (valName == null)
-                        return AWExitCode.Invalid;
                     using RegistryKey? key = Registry.CurrentUser.OpenSubKey(keyName, true);
                     key?.DeleteValue(valName);
                     return AWExitCode.Success;
@@ -99,15 +94,14 @@ namespace S5Updater2
             return r;
         }
 
+        // ReSharper disable once InconsistentNaming
         internal static string GetPCName()
         {
             return Environment.MachineName;
         }
 
-        internal static string? Resolution
-        {
-            get => GetReg(GoldDevKey, GoldReso, null) as string;
-        }
+        internal static string? Resolution => GetReg(GoldDevKey, GoldReso, null) as string;
+
         internal static AWExitCode SetResolution(string value)
         {
             return SetReg(GoldDevKey, GoldReso, value);
@@ -118,9 +112,8 @@ namespace S5Updater2
             get
             {
                 object? r = GetReg(GoldDevKey, GoldDevMode, null);
-                if (r == null || r is not int)
+                if (r is not int i)
                     return null;
-                int i = (int)r;
                 return unchecked((uint)i);
             }
         }
@@ -129,10 +122,8 @@ namespace S5Updater2
             return SetReg(GoldDevKey, GoldDevMode, value == null ? null : unchecked((int)(uint)value));
         }
 
-        internal static string? Language
-        {
-            get => GetReg(GoldDevKey, GoldLanguage, null) as string;
-        }
+        internal static string? Language => GetReg(GoldDevKey, GoldLanguage, null) as string;
+
         internal static AWExitCode SetLanguage(string value)
         {
             return SetReg(GoldDevKey, GoldLanguage, value);
@@ -150,10 +141,8 @@ namespace S5Updater2
             return SetReg(keyname, valuename, wr ? 1 : 0);
         }
 
-        internal static bool ShowIntroVideo
-        {
-            get => RegistryReadBool(GoldDevKey, GoldVideo, true);
-        }
+        internal static bool ShowIntroVideo => RegistryReadBool(GoldDevKey, GoldVideo, true);
+
         internal static AWExitCode SetShowIntroVideo(bool value)
         {
             return RegistryWriteBool(GoldDevKey, GoldVideo, value);
@@ -167,7 +156,7 @@ namespace S5Updater2
                 if (g == null)
                     return null;
                 string? f = "THE SETTLERS - Heritage of Kings";
-                string arch = Path.Combine(g, "base\\lang.bba");
+                string arch = Path.Combine(g, "base/lang.bba");
                 if (File.Exists(arch))
                 {
                     BbaArchive a = new();
@@ -190,9 +179,10 @@ namespace S5Updater2
         {
             get
             {
+                // TODO linux ?
                 return VSCGuids.Select(x => $"HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\{{{x}}}_is1")
                     .Select(x => GetReg(x, "DisplayIcon", null)).OfType<string>().Select(Path.GetDirectoryName).NotNull()
-                    .Select(x => Path.Combine(x, "bin\\code.cmd")).Where(File.Exists);
+                    .Select(x => Path.Combine(x, "bin/code.cmd")).Where(File.Exists);
             }
         }
     }

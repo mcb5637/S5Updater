@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace S5Updater2
@@ -11,7 +8,7 @@ namespace S5Updater2
     {
         internal required MainWindow MM;
         internal Status Status;
-        private static readonly string[] Extras = ["bin", "extra1\\bin", "extra2\\bin"];
+        private static readonly string[] Extras = ["bin", "extra1/bin", "extra2/bin"];
         internal required bool CppLogic, Debugger;
 
         public Task Work(ProgressDialog.ReportProgressDel r)

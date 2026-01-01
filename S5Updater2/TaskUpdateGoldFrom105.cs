@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace S5Updater2
@@ -37,7 +34,7 @@ namespace S5Updater2
                 r(0, 100, Res.Prog_U105_WaitForExec, Res.Prog_U105_WaitForExec);
                 //MessageBox.Show(Resources.TaskUpdate105_MsgPatch);
                 Process p = Process.Start(patchfile);
-                p.WaitForExit();
+                await p.WaitForExitAsync();
                 bool s = !MM.Valid.IsGold105(MM.Reg.GoldPath);
                 r(100, 100, Res.Prog_U105_Successful + s.ToString(), Res.Prog_U105_Successful + s.ToString());
                 if (!s)

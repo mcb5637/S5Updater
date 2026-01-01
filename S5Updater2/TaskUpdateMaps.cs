@@ -2,8 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace S5Updater2
@@ -72,7 +70,7 @@ namespace S5Updater2
     {
         internal required MainWindow MM;
         internal Status Status;
-        internal List<MapUpdate> Maps = [];
+        internal readonly List<MapUpdate> Maps = [];
         internal required TaskUpdateMapsType Type;
 
         public Task Work(ProgressDialog.ReportProgressDel r)
@@ -92,14 +90,14 @@ namespace S5Updater2
                     foreach (FileInfo mp in dirinfo.EnumerateFiles())
                     {
                         r(0, 100, mp.Name, null);
-                        handle(mp);
+                        Handle(mp);
                     }
                     if (Type.SearchDirs)
                     {
                         foreach (DirectoryInfo di in dirinfo.EnumerateDirectories())
                         {
                             r(0, 100, di.Name, null);
-                            handle(di);
+                            Handle(di);
                         }
                     }
                 }
@@ -111,7 +109,7 @@ namespace S5Updater2
             }
             return Task.CompletedTask;
 
-            void handle(FileSystemInfo fi)
+            void Handle(FileSystemInfo fi)
             {
                 TaskUpdateMapsType.Info? i = Type.GetInfo(fi.FullName);
                 if (i == null)
@@ -164,7 +162,7 @@ namespace S5Updater2
     }
     internal class TaskUpdateMapsTypeMap : TaskUpdateMapsType
     {
-        internal override string[] SearchPath => ["base\\shr\\maps\\user", "extra1\\shr\\maps\\user", "extra2\\shr\\maps\\user"];
+        internal override string[] SearchPath => ["base/shr/maps/user", "extra1/shr/maps/user", "extra2/shr/maps/user"];
         internal override bool SearchDirs => true;
 
         internal override Info? GetInfo(string path)
@@ -189,7 +187,7 @@ namespace S5Updater2
                 {
                     VersionURL = i.VersionURL,
                     UpdateURL = i.UpdateURL,
-                    Version = i.GUID.Data,
+                    Version = i.GUID,
                 };
             }
             catch (FileNotFoundException)

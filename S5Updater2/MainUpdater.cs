@@ -4,15 +4,12 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO.Compression;
 using System.IO;
-using System.Net;
-using System.Threading;
 using System.Linq;
 using System.Net.Http;
 using bbaLib;
 using System.Threading.Tasks;
 using System.Text;
 using System.ComponentModel;
-using System.Reflection;
 
 namespace S5Updater2
 {
@@ -47,6 +44,7 @@ namespace S5Updater2
 
             foreach (FileInfo fi in source.GetFiles())
             {
+                // ReSharper disable once PossibleMultipleEnumeration
                 if (exclude.Contains(fi.Name))
                     continue;
                 fi.CopyTo(Path.Combine(target.FullName, fi.Name), true);
@@ -55,9 +53,11 @@ namespace S5Updater2
 
             foreach (DirectoryInfo diSourceSubDir in source.GetDirectories())
             {
+                // ReSharper disable once PossibleMultipleEnumeration
                 if (exclude.Contains(diSourceSubDir.Name))
                     continue;
                 DirectoryInfo nextTargetSubDir = target.CreateSubdirectory(diSourceSubDir.Name);
+                // ReSharper disable once PossibleMultipleEnumeration
                 CopyAll(diSourceSubDir, nextTargetSubDir, exclude, r);
             }
         }
@@ -68,7 +68,7 @@ namespace S5Updater2
             a.ReadFromFolder(sourcedir, (s) =>
             {
                 r(s.Progress, 100, s.AdditionalString, null);
-            }, false, "", (p) => !ignore.Any((i) => p.StartsWith(i)));
+            }, false, "", (p) => !ignore.Any(p.StartsWith));
             a.SearchAndLinkDuplicates();
             string? path = Path.GetDirectoryName(targetfile);
             if (path != null)
@@ -77,21 +77,6 @@ namespace S5Updater2
             {
                 r(s.Progress, 100, s.AdditionalString, null);
             }, true, _ => true);
-        }
-
-        internal static int IndexOfArrayElement<T, E>(this T[] array, E o, Func<T, E> f) where E : class
-        {
-            for (int i = 0; i < array.Length; i++)
-                if (f(array[i]).Equals(o))
-                    return i;
-            return -1;
-        }
-        internal static int IndexOfArrayElement<T>(this T[] array, int o, Func<T, int> f)
-        {
-            for (int i = 0; i < array.Length; i++)
-                if (f(array[i]) == o)
-                    return i;
-            return -1;
         }
 
         internal static bool IsDirNotExistingOrEmpty(string dir)
@@ -103,7 +88,7 @@ namespace S5Updater2
         {
             if (File.Exists(file))
                 File.Delete(file);
-            using FileStream s = new(file, FileMode.Create, FileAccess.Write);
+            await using FileStream s = new(file, FileMode.Create, FileAccess.Write);
             await DownloadAsync(uri, r, s);
         }
 
@@ -112,7 +97,7 @@ namespace S5Updater2
             using HttpClient cl = new();
             using HttpResponseMessage res = await cl.GetAsync(uri, HttpCompletionOption.ResponseHeadersRead);
             long len = res.Content.Headers.ContentLength ?? -1;
-            using Stream source = await res.Content.ReadAsStreamAsync();
+            await using Stream source = await res.Content.ReadAsStreamAsync();
             int buffsize = 1024;
             byte[] buffer = new byte[buffsize];
             long totalBytesRead = 0;
@@ -138,7 +123,7 @@ namespace S5Updater2
             await DownloadAsync(uri, r, s);
             s.Position = 0;
             using StreamReader sr = new(s, Encoding.UTF8);
-            return sr.ReadToEnd();
+            return await sr.ReadToEndAsync();
         }
 
         internal static bool IsFolder(this ZipArchiveEntry entry)
@@ -177,7 +162,7 @@ namespace S5Updater2
             return isChild;
         }
 
-        public static void CreateLinkPS(string lnk, string to, string para = "", Action<string>? log = null)
+        public static void CreateLinkPowershell(string lnk, string to, string para = "", Action<string>? log = null)
         {
             ProcessStartInfo i = new()
             {
@@ -332,7 +317,9 @@ namespace S5Updater2
                 StartInfo = i
             };
             pr.Start();
-            string loc = Assembly.GetExecutingAssembly().Location;
+            string? loc = Environment.ProcessPath;
+            if (loc != null)
+                return false;
             for (string? l = pr.StandardOutput.ReadLine(); l != null; l = pr.StandardOutput.ReadLine())
             {
                 if (loc == l.Trim())
@@ -344,7 +331,9 @@ namespace S5Updater2
 
         public static AWExitCode SetControlledFolderAccessException(string? path = null)
         {
-            path ??= Assembly.GetExecutingAssembly().Location;
+            path ??= Environment.ProcessPath;
+            if (path == null)
+                return AWExitCode.Success;
             ProcessStartInfo i = new()
             {
                 FileName = "powershell",

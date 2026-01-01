@@ -1,15 +1,9 @@
 ﻿using bbaLib;
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.IO.Compression;
 using System.Linq;
-using System.Resources;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-using System.Xml.Linq;
-using System.Xml.Serialization;
 
 namespace S5Updater2
 {
@@ -58,11 +52,10 @@ namespace S5Updater2
                         }
                         else if (e.Name.Equals("info.xml", StringComparison.CurrentCultureIgnoreCase))
                         {
-                            if (new XmlSerializer(typeof(S5MapInfo)).Deserialize(e.Open()) is not S5MapInfo i)
+                            var i = S5MapInfo.FromXML(e.Open());
+                            if (i == null)
                                 continue;
                             string outPath = GetMapFileExtraPath(i);
-                            if (outPath == null)
-                                continue;
                             string? dir = Path.GetDirectoryName(e.FullName);
                             if (dir == null)
                                 continue;
@@ -83,10 +76,10 @@ namespace S5Updater2
                             {
                                 if (e2.IsFolder())
                                     continue;
-                                string e2pathcheck = e2.FullName.Replace("\\", "/");
-                                if (e2pathcheck.StartsWith(checkDir, StringComparison.InvariantCultureIgnoreCase))
+                                string e2Pathcheck = e2.FullName.Replace("\\", "/");
+                                if (e2Pathcheck.StartsWith(checkDir, StringComparison.InvariantCultureIgnoreCase))
                                 {
-                                    string of = Path.Combine(outPath, e2pathcheck.Remove(0, checkDir.Length));
+                                    string of = Path.Combine(outPath, e2Pathcheck.Remove(0, checkDir.Length));
                                     string? ofdir = Path.GetDirectoryName(of);
                                     if (ofdir != null)
                                         Directory.CreateDirectory(ofdir);
@@ -114,8 +107,6 @@ namespace S5Updater2
                         return;
                     string outPath = GetMapFileExtraPath(i);
                     a.Clear();
-                    if (outPath == null)
-                        return;
                     outPath = Path.Combine(TargetPath, outPath);
                     Directory.CreateDirectory(outPath);
                     outPath = Path.Combine(outPath, Path.GetFileName(file));
@@ -134,9 +125,7 @@ namespace S5Updater2
                     }
                     using BbaArchive a = new();
                     a.ReadBba(file);
-                    string? modname = Path.GetFileNameWithoutExtension(file);
-                    if (modname == null)
-                        return;
+                    string modname = Path.GetFileNameWithoutExtension(file);
                     S5ModPackInfo? i = a.GetModPackInfo(modname);
                     if (i == null)
                         return;
@@ -156,14 +145,14 @@ namespace S5Updater2
         private static string GetMapFileExtraPath(S5MapInfo doc)
         {
             int key = doc.Key.FirstOrDefault(0);
-            string outPath = "base\\shr\\maps\\user";
+            string outPath = "base/shr/maps/user";
             if (key == 2)
             {
-                outPath = "extra2\\shr\\maps\\user";
+                outPath = "extra2/shr/maps/user";
             }
             else if (key == 1)
             {
-                outPath = "extra1\\shr\\maps\\user";
+                outPath = "extra1/shr/maps/user";
             }
             return outPath;
         }

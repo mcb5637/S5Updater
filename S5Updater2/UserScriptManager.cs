@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Reflection;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 namespace S5Updater2
 {
@@ -13,7 +9,7 @@ namespace S5Updater2
     {
         internal bool Zoom = false;
         internal int PlayerColor = -1;
-        private static string FileHE => Path.Combine(FolderHE, "Script\\UserScript.lua");
+        private static string FileHE => Path.Combine(FolderHE, "Script/UserScript.lua");
         private static string FolderHE => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "THE SETTLERS 5 - History Edition");
 
         internal static readonly PlayerColor[] PlayerColors = [ new PlayerColor("default", -1),
@@ -28,7 +24,7 @@ namespace S5Updater2
             var g = reg.GoldDocuments;
             if (g == null)
                 return null;
-            return Path.Combine(g, "Script\\UserScript.lua");
+            return Path.Combine(g, "Script/UserScript.lua");
         }
 
         internal void Update(RegistryHandler reg, Action<string> log)
