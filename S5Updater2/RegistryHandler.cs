@@ -264,7 +264,8 @@ namespace S5Updater2
         {
             get
             {
-                // TODO linux ?
+                if (!OperatingSystem.IsWindows())
+                    return ["code"];
                 return VSCGuids.Select(x => $"HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\{{{x}}}_is1")
                     .Select(x => GetReg(x, "DisplayIcon", null)).OfType<string>().Select(Path.GetDirectoryName).NotNull()
                     .Select(x => Path.Combine(x, "bin/code.cmd")).Where(File.Exists);
