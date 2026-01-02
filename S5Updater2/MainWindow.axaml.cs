@@ -44,14 +44,19 @@ namespace S5Updater2
                 return;
             }
 
-            Reg.LoadGoldPathFromRegistry(Valid);
-            Reg.LoadHEPathFromRegistry();
             Set = Settings.Load();
-            if (!OperatingSystem.IsWindows())
+            if (OperatingSystem.IsWindows())
             {
+                Reg.LoadGoldPathFromRegistry(Valid);
+                Reg.LoadHEPathFromRegistry();
+            }
+            else
+            {
+                Reg.WinePrefix = Set.WinePath;
                 Reg.GoldPath = Set.GoldPath;
                 Reg.HEPath = Set.HEPath;
             }
+
             UserScript.Read(Reg);
 
             DataContext = this;
@@ -368,11 +373,11 @@ namespace S5Updater2
         }
 
         internal static IList<Resolution> ResolutionData => Resolutions;
-        internal static Resolution SelectedResolution
+        internal Resolution SelectedResolution
         {
             get
             {
-                var res = RegistryHandler.Resolution;
+                var res = Reg.Resolution;
                 return Resolutions.FirstOrDefault((r) => r.RegValue == res, Resolutions[0]);
             }
         }
@@ -384,9 +389,9 @@ namespace S5Updater2
                     return;
                 if ((sender as ComboBox)?.SelectedItem is Resolution value)
                 {
-                    if (RegistryHandler.Resolution == value.RegValue)
+                    if (Reg.Resolution == value.RegValue)
                         return;
-                    await CheckExitCode(RegistryHandler.SetResolution(value.RegValue), Res.Log_SetReso, Res.Log_SetReso + value.Show);
+                    await CheckExitCode(Reg.SetResolution(value.RegValue), Res.Log_SetReso, Res.Log_SetReso + value.Show);
                     if (value.NeedsDev)
                         await SetDevMode(true);
                     UpdateEverything();
@@ -398,11 +403,11 @@ namespace S5Updater2
             }
         }
         internal static IList<Language> LanguageData => Languages;
-        internal static Language SelectedLanguage
+        internal Language SelectedLanguage
         {
             get
             {
-                var res = RegistryHandler.Language;
+                var res = Reg.Language;
                 return Languages.FirstOrDefault((r) => r.RegValue == res, Languages[0]);
             }
         }
@@ -414,9 +419,9 @@ namespace S5Updater2
                     return;
                 if ((sender as ComboBox)?.SelectedItem is Language value)
                 {
-                    if (RegistryHandler.Language == value.RegValue)
+                    if (Reg.Language == value.RegValue)
                         return;
-                    await CheckExitCode(RegistryHandler.SetLanguage(value.RegValue), Res.Log_SetLang, Res.Log_SetLang + value.Show);
+                    await CheckExitCode(Reg.SetLanguage(value.RegValue), Res.Log_SetLang, Res.Log_SetLang + value.Show);
                     UpdateEverything();
                 }
             }
@@ -425,7 +430,7 @@ namespace S5Updater2
                 Log(ex.ToString());
             }
         }
-        internal static bool DevMode => DevHashCalc.CalcHash(RegistryHandler.GetPCName()) == RegistryHandler.DevMode;
+        internal bool DevMode => DevHashCalc.CalcHash(RegistryHandler.GetPCName()) == Reg.DevMode;
 
         internal async void DevMode_Changed(object sender, RoutedEventArgs e)
         {
@@ -450,11 +455,11 @@ namespace S5Updater2
             if (DevMode == val)
                 return;
             uint v = val ? DevHashCalc.CalcHash(RegistryHandler.GetPCName()) : 0;
-            await CheckExitCode(RegistryHandler.SetDevMode(v), Res.Log_SetDev, Res.Log_SetDev + v);
+            await CheckExitCode(Reg.SetDevMode(v), Res.Log_SetDev, Res.Log_SetDev + v);
             UpdateEverything();
         }
 
-        internal static bool ShowIntroVideo => RegistryHandler.ShowIntroVideo;
+        internal bool ShowIntroVideo => Reg.ShowIntroVideo;
 
         internal async void ShowIntroVideo_Changed(object sender, RoutedEventArgs e)
         {
@@ -467,9 +472,9 @@ namespace S5Updater2
                     if (cb.IsChecked == null)
                         return;
                     bool val = (bool)cb.IsChecked;
-                    if (RegistryHandler.ShowIntroVideo == val)
+                    if (Reg.ShowIntroVideo == val)
                         return;
-                    await CheckExitCode(RegistryHandler.SetShowIntroVideo(val), Res.Log_SetIntroVideo, Res.Log_SetIntroVideo + val);
+                    await CheckExitCode(Reg.SetShowIntroVideo(val), Res.Log_SetIntroVideo, Res.Log_SetIntroVideo + val);
                     UpdateEverything();
                 }
             }
@@ -605,7 +610,8 @@ namespace S5Updater2
             {
                 TaskUpdateDebugger t = new()
                 {
-                    MM = this
+                    MM = this,
+                    Reg = Reg,
                 };
                 await Prog.ShowProgressDialog(t);
                 UpdateEverything();
@@ -892,6 +898,36 @@ namespace S5Updater2
                 {
                     await CheckExitCode(ec, Res.Log_AllowAccess, Res.Log_AllowAccess + dir);
                 });
+            }
+        }
+
+        internal bool WineEnabled => !OperatingSystem.IsWindows();
+
+        internal string WinePath
+        {
+            get => Set.WinePath;
+            set => Set.WinePath = value;
+        }
+
+        internal async void SelectWinePath(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                IReadOnlyList<IStorageFolder> f = await StorageProvider.OpenFolderPickerAsync(new FolderPickerOpenOptions()
+                {
+                    Title = Res.SelectWine,
+                });
+                if (f.Count > 0)
+                {
+                    Set.WinePath = f[0].Path.LocalPath;
+                    Reg.WinePrefix = Set.WinePath;
+                    Log(Res.Log_SetWine + Set.WinePath);
+                    UpdateEverything();
+                }
+            }
+            catch (Exception ex)
+            {
+                Log(ex.ToString());
             }
         }
     }

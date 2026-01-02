@@ -17,6 +17,8 @@ namespace S5Updater2
 
         private const string ExtensionAddress = "https://github.com/mcb5637/S5DebugAdaptor/releases/latest/download/debuggerlatestextension.txt";
 
+        internal required RegistryHandler Reg;
+
         protected override string? ZipPathToExtractPath(string e, string name)
         {
             if ("LuaDebugger.dll".Equals(name))
@@ -53,7 +55,7 @@ namespace S5Updater2
                 string v = await MainUpdater.DownloadFileString(ExtensionAddress, r);
                 string patchfile = Path.Combine(MM.Reg.GoldPath, $"s5luadebug-{v}.vsix");
                 await MainUpdater.DownloadFile($"https://github.com/mcb5637/S5DebugAdaptor/releases/latest/download/s5luadebug-{v}.vsix", patchfile, r);
-                foreach (string p in RegistryHandler.VSCCmdPaths)
+                foreach (string p in Reg.VSCCmdPaths)
                 {
                     string log = Res.Prog_Debugger_Extension_Into + p;
                     r(0, 100, log, log);

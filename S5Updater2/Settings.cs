@@ -11,6 +11,7 @@ namespace S5Updater2
         public bool DebuggerVSCAdaptor = true;
         public string GoldPath = "";
         public string HEPath = "";
+        public string WinePath = "";
 
 
         private const string FilePath = "./settings.json";

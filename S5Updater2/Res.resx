@@ -384,4 +384,13 @@
   <data name="Prog_Debugger_Extension_Into" xml:space="preserve">
     <value>Installing extension to: </value>
   </data>
+  <data name="WinePrefix" xml:space="preserve">
+    <value>Wine prefix:</value>
+  </data>
+  <data name="SelectWine" xml:space="preserve">
+    <value>Select Wine prefix</value>
+  </data>
+  <data name="Log_SetWine" xml:space="preserve">
+    <value>Set Wine prefix to: </value>
+  </data>
 </root>
