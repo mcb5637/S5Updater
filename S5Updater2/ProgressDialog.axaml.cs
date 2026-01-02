@@ -1,8 +1,5 @@
-using Avalonia;
 using Avalonia.Controls;
-using Avalonia.Markup.Xaml;
 using Avalonia.Threading;
-using System.Threading;
 using System.Threading.Tasks;
 
 namespace S5Updater2;
@@ -28,7 +25,7 @@ internal partial class ProgressDialog : Window
         await dia;
     }
 
-    private async void RunTask()
+    private async Task RunTask()
     {
         try
         {

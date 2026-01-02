@@ -1,15 +1,10 @@
 ﻿using Microsoft.Win32;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Security.AccessControl;
 using System.Security.Principal;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace S5UpdaterAdminWorker
 {
-    internal class AdminWorker
+    internal static class AdminWorker
     {
         private enum AWExitCode
         {
@@ -17,6 +12,7 @@ namespace S5UpdaterAdminWorker
             Invalid = 1,
             Unknown,
             InvalidOS,
+            // ReSharper disable once UnusedMember.Local
             AccessDenied,
         }
 
@@ -40,7 +36,7 @@ namespace S5UpdaterAdminWorker
                 Console.WriteLine("access control not on win");
                 return AWExitCode.InvalidOS;
             }
-            if (!File.Exists(Path.Combine(dir, "bin\\settlershok.exe")))
+            if (!File.Exists(Path.Combine(dir, "bin/settlershok.exe")))
             {
                 Console.WriteLine("no shok dir?");
                 return AWExitCode.Invalid;
