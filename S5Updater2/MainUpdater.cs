@@ -186,6 +186,7 @@ namespace S5Updater2
             }
         }
 
+        // ReSharper disable once InconsistentNaming
         public enum AWExitCode
         {
             Success = 0,

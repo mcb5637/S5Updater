@@ -216,6 +216,8 @@ namespace S5Updater2
 
             try
             {
+                GlobalSettings.SetOwnerValidation(false);
+
                 if (MM.Reg.GoldPath == null)
                     throw new NullReferenceException();
                 await MM.EnsureWriteAccess(MM.Reg.GoldPath);
