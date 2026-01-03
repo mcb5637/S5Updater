@@ -390,4 +390,7 @@
   <data name="Log_SetWine" xml:space="preserve">
     <value>Setze Wine Prefix zu: </value>
   </data>
+  <data name="UpdateUpdater" xml:space="preserve">
+    <value>Neue Updater version verfügbar, herunterladen?</value>
+  </data>
 </root>

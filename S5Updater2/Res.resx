@@ -393,4 +393,7 @@
   <data name="Log_SetWine" xml:space="preserve">
     <value>Set Wine prefix to: </value>
   </data>
+  <data name="UpdateUpdater" xml:space="preserve">
+    <value>new updater version available. update?</value>
+  </data>
 </root>

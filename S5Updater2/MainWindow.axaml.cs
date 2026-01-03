@@ -7,10 +7,12 @@ using MsBox.Avalonia;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
-using static S5Updater2.MainUpdater;
+using MsBox.Avalonia.Enums;
 
 namespace S5Updater2
 {
@@ -65,6 +67,33 @@ namespace S5Updater2
 
             UpdateEverything();
             ListenToEvents = true;
+            
+            Log(Assembly.GetExecutingAssembly().ManifestModule.ModuleVersionId.ToString());
+
+            Dispatcher.UIThread.Invoke(CheckUpdate);
+        }
+
+        private async void CheckUpdate()
+        {
+            try
+            {
+                string pname = OperatingSystem.IsWindows() ? "./AutoDownloader.exe" : "./AutoDownloader";
+                string back = pname + ".bak";
+                if (File.Exists(back))
+                    File.Delete(back);
+                string d = await MainUpdater.DownloadFileString("https://github.com/mcb5637/S5Updater/releases/latest/download/versionguid.txt",
+                    (_, _, _, _) => { });
+                if (d == Assembly.GetExecutingAssembly().ManifestModule.ModuleVersionId.ToString())
+                    return;
+                if (await MessageBoxManager.GetMessageBoxStandard("", Res.UpdateUpdater, ButtonEnum.YesNo).ShowAsync() != ButtonResult.Yes)
+                    return;
+                Close();
+                Process.Start(pname);
+            }
+            catch (Exception e)
+            {
+                Log(e.ToString());
+            }
         }
 
         private void OnClosing(object s, WindowClosingEventArgs a)
@@ -221,8 +250,8 @@ namespace S5Updater2
         {
             try
             {
-                var box = MessageBoxManager.GetMessageBoxStandard("", Res.ReallyOverrideRegistry, MsBox.Avalonia.Enums.ButtonEnum.YesNo);
-                if (await box.ShowAsync() == MsBox.Avalonia.Enums.ButtonResult.Yes)
+                var box = MessageBoxManager.GetMessageBoxStandard("", Res.ReallyOverrideRegistry, ButtonEnum.YesNo);
+                if (await box.ShowAsync() == ButtonResult.Yes)
                 {
                     await CheckExitCode(Reg.SetGoldReg(), Res.Log_SetGoldReg, Res.Log_SetGoldReg + Reg.GoldPath);
                 }
@@ -558,8 +587,8 @@ namespace S5Updater2
                 {
                     Log(ex.ToString());
                 }
-                var box = MessageBoxManager.GetMessageBoxStandard("", Res.HEEditor_CreateLinks, MsBox.Avalonia.Enums.ButtonEnum.YesNo);
-                if (await box.ShowAsync() == MsBox.Avalonia.Enums.ButtonResult.Yes)
+                var box = MessageBoxManager.GetMessageBoxStandard("", Res.HEEditor_CreateLinks, ButtonEnum.YesNo);
+                if (await box.ShowAsync() == ButtonResult.Yes)
                 {
                     MainUpdater.CreateLinkPowershell(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "Settlers HoK Editor Extra1.lnk"),
                         Path.Combine(p, "bin/shokmapeditor.exe"), "-extra1", Log);
@@ -891,9 +920,9 @@ namespace S5Updater2
         // never call from main thread!!!
         public async Task EnsureWriteAccess(string dir)
         {
-            if (!HasWriteAccess(dir))
+            if (!MainUpdater.HasWriteAccess(dir))
             {
-                var ec = RunFullAccess(dir);
+                var ec = MainUpdater.RunFullAccess(dir);
                 await Dispatcher.UIThread.InvokeAsync(async () =>
                 {
                     await CheckExitCode(ec, Res.Log_AllowAccess, Res.Log_AllowAccess + dir);

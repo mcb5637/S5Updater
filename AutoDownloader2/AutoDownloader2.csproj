@@ -5,9 +5,7 @@
         <TargetFramework>net10.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
-        <ApplicationManifest>app.manifest</ApplicationManifest>
-        <StartupObject>S5UpdaterAdminWorker.AdminWorker</StartupObject>
-        <LangVersion>14</LangVersion>
+        <PublishAot>true</PublishAot>
     </PropertyGroup>
 
 </Project>

@@ -10,6 +10,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "S5Updater2", "S5Updater2\S5
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "S5UpdaterAdminWorker", "S5UpdaterAdminWorker\S5UpdaterAdminWorker.csproj", "{2E4C9AAF-5B62-4092-9CFC-A4A7BA526ED2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoDownloader2", "AutoDownloader2\AutoDownloader2.csproj", "{034AE077-9961-42BD-9E13-9ACD821E6076}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -34,6 +36,14 @@ Global
 		{2E4C9AAF-5B62-4092-9CFC-A4A7BA526ED2}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2E4C9AAF-5B62-4092-9CFC-A4A7BA526ED2}.Release|x86.ActiveCfg = Release|Any CPU
 		{2E4C9AAF-5B62-4092-9CFC-A4A7BA526ED2}.Release|x86.Build.0 = Release|Any CPU
+		{034AE077-9961-42BD-9E13-9ACD821E6076}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{034AE077-9961-42BD-9E13-9ACD821E6076}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{034AE077-9961-42BD-9E13-9ACD821E6076}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{034AE077-9961-42BD-9E13-9ACD821E6076}.Debug|x86.Build.0 = Debug|Any CPU
+		{034AE077-9961-42BD-9E13-9ACD821E6076}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{034AE077-9961-42BD-9E13-9ACD821E6076}.Release|Any CPU.Build.0 = Release|Any CPU
+		{034AE077-9961-42BD-9E13-9ACD821E6076}.Release|x86.ActiveCfg = Release|Any CPU
+		{034AE077-9961-42BD-9E13-9ACD821E6076}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

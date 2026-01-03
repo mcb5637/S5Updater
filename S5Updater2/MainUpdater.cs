@@ -186,16 +186,6 @@ namespace S5Updater2
             }
         }
 
-        // ReSharper disable once InconsistentNaming
-        public enum AWExitCode
-        {
-            Success = 0,
-            Invalid = 1,
-            Unknown,
-            InvalidOS,
-            AccessDenied,
-        }
-
         public static AWExitCode RunAdminReg(string k, string k2, object? v)
         {
             string vs;
@@ -365,5 +355,15 @@ namespace S5Updater2
                 if (v is not null)
                     yield return v;
         }
+    }
+    
+    // ReSharper disable once InconsistentNaming
+    internal enum AWExitCode
+    {
+        Success = 0,
+        Invalid = 1,
+        Unknown,
+        InvalidOS,
+        AccessDenied,
     }
 }

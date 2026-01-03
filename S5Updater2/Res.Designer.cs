@@ -596,5 +596,11 @@ namespace S5Updater2 {
                 return ResourceManager.GetString("Log_SetWine", resourceCulture);
             }
         }
+        
+        public static string UpdateUpdater {
+            get {
+                return ResourceManager.GetString("UpdateUpdater", resourceCulture);
+            }
+        }
     }
 }
