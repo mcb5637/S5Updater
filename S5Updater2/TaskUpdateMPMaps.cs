@@ -4,6 +4,7 @@ using System;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Avalonia.Threading;
 
 namespace S5Updater2
 {
@@ -310,8 +311,10 @@ namespace S5Updater2
 
             async Task<bool> Messagebox(string q)
             {
-                var box = MessageBoxManager.GetMessageBoxStandard("", q, MsBox.Avalonia.Enums.ButtonEnum.YesNo);
-                return await box.ShowAsync() == MsBox.Avalonia.Enums.ButtonResult.Yes;
+                var box = await Dispatcher.UIThread.InvokeAsync(async () =>
+                    await MessageBoxManager.GetMessageBoxStandard("", q, MsBox.Avalonia.Enums.ButtonEnum.YesNo)
+                        .ShowAsync());
+                return box == MsBox.Avalonia.Enums.ButtonResult.Yes;
             }
         }
 

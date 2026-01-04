@@ -4,6 +4,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.IO.Compression;
 using System.Text.RegularExpressions;
+using Avalonia.Threading;
 using MsBox.Avalonia;
 
 namespace S5Updater2
@@ -42,8 +43,11 @@ namespace S5Updater2
                     throw new NullReferenceException();
                 if (Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName != "de" || !MM.EasyMode)
                 {
-                    var box = MessageBoxManager.GetMessageBoxStandard("", MM.EasyMode ? Res.TaskConvert_QstRu : Res.TaskConvert_QstRuFull, MsBox.Avalonia.Enums.ButtonEnum.YesNo);
-                    if (await box.ShowAsync() == MsBox.Avalonia.Enums.ButtonResult.Yes)
+                    var buttonResult = await Dispatcher.UIThread.InvokeAsync(async () =>
+                        await MessageBoxManager.GetMessageBoxStandard("",
+                            MM.EasyMode ? Res.TaskConvert_QstRu : Res.TaskConvert_QstRuFull,
+                            MsBox.Avalonia.Enums.ButtonEnum.YesNo).ShowAsync());
+                    if (buttonResult == MsBox.Avalonia.Enums.ButtonResult.Yes)
                     {
                         r(0, 100, Res.TaskConvert_SkipFont, Res.TaskConvert_SkipFont);
                         return;
@@ -52,7 +56,8 @@ namespace S5Updater2
 
                 string patchfile = Path.Combine(MM.Reg.GoldPath, "Tmp_font.zip");
                 r(0, 100, Res.TaskConvert_DownloadFont, Res.TaskConvert_DownloadFont);
-                await MainUpdater.DownloadFile("https://github.com/mcb5637/s5HEfonts/archive/refs/heads/master.zip", patchfile, r);
+                await MainUpdater.DownloadFile("https://github.com/mcb5637/s5HEfonts/archive/refs/heads/master.zip",
+                    patchfile, r);
                 r(100, 100, Res.Done, Res.Done);
                 r(0, 100, Res.TaskConvert_PatchFont, Res.TaskConvert_PatchFont);
                 string[] extras = ["base", "extra1", "extra2"];
@@ -67,18 +72,22 @@ namespace S5Updater2
                             count++;
                             continue;
                         }
+
                         r(count, filenium, e.FullName, null);
                         foreach (string s in extras)
                         {
-                            string destinationFileName = Path.Combine(MM.Reg.GoldPath, s, "shr\\menu\\Fonts", Path.GetFileName(e.FullName));
+                            string destinationFileName = Path.Combine(MM.Reg.GoldPath, s, "shr\\menu\\Fonts",
+                                Path.GetFileName(e.FullName));
                             string? path = Path.GetDirectoryName(destinationFileName);
                             if (path != null)
                                 Directory.CreateDirectory(path);
                             await e.ExtractToFileAsync(destinationFileName, true);
                         }
+
                         count++;
                     }
                 }
+
                 File.Delete(patchfile);
                 r(100, 100, Res.Done, Res.Done);
             }
@@ -97,7 +106,8 @@ namespace S5Updater2
                     throw new NullReferenceException();
                 string patchfile = Path.Combine(MM.Reg.GoldPath, "Tmp_data.zip");
                 r(0, 100, Res.TaskConvert_DownloadFileData, Res.TaskConvert_DownloadFileData);
-                await MainUpdater.DownloadFile("https://github.com/mcb5637/s5HEmodification/archive/refs/heads/master.zip", patchfile, r);
+                await MainUpdater.DownloadFile(
+                    "https://github.com/mcb5637/s5HEmodification/archive/refs/heads/master.zip", patchfile, r);
                 r(100, 100, Res.Done, Res.Done);
                 r(0, 100, Res.TaskConvert_PatchData, Res.TaskConvert_PatchData);
                 File.Delete(Path.Combine(MM.Reg.GoldPath, "base\\shr\\menu\\Projects\\mainmenu.xml"));
@@ -123,6 +133,7 @@ namespace S5Updater2
                             count++;
                             continue;
                         }
+
                         string extrapath;
                         if (e.FullName.StartsWith("s5HEmodification-master/base"))
                             extrapath = "base\\shr";
@@ -136,6 +147,7 @@ namespace S5Updater2
                             count++;
                             continue;
                         }
+
                         string filepath;
                         if (gui.IsMatch(e.FullName))
                             filepath = "menu\\Projects\\mainmenu.xml";
@@ -149,6 +161,7 @@ namespace S5Updater2
                             count++;
                             continue;
                         }
+
                         r(count, filenium, e.FullName, null);
                         string destinationFileName = Path.Combine(MM.Reg.GoldPath, extrapath, filepath);
                         string? path = Path.GetDirectoryName(destinationFileName);
@@ -158,6 +171,7 @@ namespace S5Updater2
                         count++;
                     }
                 }
+
                 File.Delete(patchfile);
                 r(100, 100, Res.Done, Res.Done);
             }
@@ -200,6 +214,7 @@ namespace S5Updater2
             {
                 MM.Reg.GoldPath = Path.Combine(MainUpdater.GetParentDir(MM.Reg.HEPath), "SettlersHoK_ConvertedGold");
             }
+
             if (!MM.Reg.GoldHasReg && (MM.EasyMode || await MsgRegistry()))
             {
                 MM.Reg.SetGoldReg();
@@ -207,8 +222,10 @@ namespace S5Updater2
 
             async Task<bool> MsgRegistry()
             {
-                var box = MessageBoxManager.GetMessageBoxStandard("", Res.TaskConvert_QstSetReg + MM.Reg.GoldPath, MsBox.Avalonia.Enums.ButtonEnum.YesNo);
-                return await box.ShowAsync() == MsBox.Avalonia.Enums.ButtonResult.Yes;
+                var box = await Dispatcher.UIThread.InvokeAsync(async () => await MessageBoxManager
+                    .GetMessageBoxStandard("", Res.TaskConvert_QstSetReg + MM.Reg.GoldPath,
+                        MsBox.Avalonia.Enums.ButtonEnum.YesNo).ShowAsync());
+                return box == MsBox.Avalonia.Enums.ButtonResult.Yes;
             }
         }
 
@@ -219,39 +236,50 @@ namespace S5Updater2
             if (!OperatingSystem.IsWindows())
                 return;
             string p = MM.Reg.GoldPath;
-            Action<string> log = (s) =>
-            {
-                r(0, 100, s, s);
-            };
+            Action<string> log = (s) => { r(0, 100, s, s); };
             if (await Messagebox(Res.TaskConvert_QstLink))
             {
-                MainUpdater.CreateLinkPowershell(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "Settlers HoK Base.lnk"),
+                MainUpdater.CreateLinkPowershell(
+                    Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "Settlers HoK Base.lnk"),
                     Path.Combine(p, "bin/settlershok.exe"), "", log);
-                MainUpdater.CreateLinkPowershell(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "Settlers HoK Extra1.lnk"),
+                MainUpdater.CreateLinkPowershell(
+                    Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop),
+                        "Settlers HoK Extra1.lnk"),
                     Path.Combine(p, "extra1/bin/settlershok.exe"), "", log);
-                MainUpdater.CreateLinkPowershell(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "Settlers HoK Extra2.lnk"),
+                MainUpdater.CreateLinkPowershell(
+                    Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop),
+                        "Settlers HoK Extra2.lnk"),
                     Path.Combine(p, "extra2/bin/settlershok.exe"), "", log);
             }
+
             if (await Messagebox(Res.TaskConvert_QstLinkEditor))
             {
-                MainUpdater.CreateLinkPowershell(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "Settlers HoK Extra1 Editor.lnk"),
+                MainUpdater.CreateLinkPowershell(
+                    Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop),
+                        "Settlers HoK Extra1 Editor.lnk"),
                     Path.Combine(p, "extra1/bin/shokmapeditor.exe"), "", log);
-                MainUpdater.CreateLinkPowershell(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "Settlers HoK Extra2 Editor.lnk"),
+                MainUpdater.CreateLinkPowershell(
+                    Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop),
+                        "Settlers HoK Extra2 Editor.lnk"),
                     Path.Combine(p, "extra2/bin/shokmapeditor.exe"), "", log);
             }
 
             async Task<bool> Messagebox(string q)
             {
-                var box = MessageBoxManager.GetMessageBoxStandard("", q, MsBox.Avalonia.Enums.ButtonEnum.YesNo);
-                return await box.ShowAsync() == MsBox.Avalonia.Enums.ButtonResult.Yes;
+                var box = await Dispatcher.UIThread.InvokeAsync(async () =>
+                    await MessageBoxManager.GetMessageBoxStandard("", q, MsBox.Avalonia.Enums.ButtonEnum.YesNo)
+                        .ShowAsync());
+                return box == MsBox.Avalonia.Enums.ButtonResult.Yes;
             }
         }
 
         [GeneratedRegex("^s5HEmodification-master/(base|extra1|extra2)/mainmenu.xml")]
         // ReSharper disable once InconsistentNaming
         private static partial Regex GUIRegex();
+
         [GeneratedRegex("^s5HEmodification-master/(base|extra1|extra2)/config/")]
         private static partial Regex ConfigRegex();
+
         [GeneratedRegex("^s5HEmodification-master/(base|extra1|extra2)/[Ss]cript/")]
         private static partial Regex ScriptRegex();
     }
