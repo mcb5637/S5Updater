@@ -52,10 +52,13 @@ namespace S5Updater2
                 Directory.CreateDirectory(folder);
             log(string.Format(Res.TaskUserScript_WriteLog, file));
             using StreamWriter w = new(file, false);
-            w.WriteLine($"UserScriptSettings = {{Weather = {(Zoom ? "true" : "false")}, Zoom = {(Zoom ? "2" : "nil")}, PlayerColor = {(PlayerColor > 0 ? PlayerColor.ToString() : "nil")}, Debug = nil}}");
-            w.Flush();
+            w.Write($"UserScriptSettings = {{Weather = {(Zoom ? "true" : "false")}, Zoom = {(Zoom ? "2" : "nil")}, PlayerColor = {(PlayerColor > 0 ? PlayerColor.ToString() : "nil")}, Debug = nil}}\r\n");
             using StreamReader r = new(Assembly.GetExecutingAssembly().GetManifestResourceStream("S5Updater2.UserScript.lua")?? throw new NullReferenceException("res not found"));
-            w.Write(r.ReadToEnd());
+            for (string? l = r.ReadLine(); l != null; l = r.ReadLine())
+            {
+                w.Write(l);
+                w.Write("\r\n");
+            }
         }
 
         private bool ReadFrom(string? file)

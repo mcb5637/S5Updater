@@ -9,7 +9,7 @@
 		SizeToContent="WidthAndHeight"
 		CanResize="False"
 		>
-	<Grid ColumnDefinitions="Auto" RowDefinitions="Auto,Auto">
+	<Grid ColumnDefinitions="750" RowDefinitions="Auto,Auto">
 		<ProgressBar Name="Bar" ShowProgressText="True"></ProgressBar>
 		<TextBlock Grid.Row="1" Name="LogText"></TextBlock>
 	</Grid>

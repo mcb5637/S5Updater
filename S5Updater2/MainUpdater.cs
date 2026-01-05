@@ -10,6 +10,11 @@ using bbaLib;
 using System.Threading.Tasks;
 using System.Text;
 using System.ComponentModel;
+using Avalonia.Controls;
+using Avalonia.Threading;
+using MsBox.Avalonia;
+using MsBox.Avalonia.Dto;
+using MsBox.Avalonia.Enums;
 
 namespace S5Updater2
 {
@@ -23,7 +28,7 @@ namespace S5Updater2
             .StartWithClassicDesktopLifetime(args);
 
         // Avalonia configuration, don't remove; also used by visual designer.
-        public static AppBuilder BuildAvaloniaApp()
+        private static AppBuilder BuildAvaloniaApp()
             => AppBuilder.Configure<App>()
                 .UsePlatformDetect()
                 .WithInterFont()
@@ -92,7 +97,7 @@ namespace S5Updater2
             await DownloadAsync(uri, r, s);
         }
 
-        internal static async Task DownloadAsync(string uri, ProgressDialog.ReportProgressDel r, Stream target)
+        private static async Task DownloadAsync(string uri, ProgressDialog.ReportProgressDel r, Stream target)
         {
             using HttpClient cl = new();
             using HttpResponseMessage res = await cl.GetAsync(uri, HttpCompletionOption.ResponseHeadersRead);
@@ -354,6 +359,25 @@ namespace S5Updater2
             foreach (var v in l)
                 if (v is not null)
                     yield return v;
+        }
+
+        private static async Task<ButtonResult> MessageBox(MessageBoxStandardParams p)
+        {
+            if (!Dispatcher.UIThread.CheckAccess())
+                return await Dispatcher.UIThread.InvokeAsync(async () => await MessageBoxManager.GetMessageBoxStandard(p).ShowAsync());
+            return await MessageBoxManager.GetMessageBoxStandard(p).ShowAsync();
+        }
+        public static async Task<ButtonResult> MessageBox(string title, string msg, ButtonEnum buttons)
+        {
+            return await MessageBox(new MessageBoxStandardParams()
+            {
+                ContentTitle = title,
+                ContentMessage = msg,
+                WindowStartupLocation = WindowStartupLocation.CenterOwner,
+                Topmost = true,
+                ButtonDefinitions = buttons,
+                SystemDecorations = SystemDecorations.BorderOnly,
+            });
         }
     }
     

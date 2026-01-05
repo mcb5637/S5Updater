@@ -4,8 +4,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.IO.Compression;
 using System.Text.RegularExpressions;
-using Avalonia.Threading;
-using MsBox.Avalonia;
+using MsBox.Avalonia.Enums;
 
 namespace S5Updater2
 {
@@ -43,11 +42,7 @@ namespace S5Updater2
                     throw new NullReferenceException();
                 if (Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName != "de" || !MM.EasyMode)
                 {
-                    var buttonResult = await Dispatcher.UIThread.InvokeAsync(async () =>
-                        await MessageBoxManager.GetMessageBoxStandard("",
-                            MM.EasyMode ? Res.TaskConvert_QstRu : Res.TaskConvert_QstRuFull,
-                            MsBox.Avalonia.Enums.ButtonEnum.YesNo).ShowAsync());
-                    if (buttonResult == MsBox.Avalonia.Enums.ButtonResult.Yes)
+                    if (await MainUpdater.MessageBox("", MM.EasyMode ? Res.TaskConvert_QstRu : Res.TaskConvert_QstRuFull, ButtonEnum.YesNo) == ButtonResult.Yes)
                     {
                         r(0, 100, Res.TaskConvert_SkipFont, Res.TaskConvert_SkipFont);
                         return;
@@ -222,10 +217,7 @@ namespace S5Updater2
 
             async Task<bool> MsgRegistry()
             {
-                var box = await Dispatcher.UIThread.InvokeAsync(async () => await MessageBoxManager
-                    .GetMessageBoxStandard("", Res.TaskConvert_QstSetReg + MM.Reg.GoldPath,
-                        MsBox.Avalonia.Enums.ButtonEnum.YesNo).ShowAsync());
-                return box == MsBox.Avalonia.Enums.ButtonResult.Yes;
+                return await MainUpdater.MessageBox("", Res.TaskConvert_QstSetReg + MM.Reg.GoldPath, ButtonEnum.YesNo) == ButtonResult.Yes;
             }
         }
 
@@ -266,10 +258,7 @@ namespace S5Updater2
 
             async Task<bool> Messagebox(string q)
             {
-                var box = await Dispatcher.UIThread.InvokeAsync(async () =>
-                    await MessageBoxManager.GetMessageBoxStandard("", q, MsBox.Avalonia.Enums.ButtonEnum.YesNo)
-                        .ShowAsync());
-                return box == MsBox.Avalonia.Enums.ButtonResult.Yes;
+                return await MainUpdater.MessageBox("", q, ButtonEnum.YesNo) == ButtonResult.Yes;
             }
         }
 

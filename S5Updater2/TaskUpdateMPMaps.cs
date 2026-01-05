@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Avalonia.Threading;
+using MsBox.Avalonia.Enums;
 
 namespace S5Updater2
 {
@@ -311,10 +312,7 @@ namespace S5Updater2
 
             async Task<bool> Messagebox(string q)
             {
-                var box = await Dispatcher.UIThread.InvokeAsync(async () =>
-                    await MessageBoxManager.GetMessageBoxStandard("", q, MsBox.Avalonia.Enums.ButtonEnum.YesNo)
-                        .ShowAsync());
-                return box == MsBox.Avalonia.Enums.ButtonResult.Yes;
+                return await MainUpdater.MessageBox("", q, ButtonEnum.YesNo) == ButtonResult.Yes;
             }
         }
 

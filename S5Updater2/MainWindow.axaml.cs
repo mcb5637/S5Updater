@@ -915,7 +915,7 @@ namespace S5Updater2
             }
         }
 
-        internal int MaxScrollerHeight => 500;
+        internal int MaxScrollerHeight => 1024;
 
         // never call from main thread!!!
         public async Task EnsureWriteAccess(string dir)
