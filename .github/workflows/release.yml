@@ -46,8 +46,12 @@ jobs:
           mv ./Release/S5Updater2.exe ./Release/S5Updater.exe
           mv ./Release/AutoDownloader2.exe ./Release/AutoDownloader.exe
           
+          ls ./Release
+          
           sudo apt install zip
-          zip ./Release.zip ./Release
+          cd ./Release
+          zip -r ../Release.zip .
+          cd ../
           
       - uses: softprops/action-gh-release@v2
         with:
