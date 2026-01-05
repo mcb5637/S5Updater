@@ -19,7 +19,8 @@ jobs:
         run: dotnet restore
 
       - name: publish updater
-        run: dotnet publish ./S5Updater.sln -o ./Release -r win-x64 -c Release
+        run: |
+          dotnet publish ./S5Updater.sln -o ./Release -r win-x64 -c Release
 
       - uses: actions/upload-artifact@v4
         with:
@@ -40,8 +41,11 @@ jobs:
           name: release
           path: ./Release
       
-      - name: zip
+      - name: rename and zip
         run: |
+          mv ./Release/S5Updater2.exe ./Release/S5Updater.exe
+          mv ./Release/AutoDownloader2.exe ./Release/AutoDownloader.exe
+          
           sudo apt install zip
           zip ./Release.zip ./Release
           
