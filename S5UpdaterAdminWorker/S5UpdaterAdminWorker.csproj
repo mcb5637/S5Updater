@@ -8,6 +8,7 @@
         <ApplicationManifest>app.manifest</ApplicationManifest>
         <StartupObject>S5UpdaterAdminWorker.AdminWorker</StartupObject>
         <LangVersion>14</LangVersion>
+        <PublishAot>true</PublishAot>
     </PropertyGroup>
 
 </Project>

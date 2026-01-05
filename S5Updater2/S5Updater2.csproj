@@ -8,6 +8,7 @@
         <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
         <LangVersion>14</LangVersion>
         <BuiltInComInteropSupport>false</BuiltInComInteropSupport>
+        <PublishAot>true</PublishAot>
     </PropertyGroup>
     <ItemGroup>
         <None Remove="UserScript.lua"/>
