@@ -53,6 +53,11 @@ jobs:
           zip -r ../Release.zip .
           cd ../
           
+      - name: Delete tag
+        run: gh release delete nightly --cleanup-tag -y
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          
       - uses: softprops/action-gh-release@v2
         with:
           body: "latest code from master"
