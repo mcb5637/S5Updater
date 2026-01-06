@@ -27,13 +27,12 @@ namespace S5Updater2
         [STAThread]
         public static void Main(string[] args)
         {
-            if (args.Length == 1 && args[0] == "--getVersionGUID")
+            if (args.Length == 2 && args[0] == "--getVersionGUID")
             {
-                Console.WriteLine(Assembly.GetExecutingAssembly().ManifestModule.ModuleVersionId.ToString());
+                File.WriteAllText(args[1], Assembly.GetExecutingAssembly().ManifestModule.ModuleVersionId.ToString());
                 return;
             }
-            BuildAvaloniaApp()
-                .StartWithClassicDesktopLifetime(args);
+            BuildAvaloniaApp().StartWithClassicDesktopLifetime(args);
         }
 
         // Avalonia configuration, don't remove; also used by visual designer.

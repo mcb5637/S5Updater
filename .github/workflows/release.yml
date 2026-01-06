@@ -21,7 +21,7 @@ jobs:
       - name: publish updater
         run: |
           dotnet publish ./S5Updater.sln -o ./Release -r win-x64 -c Release
-          ./Release/S5Updater2.exe --getVersionGUID > ./Release/versionguid.txt
+          ./Release/S5Updater2.exe --getVersionGUID ./Release/versionguid.txt
 
       - uses: actions/upload-artifact@v4
         with:
@@ -50,7 +50,7 @@ jobs:
           mv ./Release/AutoDownloader2.exe ./Release/AutoDownloader.exe
           mv ./Release/versionguid.txt ./versionguid.txt
           
-          ls ./Release
+          ls ./
           
           sudo apt install zip
           cd ./Release
