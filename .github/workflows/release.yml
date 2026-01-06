@@ -94,7 +94,7 @@ jobs:
           files: |
             ./Release.zip
             ./versionguid.txt
-            ./Release_Linux
+            ./Release_Linux.zip
             ./versionguid_Linux.txt
           name: nightly
           tag_name: nightly
