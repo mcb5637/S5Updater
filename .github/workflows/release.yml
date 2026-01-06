@@ -50,15 +50,13 @@ jobs:
           mv ./Release/AutoDownloader2.exe ./Release/AutoDownloader.exe
           mv ./Release/versionguid.txt ./versionguid.txt
           
-          ls ./
-          
           sudo apt install zip
           cd ./Release
           zip -r ../Release.zip .
           cd ../
           
       - name: Delete tag
-        run: gh release delete nightly --cleanup-tag -y
+        run: gh release delete nightly --cleanup-tag -y || true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           
