@@ -21,6 +21,7 @@ jobs:
       - name: publish updater
         run: |
           dotnet publish ./S5Updater.sln -o ./Release -r win-x64 -c Release
+          ./Release/S5Updater2.exe --getVersionGUID > ./Release/versionguid.txt
 
       - uses: actions/upload-artifact@v4
         with:
@@ -36,6 +37,8 @@ jobs:
     permissions:
       contents: write
     steps:
+      - uses: actions/checkout@v6
+        
       - uses: actions/download-artifact@v7
         with:
           name: release
@@ -45,6 +48,7 @@ jobs:
         run: |
           mv ./Release/S5Updater2.exe ./Release/S5Updater.exe
           mv ./Release/AutoDownloader2.exe ./Release/AutoDownloader.exe
+          mv ./Release/versionguid.txt ./versionguid.txt
           
           ls ./Release
           
@@ -62,7 +66,9 @@ jobs:
         with:
           body: "latest code from master"
           prerelease: true
-          files: ./Release.zip
+          files: |
+            ./Release.zip
+            ./versionguid.txt
           name: nightly
           tag_name: nightly
           fail_on_unmatched_files: true
