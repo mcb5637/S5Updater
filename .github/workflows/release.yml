@@ -7,7 +7,18 @@ on:
 jobs:
   build:
     name: build
-    runs-on: windows-latest
+    strategy:
+      matrix:
+        include:
+          - os: windows-latest
+            netrun: win-x64
+            artifact: release
+            updater: S5Updater2.exe
+          - os: ubuntu-latest
+            netrun: linux-x64
+            artifact: release_linux
+            updater: S5Updater2
+    runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v6
         
@@ -20,13 +31,13 @@ jobs:
 
       - name: publish updater
         run: |
-          dotnet publish ./S5Updater.sln -o ./Release -r win-x64 -c Release
-          ./Release/S5Updater2.exe --getVersionGUID ./Release/versionguid.txt
+          dotnet publish ./S5Updater.sln -o ./Release -r ${{ matrix.netrun }} -c Release
+          ./Release/${{ matrix.updater }} --getVersionGUID ./Release/versionguid.txt
 
       - uses: actions/upload-artifact@v4
         with:
           path: ./Release
-          name: release
+          name: "${{ matrix.artifact }}"
           overwrite: true
 
 
@@ -43,8 +54,13 @@ jobs:
         with:
           name: release
           path: ./Release
-      
-      - name: rename and zip
+
+      - uses: actions/download-artifact@v7
+        with:
+          name: release_linux
+          path: ./Release_Linux
+
+      - name: rename and zip win
         run: |
           mv ./Release/S5Updater2.exe ./Release/S5Updater.exe
           mv ./Release/AutoDownloader2.exe ./Release/AutoDownloader.exe
@@ -55,6 +71,17 @@ jobs:
           zip -r ../Release.zip .
           cd ../
           
+      - name: rename and zip linux
+        run: |
+          mv ./Release_Linux/S5Updater2 ./Release_Linux/S5Updater
+          mv ./Release_Linux/AutoDownloader2 ./Release_Linux/AutoDownloader
+          mv ./Release_Linux/versionguid.txt ./versionguid_Linux.txt
+
+          sudo apt install zip
+          cd ./Release_Linux
+          zip -r ../Release_Linux.zip .
+          cd ../
+
       - name: Delete tag
         run: gh release delete nightly --cleanup-tag -y || true
         env:
@@ -67,6 +94,8 @@ jobs:
           files: |
             ./Release.zip
             ./versionguid.txt
+            ./Release_Linux
+            ./versionguid_Linux.txt
           name: nightly
           tag_name: nightly
           fail_on_unmatched_files: true
