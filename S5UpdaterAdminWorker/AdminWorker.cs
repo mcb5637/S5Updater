@@ -6,6 +6,7 @@ namespace S5UpdaterAdminWorker
 {
     internal static class AdminWorker
     {
+        // ReSharper disable once InconsistentNaming
         private enum AWExitCode
         {
             Success = 0,
@@ -25,7 +26,6 @@ namespace S5UpdaterAdminWorker
                 e = FullAccess(args[1]);
             if (args.Length == 5 && args[0] == "SetReg")
                 e = SetReg(args[1], args[2], args[3], args[4]);
-            Console.ReadKey();
             return (int) e;
         }
 

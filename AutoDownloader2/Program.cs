@@ -1,4 +1,5 @@
-﻿using System.IO.Compression;
+﻿using System.Diagnostics;
+using System.IO.Compression;
 
 namespace AutoDownloader2
 {
@@ -6,7 +7,9 @@ namespace AutoDownloader2
     {
         public static async Task Main(string[] _)
         {
-            await DownloadFile("https://github.com/mcb5637/S5Updater/releases/latest/download/Release.zip", "./update.zip");
+            await DownloadFile(OperatingSystem.IsWindows() ? 
+                "https://github.com/mcb5637/S5Updater/releases/latest/download/Release.zip" :
+                "https://github.com/mcb5637/S5Updater/releases/latest/download/Release_Linux.zip ", "./update.zip");
             string pname = OperatingSystem.IsWindows() ? "./AutoDownloader.exe" : "./AutoDownloader";
             string back = pname + ".bak";
             if (File.Exists(back))
@@ -30,6 +33,7 @@ namespace AutoDownloader2
                 }
             }
             File.Delete("./update.zip");
+            Process.Start(OperatingSystem.IsWindows() ? "./S5Updater.exe" : "/S5Updater");
         }
 
         private static async Task DownloadAsync(string uri, Stream target)

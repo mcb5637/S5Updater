@@ -81,7 +81,9 @@ namespace S5Updater2
                 string back = pname + ".bak";
                 if (File.Exists(back))
                     File.Delete(back);
-                string d = await MainUpdater.DownloadFileString("https://github.com/mcb5637/S5Updater/releases/latest/download/versionguid.txt",
+                string d = await MainUpdater.DownloadFileString(OperatingSystem.IsWindows() ?
+                        "https://github.com/mcb5637/S5Updater/releases/latest/download/versionguid.txt" :
+                        "https://github.com/mcb5637/S5Updater/releases/latest/download/versionguid_Linux.txt ",
                     (_, _, _, _) => { });
                 if (d == Assembly.GetExecutingAssembly().ManifestModule.ModuleVersionId.ToString())
                     return;
