@@ -189,16 +189,24 @@ namespace S5Updater2
 
         private void CopyInstall(ProgressDialog.ReportProgressDel r)
         {
-            if (MM.Reg.GoldPath == null)
-                throw new NullReferenceException();
-            if (MM.Reg.HEPath == null)
-                throw new NullReferenceException();
-            r(0, 100, Res.TaskConvert_CopyingInstall, Res.TaskConvert_CopyingInstall);
-            MainUpdater.Copy(MM.Reg.HEPath, MM.Reg.GoldPath, [], r);
-            string goldbin = Path.Combine(MM.Reg.GoldPath, "bin");
-            MainUpdater.Copy(goldbin, Path.Combine(MM.Reg.GoldPath, "extra1\\bin"), [], r);
-            MainUpdater.Copy(goldbin, Path.Combine(MM.Reg.GoldPath, "extra2\\bin"), [], r);
-            r(100, 100, Res.Done, Res.Done);
+            try
+            {
+                if (MM.Reg.GoldPath == null)
+                    throw new NullReferenceException();
+                if (MM.Reg.HEPath == null)
+                    throw new NullReferenceException();
+                r(0, 100, Res.TaskConvert_CopyingInstall, Res.TaskConvert_CopyingInstall);
+                MainUpdater.Copy(MM.Reg.HEPath, MM.Reg.GoldPath, [], r);
+                string goldbin = Path.Combine(MM.Reg.GoldPath, "bin");
+                MainUpdater.Copy(goldbin, Path.Combine(MM.Reg.GoldPath, "extra1\\bin"), [], r);
+                MainUpdater.Copy(goldbin, Path.Combine(MM.Reg.GoldPath, "extra2\\bin"), [], r);
+                r(100, 100, Res.Done, Res.Done);
+            }
+            catch (Exception e)
+            {
+                r(0, 100, e.ToString(), e.ToString());
+                Status = Status.Error;
+            }
         }
 
         private async Task SetupPath()
