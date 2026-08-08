@@ -101,7 +101,7 @@ jobs:
             ./versionguid.txt
             ./Release_Linux.zip
             ./versionguid_Linux.txt
-            ./HashFileBuilder
+            HashFileBuilder
           name: nightly
           tag_name: nightly
           fail_on_unmatched_files: true
