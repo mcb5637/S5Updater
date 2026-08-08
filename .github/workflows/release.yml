@@ -79,7 +79,7 @@ jobs:
           mv ./Release_Linux/AutoDownloader2 ./Release_Linux/AutoDownloader
           mv ./Release_Linux/versionguid.txt ./versionguid_Linux.txt
           mv ./Release_Linux/HashFileBuilder ./HashFileBuilder
-          rm ./Release/HashFileBuilder.pdb
+          rm ./Release_Linux/HashFileBuilder.pdb
 
           cd ./Release_Linux
           zip -r ../Release_Linux.zip .
