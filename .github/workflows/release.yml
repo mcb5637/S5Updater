@@ -65,7 +65,7 @@ jobs:
           mv ./Release/S5Updater2.exe ./Release/S5Updater.exe
           mv ./Release/AutoDownloader2.exe ./Release/AutoDownloader.exe
           mv ./Release/versionguid.txt ./versionguid.txt
-          
+          del ./Release/HashFileBuilder.exe
           sudo apt install zip
           cd ./Release
           zip -r ../Release.zip .
@@ -76,6 +76,7 @@ jobs:
           mv ./Release_Linux/S5Updater2 ./Release_Linux/S5Updater
           mv ./Release_Linux/AutoDownloader2 ./Release_Linux/AutoDownloader
           mv ./Release_Linux/versionguid.txt ./versionguid_Linux.txt
+          mv ./Release_Linux/HashFileBuilder ./HashFileBuilder
 
           sudo apt install zip
           cd ./Release_Linux
@@ -96,6 +97,7 @@ jobs:
             ./versionguid.txt
             ./Release_Linux.zip
             ./versionguid_Linux.txt
+            ./HashFileBuilder
           name: nightly
           tag_name: nightly
           fail_on_unmatched_files: true

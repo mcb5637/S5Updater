@@ -12,6 +12,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "S5UpdaterAdminWorker", "S5U
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoDownloader2", "AutoDownloader2\AutoDownloader2.csproj", "{034AE077-9961-42BD-9E13-9ACD821E6076}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HashFileBuilder", "HashFileBuilder\HashFileBuilder.csproj", "{DF0CD6CE-63A9-4F10-A984-97F5235356C2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -44,6 +46,14 @@ Global
 		{034AE077-9961-42BD-9E13-9ACD821E6076}.Release|Any CPU.Build.0 = Release|Any CPU
 		{034AE077-9961-42BD-9E13-9ACD821E6076}.Release|x86.ActiveCfg = Release|Any CPU
 		{034AE077-9961-42BD-9E13-9ACD821E6076}.Release|x86.Build.0 = Release|Any CPU
+		{DF0CD6CE-63A9-4F10-A984-97F5235356C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF0CD6CE-63A9-4F10-A984-97F5235356C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF0CD6CE-63A9-4F10-A984-97F5235356C2}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{DF0CD6CE-63A9-4F10-A984-97F5235356C2}.Debug|x86.Build.0 = Debug|Any CPU
+		{DF0CD6CE-63A9-4F10-A984-97F5235356C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF0CD6CE-63A9-4F10-A984-97F5235356C2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DF0CD6CE-63A9-4F10-A984-97F5235356C2}.Release|x86.ActiveCfg = Release|Any CPU
+		{DF0CD6CE-63A9-4F10-A984-97F5235356C2}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
