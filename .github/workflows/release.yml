@@ -65,7 +65,8 @@ jobs:
           mv ./Release/S5Updater2.exe ./Release/S5Updater.exe
           mv ./Release/AutoDownloader2.exe ./Release/AutoDownloader.exe
           mv ./Release/versionguid.txt ./versionguid.txt
-          del ./Release/HashFileBuilder.exe
+          rm ./Release/HashFileBuilder.exe
+          
           sudo apt install zip
           cd ./Release
           zip -r ../Release.zip .
@@ -78,7 +79,6 @@ jobs:
           mv ./Release_Linux/versionguid.txt ./versionguid_Linux.txt
           mv ./Release_Linux/HashFileBuilder ./HashFileBuilder
 
-          sudo apt install zip
           cd ./Release_Linux
           zip -r ../Release_Linux.zip .
           cd ../
