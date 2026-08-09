@@ -75,20 +75,16 @@ jobs:
           
       - name: rename and zip linux
         run: |
-          mkdir HashFileBuilder
+          mkdir Build
           
           mv ./Release_Linux/S5Updater2 ./Release_Linux/S5Updater
           mv ./Release_Linux/AutoDownloader2 ./Release_Linux/AutoDownloader
           mv ./Release_Linux/versionguid.txt ./versionguid_Linux.txt
-          mv ./Release_Linux/HashFileBuilder ./HashFileBuilder/HashFileBuilder
+          mv ./Release_Linux/HashFileBuilder ./Build/HashFileBuilder
           rm ./Release_Linux/HashFileBuilder.dbg
 
           cd ./Release_Linux
           zip -r ../Release_Linux.zip .
-          cd ../
-          
-          cd ./HashFileBuilder
-          zip -r ../HashFileBuilder.zip .
           cd ../
           
           ls
@@ -107,7 +103,7 @@ jobs:
             ./versionguid.txt
             ./Release_Linux.zip
             ./versionguid_Linux.txt
-            ./HashFileBuilder.zip
+            ./Build/HashFileBuilder
           name: nightly
           tag_name: nightly
           fail_on_unmatched_files: true
